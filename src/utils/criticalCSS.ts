@@ -50,14 +50,14 @@ export const criticalCSS = `
     --foreground: 17 24 35;
     --muted: 246 246 246;
     --accent: 0 108 172;
-    --accent-dark: 255 107 1;
+    --accent-dark: 91 155 213;
   }
-  
+
   .dark {
     --background: 18 24 27;
     --foreground: 253 253 253;
     --muted: 30 41 49;
-    --accent: 255 107 1;
+    --accent: 91 155 213;
   }
   
   /* Critical color classes */
