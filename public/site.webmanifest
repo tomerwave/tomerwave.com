@@ -1,12 +1,22 @@
 {
-  "name": "Peter Steinberger",
-  "short_name": "Peter Steinberger",
-  "description": "iOS developer, entrepreneur, founder of PSPDFKit (acquired), vibe coding my next project",
+  "name": "Tomer Gal",
+  "short_name": "TomerWave",
+  "description": "Personal blog and website of Tomer Gal.",
   "icons": [
     {
       "src": "/favicon.ico",
       "sizes": "16x16 32x32 48x48",
       "type": "image/x-icon"
+    },
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ],
   "start_url": "/",

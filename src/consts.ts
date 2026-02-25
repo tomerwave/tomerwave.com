@@ -31,12 +31,12 @@ interface Site {
 
 // Site configuration
 export const SITE: Site = {
-  website: "https://steipete.me/",
-  author: "Peter Steinberger",
-  profile: "https://steipete.me/about",
-  desc: "AI-powered tools from Swift roots to web frontiers. Every commit lands on GitHub for you to fork & remix.",
-  title: "Peter Steinberger",
-  ogImage: "peter-avatar.jpg",
+  website: "https://tomerwave.com/",
+  author: "Tomer Gal",
+  profile: "https://tomerwave.com/about",
+  desc: "Personal blog and website of Tomer Gal.",
+  title: "Tomer Gal",
+  ogImage: "avatar.jpg",
   lightAndDarkMode: true,
   postPerIndex: 10,
   postPerPage: 10,
@@ -46,11 +46,11 @@ export const SITE: Site = {
   editPost: {
     enabled: true,
     text: "Edit on GitHub",
-    url: "https://github.com/steipete/steipete.me/edit/main/",
+    url: "https://github.com/tomerwave/tomerwave.com/edit/main/",
   },
   dynamicOgImage: true,
   lang: "en",
-  timezone: "America/Los_Angeles",
+  timezone: "Asia/Jerusalem",
 };
 
 export const SITE_TITLE = SITE.title;
@@ -71,16 +71,16 @@ export const NAV_LINKS: SocialLink[] = [
 // Social media links
 export const SOCIAL_LINKS: SocialLink[] = [
   {
-    href: "https://github.com/steipete",
+    href: "https://github.com/tomerwave",
     label: "GitHub",
   },
   {
-    href: "https://twitter.com/steipete",
+    href: "https://x.com/TomerWave",
     label: "Twitter",
   },
   {
-    href: "https://bsky.app/profile/steipete.me",
-    label: "BlueSky",
+    href: "https://www.linkedin.com/in/tomergal14",
+    label: "LinkedIn",
   },
   {
     href: "/rss.xml",

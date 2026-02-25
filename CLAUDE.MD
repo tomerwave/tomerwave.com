@@ -6,7 +6,7 @@ This document contains important instructions and notes for Claude when working 
 
 ### NEVER CREATE BLOG POSTS WITHOUT CONSENT
 
-- **NEVER CREATE BLOG POSTS WITHOUT EXPLICIT CONSENT** from steipete
+- **NEVER CREATE BLOG POSTS WITHOUT EXPLICIT CONSENT** from the user
 - Do not write or propose new blog content unless specifically requested
 - Only help with editing or fixing existing posts when asked
 
@@ -77,10 +77,8 @@ npm run preview
 5. **Fixing broken images**:
 
    - Blog posts reference images in the `/public/assets/img/` directory structure
-   - The original files can be found in `/temp-repos/steipete.com/assets/img/`
    - Images must be copied to the matching public directory structure
    - Fixed images should be committed to the repository
-   - Use `find` command to locate the original images
    - Common image paths follow the pattern: `/assets/img/YEAR/POST-NAME/IMAGE.jpg`
 
 6. **Dependency Updates**:
@@ -106,5 +104,5 @@ npm run preview
 
 - **Astro** (latest version) - Main framework
 - **TailwindCSS** - For styling
-- **React** - For interactive components (v18.2.0)
+- **React** - For interactive components
 - **MDX** - For enhanced markdown support

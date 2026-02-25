@@ -16,12 +16,11 @@ import getSortedPosts from "@/utils/getSortedPosts";
 const posts = await getCollection("blog");
 
 const sortedPosts = getSortedPosts(posts);
-const posts2025AndLater = sortedPosts.filter(({ data }) => data.pubDatetime.getFullYear() >= 2025);
-const featuredPosts = posts2025AndLater.filter(({ data }) => data.featured);
-const recentPosts = posts2025AndLater.filter(({ data }) => !data.featured);
+const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
+const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 ---
 
-<Layout description="Peter Steinberger: AI-powered tools from Swift roots to web frontiers. Every commit lands on GitHub for you to fork & remix.">
+<Layout description="Tomer Gal — Personal blog and website.">
   <StructuredData type="WebSite" data={{}} />
   <StructuredData type="Person" data={{}} />
   <Header />
@@ -29,16 +28,16 @@ const recentPosts = posts2025AndLater.filter(({ data }) => !data.featured);
     <section id="hero" class="pt-6 pb-4">
       <div class="flex flex-col sm:flex-row items-start gap-4">
         <a href="/about" class="block mx-auto sm:mx-0 group">
-          <img 
-            src="/peter-avatar.jpg" 
-            alt="Peter Steinberger" 
+          <img
+            src="/avatar.jpg"
+            alt="Tomer Gal"
             class="w-40 h-40 rounded-full object-cover flex-shrink-0 transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl"
           />
         </a>
         <div class="flex-1 text-center sm:text-left">
           <div class="flex items-center gap-2 justify-center sm:justify-start">
             <h1 class="my-2 inline-block text-2xl font-bold sm:my-4 sm:text-3xl">
-              Hi, I'm @steipete.
+              Hi, I'm @tomerwave.
             </h1>
             <a
               target="_blank"
@@ -56,8 +55,7 @@ const recentPosts = posts2025AndLater.filter(({ data }) => !data.featured);
             </a>
           </div>
           <p>
-            AI-powered tools from Swift roots to web frontiers.<br />
-            Every commit lands on GitHub for you to fork & remix.
+            Shipping code, breaking boundaries & occasionally breaking a sweat on the dance floor. Tel Aviv-based engineer riding the bleeding edge of tech.
           </p>
           {
             // only display if at least one social link is enabled
@@ -103,7 +101,7 @@ const recentPosts = posts2025AndLater.filter(({ data }) => !data.featured);
     }
 
     <div class="my-8 text-center">
-      <LinkButton href="/posts/">
+      <LinkButton href="/posts">
         All Posts
         <IconArrowRight class="inline-block" />
       </LinkButton>

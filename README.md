@@ -1,10 +1,10 @@
-# Peter Steinberger's Personal Website
+# Tomer Gal's Personal Website
 
 This is the source code for my personal website, built with [Astro](https://astro.build) and deployed on [Vercel](https://vercel.com).
 
 ## About
 
-I'm Peter Steinberger, an iOS developer, entrepreneur, and open source contributor. This website hosts my personal blog and information about my work.
+I'm Tomer Gal. This website hosts my personal blog and information about my work.
 
 ## Project Structure
 
@@ -53,4 +53,4 @@ See the [LICENSE](LICENSE) file for full details.
 
 ## Special Thanks
 
-Special thanks to [Sat Naing](https://github.com/satnaing) for creating the excellent [AstroPaper theme](https://astro-paper.pages.dev/) that served as the foundation for this website. Their thoughtful design and clean architecture made it a joy to build upon.
+Special thanks to [Sat Naing](https://github.com/satnaing) for creating the excellent [AstroPaper theme](https://astro-paper.pages.dev/) that served as the foundation for this website.
