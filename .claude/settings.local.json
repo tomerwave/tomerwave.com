@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xargs:*)",
+      "Bash(done)",
+      "Bash(ls:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run build:*)",
+      "Bash(unzip:*)",
+      "WebFetch(domain:medium.com)",
+      "WebFetch(domain:tomerwave.medium.com)",
+      "WebFetch(domain:webcache.googleusercontent.com)",
+      "WebFetch(domain:freedium.cfd)",
+      "WebFetch(domain:archive.org)",
+      "WebFetch(domain:web.archive.org)",
+      "Bash(python3:*)",
+      "Bash(brew install:*)",
+      "Bash(# Check the generated SW for navigateFallback exclusions grep -c ''pagefind'' /Users/tomergal/CascadeProjects/tomerwave.com/dist/sw.js grep ''navigateFallbackDenylist\\\\|navigateFallbackAllowlist\\\\|denylist'' /Users/tomergal/CascadeProjects/tomerwave.com/dist/sw.js)"
+    ]
+  }
+}
