@@ -48,65 +48,64 @@ const isActive = (path: string) => {
         id="nav-menu"
         class="flex w-full flex-col items-center sm:ml-2 sm:flex-row sm:justify-end sm:space-x-4 sm:py-0"
       >
-        <button
-          id="menu-btn"
-          class="focus-outline self-end p-2 sm:hidden"
-          aria-label="Open Menu"
-          aria-expanded="false"
-          aria-controls="menu-items"
-        >
-          <IconX id="close-icon" class="hidden" />
-          <IconMenuDeep id="menu-icon" />
-        </button>
-        <ul
-          id="menu-items"
-          class:list={[
-            "mt-4 grid w-44 grid-cols-2 place-content-center gap-2",
-            "[&>li>a]:block [&>li>a]:px-4 [&>li>a]:py-3 [&>li>a]:text-center [&>li>a]:font-medium [&>li>a]:hover:text-accent sm:[&>li>a]:px-2 sm:[&>li>a]:py-1",
-            "hidden",
-            "sm:mt-0 sm:ml-0 sm:flex sm:w-auto sm:gap-x-5 sm:gap-y-0",
-          ]}
-        >
-          <li class="col-span-2">
-            <a href="/posts" class:list={{ "active-nav": isActive("/posts") }}>
-              Posts
-            </a>
-          </li>
-          <!-- <li class="col-span-2">
-            <a href="/tags" class:list={{ "active-nav": isActive("/tags") }}>
-              Tags
-            </a>
-          </li> -->
-          <li class="col-span-2">
-            <a href="/about" class:list={{ "active-nav": isActive("/about") }}>
-              About
-            </a>
-          </li>
-          {
-            SITE.showArchives && (
-              <li class="col-span-2">
-                <LinkButton
-                  href="/archives"
-                  class:list={[
-                    "focus-outline flex justify-center p-3 sm:p-1",
-                    {
-                      "active-nav [&>svg]:stroke-accent": isActive("/archives"),
-                    },
-                  ]}
-                  ariaLabel="archives"
-                  title="Archives"
-                >
-                  <IconArchive class="hidden sm:inline-block" />
-                  <span class="sm:sr-only">Archives</span>
-                </LinkButton>
-              </li>
-            )
-          }
-          <li class="col-span-1 flex items-center justify-center">
+        <div class="flex w-full items-center justify-between sm:w-auto">
+          <button
+            id="menu-btn"
+            class="focus-outline p-2 sm:hidden"
+            aria-label="Open Menu"
+            aria-expanded="false"
+            aria-controls="menu-items"
+          >
+            <IconX id="close-icon" class="hidden" />
+            <IconMenuDeep id="menu-icon" />
+          </button>
+
+          <ul
+            id="menu-items"
+            class:list={[
+              "mt-4 grid w-full grid-cols-2 place-content-center gap-2",
+              "[&>li>a]:block [&>li>a]:px-4 [&>li>a]:py-3 [&>li>a]:text-center [&>li>a]:font-medium [&>li>a]:hover:text-accent sm:[&>li>a]:px-2 sm:[&>li>a]:py-1",
+              "hidden",
+              "sm:mt-0 sm:mr-4 sm:flex sm:w-auto sm:gap-x-5 sm:gap-y-0",
+            ]}
+          >
+            <li class="col-span-2 sm:col-span-1">
+              <a href="/posts" class:list={{ "active-nav": isActive("/posts") }}>
+                Posts
+              </a>
+            </li>
+            <li class="col-span-2 sm:col-span-1">
+              <a href="/about" class:list={{ "active-nav": isActive("/about") }}>
+                About
+              </a>
+            </li>
+            {
+              SITE.showArchives && (
+                <li class="col-span-2 sm:col-span-1">
+                  <LinkButton
+                    href="/archives"
+                    class:list={[
+                      "focus-outline flex justify-center p-3 sm:p-1",
+                      {
+                        "active-nav [&>svg]:stroke-accent": isActive("/archives"),
+                      },
+                    ]}
+                    ariaLabel="archives"
+                    title="Archives"
+                  >
+                    <IconArchive class="hidden sm:inline-block" />
+                    <span class="sm:sr-only">Archives</span>
+                  </LinkButton>
+                </li>
+              )
+            }
+          </ul>
+
+          <div class="flex items-center gap-x-2 sm:gap-x-4">
             <LinkButton
               href="/search"
               class:list={[
-                "focus-outline flex p-3 sm:p-1",
+                "focus-outline flex p-2 sm:p-1",
                 { "[&>svg]:stroke-accent": isActive("/search") },
               ]}
               ariaLabel="search"
@@ -115,13 +114,12 @@ const isActive = (path: string) => {
               <IconSearch />
               <span class="sr-only">Search</span>
             </LinkButton>
-          </li>
-          {
-            SITE.lightAndDarkMode && (
-              <li class="col-span-1 flex items-center justify-center">
+
+            {
+              SITE.lightAndDarkMode && (
                 <button
                   id="theme-btn"
-                  class="focus-outline relative size-12 p-4 sm:size-8 hover:[&>svg]:stroke-accent"
+                  class="focus-outline relative size-10 p-2 sm:size-8 hover:[&>svg]:stroke-accent"
                   title="Toggles light & dark"
                   aria-label="auto"
                   aria-live="polite"
@@ -129,10 +127,10 @@ const isActive = (path: string) => {
                   <IconMoon class="absolute top-[50%] left-[50%] -translate-[50%] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
                   <IconSunHigh class="absolute top-[50%] left-[50%] -translate-[50%] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
                 </button>
-              </li>
-            )
-          }
-        </ul>
+              )
+            }
+          </div>
+        </div>
       </nav>
     </div>
   </div>

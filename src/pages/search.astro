@@ -9,7 +9,7 @@ import Main from "@/layouts/Main.astro";
 const backUrl = SITE.showBackButton ? `${Astro.url.pathname}` : "/";
 ---
 
-<Layout title={`Search | ${SITE.title}`} description="Search through Peter Steinberger's blog posts on iOS development, Swift, and open source projects.">
+<Layout title={`Search | ${SITE.title}`} description="Search through blog posts.">
   <Header />
   <Main pageTitle="Search" pageDesc="Search any article ...">
     <div id="pagefind-search" transition:persist data-backurl={backUrl}></div>
@@ -18,40 +18,50 @@ const backUrl = SITE.showBackButton ? `${Astro.url.pathname}` : "/";
 </Layout>
 
 <script>
-  function initSearch() {
-    const pageFindSearch: HTMLElement | null =
-      document.querySelector("#pagefind-search");
-
-    if (!pageFindSearch) return;
+  async function initSearch() {
+    const pageFindSearch = document.querySelector("#pagefind-search");
+    if (!pageFindSearch || pageFindSearch.querySelector(".pagefind-ui")) return;
 
     const params = new URLSearchParams(window.location.search);
 
-    const onIdle = window.requestIdleCallback || ((cb) => setTimeout(cb, 1));
-
-    onIdle(async () => {
-      // @ts-expect-error — Missing types for @pagefind/default-ui package.
-      const { PagefindUI } = await import("@pagefind/default-ui");
-
-      // Display warning inn dev mode
+    try {
+      // Check if search index exists in DEV mode
       if (import.meta.env.DEV) {
-        pageFindSearch.innerHTML = `
-            <div class="bg-muted/75 rounded p-4 space-y-4 mb-4">
-              <p><strong>DEV mode Warning! </strong>You need to build the project at least once to see the search results during development.</p>
-              <code class="block bg-black text-white px-2 py-1 rounded">pnpm run build</code>
-            </div>
-          `;
+        const indexCheck = await fetch("/pagefind/pagefind.js", { method: "HEAD" }).catch(() => ({ ok: false }));
+        if (!indexCheck.ok && !document.querySelector("#pagefind-dev-warning")) {
+          const warning = document.createElement("div");
+          warning.id = "pagefind-dev-warning";
+          warning.className = "bg-muted/75 rounded p-4 space-y-4 mb-4 border border-accent/20";
+          warning.innerHTML = `
+              <p class="font-medium text-accent">Note: Search requires a build to function.</p>
+              <p class="text-sm opacity-80">The search index is generated during the build process. To test search locally, run:</p>
+              <code class="block bg-black/5 text-current px-2 py-1 rounded text-sm">npm run build && npm run preview</code>
+            `;
+          pageFindSearch.parentNode?.insertBefore(warning, pageFindSearch);
+        }
       }
+
+      // Dynamic import PagefindUI
+      // @ts-expect-error — Missing types for @pagefind/default-ui package.
+      const PagefindModule = await import("@pagefind/default-ui");
+      const PagefindUI = PagefindModule.PagefindUI || PagefindModule.default;
+
+      if (!PagefindUI) return;
 
       // Init pagefind ui
       const search = new PagefindUI({
         element: "#pagefind-search",
+        bundlePath: "/pagefind/",
         showSubResults: true,
         showImages: false,
+        translations: {
+          placeholder: "Search posts, e.g. 'Code to Business'"
+        },
         processTerm: function (term: string) {
-          params.set("q", term); // Update the `q` parameter in the URL
-          history.replaceState(history.state, "", "?" + params.toString()); // Push the new URL without reloading
+          params.set("q", term);
+          history.replaceState(history.state, "", "?" + params.toString());
 
-          const backUrl = pageFindSearch?.dataset?.backurl;
+          const backUrl = (pageFindSearch as HTMLElement)?.dataset?.backurl;
           sessionStorage.setItem("backUrl", backUrl + "?" + params.toString());
 
           return term;
@@ -64,35 +74,33 @@ const backUrl = SITE.showBackButton ? `${Astro.url.pathname}` : "/";
         search.triggerSearch(query);
       }
 
-      // Reset search param if search input is cleared and auto-focus
-      const searchInput = document.querySelector(".pagefind-ui__search-input") as HTMLInputElement;
-      const clearButton = document.querySelector(".pagefind-ui__search-clear");
-      
-      // Auto-focus the search input and add placeholder
-      if (searchInput) {
-        searchInput.focus();
-        searchInput.placeholder = "Search posts, e.g. 'Swift concurrency'";
-      }
-      searchInput?.addEventListener("input", resetSearchParam);
-      clearButton?.addEventListener("click", resetSearchParam);
-
-      function resetSearchParam(e: Event) {
-        if ((e.target as HTMLInputElement)?.value.trim() === "") {
-          history.replaceState(history.state, "", window.location.pathname);
+      // Auto-focus and placeholder
+      setTimeout(() => {
+        const searchInput = document.querySelector(".pagefind-ui__search-input") as HTMLInputElement;
+        const clearButton = document.querySelector(".pagefind-ui__search-clear");
+        
+        if (searchInput) {
+          searchInput.focus();
+          
+          searchInput.addEventListener("input", (e) => {
+            if ((e.target as HTMLInputElement).value.trim() === "") {
+              history.replaceState(history.state, "", window.location.pathname);
+            }
+          });
         }
-      }
-    });
+        
+        clearButton?.addEventListener("click", () => {
+          history.replaceState(history.state, "", window.location.pathname);
+        });
+      }, 100);
+
+    } catch (e) {
+      console.error("Failed to initialize Pagefind:", e);
+    }
   }
 
-  document.addEventListener("astro:after-swap", () => {
-    const pagefindSearch = document.querySelector("#pagefind-search");
-
-    // if pagefind search form already exists, don't initialize search component
-    if (pagefindSearch && pagefindSearch.querySelector("form")) return;
-
-    initSearch();
-  });
-  initSearch();
+  // Use astro:page-load for initial load and view transitions
+  document.addEventListener("astro:page-load", initSearch);
 </script>
 
 <style is:global>
@@ -115,6 +123,11 @@ const backUrl = SITE.showBackButton ? `${Astro.url.pathname}` : "/";
     input {
       font-weight: 400;
       border: 1px solid var(--border);
+    }
+
+    input::placeholder {
+      color: #6b7280;
+      opacity: 1;
     }
 
     input:focus-visible {
@@ -141,5 +154,9 @@ const backUrl = SITE.showBackButton ? `${Astro.url.pathname}` : "/";
     .pagefind-ui__result-nested .pagefind-ui__result-link:before {
       font-family: system-ui;
     }
+  }
+
+  html[data-theme="dark"] #pagefind-search input::placeholder {
+    color: #9ca3af;
   }
 </style>
