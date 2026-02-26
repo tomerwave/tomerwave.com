@@ -16,7 +16,10 @@
       "Bash(python3:*)",
       "Bash(brew install:*)",
       "Bash(# Check the generated SW for navigateFallback exclusions grep -c ''pagefind'' /Users/tomergal/CascadeProjects/tomerwave.com/dist/sw.js grep ''navigateFallbackDenylist\\\\|navigateFallbackAllowlist\\\\|denylist'' /Users/tomergal/CascadeProjects/tomerwave.com/dist/sw.js)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "WebFetch(domain:steipete.com)",
+      "WebFetch(domain:steipete.me)",
+      "Bash(sips:*)"
     ]
   }
 }
