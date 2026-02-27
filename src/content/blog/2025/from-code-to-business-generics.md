@@ -1,6 +1,6 @@
 ---
 title: "From Code to Business: Why Generic Isn't Always the Answer"
-pubDatetime: 2026-02-25T12:00:00+03:00
+pubDatetime: 2025-02-15T12:00:00+03:00
 description: "When building software or starting a company, it's tempting to go broad. While this approach feels efficient, it can often backfire. Whether it's developers overusing generics or startups failing to find a niche, the lesson remains the same: focus on solving one problem well."
 tags:
   - software-engineering
@@ -8,7 +8,7 @@ tags:
   - code-quality
   - leadership
   - best-practices
-heroImage: /assets/img/2026/from-code-to-business-generics/hero.jpg
+heroImage: /assets/img/2025/from-code-to-business-generics/hero.jpg
 heroImageAlt: "Team collaborating in an office environment"
 canonicalURL: https://tomerwave.medium.com/from-code-to-business-why-generic-isnt-always-the-answer-5e2cb5ff3a6c
 ---
@@ -61,7 +61,7 @@ This might look elegant at first glance, but it forces integrations into a one-s
 
 The same principle applies to startups. Early on, startups often spread themselves too thin, trying to appeal to everyone in an effort to maximize market potential. While it seems like a smart move, it leads to diluted focus and wasted resources.
 
-![Museum gallery — focusing on one masterpiece](/assets/img/2026/from-code-to-business-generics/museum.jpg)
+![Museum gallery — focusing on one masterpiece](/assets/img/2025/from-code-to-business-generics/museum.jpg)
 
 ### An Example: Trying to Please Everyone
 
