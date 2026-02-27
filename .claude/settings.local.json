@@ -19,7 +19,8 @@
       "Bash(grep:*)",
       "WebFetch(domain:steipete.com)",
       "WebFetch(domain:steipete.me)",
-      "Bash(sips:*)"
+      "Bash(sips:*)",
+      "Bash(npm run check:*)"
     ]
   }
 }
