@@ -20,7 +20,9 @@
       "WebFetch(domain:steipete.com)",
       "WebFetch(domain:steipete.me)",
       "Bash(sips:*)",
-      "Bash(npm run check:*)"
+      "Bash(npm run check:*)",
+      "Bash(curl:*)",
+      "WebFetch(domain:steipete.md)"
     ]
   }
 }
