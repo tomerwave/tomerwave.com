@@ -33,6 +33,7 @@ export default defineConfig({
 	      filter: (page) => {
 	        // Always exclude archives if not showing them
 	        if (!SITE.showArchives && page.endsWith("/archives")) return false;
+	        if (page.includes("/posts/2026/signature-strength-report-empathy")) return false;
         
         // Optionally exclude tag pages to reduce sitemap bloat
         // Uncomment the following line to exclude all tag pages:

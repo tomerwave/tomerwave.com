@@ -1,5 +1,7 @@
 # build output
 dist/
+temp/
+
 # generated types
 .astro/
 
@@ -38,3 +40,5 @@ src/content/temp/
 
 # jetbrains setting folder
 .idea/
+.omx/
+.omc/

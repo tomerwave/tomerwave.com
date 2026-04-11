@@ -1,0 +1,155 @@
+---
+interface ScoreItem {
+  rank: number;
+  label: string;
+  score: number;
+  color: string;
+}
+
+interface Props {
+  items: ScoreItem[];
+  title?: string;
+}
+
+const { items, title = "Total score" } = Astro.props;
+
+const listItems = [...items].sort((a, b) => b.score - a.score || a.rank - b.rank);
+const orderedItems = [...items].sort((a, b) => a.rank - b.rank);
+const circleRadius = 104;
+const center = 136;
+const nodeRadius = 17;
+
+const positionedItems = orderedItems.map((item, index) => {
+  const angle = (-90 + index * 36) * (Math.PI / 180);
+  return {
+    ...item,
+    x: center + Math.cos(angle) * circleRadius,
+    y: center + Math.sin(angle) * circleRadius,
+  };
+});
+
+const highlightEdges = [
+  [1, 5],
+  [9, 1],
+];
+
+const faintEdges = [
+  [10, 5],
+  [9, 6],
+  [8, 5],
+  [7, 4],
+  [6, 1],
+  [4, 1],
+  [3, 8],
+  [2, 9],
+  [10, 3],
+  [7, 2],
+];
+
+const getNode = (rank: number) => positionedItems.find((item) => item.rank === rank);
+---
+
+<div class="not-prose my-8 mx-auto max-w-[860px] rounded-[22px] border border-border/70 bg-background/70 p-4 shadow-sm md:p-5">
+  <div class="mb-4">
+    <h3 class="text-lg font-bold tracking-tight text-foreground md:text-xl">{title}</h3>
+  </div>
+
+  <div class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-center lg:gap-14">
+    <div class="space-y-3">
+      {
+        listItems.map((item) => (
+          <div class="grid grid-cols-[30px_minmax(140px,1fr)_92px_44px] items-center gap-3 md:grid-cols-[34px_minmax(170px,1fr)_104px_48px] md:gap-4">
+            <div class="flex size-7 items-center justify-center rounded-full bg-secondary text-sm font-semibold text-foreground/80 md:size-8 md:text-base">
+              {item.rank}
+            </div>
+            <div class="text-sm font-medium leading-tight text-foreground md:text-base">{item.label}</div>
+            <div class="h-2 rounded-full bg-secondary">
+              <div
+                class="h-2 rounded-full"
+                style={`width:${item.score}%; background:${item.color};`}
+              />
+            </div>
+            <div class="text-right text-sm font-medium text-foreground/70 md:text-base">{item.score}%</div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mx-auto w-full max-w-[280px] lg:justify-self-end">
+      <svg viewBox="0 0 272 272" class="h-auto w-full overflow-visible" aria-hidden="true">
+        <circle
+          cx={center}
+          cy={center}
+          r={circleRadius}
+          fill="none"
+          stroke="color-mix(in srgb, var(--border) 55%, transparent)"
+          stroke-width="3"
+        />
+
+        {
+          faintEdges.map(([from, to]) => {
+            const start = getNode(from);
+            const end = getNode(to);
+
+            if (!start || !end) return null;
+
+            return (
+              <line
+                x1={start.x}
+                y1={start.y}
+                x2={end.x}
+                y2={end.y}
+                stroke="color-mix(in srgb, var(--foreground) 12%, transparent)"
+                stroke-width="2"
+              />
+            );
+          })
+        }
+
+        {
+          highlightEdges.map(([from, to]) => {
+            const start = getNode(from);
+            const end = getNode(to);
+
+            if (!start || !end) return null;
+
+            return (
+              <line
+                x1={start.x}
+                y1={start.y}
+                x2={end.x}
+                y2={end.y}
+                stroke="color-mix(in srgb, var(--foreground) 55%, transparent)"
+                stroke-width="4"
+                stroke-linecap="round"
+              />
+            );
+          })
+        }
+
+        {
+          positionedItems.map((item) => (
+            <g>
+              <circle
+                cx={item.x}
+                cy={item.y}
+                r={nodeRadius}
+                fill={item.color}
+              />
+              <text
+                x={item.x}
+                y={item.y + 6}
+                text-anchor="middle"
+                font-size="16"
+                fill="white"
+                font-family="var(--font-mono, inherit)"
+              >
+                {item.rank}
+              </text>
+            </g>
+          ))
+        }
+      </svg>
+    </div>
+  </div>
+</div>

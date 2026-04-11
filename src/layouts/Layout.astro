@@ -15,6 +15,7 @@ export interface Props {
   canonicalURL?: string;
   pubDatetime?: Date;
   modDatetime?: Date | null;
+  noindex?: boolean;
   scrollSmooth?: boolean;
 }
 
@@ -27,6 +28,7 @@ const {
   canonicalURL = new URL(Astro.url.pathname, Astro.url),
   pubDatetime,
   modDatetime,
+  noindex = false,
   scrollSmooth = false,
 } = Astro.props;
 
@@ -65,6 +67,8 @@ const structuredData = {
     <meta name="description" content={description} />
     <meta name="author" content={author} />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {noindex && <meta name="googlebot" content="noindex, nofollow" />}
 
     <!-- Open Graph / Facebook -->
     <meta property="og:title" content={title} />
@@ -166,7 +170,9 @@ const structuredData = {
     </script>
   </head>
   <body>
-    <slot />
+    <div data-pagefind-ignore={noindex ? true : undefined}>
+      <slot />
+    </div>
     <Analytics />
   </body>
 </html>

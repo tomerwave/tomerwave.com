@@ -36,6 +36,7 @@ const {
   tags,
   hideEditPost,
   heroImage,
+  unlisted,
 } = post.data;
 
 const { Content } = await render(post);
@@ -72,6 +73,7 @@ const layoutProps = {
   modDatetime,
   canonicalURL: computedCanonicalURL,
   ogImage,
+  noindex: Boolean(unlisted),
   scrollSmooth: true,
 };
 
