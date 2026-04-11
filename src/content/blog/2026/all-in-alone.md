@@ -1,5 +1,5 @@
 ---
-title: "The Wrong Kind of Hard"
+title: "All In, Alone"
 pubDatetime: 2026-04-30T12:00:00+03:00
 description: "I thought working at Anchor would be hard because someone else built my dream. I was wrong. It was hard — but for entirely different reasons."
 tags:
