@@ -9,6 +9,7 @@ This document contains important instructions and notes for Claude when working 
 - **NEVER CREATE BLOG POSTS WITHOUT EXPLICIT CONSENT** from the user
 - Do not write or propose new blog content unless specifically requested
 - Only help with editing or fixing existing posts when asked
+- **NEVER set `draft: true`** when creating blog posts unless the user explicitly requests it
 
 ### USE GSED INSTEAD OF SED
 
