@@ -1,24 +1,28 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import { getPath } from "@/utils/getPath";
+import { calculateReadingTime } from "@/utils/readingTime";
 
 interface Props {
   post: CollectionEntry<"blog">;
+  featured?: boolean;
 }
 
-const { post } = Astro.props;
+const { post, featured = false } = Astro.props;
 const href = getPath(post.id, post.filePath);
 const date = new Intl.DateTimeFormat("en", {
   day: "numeric",
   month: "short",
   year: "numeric",
 }).format(post.data.pubDatetime);
+const readingTime = calculateReadingTime(post.body ?? "");
 ---
 
-<li class="blog-post">
-  <span class="blog-post-meta">{date}</span>
+<li class:list={["blog-post", { "blog-post-featured": featured }]}>
+  <span class="blog-post-meta">{date} · {readingTime}</span>
   <div>
     <a href={href}><h3 class="blog-post-title">{post.data.title}</h3></a>
     <p class="blog-post-description">{post.data.description}</p>
+    {!featured && <span class="blog-post-read">Read essay</span>}
   </div>
 </li>

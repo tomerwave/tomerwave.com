@@ -1,7 +1,8 @@
 ---
-import Footer from "@/components/Footer.astro";
-import Header from "@/components/Header.astro";
+import BlogFooter from "@/components/blog/BlogFooter.astro";
+import BlogHeader from "@/components/blog/BlogHeader.astro";
 import { SITE } from "@/config";
+import "@/styles/blog.css";
 import Layout from "./Layout.astro";
 
 export interface Props {
@@ -15,11 +16,14 @@ const { frontmatter } = Astro.props;
 ---
 
 <Layout title={`${frontmatter.title} | ${SITE.title}`} description={frontmatter.description}>
-  <Header />
-  <main id="main-content" class="mx-auto w-full max-w-3xl px-4 pb-12">
-    <section id="about" class="prose mb-28 max-w-3xl prose-img:border-0 mt-8">
-      <slot />
-    </section>
-  </main>
-  <Footer />
+  <div class="personal-blog">
+    <BlogHeader />
+    <main id="blog-main" class="blog-about">
+      <section id="about" class="blog-about-column blog-prose">
+        <span class="blog-kicker">About</span>
+        <slot />
+      </section>
+    </main>
+    <BlogFooter />
+  </div>
 </Layout>
