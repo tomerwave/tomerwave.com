@@ -40,7 +40,7 @@
 .business-header { padding-block: clamp(1.5rem, 3vw, 2.25rem); }
 .business-header-inner, .business-footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
 .business-mark { display: inline-flex; align-items: center; gap: .85rem; white-space: nowrap; }
-.business-mark svg { display: block; width: 38px; height: 38px; }
+.business-mark img { display: block; width: 38px; height: 38px; }
 .business-mark-name { font-family: var(--business-display); font-size: 1.02rem; letter-spacing: .01em; }
 .business-status { display: none; color: var(--business-ink-45); font-family: var(--business-mono); font-size: .6875rem; letter-spacing: .14em; text-transform: uppercase; }
 .business-status b { color: var(--business-ink-70); font-weight: 400; }
