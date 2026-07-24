@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Prata&family=Instrument+Sans:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap");
+
 :root {
   --business-paper: #faf6ef;
   --business-paper-warm: #f4efe5;
@@ -7,9 +9,9 @@
   --business-sage: #8fa396;
   --business-sand: #b7ae9c;
   --business-hair: color-mix(in srgb, var(--business-ink) 16%, transparent);
-  --business-display: Georgia, "Times New Roman", serif;
-  --business-body: "Atkinson", ui-sans-serif, system-ui, sans-serif;
-  --business-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --business-display: "Prata", Georgia, serif;
+  --business-body: "Instrument Sans", system-ui, -apple-system, sans-serif;
+  --business-mono: "JetBrains Mono", ui-monospace, monospace;
   --business-gutter: clamp(1.25rem, 5vw, 5.5rem);
   --business-measure: 1240px;
 }
@@ -23,7 +25,7 @@
   -webkit-font-smoothing: antialiased;
 }
 
-.business-site *, .business-site *::before, .business-site *::after { box-sizing: border-box; }
+.business-site *, .business-site *::before, .business-site *::after { box-sizing: border-box; margin: 0; padding: 0; }
 .business-site a { color: inherit; text-decoration: none; }
 .business-site :focus-visible { outline: 2px solid var(--business-sage); outline-offset: 4px; border-radius: 1px; }
 .business-wrap { width: min(100%, var(--business-measure)); margin-inline: auto; padding-inline: var(--business-gutter); }
@@ -40,6 +42,8 @@
 .business-mark { display: inline-flex; align-items: center; gap: .85rem; white-space: nowrap; }
 .business-mark svg { display: block; width: 38px; height: 38px; }
 .business-mark-name { font-family: var(--business-display); font-size: 1.02rem; letter-spacing: .01em; }
+.business-status { display: none; color: var(--business-ink-45); font-family: var(--business-mono); font-size: .6875rem; letter-spacing: .14em; text-transform: uppercase; }
+.business-status b { color: var(--business-ink-70); font-weight: 400; }
 .business-nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: clamp(.9rem, 2.5vw, 2rem); }
 .business-nav a, .business-footer a { border-bottom: 1px solid transparent; color: var(--business-ink-70); font-size: .875rem; padding-bottom: 2px; transition: color .25s ease, border-color .25s ease; }
 .business-nav a:hover, .business-footer a:hover { border-color: var(--business-sage); color: var(--business-ink); }
@@ -48,10 +52,10 @@
 
 .business-hero { padding-block: clamp(3rem, 9vw, 7.5rem) clamp(4rem, 10vw, 9rem); }
 .business-hero-grid { display: grid; gap: clamp(2.5rem, 5vw, 3rem); grid-template-columns: 1fr; }
-.business-field { min-height: clamp(150px, 22vw, 300px); position: relative; }
+.business-field { height: clamp(150px, 26vw, 340px); position: relative; }
 .business-field canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
-.business-hero-copy { max-width: 44rem; min-width: 0; }
-.business-hero h1 { font-size: clamp(2.5rem, 1.2rem + 4.6vw, 4.4rem); margin-block: 1.4rem 1.6rem; max-width: 18ch; text-wrap: balance; }
+.business-hero-copy { max-width: 34ch; min-width: 0; }
+.business-hero h1 { font-size: clamp(2.5rem, 1.2rem + 5.2vw, 4.85rem); margin-block: 1.4rem 1.6rem; }
 .business-quiet { color: var(--business-ink-45); }
 .business-hero p { color: var(--business-ink-70); font-size: clamp(1.02rem, .98rem + .25vw, 1.15rem); max-width: 40ch; }
 .business-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.75rem; margin-top: 2.4rem; }
@@ -65,7 +69,6 @@
 .business-section { padding-block: clamp(3.5rem, 8vw, 7rem); }
 .business-section-head { margin-bottom: clamp(2.5rem, 5vw, 4rem); max-width: 52ch; }
 .business-section-head .business-eyebrow { display: block; margin-bottom: 1.15rem; }
-.business-section-head h2 { max-width: 22ch; text-wrap: balance; }
 
 .business-signals { display: grid; }
 .business-signal { align-items: baseline; border-top: 1px solid var(--business-hair); display: grid; gap: .5rem 2.5rem; padding-block: clamp(1.6rem, 3vw, 2.2rem); }
@@ -124,10 +127,8 @@
   .business-about-grid { grid-template-columns: 1.35fr 1fr; align-items: start; }
   .business-contact-grid { grid-template-columns: 1.2fr 1fr; align-items: end; }
 }
-@media (min-width: 940px) {
-  .business-hero-grid { grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); align-items: center; gap: clamp(2rem, 4vw, 5rem); }
-  .business-field { align-self: center; }
-}
+@media (min-width: 940px) { .business-hero-grid { grid-template-columns: 1.05fr 1fr; align-items: center; gap: 0; } }
+@media (min-width: 1180px) { .business-status { display: block; } }
 @media (max-width: 620px) {
   .business-header-inner { align-items: flex-start; flex-direction: column; }
   .business-nav { justify-content: flex-start; }
