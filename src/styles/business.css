@@ -28,6 +28,7 @@ body:has(.business-site) { background: var(--business-paper); overflow-x: hidden
 .business-site h2 { font-size: clamp(2rem, 1.15rem + 2.9vw, 3.35rem); line-height: 1.08; }
 .business-site h3 { font-size: 1.32rem; letter-spacing: -.006em; line-height: 1.22; }
 .business-site p { max-width: 62ch; }
+.business-site .business-hero, .business-site .business-section, .business-site .business-footer { margin-inline: 0; max-width: none; padding-inline: 0; }
 
 .business-eyebrow { align-items: center; color: var(--business-sage-deep); display: inline-flex; font-family: var(--business-display); font-size: 1.06rem; font-style: italic; font-weight: 400; gap: .7rem; }
 .business-eyebrow::before { background: var(--business-sage); content: ""; flex: none; height: 1px; width: 28px; }
