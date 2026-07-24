@@ -34,7 +34,7 @@ export const SITE: Site = {
   website: "https://tomerwave.com/",
   author: "Tomer Gal",
   profile: "https://tomerwave.com/about",
-  desc: "Personal blog and website of Tomer Gal.",
+  desc: "Tomer Gal — Fractional VP of R&D for founder-led startups, with a personal blog on engineering, building, and people.",
   title: "Tomer Gal",
   ogImage: "avatar.jpg",
   lightAndDarkMode: true,

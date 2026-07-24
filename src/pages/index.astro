@@ -1,121 +1,55 @@
 ---
-import { getCollection } from "astro:content";
-import IconArrowRight from "@/assets/icons/IconArrowRight.svg";
-import IconRss from "@/assets/icons/IconRss.svg";
-import Card from "@/components/Card.astro";
-import Footer from "@/components/Footer.astro";
-import Header from "@/components/Header.astro";
-import Hr from "@/components/Hr.astro";
-import LinkButton from "@/components/LinkButton.astro";
-import Socials from "@/components/Socials.astro";
+import BusinessAbout from "@/components/landing/BusinessAbout.astro";
+import BusinessContact from "@/components/landing/BusinessContact.astro";
+import BusinessFooter from "@/components/landing/BusinessFooter.astro";
+import BusinessHeader from "@/components/landing/BusinessHeader.astro";
+import BusinessHero from "@/components/landing/BusinessHero.astro";
+import EngagementModes from "@/components/landing/EngagementModes.astro";
+import EngagementPhases from "@/components/landing/EngagementPhases.astro";
+import FounderSignals from "@/components/landing/FounderSignals.astro";
 import StructuredData from "@/components/StructuredData.astro";
-import { SITE, SOCIALS } from "@/config";
+import "@/styles/business.css";
 import Layout from "@/layouts/Layout.astro";
-import getSortedPosts from "@/utils/getSortedPosts";
-
-const posts = await getCollection("blog");
-
-const sortedPosts = getSortedPosts(posts);
-const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
-const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 ---
 
-<Layout description="Tomer Gal — Personal blog and website.">
-  <StructuredData type="WebSite" data={{}} />
-  <StructuredData type="Person" data={{}} />
-  <Header />
-  <main id="main-content" data-layout="index">
-    <section id="hero" class="pt-6 pb-4">
-      <div class="flex flex-col sm:flex-row items-start gap-4">
-        <a href="/about" class="block mx-auto sm:mx-0 group">
-          <img
-            src="/avatar.jpg"
-            alt="Tomer Gal"
-            class="w-40 h-40 rounded-full object-cover flex-shrink-0 transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl"
-          />
-        </a>
-        <div class="flex-1 text-center sm:text-left">
-          <div class="flex items-center gap-2 justify-center sm:justify-start">
-            <h1 class="my-2 inline-block text-2xl font-bold sm:my-4 sm:text-3xl">
-              Hi, I'm @tomerwave.
-            </h1>
-            <a
-              target="_blank"
-              href="/rss.xml"
-              class="inline-block"
-              aria-label="rss feed"
-              title="RSS Feed"
-            >
-              <IconRss
-                width={20}
-                height={20}
-                class="scale-125 stroke-accent stroke-3"
-              />
-              <span class="sr-only">RSS Feed</span>
-            </a>
-          </div>
-          <p>
-            Shipping code, breaking boundaries & occasionally breaking a sweat on the dance floor. Tel Aviv-based engineer riding the bleeding edge of tech.
-          </p>
-          {
-            // only display if at least one social link is enabled
-            SOCIALS.filter((social) => social.active).length > 0 && (
-              <div class="mt-4 flex flex-row items-center justify-center sm:justify-start">
-                <Socials />
-              </div>
-            )
-          }
-        </div>
-      </div>
-    </section>
-
-    <Hr />
-
-    {
-      featuredPosts.length > 0 && (
-        <>
-          <section id="featured" class="pt-12 pb-6">
-            <h2 class="text-2xl font-semibold tracking-wide">Featured</h2>
-            <ul>
-              {featuredPosts.map((data) => (
-                <Card variant="h3" {...data} showImage={false} />
-              ))}
-            </ul>
-          </section>
-          {recentPosts.length > 0 && <Hr />}
-        </>
-      )
-    }
-
-    {
-      recentPosts.length > 0 && (
-        <section id="recent-posts" class="pt-12 pb-6">
-          <ul>
-            {recentPosts.map(
-              (data, index) =>
-                index < SITE.postPerIndex && <Card variant="h3" {...data} showImage={false} />,
-            )}
-          </ul>
-        </section>
-      )
-    }
-
-    <div class="my-8 text-center">
-      <LinkButton href="/posts">
-        All Posts
-        <IconArrowRight class="inline-block" />
-      </LinkButton>
-    </div>
-  </main>
-  <Footer />
+<Layout
+  title="Tomer Gal — Fractional VP R&D"
+  description="Fractional VP of R&D for startups between their first engineering hire and their first real organization."
+>
+  <div class="business-site">
+    <StructuredData type="WebSite" data={{}} />
+    <StructuredData type="Person" data={{}} />
+    <BusinessHeader />
+    <main id="business-main">
+      <BusinessHero />
+      <hr class="business-rule" />
+      <FounderSignals />
+      <EngagementPhases />
+      <hr class="business-rule" />
+      <EngagementModes />
+      <BusinessAbout />
+      <BusinessContact />
+    </main>
+    <BusinessFooter />
+  </div>
 </Layout>
 
 <script>
-  document.addEventListener("astro:page-load", () => {
-    const indexLayout = (document.querySelector("#main-content") as HTMLElement)
-      ?.dataset?.layout;
-    if (indexLayout) {
-      sessionStorage.setItem("backUrl", "/");
-    }
-  });
+  const revealItems = document.querySelectorAll<HTMLElement>(".business-reveal");
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) {
+    revealItems.forEach((item) => item.classList.add("is-visible"));
+  } else {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.16, rootMargin: "0px 0px -8% 0px" },
+    );
+    revealItems.forEach((item) => observer.observe(item));
+  }
 </script>

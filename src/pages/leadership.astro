@@ -1,0 +1,69 @@
+---
+import BusinessContact from "@/components/landing/BusinessContact.astro";
+import BusinessFooter from "@/components/landing/BusinessFooter.astro";
+import BusinessHeader from "@/components/landing/BusinessHeader.astro";
+import EngagementModes from "@/components/landing/EngagementModes.astro";
+import EngagementPhases from "@/components/landing/EngagementPhases.astro";
+import "@/styles/business.css";
+import Layout from "@/layouts/Layout.astro";
+---
+
+<Layout
+  title="About my work | Tomer Gal"
+  description="How Tomer Gal helps startup founders build the engineering organization, systems, and delivery habits that carry the company into its next stage."
+>
+  <div class="business-site">
+    <BusinessHeader />
+    <main id="business-main">
+      <section class="business-hero">
+        <div class="business-wrap business-hero-copy">
+          <span class="business-eyebrow">About my work</span>
+          <h1>I help founders turn a handful of engineers into an organization that can carry the company.</h1>
+          <p>I work with technical founders when the product is real, the team is growing, and the engineering decisions are starting to outlive the people who made them.</p>
+          <div class="business-actions">
+            <a class="business-button" href="#contact">Talk about your team <span class="business-arrow" aria-hidden="true">→</span></a>
+            <a class="business-linkline" href="/about">Read about me as a person</a>
+          </div>
+        </div>
+      </section>
+      <section class="business-section business-about">
+        <div class="business-wrap business-about-grid">
+          <div>
+            <span class="business-eyebrow">Operating philosophy</span>
+            <p class="business-about-lead">The job is not to become the most important person in the room.</p>
+            <div class="business-about-body">
+              <p>It is to make the system easier to understand, the decisions easier to make, and the team more capable than it was before I arrived.</p>
+              <p>That means shipping alongside the team, writing down the reasoning behind important choices, and treating management as an engineering discipline: observe, make the smallest useful change, and measure what happens next.</p>
+            </div>
+          </div>
+          <dl class="business-facts">
+            <div class="business-fact"><dt>Best fit</dt><dd>Founder-led startups</dd></div>
+            <div class="business-fact"><dt>Stage</dt><dd>Pre-seed through Series A</dd></div>
+            <div class="business-fact"><dt>Team size</dt><dd>3 to 25 engineers</dd></div>
+            <div class="business-fact"><dt>Focus</dt><dd>People, delivery, architecture</dd></div>
+          </dl>
+        </div>
+      </section>
+      <EngagementPhases />
+      <EngagementModes />
+      <BusinessContact />
+    </main>
+    <BusinessFooter />
+  </div>
+</Layout>
+
+<script>
+  const revealItems = document.querySelectorAll<HTMLElement>(".business-reveal");
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) {
+    revealItems.forEach((item) => item.classList.add("is-visible"));
+  } else {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.16, rootMargin: "0px 0px -8% 0px" });
+    revealItems.forEach((item) => observer.observe(item));
+  }
+</script>

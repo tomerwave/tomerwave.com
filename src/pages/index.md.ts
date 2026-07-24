@@ -1,21 +1,21 @@
 import type { APIRoute } from "astro";
 
 export const GET: APIRoute = async () => {
-  const markdownContent = `# Tomer Gal (@TomerWave)
+  const markdownContent = `# Tomer Gal — Fractional VP R&D
 
-Personal blog and website of Tomer Gal.
+I help founder-led startups build the engineering organization, systems, and delivery habits that carry the company into its next stage.
 
 ## Navigation
 
-- [About](/about.md)
+- [About my work](/leadership.md)
+- [About me](/about.md)
 - [Recent Posts](/posts.md)
-- [Archives](/archives.md)
 - [RSS Feed](/rss.xml)
 
 ## Links
 
-- Twitter: [@TomerWave](https://x.com/TomerWave)
-- GitHub: [@tomerwave](https://github.com/tomerwave)
+- LinkedIn: [Tomer Gal](https://www.linkedin.com/in/tomergal14)
+- Personal blog: [tomerwave.com/posts](https://tomerwave.com/posts)
 - Email: tomer.wave@gmail.com
 
 ---
