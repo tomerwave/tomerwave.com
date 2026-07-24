@@ -116,20 +116,6 @@
 .business-reveal { opacity: 0; transform: translateY(14px); transition: opacity .9s cubic-bezier(.2,.7,.3,1), transform .9s cubic-bezier(.2,.7,.3,1); }
 .business-reveal.is-visible { opacity: 1; transform: none; }
 
-/* The in-app browser reports a compact CSS viewport even on a wide retina display.
-   Switch to the wide editorial composition before the content reaches that viewport. */
-@media (min-width: 720px) {
-  .business-signal { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); }
-  .business-phases { grid-template-columns: repeat(4, 1fr); gap: clamp(1.5rem, 3vw, 2.75rem); }
-  .business-modes { grid-template-columns: repeat(3, 1fr); }
-  .business-mode { padding-inline: clamp(1.5rem, 2.5vw, 2.4rem); }
-  .business-mode:first-child { padding-left: 0; }
-  .business-mode:last-child { padding-right: 0; }
-  .business-mode + .business-mode { border-left: 1px solid var(--business-hair); }
-  .business-about-grid { grid-template-columns: 1.35fr 1fr; align-items: start; }
-  .business-contact-grid { grid-template-columns: 1.2fr 1fr; align-items: end; }
-}
-@media (min-width: 720px) { .business-hero-grid { grid-template-columns: 1.05fr 1fr; align-items: center; gap: 0; } }
 @media (min-width: 1180px) { .business-status { display: block; } }
 @media (max-width: 620px) {
   .business-header-inner { align-items: flex-start; flex-direction: column; }
