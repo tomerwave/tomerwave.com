@@ -1,0 +1,27 @@
+---
+import Layout from "@/layouts/Layout.astro";
+---
+
+<Layout title="Resetting local cache">
+  <main class="mx-auto max-w-xl px-6 py-24 text-center">
+    <p>Resetting the local development cache…</p>
+  </main>
+
+  <script is:inline>
+    const resetLocalCache = async () => {
+      if ("serviceWorker" in navigator) {
+        const registrations = await navigator.serviceWorker.getRegistrations();
+        await Promise.all(registrations.map((registration) => registration.unregister()));
+      }
+
+      if ("caches" in window) {
+        const cacheNames = await caches.keys();
+        await Promise.all(cacheNames.map((cacheName) => caches.delete(cacheName)));
+      }
+
+      window.location.replace("/blog?fresh=1");
+    };
+
+    resetLocalCache();
+  </script>
+</Layout>

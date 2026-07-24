@@ -168,11 +168,6 @@ export default defineConfig({
           },
         ],
       },
-      devOptions: {
-        enabled: true,
-        suppressWarnings: true,
-        navigateFallbackAllowlist: [/^\//],
-      },
       experimental: {
         directoryAndTrailingSlashHandler: true,
       },
