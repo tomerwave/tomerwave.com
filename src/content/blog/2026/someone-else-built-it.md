@@ -42,11 +42,11 @@ I didn't announce it to anyone. Didn't post about it. Didn't frame it as a pivot
 
 ---
 
-The first person I called was Shahar.
+The first person I called was Daniel.
 
-Shahar is a headhunter. We'd first talked almost eight years ago. Over the years he'd suggest companies to me every now and then, good ones. I was never interested. I always had something else going on, something I thought was more important. In hindsight, every single company he suggested ended up exiting. Made great money for everyone involved.
+Daniel is a headhunter. We'd first talked almost eight years ago. Over the years he'd suggest companies to me every now and then, good ones. I was never interested. I always had something else going on, something I thought was more important. In hindsight, every single company he suggested ended up exiting. Made great money for everyone involved.
 
-I never listened. He kept calling anyway. That's the kind of person Shahar is.
+I never listened. He kept calling anyway. That's the kind of person Daniel is.
 
 This time I listened.
 
@@ -72,11 +72,11 @@ A few other entrepreneurs reached out during this time. People who wanted to joi
 
 ---
 
-Then Shahar called again.
+Then Daniel called again.
 
 He sounded different this time. Hesitant. Almost unsure of himself, which wasn't like him.
 
-"I started working with a new company today," he said. "Literally today. I don't know everything about them yet. But I worked with one of the founders before, back at Noname Security. He was head of research there."
+"I started working with a new company today," he said. "Literally today. I don't know everything about them yet. But I worked with one of the founders before, back at Clearline Security. He was head of research there."
 
 He started describing the company. What they were building. The technology. The market. The problem they were solving.
 
@@ -90,17 +90,17 @@ But that's not what I felt.
 
 I felt pulled. A strange, quiet excitement that I hadn't felt in months. Not the manic kind that comes before burnout. Something steadier. Like recognition. Like the problem I'd been chasing hadn't forgotten about me either.
 
-The company was called Anchor Browser.
+The company was called Harbor Browser.
 
 ---
 
 The interviews didn't feel like interviews.
 
-First was a phone call with their founding engineer. Then the CTO, the one Shahar had worked with before. Then the CPO, who was also running R&D. Then the CEO.
+First was a phone call with their founding engineer. Then the CTO, the one Daniel had worked with before. Then the CPO, who was also running R&D. Then the CEO.
 
 Every single conversation was just... talking. No whiteboard problems. No system design exercises. No "tell me about a time when." Just two people sitting across from each other, trying to figure out if they wanted to build together.
 
-And I kept my promise. I hid nothing. Told them about the startup. About Dan. About the burnout. About the year of building Lumos alone in my apartment. About Threefold and the rejection that took whatever fight I had left. About why I was here now, looking for a job, when six months ago I would have said I'd never go back.
+And I kept my promise. I hid nothing. Told them about the startup. About Dan. About the burnout. About the year of building Lumos alone in my apartment. About CivicFlow and the rejection that took whatever fight I had left. About why I was here now, looking for a job, when six months ago I would have said I'd never go back.
 
 They didn't lean back. They didn't pause too long. They didn't change behind the eyes.
 
