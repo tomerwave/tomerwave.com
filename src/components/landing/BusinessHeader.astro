@@ -1,19 +1,26 @@
 ---
 ---
 <a class="business-skip" href="#business-main">Skip to content</a>
-<header class="business-header">
-  <div class="business-wrap business-header-inner">
-    <a class="business-mark" href="/" aria-label="Tomer Gal home">
-      <img src="/tomerwave-icon.svg" alt="" width="38" height="38" />
+<header class="business-bar" id="business-bar">
+  <div class="business-wrap business-bar-inner">
+    <a class="business-mark" href="#top" aria-label="Tomer Gal home">
+      <img src="/tomerwave-icon.svg" alt="" width="32" height="32" />
       <span class="business-mark-name">Tomer N.</span>
     </a>
-    <div class="business-status">Availability <b>· one team from September</b></div>
     <nav class="business-nav" aria-label="Business navigation">
       <a href="#signals">When to call</a>
+      <a href="#phases">Approach</a>
       <a href="#engagements">Engagements</a>
-      <a href="/leadership">About my work</a>
-      <a href="/posts">Personal blog</a>
       <a class="business-nav-cta" href="#contact">Contact</a>
     </nav>
   </div>
 </header>
+<script>
+  const bar = document.querySelector<HTMLElement>("#business-bar");
+
+  if (bar) {
+    const updateBar = () => bar.classList.toggle("is-stuck", window.scrollY > 8);
+    updateBar();
+    window.addEventListener("scroll", updateBar, { passive: true });
+  }
+</script>
