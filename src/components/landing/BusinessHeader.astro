@@ -16,11 +16,18 @@
   </div>
 </header>
 <script>
-  const bar = document.querySelector<HTMLElement>("#business-bar");
+  let barAbortController: AbortController | undefined;
 
-  if (bar) {
+  const initializeBusinessBar = () => {
+    barAbortController?.abort();
+    const bar = document.querySelector<HTMLElement>("#business-bar");
+    if (!bar) return;
+
+    barAbortController = new AbortController();
     const updateBar = () => bar.classList.toggle("is-stuck", window.scrollY > 8);
     updateBar();
-    window.addEventListener("scroll", updateBar, { passive: true });
-  }
+    window.addEventListener("scroll", updateBar, { passive: true, signal: barAbortController.signal });
+  };
+
+  document.addEventListener("astro:page-load", initializeBusinessBar);
 </script>

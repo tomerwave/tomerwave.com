@@ -35,11 +35,14 @@ import Layout from "@/layouts/Layout.astro";
 </Layout>
 
 <script>
-  const revealItems = document.querySelectorAll<HTMLElement>(".business-reveal");
+  const initializeBusinessReveals = () => {
+    const revealItems = document.querySelectorAll<HTMLElement>(".business-reveal");
 
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) {
-    revealItems.forEach((item) => item.classList.add("is-visible"));
-  } else {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) {
+      revealItems.forEach((item) => item.classList.add("is-visible"));
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -51,5 +54,7 @@ import Layout from "@/layouts/Layout.astro";
       { threshold: 0.16, rootMargin: "0px 0px -8% 0px" },
     );
     revealItems.forEach((item) => observer.observe(item));
-  }
+  };
+
+  document.addEventListener("astro:page-load", initializeBusinessReveals);
 </script>
