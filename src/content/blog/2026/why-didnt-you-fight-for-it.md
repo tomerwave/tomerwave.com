@@ -18,7 +18,7 @@ I wasn't moving forward. I wasn't falling apart. I was just... there.
 
 ---
 
-One morning I was scrolling LinkedIn and saw a post from Navot, a VC partner I deeply respected. A startup in his portfolio was looking for a third co-founder.
+One morning I was scrolling LinkedIn and saw a post from Julian, a VC partner I deeply respected. A startup in his portfolio was looking for a third co-founder.
 
 I commented. Nothing bold, just a question: what area are they working on?
 
@@ -28,7 +28,7 @@ The timing felt almost unreal. Elon Musk and DOGE had been tearing through the U
 
 I thought that was the end of it. An interesting answer to a casual question.
 
-An hour later, I got a DM from Ido, the CEO and founder of Threefold AI. Navot had told him we should talk. Ido was doing a demo for a big client and said we could connect before or after. He sent me his WhatsApp number.
+An hour later, I got a DM from Adrian, the CEO and founder of CivicFlow AI. Julian had told him we should talk. Adrian was doing a demo for a big client and said we could connect before or after. He sent me his WhatsApp number.
 
 I didn't plan for this. I didn't strategize. Something in me just said: fuck it, let's try.
 
@@ -38,11 +38,11 @@ We scheduled a call for the next day.
 
 The call was long and unhurried. We asked each other real questions. Not the polished pitch-deck kind. The kind where you're actually trying to understand how the other person thinks.
 
-Threefold AI was building technology to make governments more efficient. Automating the slow, broken processes that made public institutions frustrating for everyone. It was everything I cared about. The intersection of automation, process intelligence, and real-world impact. The things I'd spent my entire career orbiting.
+CivicFlow AI was building technology to make governments more efficient. Automating the slow, broken processes that made public institutions frustrating for everyone. It was everything I cared about. The intersection of automation, process intelligence, and real-world impact. The things I'd spent my entire career orbiting.
 
-Ido could sense it. I didn't have to sell him on my passion. He could hear it.
+Adrian could sense it. I didn't have to sell him on my passion. He could hear it.
 
-He talked to Itai, his partner and CPO. They decided to meet me in person. Ido wanted things to move fast. He was ready to start building.
+He talked to Marcus, his partner and CPO. They decided to meet me in person. Adrian wanted things to move fast. He was ready to start building.
 
 First thing Sunday.
 
@@ -56,7 +56,7 @@ After months of being too numb to want anything, wanting something this much fel
 
 I couldn't sleep. Not that night, not the night after, not the night after that. For three days I did nothing but research.
 
-I went through every commit Ido had ever pushed. He'd been CTO at Zencity for ten years, and now he wanted to step into the CEO role. I could see the transition in his work, in his writing, in how his thinking had evolved. I went through Itai's GitHub too. I read every post either of them had ever written on X and LinkedIn. Every interview. Every talk. I researched every company they'd ever worked at. I added it all to NotebookLM and cross-referenced everything, looking for patterns, for values, for how they thought about building.
+I went through every commit Adrian had ever pushed. He'd been CTO at MetroPulse for ten years, and now he wanted to step into the CEO role. I could see the transition in his work, in his writing, in how his thinking had evolved. I went through Marcus's GitHub too. I read every post either of them had ever written on X and LinkedIn. Every interview. Every talk. I researched every company they'd ever worked at. I added it all to NotebookLM and cross-referenced everything, looking for patterns, for values, for how they thought about building.
 
 I wasn't just preparing. I was convincing myself that what I already felt was true. That these were the right people. That this was the right place. That I belonged there.
 
@@ -64,15 +64,15 @@ After three days of this, I reached one conclusion: I wanted this. I needed this
 
 ---
 
-Sunday morning. I arrived early and waited under Ido's building on Rothschild Boulevard, just breathing. Not the deep-breathing-exercise kind. The kind where you notice you're breathing because your body is doing something it doesn't normally do.
+Sunday morning. I arrived early and waited under Adrian's building on Rothschild Boulevard, just breathing. Not the deep-breathing-exercise kind. The kind where you notice you're breathing because your body is doing something it doesn't normally do.
 
 I went up.
 
 Dark green wood in the kitchen. A small living room. Stairs leading to a second floor. The kind of apartment that doesn't exist in central Tel Aviv. Except it did, and I was standing in it.
 
-Ido opened the door. We shook hands. He was warm, grounded. Ten years of building a company will do that to a person.
+Adrian opened the door. We shook hands. He was warm, grounded. Ten years of building a company will do that to a person.
 
-Itai was at the dining table, finishing a meeting from his current job. He'd join us in a minute.
+Marcus was at the dining table, finishing a meeting from his current job. He'd join us in a minute.
 
 I made myself tea. I don't know why I remember that so clearly. Maybe because the act of making tea in a stranger's kitchen, during the meeting that might change your life, is the kind of thing your brain holds onto when everything else is moving too fast.
 
@@ -84,13 +84,13 @@ They smiled. And we started talking.
 
 We talked about how to build an engineering team. How you prioritize between product work and technical debt. How you run discovery meetings, what framework to use, scrum or kanban or something in between. I told them about Lumos AI, about Tonkean, about the venture with Dan and everything I'd learned from it. I told them about my values as a person, about how I believed you build a company for people first. About the books I'd want on every shelf in the office. About the mentoring I'd done for years, the junior developers I'd helped grow. I told them about how I started, building Minecraft servers as a kid, about Ofek in the Air Force, about every step that had led me here.
 
-Ido had to leave for a board meeting at Zencity. He left me with Itai.
+Adrian had to leave for a board meeting at MetroPulse. He left me with Marcus.
 
 We talked for hours. Not small talk. Real, deep conversation about the product, the market, the kind of company they wanted to build, the kind I wanted to build. It was the same company. I could feel it.
 
 But I was too nervous. Even as the words were coming out right, I could feel that something underneath was off. I was trying too hard. Listening to myself talk instead of just talking. The awareness that I wasn't at my best, and the awareness making it worse. A loop I couldn't break.
 
-Ido came back. We talked some more. About the vision, about timelines, about what the first six months would look like. Then it was done.
+Adrian came back. We talked some more. About the vision, about timelines, about what the first six months would look like. Then it was done.
 
 I thanked them and left.
 
@@ -100,9 +100,9 @@ That night, I finally slept. Not because it went well. Because it was no longer 
 
 We'd said we'd talk in the morning.
 
-Morning came and went. Ido was in meetings. I sat in my apartment, alone, waiting. I couldn't do anything else. Couldn't read, couldn't code, couldn't think about anything other than that phone call. Just waiting.
+Morning came and went. Adrian was in meetings. I sat in my apartment, alone, waiting. I couldn't do anything else. Couldn't read, couldn't code, couldn't think about anything other than that phone call. Just waiting.
 
-Then Ido called.
+Then Adrian called.
 
 They'd decided not to continue.
 
@@ -118,7 +118,7 @@ And I hung up.
 
 ---
 
-About a week later, I called a friend. I was sitting in the same spot I'd been sitting when Ido called. Same apartment, same couch, same view of nothing in particular.
+About a week later, I called a friend. I was sitting in the same spot I'd been sitting when Adrian called. Same apartment, same couch, same view of nothing in particular.
 
 I told him I was bummed out. That I'd had an opportunity that would have changed my life entirely, and I'd missed it. I walked him through the whole thing. The LinkedIn post. The call. The three sleepless nights. The green kitchen on Rothschild. The tea. The nervousness. The hours of conversation. All of it.
 
