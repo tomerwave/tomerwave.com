@@ -1,0 +1,50 @@
+---
+import { getCollection } from "astro:content";
+import BlogFooter from "@/components/blog/BlogFooter.astro";
+import BlogHeader from "@/components/blog/BlogHeader.astro";
+import BlogPostItem from "@/components/blog/BlogPostItem.astro";
+import StructuredData from "@/components/StructuredData.astro";
+import { SITE } from "@/config";
+import Layout from "@/layouts/Layout.astro";
+import "@/styles/blog.css";
+import getSortedPosts from "@/utils/getSortedPosts";
+
+const posts = getSortedPosts(await getCollection("blog"));
+const featuredPosts = posts.filter(({ data }) => data.featured);
+const recentPosts = posts.filter(({ data }) => !data.featured).slice(0, SITE.postPerIndex);
+---
+
+<Layout title="Tomer Gal — Personal blog" description="Notes on engineering, ambition, and becoming more intentional.">
+  <div class="personal-blog">
+    <StructuredData type="WebSite" data={{}} />
+    <BlogHeader />
+    <main class="blog-main blog-wrap" id="blog-main">
+      <section class="blog-intro">
+        <div>
+          <span class="blog-kicker">Personal blog</span>
+          <h1>Notes from the work and the rest of life.</h1>
+        </div>
+        <p class="blog-intro-copy">Shipping code, breaking boundaries, and occasionally breaking a sweat on the dance floor. A place for the things I’m still figuring out in public.</p>
+      </section>
+
+      {
+        featuredPosts.length > 0 && (
+          <section class="blog-section" aria-labelledby="featured-heading">
+            <div class="blog-section-head"><h2 id="featured-heading">Featured</h2></div>
+            <ul class="blog-posts">
+              {featuredPosts.map((post) => <BlogPostItem post={post} />)}
+            </ul>
+          </section>
+        )
+      }
+
+      <section class="blog-section" aria-labelledby="latest-heading">
+        <div class="blog-section-head"><h2 id="latest-heading">Latest writing</h2><a href="/posts">All posts →</a></div>
+        <ul class="blog-posts">
+          {recentPosts.map((post) => <BlogPostItem post={post} />)}
+        </ul>
+      </section>
+    </main>
+    <BlogFooter />
+  </div>
+</Layout>

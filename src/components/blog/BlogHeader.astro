@@ -1,0 +1,19 @@
+---
+const { pathname } = Astro.url;
+---
+<a class="blog-skip" href="#blog-main">Skip to posts</a>
+<header class="blog-bar">
+  <div class="blog-wrap blog-bar-inner">
+    <a class="blog-mark" href="/blog" aria-label="Tomer Gal personal blog">
+      <img src="/tomerwave-icon.svg" alt="" width="32" height="32" />
+      <span>Tomer N.</span>
+      <em>Personal blog</em>
+    </a>
+    <nav class="blog-nav" aria-label="Personal blog navigation">
+      <a class:list={{ "is-active": pathname === "/blog" }} href="/blog">Latest</a>
+      <a class:list={{ "is-active": pathname.startsWith("/posts") }} href="/posts">All posts</a>
+      <a href="/about">About me</a>
+      <a class="blog-nav-business" href="/">Business</a>
+    </nav>
+  </div>
+</header>

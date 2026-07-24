@@ -1,0 +1,24 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getPath } from "@/utils/getPath";
+
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+const href = getPath(post.id, post.filePath);
+const date = new Intl.DateTimeFormat("en", {
+  day: "numeric",
+  month: "short",
+  year: "numeric",
+}).format(post.data.pubDatetime);
+---
+
+<li class="blog-post">
+  <span class="blog-post-meta">{date}</span>
+  <div>
+    <a href={href}><h3 class="blog-post-title">{post.data.title}</h3></a>
+    <p class="blog-post-description">{post.data.description}</p>
+  </div>
+</li>
