@@ -5,8 +5,9 @@ import BusinessFooter from "@/components/landing/BusinessFooter.astro";
 import BusinessHeader from "@/components/landing/BusinessHeader.astro";
 import BusinessHero from "@/components/landing/BusinessHero.astro";
 import EngagementModes from "@/components/landing/EngagementModes.astro";
-import EngagementPhases from "@/components/landing/EngagementPhases.astro";
 import FounderSignals from "@/components/landing/FounderSignals.astro";
+import TrackRecord from "@/components/landing/TrackRecord.astro";
+import WritingBridge from "@/components/landing/WritingBridge.astro";
 import StructuredData from "@/components/StructuredData.astro";
 import "@/styles/business.css";
 import Layout from "@/layouts/Layout.astro";
@@ -16,7 +17,7 @@ import Layout from "@/layouts/Layout.astro";
   title="Tomer Gal — Fractional VP R&D"
   description="Fractional VP of R&D for startups between their first engineering hire and their first real organization."
 >
-  <div class="business-site">
+  <div class="business-site" data-business-theme="light">
     <StructuredData type="WebSite" data={{}} />
     <StructuredData type="Person" data={{}} />
     <BusinessHeader />
@@ -24,10 +25,12 @@ import Layout from "@/layouts/Layout.astro";
       <BusinessHero />
       <hr class="business-rule" />
       <FounderSignals />
-      <EngagementPhases />
+      <TrackRecord />
       <hr class="business-rule" />
       <EngagementModes />
       <BusinessAbout />
+      <hr class="business-rule" />
+      <WritingBridge />
       <BusinessContact />
     </main>
     <BusinessFooter />

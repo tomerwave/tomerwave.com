@@ -5,10 +5,10 @@
   <div class="business-hero-copy">
     <span class="business-eyebrow">Fractional VP of R&amp;D</span>
     <h1>The best work starts before the answers are <span class="business-quiet">obvious.</span></h1>
-    <p class="business-hero-sub">I run engineering for startups sitting between their first hire and their first real org — architecture, delivery, and the people decisions that have to outlast me.</p>
+    <p class="business-hero-sub">I work with early-stage startups as a fractional VP of R&amp;D — helping founders decide what to build, make the technical calls, and build the team that ships it.</p>
     <div class="business-actions">
       <a class="business-button" href="#contact">Start a conversation <span class="business-arrow" aria-hidden="true">→</span></a>
-      <a class="business-linkline" href="#phases">See the first ninety days</a>
+      <a class="business-linkline" href="#track">See where I've done this</a>
     </div>
   </div>
 </section>
@@ -18,6 +18,7 @@
   const initializeBusinessHero = () => {
     disposeBusinessHero?.();
     const canvas = document.querySelector<HTMLCanvasElement>("#business-field-canvas");
+    const site = document.querySelector<HTMLElement>(".business-site");
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     if (!canvas) return;
@@ -64,13 +65,24 @@
       particles = Array.from({ length: Math.round(width * 0.3) }, () => spawn(seed));
     };
 
+    const getPalette = () => site?.dataset.businessTheme === "dark" ? {
+      line: ["rgba(206,196,178,0)", "rgba(188,180,164,.4)", "rgba(150,178,162,.55)", "rgba(138,166,150,.28)"],
+      base: "196,188,172",
+      hot: "150,178,162",
+    } : {
+      line: ["rgba(160,150,132,0)", "rgba(150,140,122,.5)", "rgba(110,132,120,.62)", "rgba(90,110,100,.32)"],
+      base: "150,140,122",
+      hot: "110,132,120",
+    };
+
     const drawLine = () => {
       if (!context) return;
+      const palette = getPalette();
       const gradient = context.createLinearGradient(0, 0, width, 0);
-      gradient.addColorStop(0, "rgba(160,150,132,0)");
-      gradient.addColorStop(0.5, "rgba(150,140,122,.5)");
-      gradient.addColorStop(0.78, "rgba(110,132,120,.62)");
-      gradient.addColorStop(1, "rgba(90,110,100,.32)");
+      gradient.addColorStop(0, palette.line[0]);
+      gradient.addColorStop(0.5, palette.line[1]);
+      gradient.addColorStop(0.78, palette.line[2]);
+      gradient.addColorStop(1, palette.line[3]);
       context.strokeStyle = gradient;
       context.lineWidth = 1;
       context.beginPath();
@@ -106,8 +118,9 @@
           }
         }
 
+        const palette = getPalette();
         context.beginPath();
-        context.fillStyle = `rgba(${progress > 0.72 ? "110,132,120" : "150,140,122"},${((0.16 + progress * 0.5) * Math.min(1, particle.life / 40)).toFixed(3)})`;
+        context.fillStyle = `rgba(${progress > 0.72 ? palette.hot : palette.base},${((0.16 + progress * 0.5) * Math.min(1, particle.life / 40)).toFixed(3)})`;
         context.arc(particle.x, particle.y, particle.radius * (0.65 + progress * 0.7), 0, Math.PI * 2);
         context.fill();
 
@@ -125,17 +138,24 @@
       frame = requestAnimationFrame(animate);
     };
 
-    if (reduced) {
+    const drawStatic = () => {
       resize();
+      context?.clearRect(0, 0, width, height);
       drawLine();
+      const palette = getPalette();
       for (let index = 0; index < Math.round(width * 0.18); index += 1) {
         const x = Math.random() * width;
         const progress = x / width;
         context?.beginPath();
-        context!.fillStyle = `rgba(150,140,122,${0.14 + progress * 0.35})`;
+        context!.fillStyle = `rgba(${progress > 0.72 ? palette.hot : palette.base},${0.14 + progress * 0.35})`;
         context!.arc(x, midpoint + (Math.random() * 2 - 1) * height * 0.34 * (1 - progress * progress), 0.8, 0, Math.PI * 2);
         context!.fill();
       }
+    };
+
+    if (reduced) {
+      drawStatic();
+      window.addEventListener("business-theme-change", drawStatic, { signal: eventController.signal });
     } else {
       start();
       canvas.addEventListener("pointermove", (event) => {
