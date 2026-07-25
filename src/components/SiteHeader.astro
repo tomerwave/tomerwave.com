@@ -16,9 +16,10 @@ interface Props {
   mainId: string;
   navAriaLabel: string;
   navItems: NavItem[];
+  showHandle?: boolean;
 }
 
-const { homeHref, homeLabel, mainId, navAriaLabel, navItems } = Astro.props;
+const { homeHref, homeLabel, mainId, navAriaLabel, navItems, showHandle = true } = Astro.props;
 ---
 
 <a class="site-skip" href={`#${mainId}`}>Skip to content</a>
@@ -26,7 +27,7 @@ const { homeHref, homeLabel, mainId, navAriaLabel, navItems } = Astro.props;
   <div class="site-wrap site-bar-inner">
     <a class="site-mark" href={homeHref} aria-label={homeLabel}>
       <TomerwaveMark class="site-mark-icon" primary="var(--foreground)" accent="var(--accent)" />
-      <span class="site-mark-name">Tomer Gal <em class="site-mark-handle">@tomerwave</em></span>
+      <span class="site-mark-name">Tomer Gal {showHandle && <em class="site-mark-handle">@tomerwave</em>}</span>
     </a>
     <nav class="site-nav" aria-label={navAriaLabel}>
       {
