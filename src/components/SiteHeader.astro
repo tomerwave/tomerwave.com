@@ -17,13 +17,22 @@ interface Props {
   navAriaLabel: string;
   navItems: NavItem[];
   showHandle?: boolean;
+  variant?: "business" | "personal";
 }
 
-const { homeHref, homeLabel, mainId, navAriaLabel, navItems, showHandle = true } = Astro.props;
+const {
+  homeHref,
+  homeLabel,
+  mainId,
+  navAriaLabel,
+  navItems,
+  showHandle = true,
+  variant = "personal",
+} = Astro.props;
 ---
 
 <a class="site-skip" href={`#${mainId}`}>Skip to content</a>
-<header class="site-bar" id="site-bar">
+<header class:list={["site-bar", `site-bar--${variant}`]} id="site-bar">
   <div class="site-wrap site-bar-inner">
     <a class="site-mark" href={homeHref} aria-label={homeLabel}>
       <TomerwaveMark class="site-mark-icon" primary="var(--foreground)" accent="var(--accent)" />

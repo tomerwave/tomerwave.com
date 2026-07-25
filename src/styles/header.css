@@ -3,6 +3,7 @@
    (global.css) so both contexts render identically and stay in sync. */
 
 .site-wrap { margin-inline: auto; max-width: 1280px; padding-inline: clamp(1.5rem, 5vw, 5.5rem); }
+.site-bar--business .site-wrap { max-width: var(--business-measure, 1280px); padding-inline: var(--business-gutter, clamp(1.5rem, 5vw, 5.5rem)); }
 
 .site-skip { background: var(--foreground); color: var(--background); left: -9999px; padding: .75rem 1rem; position: absolute; top: 0; z-index: 200; }
 .site-skip:focus { left: 1rem; top: 1rem; }
