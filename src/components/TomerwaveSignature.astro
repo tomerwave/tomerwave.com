@@ -44,8 +44,8 @@ const {
   }
 
   .tomerwave-signature--footer { font-size: .95rem; }
-  .tomerwave-signature-mark { display: block; flex: none; height: 32px; width: 32px; }
-  .tomerwave-signature--footer .tomerwave-signature-mark { height: 26px; width: 26px; }
+  :global(.tomerwave-signature-mark) { display: block; flex: none; height: 32px; width: 32px; }
+  .tomerwave-signature--footer :global(.tomerwave-signature-mark) { height: 26px; width: 26px; }
   .tomerwave-signature-handle { color: var(--tomerwave-signature-handle, currentColor); font-size: .95em; font-style: italic; font-weight: 400; }
 
   @media (max-width: 640px) {
