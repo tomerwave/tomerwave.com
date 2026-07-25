@@ -13,8 +13,6 @@
 
 .site-mark { align-items: center; display: flex; gap: .72rem; text-decoration: none; white-space: nowrap; }
 .site-mark-icon { display: block; flex: none; height: 32px; width: 32px; }
-.site-mark-icon .tomerwave-mark-primary { fill: var(--foreground); }
-.site-mark-icon .tomerwave-mark-accent { fill: var(--accent); }
 .site-mark-name { color: var(--foreground); font-size: 1.02rem; letter-spacing: .005em; }
 .site-mark-handle { color: var(--accent); font-size: .95rem; font-style: italic; }
 
