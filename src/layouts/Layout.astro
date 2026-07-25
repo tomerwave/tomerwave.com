@@ -1,6 +1,7 @@
 ---
 import { ViewTransitions } from "astro:transitions";
 import { SITE } from "@/config";
+import "@/styles/fonts.css";
 import "@/styles/global.css";
 import Analytics from "@/components/Analytics.astro";
 
@@ -70,6 +71,8 @@ const structuredData = pubDatetime
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="view-transition" content="same-origin" />
+    <link rel="preload" href="/fonts/fraunces-regular.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="/fonts/instrument-sans-regular.ttf" as="font" type="font/ttf" crossorigin />
     <link rel="icon" type="image/svg+xml" href="/tomerwave-icon.svg" />
     <link rel="canonical" href={canonicalURL} />
     <meta name="generator" content={Astro.generator} />

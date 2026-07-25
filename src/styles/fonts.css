@@ -1,0 +1,31 @@
+@font-face {
+  font-display: swap;
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/fraunces-regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Fraunces";
+  font-style: italic;
+  font-weight: 400;
+  src: url("/fonts/fraunces-italic.ttf") format("truetype");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Instrument Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/instrument-sans-regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Instrument Sans";
+  font-style: normal;
+  font-weight: 500;
+  src: url("/fonts/instrument-sans-medium.ttf") format("truetype");
+}
