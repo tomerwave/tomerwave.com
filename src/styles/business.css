@@ -24,6 +24,8 @@
   --business-paper: #15181a;
   --business-paper-warm: #1d2124;
   --business-ink: #e9e3d6;
+  --business-ink-70: color-mix(in srgb, var(--business-ink) 74%, transparent);
+  --business-ink-45: color-mix(in srgb, var(--business-ink) 48%, transparent);
   --business-sage: #a2b7a9;
   --business-sage-deep: #a9bdb1;
   --business-sand: #c3baa6;
@@ -56,6 +58,8 @@ body:has(.business-site) { background: var(--business-paper); overflow-x: hidden
 .business-bar-inner { align-items: center; display: flex; gap: 1.5rem; justify-content: space-between; width: 100%; }
 .business-mark { align-items: center; display: flex; gap: .72rem; }
 .business-mark img { display: block; flex: none; height: 32px; width: 32px; }
+.business-site[data-business-theme="dark"] .business-mark img,
+.business-site[data-business-theme="dark"] .business-footer-mark { filter: brightness(0) saturate(100%) invert(89%) sepia(14%) saturate(496%) hue-rotate(347deg) brightness(96%) contrast(89%); }
 .business-mark-name { font-family: var(--business-display); font-size: 1.02rem; letter-spacing: .005em; white-space: nowrap; }
 .business-nav { align-items: center; display: flex; gap: clamp(1rem, 2.4vw, 2rem); }
 .business-nav a { border-bottom: 1px solid transparent; color: var(--business-ink-70); font-size: .9rem; padding-bottom: 2px; transition: border-color .25s ease, color .25s ease; }
