@@ -1,12 +1,9 @@
 ---
-import TomerwaveMark from "./TomerwaveMark.astro";
+import TomerwaveSignature from "@/components/TomerwaveSignature.astro";
 ---
 <footer class="business-footer">
   <div class="business-wrap business-footer-inner">
-    <a class="business-footer-identity" href="#top">
-      <TomerwaveMark class="business-footer-mark" primary="var(--business-ink)" accent="var(--business-sage)" />
-      <span>Tomer Gal <span class="business-footer-handle">@tomerwave</span></span>
-    </a>
+    <TomerwaveSignature class="business-footer-identity" href="#top" ariaLabel="Back to top" primary="var(--business-ink)" accent="var(--business-sage)" size="footer" />
     <div class="business-footer-links">
       <a class="business-footer-link" href="/blog">Personal blog</a>
       <span aria-hidden="true">·</span>

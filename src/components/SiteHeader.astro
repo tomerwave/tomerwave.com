@@ -1,5 +1,5 @@
 ---
-import TomerwaveMark from "@/components/landing/TomerwaveMark.astro";
+import TomerwaveSignature from "@/components/TomerwaveSignature.astro";
 
 export interface NavItem {
   label: string;
@@ -34,10 +34,15 @@ const {
 <a class="site-skip" href={`#${mainId}`}>Skip to content</a>
 <header class:list={["site-bar", `site-bar--${variant}`]} id="site-bar">
   <div class="site-wrap site-bar-inner">
-    <a class="site-mark" href={homeHref} aria-label={homeLabel}>
-      <TomerwaveMark class="site-mark-icon" primary="var(--foreground)" accent="var(--accent)" />
-      <span class="site-mark-name">Tomer Gal {showHandle && <em class="site-mark-handle">@tomerwave</em>}</span>
-    </a>
+    <TomerwaveSignature
+      class="site-mark"
+      href={homeHref}
+      ariaLabel={homeLabel}
+      primary="var(--foreground)"
+      accent="var(--accent)"
+      showHandle={showHandle}
+      hideHandleOnMobile
+    />
     <nav class="site-nav" aria-label={navAriaLabel}>
       {
         navItems.map((item) => (

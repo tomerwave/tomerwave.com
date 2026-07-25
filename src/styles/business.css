@@ -126,9 +126,7 @@ body:has(.business-site) { background: var(--business-paper); overflow-x: hidden
 
 .business-footer { border-top: 1px solid var(--business-hair); padding-block: 2.5rem 3.5rem; }
 .business-footer-inner { align-items: center; display: flex; flex-wrap: wrap; gap: 1.25rem 2rem; justify-content: space-between; }
-.business-footer-identity { align-items: center; display: inline-flex; font-size: .95rem; font-weight: 500; gap: .72rem; }
-.business-footer-handle { color: var(--business-sage-deep); font-style: italic; font-weight: 400; }
-.business-footer-mark { height: 26px; opacity: .9; width: 26px; }
+.business-footer-identity { --tomerwave-signature-handle: var(--business-sage-deep); }
 .business-footer-links { align-items: center; color: var(--business-ink-45); display: flex; flex-wrap: wrap; font-size: .875rem; gap: .65rem; }
 .business-footer-link { border-bottom: 1px solid transparent; transition: border-color .25s ease, color .25s ease; }
 .business-footer-link:hover { border-color: var(--business-sage); color: var(--business-ink); }

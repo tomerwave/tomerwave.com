@@ -1,0 +1,54 @@
+---
+import TomerwaveMark from "@/components/landing/TomerwaveMark.astro";
+
+interface Props {
+  href: string;
+  ariaLabel: string;
+  primary: string;
+  accent: string;
+  size?: "header" | "footer";
+  showHandle?: boolean;
+  hideHandleOnMobile?: boolean;
+  class?: string;
+}
+
+const {
+  href,
+  ariaLabel,
+  primary,
+  accent,
+  size = "header",
+  showHandle = true,
+  hideHandleOnMobile = false,
+  class: className = "",
+} = Astro.props;
+---
+
+<a class:list={["tomerwave-signature", `tomerwave-signature--${size}`, { "tomerwave-signature--hide-handle-mobile": hideHandleOnMobile }, className]} href={href} aria-label={ariaLabel}>
+  <TomerwaveMark class="tomerwave-signature-mark" primary={primary} accent={accent} />
+  <span>Tomer Gal {showHandle && <em class="tomerwave-signature-handle">@tomerwave</em>}</span>
+</a>
+
+<style>
+  .tomerwave-signature {
+    align-items: center;
+    display: inline-flex;
+    font-family: "Instrument Sans", system-ui, -apple-system, sans-serif;
+    font-size: 1.02rem;
+    font-weight: 400;
+    gap: .72rem;
+    letter-spacing: .005em;
+    line-height: 1.2;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .tomerwave-signature--footer { font-size: .95rem; }
+  .tomerwave-signature-mark { display: block; flex: none; height: 32px; width: 32px; }
+  .tomerwave-signature--footer .tomerwave-signature-mark { height: 26px; width: 26px; }
+  .tomerwave-signature-handle { color: var(--tomerwave-signature-handle, currentColor); font-size: .95em; font-style: italic; font-weight: 400; }
+
+  @media (max-width: 640px) {
+    .tomerwave-signature--hide-handle-mobile .tomerwave-signature-handle { display: none; }
+  }
+</style>
