@@ -33,7 +33,7 @@ html[data-theme="dark"] .personal-blog {
 .personal-blog *, .personal-blog *::before, .personal-blog *::after { box-sizing: border-box; }
 .personal-blog a { color: inherit; text-decoration: none; }
 .personal-blog :focus-visible { outline: 2px solid var(--blog-sage-deep); outline-offset: 4px; }
-.personal-blog .blog-hero, .personal-blog .blog-entries, .personal-blog .blog-archive, .personal-blog .blog-post-page, .personal-blog .blog-footer, .personal-blog .blog-about { margin-inline: 0; max-width: none; padding-inline: 0; }
+.personal-blog .blog-hero, .personal-blog .blog-entries, .personal-blog .blog-archive, .personal-blog .blog-footer, .personal-blog .blog-about { margin-inline: 0; max-width: none; padding-inline: 0; }
 .blog-wrap { margin-inline: auto; max-width: 1280px; padding-inline: var(--blog-gutter); }
 .blog-hero { padding-block: clamp(3rem, 7vw, 5.5rem) clamp(2.5rem, 5vw, 4rem); }
 .blog-hero-row { align-items: center; display: flex; flex-wrap: wrap; gap: clamp(1.4rem, 3vw, 2.2rem); }
