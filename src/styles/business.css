@@ -57,9 +57,10 @@ body:has(.business-site) { background: var(--business-paper); overflow-x: hidden
 .business-bar.is-stuck { background: var(--business-bar-bg-stuck); border-bottom-color: var(--business-hair); }
 .business-bar-inner { align-items: center; display: flex; gap: 1.5rem; justify-content: space-between; width: 100%; }
 .business-mark { align-items: center; display: flex; gap: .72rem; }
-.business-mark img { display: block; flex: none; height: 32px; width: 32px; }
-.business-site[data-business-theme="dark"] .business-mark img,
-.business-site[data-business-theme="dark"] .business-footer-mark { filter: brightness(0) saturate(100%) invert(89%) sepia(14%) saturate(496%) hue-rotate(347deg) brightness(96%) contrast(89%); }
+.tomerwave-mark { display: block; }
+.tomerwave-mark-primary { fill: var(--business-ink); }
+.tomerwave-mark-accent { fill: var(--business-sage); }
+.business-mark-icon { flex: none; height: 32px; width: 32px; }
 .business-mark-name { font-family: var(--business-display); font-size: 1.02rem; letter-spacing: .005em; white-space: nowrap; }
 .business-nav { align-items: center; display: flex; gap: clamp(1rem, 2.4vw, 2rem); }
 .business-nav a { border-bottom: 1px solid transparent; color: var(--business-ink-70); font-size: .9rem; padding-bottom: 2px; transition: border-color .25s ease, color .25s ease; }
@@ -152,7 +153,7 @@ body:has(.business-site) { background: var(--business-paper); overflow-x: hidden
 
 .business-footer { border-top: 1px solid var(--business-hair); padding-block: 2.5rem 3.5rem; }
 .business-footer-inner { align-items: center; display: flex; flex-wrap: wrap; gap: 1.25rem 2rem; justify-content: space-between; }
-.business-footer-mark { height: 24px; opacity: .8; width: 24px; }
+.business-footer-mark { height: 24px; opacity: .85; width: 24px; }
 .business-footer-meta, .business-footer-link { color: var(--business-ink-45); font-family: var(--business-display); font-size: .95rem; font-style: italic; }
 .business-footer-link { border-bottom: 1px solid transparent; transition: border-color .25s ease, color .25s ease; }
 .business-footer-link:hover { border-color: var(--business-sage); color: var(--business-ink); }
