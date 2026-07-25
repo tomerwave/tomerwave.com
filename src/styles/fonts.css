@@ -2,30 +2,23 @@
   font-display: swap;
   font-family: "Fraunces";
   font-style: normal;
-  font-weight: 400;
-  src: url("/fonts/fraunces-regular.ttf") format("truetype");
+  font-weight: 400 500;
+  src: url("/fonts/fraunces-latin.woff2") format("woff2");
 }
 
 @font-face {
   font-display: swap;
   font-family: "Fraunces";
   font-style: italic;
-  font-weight: 400;
-  src: url("/fonts/fraunces-italic.ttf") format("truetype");
+  font-weight: 400 500;
+  src: url("/fonts/fraunces-latin-italic.woff2") format("woff2");
 }
 
 @font-face {
   font-display: swap;
   font-family: "Instrument Sans";
+  font-stretch: 100%;
   font-style: normal;
-  font-weight: 400;
-  src: url("/fonts/instrument-sans-regular.ttf") format("truetype");
-}
-
-@font-face {
-  font-display: swap;
-  font-family: "Instrument Sans";
-  font-style: normal;
-  font-weight: 500;
-  src: url("/fonts/instrument-sans-medium.ttf") format("truetype");
+  font-weight: 400 500;
+  src: url("/fonts/instrument-sans-latin.woff2") format("woff2");
 }
