@@ -37,7 +37,7 @@ html[data-theme="dark"] .personal-blog {
 .blog-wrap { margin-inline: auto; max-width: 1280px; padding-inline: var(--blog-gutter); }
 .blog-hero { padding-block: clamp(3rem, 7vw, 5.5rem) clamp(2.5rem, 5vw, 4rem); }
 .blog-hero-row { align-items: center; display: flex; flex-wrap: wrap; gap: clamp(1.4rem, 3vw, 2.2rem); }
-.blog-avatar { background: var(--blog-warm); border: 1px solid var(--blog-hair); border-radius: 50%; height: clamp(76px, 12vw, 104px); object-fit: cover; width: clamp(76px, 12vw, 104px); }
+.blog-avatar { background: var(--blog-warm); border: 1px solid var(--blog-hair); height: clamp(96px, 14vw, 136px); object-fit: cover; object-position: center 20%; width: clamp(96px, 14vw, 136px); }
 .blog-hero h1, .blog-post-title, .blog-archive h1, .blog-post-page h1, .blog-about h1 { font-family: var(--blog-display); font-weight: 400; letter-spacing: -.018em; line-height: 1.06; }
 .blog-hero h1 { font-size: clamp(2.4rem, 1.4rem + 3vw, 3.7rem); }
 .blog-hero h1 span { color: var(--blog-sage-deep); font-style: italic; }
