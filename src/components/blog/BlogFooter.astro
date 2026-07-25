@@ -1,9 +1,13 @@
 ---
+import TomerwaveSignature from "@/components/TomerwaveSignature.astro";
 import BlogSocials from "./BlogSocials.astro";
 ---
 <footer class="blog-footer">
   <div class="blog-wrap blog-footer-inner">
-    <span class="blog-footer-meta">© 2026 Tomer Gal · <a href="/about">Steal this — CC BY 4.0</a></span>
+    <div class="blog-footer-signoff">
+      <TomerwaveSignature class="blog-footer-identity" href="/blog" ariaLabel="Tomer Gal personal blog" primary="var(--blog-ink)" accent="var(--blog-sage)" size="footer" />
+      <span class="blog-footer-meta">© {new Date().getFullYear()} · <a href="/about">CC BY 4.0</a></span>
+    </div>
     <BlogSocials />
   </div>
 </footer>

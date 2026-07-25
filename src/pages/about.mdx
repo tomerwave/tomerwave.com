@@ -1,93 +1,41 @@
 ---
 layout: ../layouts/AboutLayout.astro
 title: "About"
-description: "About Tomer Gal as a person — software engineer, AI tinkerer, mentor, and podcast host."
+description: "Tomer Gal writes about the things that are hardest to say out loud."
 ---
 
-import NewsletterForm from "../components/NewsletterForm.astro";
-import Socials from "../components/Socials.astro";
-
-<div class="not-prose flex flex-col items-center gap-8 text-foreground md:flex-row md:items-start md:gap-10">
-  <div class="w-56 shrink-0 sm:w-64 md:w-72">
-    <img
-      src="/about-avatar.jpg"
-      alt="Tomer Gal"
-      class="aspect-[3/4] w-full rounded-2xl object-cover object-[center_20%] shadow-lg"
-      loading="eager"
-    />
-  </div>
-  <div class="text-center md:text-left">
-    <h1 class="mb-4 text-3xl font-bold tracking-tight sm:text-4xl">
-      Hey, I'm Tomer.
-    </h1>
-    <p class="mb-4 text-base leading-loose opacity-90">
-      I'm a software engineer based in Tel Aviv.
-    </p>
-    <p class="mb-4 text-base leading-loose opacity-90">
-      I fell in love with tech when I was 12 — running Minecraft servers,
-      writing mods, breaking things and figuring out how to put them back together.
-    </p>
-    <p class="mb-4 text-base leading-loose opacity-90">
-      These days I'm deep into AI, automation, and infrastructure.
-      I love making things faster and removing the stuff that gets in people's way.
-    </p>
-  </div>
-</div>
-
----
-
-## What I Do
-
-For the separate story of my work as an engineering leader, visit [About my work](/leadership).
-
-I work at the intersection of **AI, automation, and infrastructure**. My mission is simple: let people focus on what actually matters by removing everything that gets in the way.
-
-I'm also a **manager and entrepreneur**. I've built and led teams, launched products, and learned that great software is as much about people as it is about code.
-
-I **speak at meetups and conferences** about engineering, AI, and building things that scale. If you're organizing an event and want me to talk, [reach out](#reach-out).
-
-I also **mentor** software engineers, managers, and aspiring founders — whether it's navigating a career shift, scaling a team, or shipping your first product.
-
-## Podcast
-
-I host **Ambition Unlocked** — a podcast where I sit down with entrepreneurs and ambitious people to unpack their stories. No fluff, no filler. Just real conversations about what drives people and how they chase what they want.
-
-<div class="not-prose">
-  <a
-    href="https://open.spotify.com/show/2Ksp9fLLnPmwaRAcRaNmm6?si=9d4a2977ecc04cf6"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="inline-flex items-center gap-2 border-b border-[var(--blog-sage-deep)]/40 pb-0.5 text-sm font-medium text-[var(--blog-sage-deep)] no-underline transition-opacity hover:border-[var(--blog-sage-deep)] hover:opacity-80"
-  >
-    <svg class="size-4" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
-    </svg>
-    Listen on Spotify
-  </a>
-</div>
-
-## GitHub Activity
-
-<div class="bg-secondary rounded-lg p-0">
+<div class="not-prose blog-about-intro">
   <img
-    src="https://ghchart.rshah.org/tomerwave"
-    alt="Tomer's GitHub Contribution Graph"
-    class="w-full"
-    style="max-width: 100%; height: auto;"
-    loading="lazy"
+    src="/about-avatar.jpg"
+    alt="Tomer Gal"
+    class="blog-about-portrait"
+    loading="eager"
   />
+  <div>
+    <h1>Hi, I’m Tomer.</h1>
+    <p class="blog-about-lede">This is my therapy, in public.</p>
+  </div>
 </div>
 
-[Follow me on GitHub](https://github.com/tomerwave/)
+I write about the things I struggle to say out loud: love, family, friendship, ambition, loneliness, work, fear, and the versions of myself I’m still trying to understand.
 
-## Stay Connected
+Some posts begin with something that happened. Others begin with a feeling I can’t shake. Writing is how I stay with it long enough to find out what it means.
 
-<NewsletterForm />
+There are stories about building things and chasing big ideas, because that is part of my life. But this isn’t really a blog about work. It’s about everything underneath it.
 
-<h2 id="reach-out">Reach Out</h2>
+## Elsewhere
 
-Got a question, collaboration idea, or just want to say hi? Find me here:
-
-<div class="not-prose mt-4 text-foreground">
-  <Socials centered />
-</div>
+<dl class="not-prose blog-about-now">
+  <div>
+    <dt>Based</dt>
+    <dd>Tel Aviv, Israel</dd>
+  </div>
+  <div>
+    <dt>Listening</dt>
+    <dd><a href="https://open.spotify.com/show/2Ksp9fLLnPmwaRAcRaNmm6">Ambition Unlocked</a></dd>
+  </div>
+  <div>
+    <dt>Work</dt>
+    <dd><a href="/">The work version of me →</a></dd>
+  </div>
+</dl>

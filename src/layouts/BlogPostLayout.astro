@@ -2,6 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import BlogFooter from "@/components/blog/BlogFooter.astro";
 import SiteHeader from "@/components/SiteHeader.astro";
+import TomerwaveSignature from "@/components/TomerwaveSignature.astro";
 import "@/styles/blog.css";
 import Layout from "./Layout.astro";
 
@@ -49,7 +50,10 @@ const canonicalURL = new URL(canonicalPath, Astro.site).toString();
           <slot />
         </div>
       </article>
-      <div class="blog-post-foot blog-wrap"><span>Tomer Gal — @tomerwave</span><a href="/blog">More writing →</a></div>
+      <div class="blog-post-foot blog-wrap">
+        <TomerwaveSignature class="blog-post-signature" href="/blog" ariaLabel="Tomer Gal personal blog" primary="var(--blog-ink)" accent="var(--blog-sage)" size="footer" />
+        <a href="/blog">More writing →</a>
+      </div>
     </main>
     <BlogFooter />
   </div>

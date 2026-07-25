@@ -50,6 +50,8 @@ const postsByYear = Object.entries(
       <div class="blog-wrap">
         <h1>All writing.</h1>
         <p class="blog-archive-intro">Essays on building, founder life, and everything it costs.</p>
+      </div>
+      <div class="blog-archive-list">
         {
           postsByYear.map(([year, yearGroup]) => (
             <section class="blog-archive-year" aria-labelledby={`year-${year}`}>
