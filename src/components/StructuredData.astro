@@ -53,7 +53,7 @@ if (type === "BlogPosting") {
     ],
     jobTitle: "Fractional VP of R&D and Software Engineer",
     description:
-      "Fractional VP of R&D for founder-led startups, with a personal blog on engineering, building, and people.",
+      "Tomer Gal works with founder-led startups and writes honestly about work, ambition, love, family, and everything underneath.",
   };
 } else if (type === "WebSite") {
   structuredData = {
@@ -62,18 +62,13 @@ if (type === "BlogPosting") {
     name: "Tomer Gal",
     url: "https://tomerwave.com",
     description:
-      "Fractional VP of R&D for founder-led startups, with a personal blog on engineering, building, and people.",
+      "Essays about work, ambition, love, family, and the things that are hardest to say out loud.",
     author: {
       "@type": "Person",
       name: "Tomer Gal",
-    },
-    potentialAction: {
-      "@type": "SearchAction",
-      target: "https://tomerwave.com/search?q={search_term_string}",
-      "query-input": "required name=search_term_string",
     },
   };
 }
 ---
 
-<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+<script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />

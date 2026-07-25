@@ -37,7 +37,7 @@ const postsByYear = Object.entries(
 ).sort(([yearA], [yearB]) => Number(yearB) - Number(yearA));
 ---
 
-<Layout title={`All writing | ${SITE.title}`} description="Archive of all blog posts by Tomer Gal.">
+<Layout title={`All writing | ${SITE.title}`} description="All of Tomer Gal's essays about work, ambition, love, family, and everything underneath.">
   <div class="personal-blog">
     <SiteHeader
       homeHref="/blog"
@@ -49,7 +49,7 @@ const postsByYear = Object.entries(
     <main id="blog-main" class="blog-archive">
       <div class="blog-wrap">
         <h1>All writing.</h1>
-        <p class="blog-archive-intro">Essays on building, founder life, and everything it costs.</p>
+        <p class="blog-archive-intro">Essays about work, ambition, love, family, and everything underneath.</p>
       </div>
       <div class="blog-archive-list">
         {

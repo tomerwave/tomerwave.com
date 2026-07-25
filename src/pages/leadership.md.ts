@@ -1,24 +1,32 @@
 import type { APIRoute } from "astro";
 
 export const GET: APIRoute = async () => {
-  const markdownContent = `# About my work
+  const markdownContent = `# How I work
 
-I help founder-led startups turn a handful of engineers into an organization that can carry the company.
+I work with early-stage startups as a fractional VP of R&D.
 
-## Best fit
+## Three ways in
 
-- Founder-led startups
-- Pre-seed through Series A
-- Teams of 3 to 25 engineers
-- People, delivery, and architecture decisions that need to outlast one person
+### Fractional VP of R&D
 
-## Engagements
+Embedded leadership across strategy, architecture, hiring, delivery, and the day-to-day work of a team that ships.
 
-- Embedded fractional VP R&D
-- Advisory support for a new engineering lead
-- Fixed-scope technical diligence
+### Hands-on build
 
-[Start a conversation](mailto:tomer.wave@gmail.com) · [Back to business home](/index.md) · [Personal blog](/posts.md)`;
+I still write the code. When the fastest way to unblock a team is to do the work, I do the work.
+
+### Product & AI
+
+Deciding what to build, then building it: including the AI and automation systems founders keep asking for.
+
+## Contact
+
+[tomer.wave@gmail.com](mailto:tomer.wave@gmail.com)
+
+---
+
+[Back to the studio](/index.md) · [Personal writing](/blog.md)
+`;
 
   return new Response(markdownContent, {
     status: 200,

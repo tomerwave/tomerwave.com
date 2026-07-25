@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 import { SITE } from "@/config";
 import "@/styles/fonts.css";
 import "@/styles/global.css";
@@ -74,6 +74,7 @@ const structuredData = pubDatetime
     <link rel="preload" href="/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="icon" type="image/svg+xml" href="/tomerwave-icon.svg" />
+    <link rel="manifest" href="/site.webmanifest" />
     <link rel="canonical" href={canonicalURL} />
     <meta name="generator" content={Astro.generator} />
 
@@ -133,7 +134,8 @@ const structuredData = pubDatetime
       href={`${SITE.website}rss.xml`}
     />
 
-    <meta name="theme-color" content="" />
+    <meta name="theme-color" content="#faf6ef" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#15181a" media="(prefers-color-scheme: dark)" />
 
     {
       // If PUBLIC_GOOGLE_SITE_VERIFICATION is set in the environment variable,
@@ -147,7 +149,7 @@ const structuredData = pubDatetime
       )
     }
 
-    <ViewTransitions />
+    <ClientRouter />
 
     <script is:inline src="/toggle-theme.js"></script>
 
@@ -170,20 +172,6 @@ const structuredData = pubDatetime
       })();
     </script>
 
-    <!-- Twitter Widget Script -->
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-    <!-- Global Search Shortcut -->
-    <script>
-      import { navigate } from "astro:transitions/client";
-
-      document.addEventListener("keydown", (e) => {
-        if ((e.metaKey || e.ctrlKey) && e.key === "k") {
-          e.preventDefault();
-          navigate("/search");
-        }
-      });
-    </script>
   </head>
   <body>
     <div data-pagefind-ignore={noindex ? true : undefined}>

@@ -1,30 +1,34 @@
 ---
-import Footer from "@/components/Footer.astro";
-import Header from "@/components/Header.astro";
-import LinkButton from "@/components/LinkButton.astro";
+import BlogFooter from "@/components/blog/BlogFooter.astro";
+import SiteHeader from "@/components/SiteHeader.astro";
 import { SITE } from "@/config";
 import Layout from "@/layouts/Layout.astro";
+import "@/styles/blog.css";
+
+const navItems = [
+  { label: "Writing", href: "/blog" },
+  { label: "About", href: "/about" },
+  { label: "Studio", href: "/", muted: true, external: true },
+];
 ---
 
-<Layout title={`404 Not Found | ${SITE.title}`} description="Page not found. The requested page doesn't exist.">
-  <Header />
-
-  <main
-    id="main-content"
-    class="mx-auto flex max-w-3xl flex-1 items-center justify-center"
-  >
-    <div class="mb-14 flex flex-col items-center justify-center">
-      <h1 class="text-9xl font-bold text-accent">404</h1>
-      <span aria-hidden="true">¯\_(ツ)_/¯</span>
-      <p class="mt-4 text-2xl sm:text-3xl">Page Not Found</p>
-      <LinkButton
-        href="/"
-        class="my-6 text-lg underline decoration-dashed underline-offset-8"
-      >
-        Go back home
-      </LinkButton>
-    </div>
-  </main>
-
-  <Footer />
+<Layout title={`Page not found | ${SITE.title}`} description="The requested page doesn't exist." noindex>
+  <div class="personal-blog">
+    <SiteHeader
+      homeHref="/blog"
+      homeLabel="Tomer Gal personal blog"
+      mainId="not-found-main"
+      navAriaLabel="Personal blog navigation"
+      navItems={navItems}
+    />
+    <main id="not-found-main" class="blog-not-found">
+      <section class="blog-wrap">
+        <span class="blog-kicker">404</span>
+        <h1>Nothing here.</h1>
+        <p>I probably moved it, deleted it, or never wrote it in the first place.</p>
+        <a class="blog-archive-link" href="/blog">Back to the writing <span aria-hidden="true">→</span></a>
+      </section>
+    </main>
+    <BlogFooter />
+  </div>
 </Layout>
