@@ -7,6 +7,72 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "^(www\\.)?tomerwave\\.md$"
+        }
+      ],
+      "destination": "/index.md",
+      "permanent": false
+    },
+    {
+      "source": "/blog",
+      "has": [
+        {
+          "type": "host",
+          "value": "^(www\\.)?tomerwave\\.md$"
+        }
+      ],
+      "destination": "/blog.md",
+      "permanent": false
+    },
+    {
+      "source": "/posts",
+      "has": [
+        {
+          "type": "host",
+          "value": "^(www\\.)?tomerwave\\.md$"
+        }
+      ],
+      "destination": "/posts.md",
+      "permanent": false
+    },
+    {
+      "source": "/about",
+      "has": [
+        {
+          "type": "host",
+          "value": "^(www\\.)?tomerwave\\.md$"
+        }
+      ],
+      "destination": "/about.md",
+      "permanent": false
+    },
+    {
+      "source": "/leadership",
+      "has": [
+        {
+          "type": "host",
+          "value": "^(www\\.)?tomerwave\\.md$"
+        }
+      ],
+      "destination": "/leadership.md",
+      "permanent": false
+    },
+    {
+      "source": "/archives",
+      "has": [
+        {
+          "type": "host",
+          "value": "^(www\\.)?tomerwave\\.md$"
+        }
+      ],
+      "destination": "/archives.md",
+      "permanent": false
+    },
+    {
       "source": "/archives",
       "destination": "/posts",
       "permanent": true
