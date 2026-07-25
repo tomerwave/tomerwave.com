@@ -2,25 +2,39 @@
 import BusinessAbout from "@/components/landing/BusinessAbout.astro";
 import BusinessContact from "@/components/landing/BusinessContact.astro";
 import BusinessFooter from "@/components/landing/BusinessFooter.astro";
-import BusinessHeader from "@/components/landing/BusinessHeader.astro";
 import BusinessHero from "@/components/landing/BusinessHero.astro";
 import EngagementModes from "@/components/landing/EngagementModes.astro";
 import FounderSignals from "@/components/landing/FounderSignals.astro";
 import TrackRecord from "@/components/landing/TrackRecord.astro";
 import WritingBridge from "@/components/landing/WritingBridge.astro";
+import SiteHeader from "@/components/SiteHeader.astro";
 import StructuredData from "@/components/StructuredData.astro";
 import "@/styles/business.css";
 import Layout from "@/layouts/Layout.astro";
+
+const navItems = [
+  { label: "How I help", href: "#signals" },
+  { label: "Track record", href: "#track" },
+  { label: "Engagements", href: "#engagements" },
+  { label: "Writing", href: "#writing" },
+  { label: "Contact", href: "#contact", cta: true },
+];
 ---
 
 <Layout
   title="Tomer Gal — Fractional VP R&D"
   description="Fractional VP of R&D for startups between their first engineering hire and their first real organization."
 >
-  <div class="business-site" data-business-theme="light">
+  <div class="business-site">
     <StructuredData type="WebSite" data={{}} />
     <StructuredData type="Person" data={{}} />
-    <BusinessHeader />
+    <SiteHeader
+      homeHref="#top"
+      homeLabel="Tomer Gal home"
+      mainId="business-main"
+      navAriaLabel="Business navigation"
+      navItems={navItems}
+    />
     <main id="business-main">
       <BusinessHero />
       <hr class="business-rule" />

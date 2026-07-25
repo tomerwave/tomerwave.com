@@ -1,9 +1,15 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import BlogFooter from "@/components/blog/BlogFooter.astro";
-import BlogHeader from "@/components/blog/BlogHeader.astro";
+import SiteHeader from "@/components/SiteHeader.astro";
 import "@/styles/blog.css";
 import Layout from "./Layout.astro";
+
+const navItems = [
+  { label: "Writing", href: "/blog", active: true },
+  { label: "About", href: "/about" },
+  { label: "Studio", href: "/", muted: true, external: true },
+];
 
 type Props = CollectionEntry<"blog">["data"] & {
   slug: string;
@@ -25,7 +31,13 @@ const canonicalURL = new URL(canonicalPath, Astro.site).toString();
   scrollSmooth={true}
 >
   <div class="personal-blog">
-    <BlogHeader />
+    <SiteHeader
+      homeHref="/blog"
+      homeLabel="Tomer Gal personal blog"
+      mainId="blog-main"
+      navAriaLabel="Personal blog navigation"
+      navItems={navItems}
+    />
     <main id="blog-main" class="blog-post-page" data-pagefind-body>
       <article class="blog-post-column">
         <a class="blog-back" href="/blog"><span aria-hidden="true">←</span> All writing</a>

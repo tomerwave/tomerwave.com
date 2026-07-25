@@ -1,0 +1,43 @@
+/* Shared top bar used by both the business site and the personal blog.
+   Built on the global --background/--foreground/--accent/--border tokens
+   (global.css) so both contexts render identically and stay in sync. */
+
+.site-wrap { margin-inline: auto; max-width: 1280px; padding-inline: clamp(1.5rem, 5vw, 5.5rem); }
+
+.site-skip { background: var(--foreground); color: var(--background); left: -9999px; padding: .75rem 1rem; position: absolute; top: 0; z-index: 200; }
+.site-skip:focus { left: 1rem; top: 1rem; }
+
+.site-bar { align-items: center; background: color-mix(in srgb, var(--background) 78%, transparent); backdrop-filter: saturate(1.1) blur(10px); border-bottom: 1px solid transparent; display: flex; min-height: 64px; position: sticky; top: 0; transition: background-color .3s ease, border-color .3s ease; z-index: 100; }
+.site-bar.is-stuck { background: color-mix(in srgb, var(--background) 90%, transparent); border-bottom-color: var(--border); }
+.site-bar-inner { align-items: center; display: flex; gap: 1.5rem; justify-content: space-between; min-height: 64px; width: 100%; }
+
+.site-mark { align-items: center; display: flex; gap: .72rem; text-decoration: none; white-space: nowrap; }
+.site-mark-icon { display: block; flex: none; height: 32px; width: 32px; }
+.site-mark-icon .tomerwave-mark-primary { fill: var(--foreground); }
+.site-mark-icon .tomerwave-mark-accent { fill: var(--accent); }
+.site-mark-name { color: var(--foreground); font-size: 1.02rem; letter-spacing: .005em; }
+.site-mark-handle { color: var(--accent); font-size: .95rem; font-style: italic; }
+
+.site-nav { align-items: center; display: flex; gap: clamp(1rem, 2.4vw, 2rem); }
+.site-nav a { border-bottom: 1px solid transparent; color: color-mix(in srgb, var(--foreground) 70%, transparent); display: inline-flex; font-size: .9rem; gap: .28rem; padding-bottom: 2px; text-decoration: none; transition: border-color .25s ease, color .25s ease; }
+.site-nav a:hover, .site-nav a.is-active { border-color: var(--accent); color: var(--foreground); }
+.site-nav a.site-nav-cta { border-color: var(--border); color: var(--foreground); }
+.site-nav a.site-nav-cta:hover { border-color: var(--accent); }
+.site-nav a.site-nav-muted { color: color-mix(in srgb, var(--foreground) 46%, transparent) !important; }
+
+.site-theme-toggle { align-items: center; background: transparent; border: 1px solid var(--border); border-radius: 50%; color: color-mix(in srgb, var(--foreground) 70%, transparent); cursor: pointer; display: grid; flex: none; height: 36px; place-items: center; transition: color .25s ease, border-color .25s ease; width: 36px; }
+.site-theme-toggle:hover { border-color: var(--accent); color: var(--foreground); }
+.site-theme-toggle svg { height: 16px; width: 16px; }
+.site-theme-sun { display: none; }
+html[data-theme="dark"] .site-theme-moon { display: none; }
+html[data-theme="dark"] .site-theme-sun { display: block; }
+
+@media (max-width: 640px) {
+  .site-mark-handle { display: none; }
+  .site-nav { gap: .85rem; }
+  .site-nav a.site-nav-muted { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-bar { transition: none; }
+}

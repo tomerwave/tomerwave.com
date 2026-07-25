@@ -1,9 +1,9 @@
 ---
 import { getCollection } from "astro:content";
 import BlogFooter from "@/components/blog/BlogFooter.astro";
-import BlogHeader from "@/components/blog/BlogHeader.astro";
 import BlogPostItem from "@/components/blog/BlogPostItem.astro";
 import BlogSocials from "@/components/blog/BlogSocials.astro";
+import SiteHeader from "@/components/SiteHeader.astro";
 import StructuredData from "@/components/StructuredData.astro";
 import { SITE } from "@/config";
 import Layout from "@/layouts/Layout.astro";
@@ -12,12 +12,24 @@ import getSortedPosts from "@/utils/getSortedPosts";
 
 const posts = getSortedPosts(await getCollection("blog"));
 const [featuredPost, ...recentPosts] = posts.slice(0, SITE.postPerIndex);
+
+const navItems = [
+  { label: "Writing", href: "/blog", active: true },
+  { label: "About", href: "/about" },
+  { label: "Studio", href: "/", muted: true, external: true },
+];
 ---
 
 <Layout title="Tomer Gal — Personal blog" description="Notes on engineering, ambition, and becoming more intentional.">
   <div class="personal-blog">
     <StructuredData type="WebSite" data={{}} />
-    <BlogHeader />
+    <SiteHeader
+      homeHref="/blog"
+      homeLabel="Tomer Gal personal blog"
+      mainId="blog-main"
+      navAriaLabel="Personal blog navigation"
+      navItems={navItems}
+    />
     <main class="blog-main" id="blog-main">
       <section class="blog-hero">
         <div class="blog-wrap">

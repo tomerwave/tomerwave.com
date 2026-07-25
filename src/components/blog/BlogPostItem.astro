@@ -21,8 +21,10 @@ const readingTime = calculateReadingTime(post.body ?? "");
 <li class:list={["blog-post", { "blog-post-featured": featured }]}>
   <span class="blog-post-meta">{date} · {readingTime}</span>
   <div>
-    <a href={href}><h3 class="blog-post-title">{post.data.title}</h3></a>
-    <p class="blog-post-description">{post.data.description}</p>
-    {!featured && <span class="blog-post-read">Read essay</span>}
+    <a href={href} class="blog-post-link">
+      <h3 class="blog-post-title">{post.data.title}</h3>
+      <p class="blog-post-description">{post.data.description}</p>
+      {!featured && <span class="blog-post-read">Read essay</span>}
+    </a>
   </div>
 </li>

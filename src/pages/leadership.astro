@@ -1,11 +1,19 @@
 ---
 import BusinessContact from "@/components/landing/BusinessContact.astro";
 import BusinessFooter from "@/components/landing/BusinessFooter.astro";
-import BusinessHeader from "@/components/landing/BusinessHeader.astro";
 import EngagementModes from "@/components/landing/EngagementModes.astro";
 import EngagementPhases from "@/components/landing/EngagementPhases.astro";
+import SiteHeader from "@/components/SiteHeader.astro";
 import "@/styles/business.css";
 import Layout from "@/layouts/Layout.astro";
+
+const navItems = [
+  { label: "How I help", href: "#signals" },
+  { label: "Track record", href: "#track" },
+  { label: "Engagements", href: "#engagements" },
+  { label: "Writing", href: "#writing" },
+  { label: "Contact", href: "#contact", cta: true },
+];
 ---
 
 <Layout
@@ -13,7 +21,13 @@ import Layout from "@/layouts/Layout.astro";
   description="How Tomer Gal helps startup founders build the engineering organization, systems, and delivery habits that carry the company into its next stage."
 >
   <div class="business-site">
-    <BusinessHeader />
+    <SiteHeader
+      homeHref="#top"
+      homeLabel="Tomer Gal home"
+      mainId="business-main"
+      navAriaLabel="Business navigation"
+      navItems={navItems}
+    />
     <main id="business-main">
       <section class="business-hero">
         <div class="business-wrap business-hero-copy">
