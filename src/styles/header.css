@@ -8,7 +8,7 @@
 .site-skip { background: var(--foreground); color: var(--background); left: -9999px; padding: .75rem 1rem; position: absolute; top: 0; z-index: 200; }
 .site-skip:focus { left: 1rem; top: 1rem; }
 
-.site-bar { align-items: center; background: color-mix(in srgb, var(--background) 78%, transparent); backdrop-filter: saturate(1.1) blur(10px); border-bottom: 1px solid transparent; display: flex; min-height: 64px; position: sticky; top: 0; transition: background-color .3s ease, border-color .3s ease; z-index: 100; }
+.site-bar { align-items: center; background: color-mix(in srgb, var(--background) 78%, transparent); backdrop-filter: saturate(1.1) blur(10px); border-bottom: 1px solid transparent; display: flex; font-family: "Instrument Sans", system-ui, -apple-system, sans-serif; min-height: 64px; position: sticky; top: 0; transition: background-color .3s ease, border-color .3s ease; z-index: 100; }
 .site-bar.is-stuck { background: color-mix(in srgb, var(--background) 90%, transparent); border-bottom-color: var(--border); }
 .site-bar-inner { align-items: center; display: flex; gap: 1.5rem; justify-content: space-between; min-height: 64px; width: 100%; }
 
