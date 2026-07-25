@@ -107,6 +107,7 @@ body:has(.business-site) { background: var(--business-paper); overflow-x: hidden
 .business-fact dd { color: var(--business-ink-70); text-align: right; }
 
 .business-writing-grid { display: grid; gap: 2rem 3rem; }
+.business-writing { padding-bottom: clamp(2.5rem, 5vw, 4rem); }
 .business-writing .business-eyebrow { margin-bottom: 1.1rem; }
 .business-writing h2 { max-width: 14ch; }
 .business-writing-side { align-self: end; }
@@ -117,6 +118,7 @@ body:has(.business-site) { background: var(--business-paper); overflow-x: hidden
 .business-journal-link:hover { border-color: var(--business-sage-deep); color: var(--business-ink); }
 .business-journal-link:hover .business-arrow { transform: translateX(4px); }
 
+.business-contact { padding-top: clamp(2.5rem, 5vw, 4rem); }
 .business-contact h2 { max-width: 13ch; }
 .business-contact-note { margin-top: 1.25rem; max-width: 40ch; }
 .business-mail { border-bottom: 1px solid var(--business-hair); display: inline-block; font-family: var(--business-display); font-size: clamp(1.4rem, .9rem + 1.9vw, 2.2rem); padding-bottom: .35rem; transition: border-color .3s ease; }
