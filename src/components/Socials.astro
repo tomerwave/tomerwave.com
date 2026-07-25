@@ -1,5 +1,6 @@
 ---
 import { SOCIALS } from "@/constants";
+// biome-ignore lint/style/useImportType: SOCIAL_ICON_PATHS is used as a value in the template below
 import { SOCIAL_ICON_PATHS } from "@/utils/socialIconPaths";
 
 export interface Props {
@@ -9,7 +10,8 @@ export interface Props {
 const { centered = false } = Astro.props;
 
 // SOCIALS uses "twitter" where the shared icon map uses "x"
-const iconKey = (icon: string) => (icon === "twitter" ? "x" : icon) as keyof typeof SOCIAL_ICON_PATHS;
+const iconKey = (icon: string) =>
+  (icon === "twitter" ? "x" : icon) as keyof typeof SOCIAL_ICON_PATHS;
 ---
 
 <div class:list={["flex flex-wrap items-center gap-2", { "justify-center": centered }]}>
