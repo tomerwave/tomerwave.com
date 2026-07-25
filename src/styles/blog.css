@@ -78,7 +78,7 @@ html[data-theme="dark"] .personal-blog {
 .blog-archive-month { margin-top: 2.5rem; }
 .blog-archive-month h3 { color: var(--blog-faint); font-family: var(--blog-display); font-size: 1.05rem; font-style: italic; font-weight: 400; margin-bottom: .2rem; }
 
-.blog-post-page { padding-block: clamp(2.5rem, 5vw, 4rem) clamp(4rem, 9vw, 7rem); }
+.blog-post-page { padding-block: clamp(2.5rem, 5vw, 4rem) clamp(4rem, 9vw, 7rem); padding-inline: var(--blog-gutter); }
 .blog-post-column { margin-inline: auto; max-width: 40rem; }
 .blog-back { align-items: center; color: var(--blog-muted); display: inline-flex; font-size: .9rem; gap: .5rem; margin-bottom: clamp(2rem, 4vw, 3rem); transition: color .25s ease; }
 .blog-back:hover { color: var(--blog-ink); }
@@ -97,7 +97,7 @@ html[data-theme="dark"] .personal-blog {
 .blog-prose img { border: 1px solid var(--blog-hair); max-width: 100%; }
 .blog-prose code { background: var(--blog-warm); color: var(--blog-ink); font-size: .88em; padding: .15em .32em; }
 .blog-prose pre { background: var(--blog-warm); overflow-x: auto; padding: 1rem; }
-.blog-post-foot { align-items: baseline; border-top: 1px solid var(--blog-hair); display: flex; flex-wrap: wrap; gap: 1rem 2rem; justify-content: space-between; margin: clamp(3rem, 6vw, 4.5rem) auto 0; max-width: 40rem; padding-top: 1.8rem; }
+.blog-post-foot { align-items: baseline; border-top: 1px solid var(--blog-hair); display: flex; flex-wrap: wrap; gap: 1rem 2rem; justify-content: space-between; margin: clamp(3rem, 6vw, 4.5rem) auto 0; max-width: 40rem; padding-inline: 0; padding-top: 1.8rem; }
 .blog-post-signature { --tomerwave-signature-handle: var(--blog-sage-deep); color: var(--blog-muted); }
 .blog-post-foot a { color: var(--blog-muted); font-size: .95rem; }
 .blog-post-foot a:hover { color: var(--blog-ink); }
