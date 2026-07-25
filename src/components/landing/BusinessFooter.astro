@@ -3,9 +3,14 @@ import TomerwaveMark from "./TomerwaveMark.astro";
 ---
 <footer class="business-footer">
   <div class="business-wrap business-footer-inner">
-    <TomerwaveMark class="business-footer-mark" primary="var(--business-ink)" accent="var(--business-sage)" />
-    <span class="business-footer-meta">Fractional VP R&amp;D — Tel Aviv, Israel</span>
-    <a class="business-footer-link" href="/blog">Personal blog</a>
-    <span class="business-footer-meta">© {new Date().getFullYear()} Tomer Gal</span>
+    <a class="business-footer-identity" href="#top">
+      <TomerwaveMark class="business-footer-mark" primary="var(--business-ink)" accent="var(--business-sage)" />
+      <span>Tomer Gal</span>
+    </a>
+    <div class="business-footer-links">
+      <a class="business-footer-link" href="/blog">Personal blog</a>
+      <span aria-hidden="true">·</span>
+      <span>© {new Date().getFullYear()}</span>
+    </div>
   </div>
 </footer>
