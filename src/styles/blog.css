@@ -77,6 +77,9 @@ html[data-theme="dark"] .personal-blog {
 .blog-archive-year h2 { color: var(--blog-sage-deep); font-family: var(--blog-display); font-size: clamp(1.7rem, 1.2rem + 1.4vw, 2.35rem); font-weight: 400; }
 .blog-archive-month { margin-top: 2.5rem; }
 .blog-archive-month h3 { color: var(--blog-faint); font-family: var(--blog-display); font-size: 1.05rem; font-style: italic; font-weight: 400; margin-bottom: .2rem; }
+.blog-not-found { min-height: 70vh; padding-block: clamp(5rem, 14vw, 10rem); }
+.blog-not-found h1 { font-family: var(--blog-display); font-size: clamp(3rem, 1.7rem + 4vw, 5.5rem); font-weight: 400; letter-spacing: -.025em; line-height: .98; margin-bottom: 1rem; }
+.blog-not-found p { color: var(--blog-muted); font-size: clamp(1.05rem, 1rem + .3vw, 1.2rem); max-width: 38ch; }
 
 .blog-post-page { padding-block: clamp(2.5rem, 5vw, 4rem) clamp(4rem, 9vw, 7rem); padding-inline: var(--blog-gutter); }
 .blog-post-column { margin-inline: auto; max-width: 40rem; }

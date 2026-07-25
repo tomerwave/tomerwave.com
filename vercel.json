@@ -7,6 +7,36 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/archives",
+      "destination": "/posts",
+      "permanent": true
+    },
+    {
+      "source": "/search",
+      "destination": "/posts",
+      "permanent": true
+    },
+    {
+      "source": "/tags/:path(.*)",
+      "destination": "/posts",
+      "permanent": true
+    },
+    {
+      "source": "/page/:page(\\d+)",
+      "destination": "/posts",
+      "permanent": true
+    },
+    {
+      "source": "/posts/:page(\\d+)",
+      "destination": "/posts",
+      "permanent": true
+    },
+    {
+      "source": "/leadership",
+      "destination": "/",
+      "permanent": true
+    },
+    {
       "source": "/:year(\\d{4})/:month(\\d{2})/:day(\\d{2})/:slug",
       "destination": "/posts/:slug",
       "permanent": true
