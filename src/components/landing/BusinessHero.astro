@@ -1,0 +1,184 @@
+---
+---
+<section class="business-hero" id="top">
+  <div class="business-hero-band" aria-hidden="true"><canvas id="business-field-canvas"></canvas></div>
+  <div class="business-hero-copy">
+    <span class="business-eyebrow">Fractional VP R&amp;D</span>
+    <h1>The best work starts before the answers are <span class="business-quiet">obvious.</span></h1>
+    <p class="business-hero-sub">I work with early-stage startups as a fractional VP of R&amp;D — helping founders decide what to build, make the technical calls, and build the team that ships it.</p>
+    <div class="business-actions">
+      <a class="business-button" href="#contact">Start a conversation <span class="business-arrow" aria-hidden="true">→</span></a>
+      <a class="business-linkline" href="#track">See where I've done this</a>
+    </div>
+  </div>
+</section>
+<script>
+  let disposeBusinessHero: (() => void) | undefined;
+
+  const initializeBusinessHero = () => {
+    disposeBusinessHero?.();
+    const canvas = document.querySelector<HTMLCanvasElement>("#business-field-canvas");
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (!canvas) return;
+
+    const eventController = new AbortController();
+    const context = canvas.getContext("2d");
+    let width = 0;
+    let height = 0;
+    let midpoint = 0;
+    let frame = 0;
+    let last = 0;
+    let pointerX = -1;
+    let pointerY = 0;
+    let particles: Array<{ x: number; y: number; baseY: number; vx: number; amp: number; frequency: number; phase: number; radius: number; life: number }> = [];
+
+    const resize = () => {
+      if (!context) return;
+      const ratio = Math.min(window.devicePixelRatio || 1, 2);
+      const bounds = canvas.getBoundingClientRect();
+      width = bounds.width;
+      height = bounds.height;
+      midpoint = height / 2;
+      canvas.width = width * ratio;
+      canvas.height = height * ratio;
+      context.setTransform(ratio, 0, 0, ratio, 0, 0);
+    };
+
+    const spawn = (seed: boolean) => {
+      const baseY = midpoint + (Math.random() * 2 - 1) * height * 0.42;
+      return {
+        x: seed ? Math.random() * width : -6,
+        y: baseY,
+        baseY,
+        vx: 0.35 + Math.random() * 0.9,
+        amp: (Math.random() * 2 - 1) * height * 0.16,
+        frequency: 0.6 + Math.random() * 1.4,
+        phase: Math.random() * Math.PI * 2,
+        radius: 0.7 + Math.random() * 1.1,
+        life: Math.random() * 100,
+      };
+    };
+
+    const reset = (seed: boolean) => {
+      particles = Array.from({ length: Math.round(width * 0.3) }, () => spawn(seed));
+    };
+
+    const getPalette = () => document.documentElement.dataset.theme === "dark" ? {
+      line: ["rgba(206,196,178,0)", "rgba(188,180,164,.4)", "rgba(150,178,162,.55)", "rgba(138,166,150,.28)"],
+      base: "196,188,172",
+      hot: "150,178,162",
+    } : {
+      line: ["rgba(160,150,132,0)", "rgba(150,140,122,.5)", "rgba(110,132,120,.62)", "rgba(90,110,100,.32)"],
+      base: "150,140,122",
+      hot: "110,132,120",
+    };
+
+    const drawLine = () => {
+      if (!context) return;
+      const palette = getPalette();
+      const gradient = context.createLinearGradient(0, 0, width, 0);
+      gradient.addColorStop(0, palette.line[0]);
+      gradient.addColorStop(0.5, palette.line[1]);
+      gradient.addColorStop(0.78, palette.line[2]);
+      gradient.addColorStop(1, palette.line[3]);
+      context.strokeStyle = gradient;
+      context.lineWidth = 1;
+      context.beginPath();
+      context.moveTo(0, midpoint + 0.5);
+      context.lineTo(width, midpoint + 0.5);
+      context.stroke();
+    };
+
+    const animate = (time: number) => {
+      if (!context) return;
+      const delta = last ? Math.min((time - last) / 16.67, 2.2) : 1;
+      last = time;
+      context.clearRect(0, 0, width, height);
+      drawLine();
+
+      particles.forEach((particle, index) => {
+        particle.life += delta;
+        particle.x += particle.vx * delta;
+        const progress = Math.min(1, particle.x / width);
+        const settled = progress * progress;
+        const wobble = particle.amp * (1 - settled) * Math.sin(particle.life * 0.03 * particle.frequency + particle.phase);
+        particle.y = particle.baseY * (1 - settled) + midpoint * settled + wobble;
+
+        if (pointerX >= 0) {
+          const dx = particle.x - pointerX;
+          const dy = particle.y - pointerY;
+          const distanceSquared = dx * dx + dy * dy;
+          if (distanceSquared < 9000) {
+            const force = (1 - distanceSquared / 9000) * 7;
+            const distance = Math.sqrt(distanceSquared) || 1;
+            particle.x += (dx / distance) * force;
+            particle.y += (dy / distance) * force;
+          }
+        }
+
+        const palette = getPalette();
+        context.beginPath();
+        context.fillStyle = `rgba(${progress > 0.72 ? palette.hot : palette.base},${((0.16 + progress * 0.5) * Math.min(1, particle.life / 40)).toFixed(3)})`;
+        context.arc(particle.x, particle.y, particle.radius * (0.65 + progress * 0.7), 0, Math.PI * 2);
+        context.fill();
+
+        if (particle.x > width + 6) particles[index] = spawn(false);
+      });
+
+      frame = requestAnimationFrame(animate);
+    };
+
+    const start = () => {
+      resize();
+      reset(true);
+      last = 0;
+      window.cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(animate);
+    };
+
+    const drawStatic = () => {
+      resize();
+      context?.clearRect(0, 0, width, height);
+      drawLine();
+      const palette = getPalette();
+      for (let index = 0; index < Math.round(width * 0.18); index += 1) {
+        const x = Math.random() * width;
+        const progress = x / width;
+        context?.beginPath();
+        context!.fillStyle = `rgba(${progress > 0.72 ? palette.hot : palette.base},${0.14 + progress * 0.35})`;
+        context!.arc(x, midpoint + (Math.random() * 2 - 1) * height * 0.34 * (1 - progress * progress), 0.8, 0, Math.PI * 2);
+        context!.fill();
+      }
+    };
+
+    if (reduced) {
+      drawStatic();
+      window.addEventListener("site-theme-change", drawStatic, { signal: eventController.signal });
+    } else {
+      start();
+      canvas.addEventListener("pointermove", (event) => {
+        const bounds = canvas.getBoundingClientRect();
+        pointerX = event.clientX - bounds.left;
+        pointerY = event.clientY - bounds.top;
+      }, { signal: eventController.signal });
+      canvas.addEventListener("pointerleave", () => { pointerX = -1; }, { signal: eventController.signal });
+      let resizeTimer = 0;
+      window.addEventListener("resize", () => {
+        window.clearTimeout(resizeTimer);
+        resizeTimer = window.setTimeout(start, 180);
+      }, { signal: eventController.signal });
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) window.cancelAnimationFrame(frame);
+        else { last = 0; frame = requestAnimationFrame(animate); }
+      }, { signal: eventController.signal });
+    }
+
+    disposeBusinessHero = () => {
+      window.cancelAnimationFrame(frame);
+      eventController.abort();
+    };
+  };
+
+  document.addEventListener("astro:page-load", initializeBusinessHero);
+</script>

@@ -15,6 +15,11 @@ const { noMarginTop = false } = Astro.props;
     class="flex flex-col items-center justify-between py-6 sm:flex-row-reverse sm:py-4"
   >
     <Socials centered />
+    <nav class="my-2 flex flex-wrap items-center justify-center gap-4 text-xs" aria-label="Site navigation">
+      <a href="/" class="hover:text-accent">Business</a>
+      <a href="/leadership" class="hover:text-accent">About my work</a>
+      <a href="/about" class="hover:text-accent">About me</a>
+    </nav>
     <div class="my-2 flex flex-col items-center whitespace-nowrap sm:flex-row">
       <a href="https://github.com/tomerwave/tomerwave.com" target="_blank" rel="noopener noreferrer" class="hover:text-accent">
         Steal this post ➜ CC BY 4.0 · Code MIT

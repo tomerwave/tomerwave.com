@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "./typography.css";
+@import "./header.css";
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
@@ -22,19 +23,19 @@
 
 :root,
 html[data-theme="light"] {
-  --background: #fdfdfd;
-  --foreground: #282728;
-  --accent: #006cac;
-  --muted: #e6e6e6;
-  --border: #ece9e9;
+  --background: #faf6ef;
+  --foreground: #2b3138;
+  --accent: #6e8478;
+  --muted: #f3ede2;
+  --border: color-mix(in srgb, #2b3138 15%, transparent);
 }
 
 html[data-theme="dark"] {
-  --background: #212737;
-  --foreground: #eaedf3;
-  --accent: #5B9BD5;
-  --muted: #343f60bf;
-  --border: #4A82B5;
+  --background: #15181a;
+  --foreground: #e9e3d6;
+  --accent: #a9bdb1;
+  --muted: #1d2124;
+  --border: color-mix(in srgb, #e9e3d6 14%, transparent);
 }
 
 @theme {
@@ -92,8 +93,10 @@ html[data-theme="dark"] {
     @apply overflow-y-scroll scroll-smooth;
   }
   body {
-    @apply flex min-h-svh flex-col bg-background font-mono text-foreground selection:bg-accent/75 selection:text-background;
+    @apply flex min-h-svh flex-col bg-background text-foreground selection:bg-accent/75 selection:text-background;
+    font-family: "Atkinson", ui-sans-serif, system-ui, sans-serif;
   }
+  h1, h2, h3, h4, h5, h6 { font-family: Georgia, "Times New Roman", serif; }
   a,
   button {
     @apply outline-offset-1 outline-accent focus-visible:no-underline focus-visible:outline-2 focus-visible:outline-dashed;

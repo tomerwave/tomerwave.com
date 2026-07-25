@@ -100,7 +100,7 @@ export default defineConfig({
     react(),
     AstroPWA({
       registerType: "autoUpdate",
-      includeAssets: ["favicon.ico", "avatar.jpg"],
+      includeAssets: ["favicon.ico", "tomerwave-icon.svg", "avatar.jpg"],
       manifest: {
         name: "Tomer Gal",
         short_name: "TomerWave",
@@ -112,6 +112,12 @@ export default defineConfig({
         scope: "/",
         start_url: "/",
         icons: [
+          {
+            src: "tomerwave-icon.svg",
+            sizes: "any",
+            type: "image/svg+xml",
+            purpose: "any",
+          },
           {
             src: "favicon.ico",
             sizes: "48x48",
@@ -161,14 +167,6 @@ export default defineConfig({
             },
           },
         ],
-      },
-      devOptions: {
-        enabled: true,
-        suppressWarnings: true,
-        navigateFallbackAllowlist: [/^\//],
-      },
-      experimental: {
-        directoryAndTrailingSlashHandler: true,
       },
     }),
   ],

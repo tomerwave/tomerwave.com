@@ -1,0 +1,64 @@
+---
+import { getCollection } from "astro:content";
+import BlogFooter from "@/components/blog/BlogFooter.astro";
+import BlogPostItem from "@/components/blog/BlogPostItem.astro";
+import BlogSocials from "@/components/blog/BlogSocials.astro";
+import SiteHeader from "@/components/SiteHeader.astro";
+import StructuredData from "@/components/StructuredData.astro";
+import { SITE } from "@/config";
+import Layout from "@/layouts/Layout.astro";
+import "@/styles/blog.css";
+import getSortedPosts from "@/utils/getSortedPosts";
+
+const posts = getSortedPosts(await getCollection("blog"));
+const [featuredPost, ...recentPosts] = posts.slice(0, SITE.postPerIndex);
+
+const navItems = [
+  { label: "Writing", href: "/blog", active: true },
+  { label: "About", href: "/about" },
+  { label: "Studio", href: "/", muted: true, external: true },
+];
+---
+
+<Layout title="Tomer Gal — Personal blog" description="Notes on engineering, ambition, and becoming more intentional.">
+  <div class="personal-blog">
+    <StructuredData type="WebSite" data={{}} />
+    <SiteHeader
+      homeHref="/blog"
+      homeLabel="Tomer Gal personal blog"
+      mainId="blog-main"
+      navAriaLabel="Personal blog navigation"
+      navItems={navItems}
+    />
+    <main class="blog-main" id="blog-main">
+      <section class="blog-hero">
+        <div class="blog-wrap">
+          <div class="blog-hero-row">
+            <img class="blog-avatar" src="/avatar.jpg" alt="Tomer Gal" width="104" height="104" />
+            <h1>Hi, I’m <span>@tomerwave.</span></h1>
+          </div>
+          <p class="blog-tagline">I've started companies and stopped them, shipped things people loved and things nobody used. This is where I write about all of it — while it's still raw, before it's a tidy lesson.</p>
+          <BlogSocials />
+        </div>
+      </section>
+
+      <section class="blog-entries">
+        <div class="blog-wrap">
+          <span class="blog-kicker">Latest</span>
+          {
+            featuredPost && (
+              <ul class="blog-posts">
+                <BlogPostItem post={featuredPost} featured />
+              </ul>
+            )
+          }
+          <ul class="blog-posts">
+            {recentPosts.map((post) => <BlogPostItem post={post} />)}
+          </ul>
+          <a class="blog-archive-link" href="/posts">The full archive <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+    </main>
+    <BlogFooter />
+  </div>
+</Layout>

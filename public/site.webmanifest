@@ -4,6 +4,12 @@
   "description": "Personal blog and website of Tomer Gal.",
   "icons": [
     {
+      "src": "/tomerwave-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
       "src": "/favicon.ico",
       "sizes": "16x16 32x32 48x48",
       "type": "image/x-icon"

@@ -1,56 +1,54 @@
-# Tomer Gal's Personal Website
+<p align="center">
+  <img src="./public/tomerwave-icon.svg" width="76" alt="TomerWave mark" />
+</p>
 
-This is the source code for my personal website, built with [Astro](https://astro.build) and deployed on [Vercel](https://vercel.com).
+<h1 align="center">TomerWave</h1>
 
-## About
+<p align="center">
+  <strong>Personal writing and fractional VP of R&amp;D work by Tomer Gal.</strong><br />
+  Built with <a href="https://astro.build">Astro</a> and deployed on <a href="https://vercel.com">Vercel</a>.
+</p>
 
-I'm Tomer Gal. This website hosts my personal blog and information about my work.
+<p align="center">
+  <a href="https://tomerwave.com">Website</a> ·
+  <a href="https://tomerwave.com/blog">Writing</a> ·
+  <a href="https://tomerwave.com/rss.xml">RSS</a>
+</p>
 
-## Project Structure
+## What’s here
 
-```text
-├── public/               # Static assets (images, fonts, favicon)
-│   ├── assets/          # Images for blog posts
-│   └── fonts/           # Web fonts
-├── src/
-│   ├── assets/          # Icons and images used in components
-│   ├── components/      # Reusable UI components
-│   │   └── ui/          # React components
-│   ├── content/         # Content collections
-│   │   └── blog/        # Blog posts in Markdown format (organized by year)
-│   ├── layouts/         # Page layouts and templates
-│   ├── pages/           # Routes and pages
-│   ├── styles/          # Global styles and CSS
-│   └── utils/           # Utility functions
-├── astro.config.mjs     # Astro configuration
-├── vercel.json          # Vercel deployment and CSP configuration
-├── package.json         # Project dependencies and scripts
-├── tailwind.config.mjs  # Tailwind CSS configuration
-└── LICENSE              # Dual license (CC BY 4.0 + MIT)
+- `/` — fractional VP of R&amp;D studio for early-stage startups.
+- `/blog` — personal essays on building, founder life, and everything it costs.
+- `src/content/blog/` — the writing, stored as Markdown by year.
+
+## Development
+
+```sh
+npm install
+npm run dev
 ```
 
-## Commands
+The development site runs at `http://localhost:4321`.
 
-| Command                | Action                                      |
-| :--------------------- | :------------------------------------------ |
-| `npm install`          | Installs dependencies                       |
-| `npm run dev`          | Starts local dev server at `localhost:4321` |
-| `npm run build`        | Build the production site to `./dist/`      |
-| `npm run preview`      | Preview the build locally, before deploying |
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Start the local development server |
+| `npm run check` | Run Biome checks |
+| `npm run build` | Create a production build in `dist/` |
+| `npm run build:check` | Type-check, build, and index the site |
+| `npm run preview` | Preview the production build locally |
 
-## Deployment
+## Project map
 
-This site is set up for easy deployment on Vercel. Just connect your GitHub repository to Vercel, and it will automatically build and deploy the site when changes are pushed.
+```text
+public/              Static assets, including the site mark and self-hosted fonts
+src/components/      Shared studio and blog components
+src/content/blog/    Markdown essays, organized by year
+src/pages/           Site routes
+src/styles/          Shared, studio, and blog styling
+```
 
 ## License
 
-This repository uses dual licensing:
-
-- **Documentation & Blog Posts**: Licensed under [CC BY 4.0](http://creativecommons.org/licenses/by/4.0/)
-- **Code & Code Snippets**: Licensed under the [MIT License](LICENSE)
-
-See the [LICENSE](LICENSE) file for full details.
-
-## Special Thanks
-
-Special thanks to [Sat Naing](https://github.com/satnaing) for creating the excellent [AstroPaper theme](https://astro-paper.pages.dev/) that served as the foundation for this website.
+- Blog posts and documentation: [CC BY 4.0](http://creativecommons.org/licenses/by/4.0/)
+- Code: [MIT](LICENSE)
