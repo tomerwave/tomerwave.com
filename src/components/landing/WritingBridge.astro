@@ -1,4 +1,10 @@
 ---
+import { getCollection } from "astro:content";
+import getSortedPosts from "@/utils/getSortedPosts";
+import { getPath } from "@/utils/getPath";
+
+const [latestPost] = getSortedPosts(await getCollection("blog"));
+const latestHref = latestPost ? getPath(latestPost.id, latestPost.filePath) : "/blog";
 ---
 <section class="business-section business-writing" id="writing">
   <div class="business-wrap business-writing-grid">
@@ -7,10 +13,14 @@
       <h2>I write about all of it.</h2>
     </div>
     <div class="business-writing-side">
-      <a class="business-writing-piece" href="/posts/2026/the-nature-of-people">
-        <p class="business-writing-latest">Latest essay</p>
-        <span class="business-writing-title">The nature of people</span>
-      </a>
+      {
+        latestPost && (
+          <a class="business-writing-piece" href={latestHref}>
+            <p class="business-writing-latest">Latest essay</p>
+            <span class="business-writing-title">{latestPost.data.title}</span>
+          </a>
+        )
+      }
       <a class="business-journal-link" href="/blog">Read the journal <span class="business-arrow" aria-hidden="true">→</span></a>
     </div>
   </div>
