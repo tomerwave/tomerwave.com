@@ -94,6 +94,8 @@ body:has(.business-site) { background: var(--business-paper); overflow-x: hidden
 .business-mode-shape { color: var(--business-ink-45) !important; font-size: .9rem !important; margin-top: 1.4rem; }
 .business-mode-shape em { color: var(--business-ink-70); font-style: normal; }
 
+.business-consulting-note { color: var(--business-ink-45); font-size: .9rem; margin-top: 1.6rem; }
+
 .business-about { position: relative; z-index: 0; background: none; }
 .business-about::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--business-paper-warm); transition: background-color .45s ease; }
 .business-about-grid, .business-contact-grid { display: grid; gap: clamp(2.5rem, 5vw, 5rem); }
