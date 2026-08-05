@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
-import getSortedPosts from "@/utils/getSortedPosts";
-import { getPath } from "@/utils/getPath";
+import { getPath } from "@/utils/get-path";
+import getSortedPosts from "@/utils/get-sorted-posts";
 
 const [latestPost] = getSortedPosts(await getCollection("blog"));
 const latestHref = latestPost ? getPath(latestPost.id, latestPost.filePath) : "/blog";

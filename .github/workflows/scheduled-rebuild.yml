@@ -2,8 +2,11 @@ name: Scheduled Rebuild
 
 on:
   schedule:
-    - cron: "0 9 * * *" # Runs daily at 9:00 AM UTC (12:00 PM Israel time)
-  workflow_dispatch: # Allows manual trigger from GitHub Actions UI
+    - cron: "0 9 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   trigger-rebuild:

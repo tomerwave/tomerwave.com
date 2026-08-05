@@ -23,7 +23,6 @@ const blog = defineCollection({
       canonicalURL: z.string().optional(),
       hideEditPost: z.boolean().optional(),
       timezone: z.string().optional(),
-      // Additional fields from existing posts
       source: z.string().optional(),
       AIDescription: z.boolean().optional(),
     }),

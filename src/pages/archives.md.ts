@@ -1,6 +1,6 @@
 import { getCollection } from "astro:content";
 import type { APIRoute } from "astro";
-import getSortedPosts from "@/utils/getSortedPosts";
+import getSortedPosts from "@/utils/get-sorted-posts";
 
 export const GET: APIRoute = async () => {
   const posts = await getCollection("blog");
@@ -9,7 +9,6 @@ export const GET: APIRoute = async () => {
   let markdownContent = `# Archives\n\n`;
   markdownContent += `Total posts: ${sortedPosts.length}\n\n`;
 
-  // Group posts by year
   const postsByYear = sortedPosts.reduce(
     (acc, post) => {
       const year = post.data.pubDatetime.getFullYear();
@@ -20,7 +19,6 @@ export const GET: APIRoute = async () => {
     {} as Record<number, typeof sortedPosts>
   );
 
-  // Sort years descending
   const years = Object.keys(postsByYear).sort((a, b) => Number(b) - Number(a));
 
   markdownContent += `## Posts by Year\n\n`;
