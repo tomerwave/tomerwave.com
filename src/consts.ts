@@ -1,6 +1,3 @@
-// Place any global data in this file.
-// You can import this data from anywhere in your site by using the `import` keyword.
-
 interface Site {
   website: string;
   author: string;
@@ -14,7 +11,6 @@ interface Site {
   lang: string;
 }
 
-// Site configuration
 export const SITE: Site = {
   website: "https://tomerwave.com/",
   author: "Tomer Gal",

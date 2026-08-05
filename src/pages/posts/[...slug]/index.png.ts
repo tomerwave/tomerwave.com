@@ -1,8 +1,8 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 import type { APIRoute } from "astro";
 import { SITE } from "@/config";
-import { generateOgImageForPost } from "@/utils/generateOgImages";
-import { getPath } from "@/utils/getPath";
+import { generateOgImageForPost } from "@/utils/generate-og-images";
+import { getPath } from "@/utils/get-path";
 
 export async function getStaticPaths() {
   if (!SITE.dynamicOgImage) {

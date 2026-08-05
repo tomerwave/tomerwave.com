@@ -6,8 +6,8 @@ import SiteHeader from "@/components/SiteHeader.astro";
 import { SITE } from "@/consts";
 import Layout from "@/layouts/Layout.astro";
 import "@/styles/blog.css";
-import getPostsByGroupCondition from "@/utils/getPostsByGroupCondition";
-import postFilter from "@/utils/postFilter";
+import getPostsByGroupCondition from "@/utils/get-posts-by-group-condition";
+import postFilter from "@/utils/post-filter";
 
 const navItems = [
   { label: "Writing", href: "/blog", active: true },

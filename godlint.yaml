@@ -1,0 +1,17 @@
+version: 1
+suites: [recommended@1]
+
+exclude:
+  - .git
+  - .mypy_cache
+  - .next
+  - .tox
+  - .venv
+  - __pycache__
+  - build
+  - coverage
+  - dist
+  - node_modules
+  - target
+  - vendor
+  - .astro

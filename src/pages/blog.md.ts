@@ -1,7 +1,7 @@
 import { getCollection } from "astro:content";
 import type { APIRoute } from "astro";
 import { SITE } from "@/config";
-import getSortedPosts from "@/utils/getSortedPosts";
+import getSortedPosts from "@/utils/get-sorted-posts";
 
 export const GET: APIRoute = async () => {
   const posts = getSortedPosts(await getCollection("blog"));
