@@ -125,6 +125,7 @@ body:has(.business-site) { background: var(--business-paper); overflow-x: hidden
 .business-contact-note { margin-top: 1.25rem; max-width: 40ch; }
 .business-mail { border-bottom: 1px solid var(--business-hair); display: inline-block; font-family: var(--business-display); font-size: clamp(1.4rem, .9rem + 1.9vw, 2.2rem); padding-bottom: .35rem; transition: border-color .3s ease; }
 .business-mail:hover { border-color: var(--business-sage-deep); }
+.business-contact-button { margin-top: 1.5rem; }
 
 .business-footer { border-top: 1px solid var(--business-hair); padding-block: 2.5rem 3.5rem; }
 .business-footer-inner { align-items: center; display: flex; flex-wrap: wrap; gap: 1.25rem 2rem; justify-content: space-between; }

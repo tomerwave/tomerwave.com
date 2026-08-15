@@ -7,6 +7,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/meet",
+      "destination": "https://calendar.app.google/9F7SQbpLdY3VgTDKA",
+      "permanent": false
+    },
+    {
       "source": "/",
       "has": [
         {
