@@ -67,12 +67,13 @@ if (type === "BlogPosting") {
       name: "Tomer Gal",
       url: "https://tomerwave.com",
       jobTitle: "Fractional VP of R&D and Software Engineer",
+      sameAs: AUTHOR_SAME_AS,
+      knowsLanguage: ["en", "he"],
     },
     areaServed: [
       { "@type": "Country", name: "Israel" },
       { "@type": "AdministrativeArea", name: "Remote, worldwide" },
     ],
-    availableLanguage: ["English", "Hebrew"],
     ...(data.offer && {
       hasOfferCatalog: {
         "@type": "OfferCatalog",
