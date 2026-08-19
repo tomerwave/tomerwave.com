@@ -28,8 +28,9 @@ html[data-theme="dark"] .business-site {
   --business-button-hover: #d6cfc0;
 }
 
-html:has(.business-site) { scroll-behavior: smooth; scroll-padding-top: 88px; }
-body:has(.business-site) { background: var(--business-paper); overflow-x: hidden; }
+/* `clip`, not `hidden`: `overflow-x: hidden` forces overflow-y to `auto`, which makes
+   body the scroll container and breaks scroll-behavior, scroll-padding and window.scrollTo. */
+body:has(.business-site) { background: var(--business-paper); overflow-x: clip; }
 .business-site { background: var(--business-paper); color: var(--business-ink); font-family: var(--business-body); font-size: clamp(1rem, .97rem + .16vw, 1.075rem); font-weight: 400; line-height: 1.62; min-height: 100vh; transition: background-color .45s ease, color .45s ease; -webkit-font-smoothing: antialiased; }
 .business-site *, .business-site *::before, .business-site *::after { box-sizing: border-box; margin: 0; padding: 0; }
 .business-site a { color: inherit; text-decoration: none; }

@@ -178,6 +178,17 @@ const structuredData = pubDatetime
       <slot />
     </div>
     <Analytics />
+    <script>
+      import { initAnchorScroll } from "@/scripts/anchor-scroll";
+      import { initRevealOnScroll } from "@/scripts/reveal-on-scroll";
+
+      const initializePageBehaviours = () => {
+        initAnchorScroll();
+        initRevealOnScroll();
+      };
+
+      document.addEventListener("astro:page-load", initializePageBehaviours);
+    </script>
   </body>
 </html>
 

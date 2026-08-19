@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @import "./header.css";
 
+/* Fallback for anchor jumps when JS is unavailable — see src/scripts/anchor-scroll.ts. */
+html { scroll-padding-top: 5.5rem; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 :root,
@@ -72,7 +76,8 @@ html[data-theme="dark"] {
   }
   
   html {
-    @apply overflow-y-scroll scroll-smooth;
+    /* scroll-smooth lives in the prefers-reduced-motion guard near the top of this file. */
+    @apply overflow-y-scroll;
   }
   body {
     @apply flex min-h-svh flex-col bg-background text-foreground selection:bg-accent/75 selection:text-background;
