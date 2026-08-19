@@ -4,6 +4,7 @@ import { SITE } from "@/config";
 import "@/styles/fonts.css";
 import "@/styles/global.css";
 import Analytics from "@/components/Analytics.astro";
+import SiteIcons from "@/components/SiteIcons.astro";
 
 const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
 
@@ -73,8 +74,7 @@ const structuredData = pubDatetime
     <meta name="view-transition" content="same-origin" />
     <link rel="preload" href="/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="icon" type="image/svg+xml" href="/tomerwave-icon.svg" />
-    <link rel="manifest" href="/site.webmanifest" />
+    <SiteIcons />
     <link rel="canonical" href={canonicalURL} />
     <meta name="generator" content={Astro.generator} />
 
