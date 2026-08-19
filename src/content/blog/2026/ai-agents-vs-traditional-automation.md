@@ -55,7 +55,7 @@ Now do the same for the flow. Does this process have a fixed set of steps, or do
 
 ## What each one actually costs you
 
-| | Rules | Model in one step | Agent |
+| Compared on | Rules | Model in one step | Agent |
 | --- | --- | --- | --- |
 | Same input, same output | Yes | Usually, not guaranteed | No |
 | Compute cost per run | Effectively nothing | Small and predictable | Variable, sometimes by a lot |

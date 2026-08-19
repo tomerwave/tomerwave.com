@@ -69,18 +69,22 @@ const canonicalURL = new URL(canonicalPath, Astro.site).toString();
 
 <script>
   function initializeTwitterWidgets() {
-    // Check if Twitter widgets are already loaded
     if (window.twttr && window.twttr.widgets) {
-      // Load all Twitter embeds on the page
       window.twttr.widgets.load();
-    } else {
-      // If not loaded, wait for the script to load
-      window.addEventListener('load', () => {
-        if (window.twttr && window.twttr.widgets) {
-          window.twttr.widgets.load();
-        }
-      });
+      return;
     }
+    const existing = document.querySelector('script[data-twitter-widgets]');
+    if (existing) {
+      existing.addEventListener('load', () => window.twttr?.widgets?.load());
+      return;
+    }
+    const script = document.createElement('script');
+    script.src = 'https://platform.twitter.com/widgets.js';
+    script.async = true;
+    script.charset = 'utf-8';
+    script.setAttribute('data-twitter-widgets', '');
+    script.addEventListener('load', () => window.twttr?.widgets?.load());
+    document.head.appendChild(script);
   }
 
 	  function processEmbeds() {
@@ -272,8 +276,7 @@ const canonicalURL = new URL(canonicalPath, Astro.site).toString();
   }
 </style>
   
-  <!-- Twitter Widget Script - Load as external script -->
-  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8" is:inline={false}></script>
+
   
   <!-- Fallback script for mobile initialization -->
   <script is:inline>

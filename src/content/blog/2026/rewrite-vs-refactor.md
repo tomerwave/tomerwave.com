@@ -134,7 +134,7 @@ The other thing to plan for is nearly a law. Given a blank file, a team does not
 
 ## What each one actually costs
 
-| | Calendar time | What you get | Does the pain come back |
+| The move | Calendar time | What you get | Does the pain come back |
 | --- | --- | --- | --- |
 | Nothing | Free today | Nothing, and it compounds | It never left. This is the option you are picking by default. |
 | Fix the tests | One to three weeks | Everything downstream gets cheaper | No |

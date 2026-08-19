@@ -59,7 +59,7 @@ When you build, you're the only customer it will ever have. Every improvement is
 
 Here's what that looks like with numbers. Twelve staff logins, and products in your space at about a hundred and eighty dollars a month.
 
-| | Five year total | Made of |
+| Option | Five year total | Made of |
 | --- | --- | --- |
 | Buy | About 17,800 | 2,160 a year in licences, plus 3,000 setup and 4,000 to move your existing records |
 | Build | About 155,200 | 85,000 to build, roughly 15,300 a year to maintain from year two, plus 1,800 a year to run it |
