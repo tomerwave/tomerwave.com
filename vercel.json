@@ -7,11 +7,6 @@
   "trailingSlash": false,
   "redirects": [
     {
-      "source": "/meet",
-      "destination": "https://calendar.app.google/9F7SQbpLdY3VgTDKA",
-      "permanent": false
-    },
-    {
       "source": "/",
       "has": [
         {
@@ -127,7 +122,11 @@
       "destination": "/tags/:category",
       "permanent": true
     },
-    { "source": "/tag/:tag", "destination": "/tags/:tag", "permanent": true },
+    {
+      "source": "/tag/:tag",
+      "destination": "/tags/:tag",
+      "permanent": true
+    },
     {
       "source": "/20:year/:month/:day/:slug(.*)",
       "destination": "/posts/:slug",
