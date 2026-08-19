@@ -7,8 +7,7 @@ import {
 } from "./attribution";
 
 const EMAIL_SELECTOR = 'a[href^="mailto:"]';
-const ARTICLE_SERVICE_SELECTOR = "[data-article-service-link]";
-const ARTICLE_CONTACT_SELECTOR = "[data-article-contact-link]";
+const ARTICLE_SERVICE_SELECTOR = '.blog-prose a[href^="/services/"]';
 
 let controller: AbortController | undefined;
 
@@ -33,13 +32,11 @@ const CLICK_EVENTS: Array<[string, string, (node: HTMLElement) => Record<string,
   [
     ARTICLE_SERVICE_SELECTOR,
     "article_to_service_clicked",
-    (node) => ({ service: node.dataset.articleServiceLink ?? "" }),
+    (node) => ({ service: node.getAttribute("href")?.split("/").pop() ?? "" }),
   ],
-  [ARTICLE_CONTACT_SELECTOR, "article_to_contact_clicked", () => ({})],
 ];
 
 const handleClick = (event: MouseEvent) => {
-  if (event.defaultPrevented) return;
   for (const [selector, name, details] of CLICK_EVENTS) {
     const node = closestMatch(event, selector);
     if (node) {

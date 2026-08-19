@@ -1,7 +1,8 @@
 ---
 title: "Mastering Employee Onboarding: Strategies for a Smooth Start"
 pubDatetime: 2024-07-19T12:00:00+03:00
-description: "It took you weeks to hire a new team member. She signed the contract and starts in a week. But what does a good onboarding consist of? Learn strategies for creating the most effective and pleasant onboarding experience."
+modDatetime: 2026-08-19T12:00:00+03:00
+description: "Hiring took weeks. Now she starts on Monday and nobody has decided what her first task is. What a good developer onboarding actually consists of: the first 1:1, choosing first tasks, picking a buddy, and the equipment question most managers skip."
 tags:
   - software-development
   - team-management
@@ -84,7 +85,7 @@ The buddy is a fellow team/group member who is your go to guy for questions rega
 
 Choosing the right buddy is important, here are some tips:
 
-1. Understands the new colleague task into depth and can guide the different challenges that might occur.
+1. Understands the new colleague task into depth and can guide the different challenges that might occur. Most of what makes a good buddy is the same thing that makes a good mentor, which I wrote about separately in [10 tips for effective mentoring of junior developers](/posts/2023/effective-mentoring-junior-developers).
 2. Can communicate effectively and be an exemplary example.
 3. Has the potential to collaborate with them in the future.
 
@@ -98,7 +99,9 @@ In order to understand this, we need to be emphatic. Starting a new job is hard,
 
 The equipment is helping us give her a known settings, that way she can focus on what is really important. Getting used to new keyboard/IDE or even a chair can interrupt her efforts of dealing with all of the change.
 
-So, A week before your new team member joins up, send them a message ask them what equipment would they like? Do not limit them, let them build their small safe heaven.
+So, A week before your new team member joins up, send them a message ask them what equipment would they like? Do not limit them, let them build their small safe haven.
+
+If she is joining remotely, all of this gets harder and none of it gets less important. [Managing remote development teams](/posts/2023/manage-remote-development-teams) covers the parts that do not survive the move out of the office.
 
 ![The right tools for the job](/assets/img/2024/mastering-employee-onboarding/tools.jpg)
 
@@ -109,6 +112,16 @@ We can always do better, nothing is perfect. Whenever they become independent, a
 As leaders we should be aware of most of the issues already, we need to strive to solve them as fast as possible. This means most of the problems were fixed tactically.
 
 At the start of the onboarding create a retro board, share it with the new member and remind them to write everything that could have been better. **But do not forget**, this is not a replacement for you to be aware of those and solve them along the way.
+
+The retro is also the cheapest culture signal you will ever send. Someone in their second week finding out that the answer to "this was broken" is "thank you, we fixed it" learns more about the company than any onboarding deck will teach them. I wrote about what that actually means in [people first, company second](/posts/2026/people-first-company-second).
+
+## When Onboarding Is Not the Problem
+
+Sometimes you do all of this and it still goes badly. The tasks were refined, the buddy was right, the equipment arrived early, and three months in she is still waiting on someone else to unblock her.
+
+That is usually not an onboarding problem. It is ownership that was never clear, or a team that grew faster than the structure around it, or every decision still routing through one person. Onboarding is just where you notice it, because a new person walks straight into whatever is already broken and has no idea it is supposed to be that way.
+
+If that sounds familiar, working out which of those it actually is [is most of what I do](/services/fractional-vp-rnd).
 
 ## To Summarize
 
