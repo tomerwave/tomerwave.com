@@ -1,16 +1,19 @@
 import type { APIRoute } from "astro";
+import { SERVICES, servicePath } from "@/data/services";
 
 export const GET: APIRoute = async () => {
+  const serviceLines = SERVICES.map(
+    (service) =>
+      `- **[${service.pageHeading}](${servicePath(service.slug)})** — ${service.lede} ${service.offer.heading}.`
+  ).join("\n");
+
   const markdownContent = `# Tomer Gal — Technical strategy & hands-on execution
 
 I help teams and organizations make the technical calls that are easy to postpone and expensive to get wrong. Strategy when you need direction. Hands-on execution when you need things done.
 
 ## Four problems I get called about
 
-- **[R&D Advisory & Fractional VP R&D](/services/fractional-vp-rnd)** — Your team grew, but delivery got slower. I help figure out why, what actually needs to change, and what can wait. Start with an R&D Health Check.
-- **[Architecture & Technical Strategy](/services/architecture-review)** — A decision is coming that's hard to undo. A rewrite is often the wrong first move. Start with an Architecture Review.
-- **[AI & Automation](/services/ai-automation)** — Too much of the work is still manual. Not all of it should be automated. Start with an Opportunity Audit.
-- **[Technology Advisor](/services/technology-advisor)** — You don't need a full-time CTO. You need someone technical you can trust when making expensive technology decisions. Start with a Technology Assessment.
+${serviceLines}
 
 ## Track record
 

@@ -132,6 +132,7 @@ body:has(.business-site) { background: var(--business-paper); overflow-x: clip; 
 .business-footer-inner { align-items: center; display: flex; flex-wrap: wrap; gap: 1.25rem 2rem; justify-content: space-between; }
 .business-footer-identity { --tomerwave-signature-handle: var(--business-sage-deep); }
 .business-footer-links { align-items: center; color: var(--business-ink-45); display: flex; flex-wrap: wrap; font-size: .875rem; gap: .65rem; }
+.business-footer-links--wide { column-gap: 1.4rem; }
 .business-footer-link { border-bottom: 1px solid transparent; transition: border-color .25s ease, color .25s ease; }
 .business-footer-link:hover { border-color: var(--business-sage); color: var(--business-ink); }
 
@@ -216,4 +217,3 @@ body:has(.business-site) { background: var(--business-paper); overflow-x: clip; 
 .business-mode-service { margin-top: 1.4rem; }
 .business-mode-service .business-arrow { display: inline-block; }
 .business-mode-service a:hover .business-arrow { transform: translateX(4px); }
-.business-footer-nav { align-items: center; color: var(--business-ink-45); display: flex; flex-wrap: wrap; font-size: .875rem; gap: .65rem 1.4rem; }

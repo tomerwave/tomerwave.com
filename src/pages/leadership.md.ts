@@ -1,35 +1,24 @@
 import type { APIRoute } from "astro";
+import { SERVICES, servicePath } from "@/data/services";
 
 export const GET: APIRoute = async () => {
+  const serviceSections = SERVICES.map((service) =>
+    [
+      `## [${service.pageHeading}](${servicePath(service.slug)})`,
+      "",
+      service.routerBody,
+      "",
+      `**${service.offer.heading}.** ${service.offer.duration}.`,
+    ].join("\n")
+  ).join("\n\n");
+
   const markdownContent = `# How I work
 
 Strategy when you need direction. Hands-on execution when you need things done.
 
 Every engagement starts small and scoped, so you can see how I work before committing to anything larger.
 
-## [R&D Advisory & Fractional VP R&D](/services/fractional-vp-rnd)
-
-Your team grew, but delivery got slower. I help figure out why, what actually needs to change, and what can wait — as an advisor, or by taking the VP R&D seat part-time.
-
-**Start with:** an R&D Health Check. One to two weeks.
-
-## [Architecture & Technical Strategy](/services/architecture-review)
-
-A decision is coming that's hard to undo. Rewrite or refactor, build or buy, what ships first. A rewrite is often the wrong first move.
-
-**Start with:** an Architecture Review. A few days to two weeks.
-
-## [AI & Automation](/services/ai-automation)
-
-Too much of the work is still manual. Not all of it should be automated. I help find the parts that should be, then build them.
-
-**Start with:** an Opportunity Audit. Scoped per audit.
-
-## [Technology Advisor](/services/technology-advisor)
-
-For organizations without internal technical leadership. You don't need a full-time CTO. You need someone technical you can trust when making expensive technology decisions.
-
-**Start with:** a Technology Assessment. Scoped per organization.
+${serviceSections}
 
 ## Hands-on execution
 

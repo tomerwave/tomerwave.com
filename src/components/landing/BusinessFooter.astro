@@ -5,7 +5,7 @@ import { SERVICES, servicePath } from "@/data/services";
 <footer class="business-footer">
   <div class="business-wrap business-footer-inner">
     <TomerwaveSignature class="business-footer-identity" href="/" ariaLabel="Back to home" primary="var(--business-ink)" accent="var(--business-sage)" size="footer" />
-    <nav class="business-footer-nav" aria-label="Services">
+    <nav class="business-footer-links business-footer-links--wide" aria-label="Services">
       {SERVICES.map((service) => (
         <a class="business-footer-link" href={servicePath(service.slug)}>{service.shortName}</a>
       ))}
