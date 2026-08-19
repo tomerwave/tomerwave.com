@@ -1,0 +1,198 @@
+/* Service pages. Extends business.css — assumes the .business-site wrapper for tokens. */
+
+.service-page h2 { font-size: clamp(1.7rem, 1.1rem + 2.1vw, 2.55rem); max-width: 20ch; }
+.service-page .business-section { padding-block: clamp(2.75rem, 5.5vw, 4.75rem); }
+
+/* Hero */
+.service-hero { padding-block: clamp(2.5rem, 6vw, 5rem) clamp(2rem, 4vw, 3.25rem); }
+.service-hero .business-eyebrow { margin-bottom: 1.25rem; }
+.service-hero h1 {
+  font-optical-sizing: auto;
+  font-size: clamp(2rem, 1.15rem + 3.4vw, 3.85rem);
+  letter-spacing: -.018em;
+  line-height: 1.05;
+  margin-bottom: 1.4rem;
+  max-width: 17ch;
+  text-wrap: balance;
+}
+.service-lede {
+  color: var(--business-ink-70);
+  font-size: clamp(1.1rem, 1rem + .5vw, 1.35rem);
+  line-height: 1.5;
+  max-width: 44ch !important;
+}
+.service-hero .business-actions { justify-content: flex-start; margin-top: 2rem; }
+
+/* Who it's for */
+.service-who {
+  border-top: 1px solid var(--business-hair);
+  display: grid;
+  gap: .7rem 3rem;
+  padding-top: clamp(1.6rem, 3vw, 2.2rem);
+}
+.service-who dt {
+  color: var(--business-sage-deep);
+  font-family: var(--business-display);
+  font-size: 1.02rem;
+  font-style: italic;
+}
+.service-who dd { color: var(--business-ink-70); font-size: .985rem; max-width: 58ch; }
+
+/* Triggers */
+.service-triggers { display: grid; gap: 0; list-style: none; }
+.service-trigger {
+  align-items: baseline;
+  border-top: 1px solid var(--business-hair);
+  display: flex;
+  font-size: clamp(1.02rem, .97rem + .3vw, 1.18rem);
+  gap: 1rem;
+  padding-block: clamp(.95rem, 1.8vw, 1.25rem);
+}
+.service-triggers .service-trigger:last-child { border-bottom: 1px solid var(--business-hair); }
+.service-trigger::before {
+  background: var(--business-sage);
+  content: "";
+  flex: none;
+  height: 1px;
+  margin-top: .8em;
+  width: 18px;
+}
+.service-trigger-note { color: var(--business-ink-45); font-size: .92rem; margin-top: 1.4rem; }
+
+/* How I help */
+.service-help-grid { display: grid; gap: clamp(2rem, 4vw, 3.5rem); }
+.service-help-body p { color: var(--business-ink-70); font-size: 1rem; max-width: 56ch; }
+.service-help-body p + p { margin-top: 1.15rem; }
+.service-help-body strong { color: var(--business-ink); font-weight: 500; }
+.service-opinion {
+  border-left: 2px solid var(--business-sage);
+  font-family: var(--business-display);
+  font-size: clamp(1.25rem, 1rem + 1vw, 1.65rem);
+  font-style: italic;
+  letter-spacing: -.006em;
+  line-height: 1.32;
+  max-width: 26ch !important;
+  padding-left: clamp(1.1rem, 2vw, 1.6rem);
+}
+
+/* Entry offer */
+.service-offer { position: relative; z-index: 0; background: none; }
+.service-offer::before {
+  background: var(--business-paper-warm);
+  content: "";
+  inset: 0;
+  position: absolute;
+  transition: background-color .45s ease;
+  z-index: -1;
+}
+.service-offer-name {
+  color: var(--business-sage-deep);
+  font-family: var(--business-display);
+  font-size: 1.02rem;
+  font-style: italic;
+  margin-bottom: .85rem;
+}
+.service-offer-intro {
+  color: var(--business-ink-70);
+  font-size: clamp(1rem, .97rem + .28vw, 1.12rem);
+  margin-top: 1.4rem;
+  max-width: 54ch !important;
+}
+.service-offer-grid { display: grid; gap: clamp(2rem, 4vw, 3.25rem); margin-top: clamp(2.25rem, 4.5vw, 3.25rem); }
+.service-offer-label {
+  color: var(--business-ink-45);
+  font-family: var(--business-display);
+  font-size: .98rem;
+  font-style: italic;
+  margin-bottom: 1.1rem;
+}
+.service-list { display: grid; list-style: none; }
+.service-list li {
+  border-top: 1px solid var(--business-hair);
+  color: var(--business-ink-70);
+  font-size: .95rem;
+  padding-block: .7rem;
+}
+.service-list li:last-child { border-bottom: 1px solid var(--business-hair); }
+.service-list--deliverable li { color: var(--business-ink); font-size: .99rem; padding-block: .85rem; }
+
+.service-terms {
+  border-top: 1px solid var(--business-hair);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 3.5rem;
+  margin-top: clamp(2rem, 4vw, 2.75rem);
+  padding-top: 1.5rem;
+}
+.service-term dt {
+  color: var(--business-ink-45);
+  font-family: var(--business-display);
+  font-size: .95rem;
+  font-style: italic;
+  margin-bottom: .35rem;
+}
+.service-term dd { font-size: 1.05rem; }
+.service-pricing-note { color: var(--business-ink-45); font-size: .92rem; margin-top: 1.5rem; max-width: 52ch; }
+.service-offer .business-button { margin-top: 1.75rem; }
+
+/* What happens next */
+.service-next-body { color: var(--business-ink-70); font-size: 1rem; max-width: 56ch; }
+.service-next-note {
+  color: var(--business-ink-45);
+  font-family: var(--business-display);
+  font-size: 1.02rem;
+  font-style: italic;
+  margin-top: 1.25rem;
+  max-width: 44ch !important;
+}
+
+/* Writing picks */
+.service-writing-list { display: grid; }
+.service-pick {
+  border-top: 1px solid var(--business-hair);
+  display: block;
+  padding-block: clamp(1.15rem, 2.2vw, 1.6rem);
+  transition: color .25s ease;
+}
+/* No closing rule — a section rule follows immediately. */
+.service-pick-title {
+  display: block;
+  font-family: var(--business-display);
+  font-size: clamp(1.15rem, 1rem + .55vw, 1.4rem);
+  letter-spacing: -.008em;
+  line-height: 1.22;
+  max-width: 26ch;
+  transition: color .25s ease;
+}
+.service-pick:hover .service-pick-title { color: var(--business-sage-deep); }
+.service-pick-why { color: var(--business-ink-45); font-size: .93rem; margin-top: .5rem; max-width: 46ch; }
+
+/* Siblings + closing */
+.service-siblings { display: grid; gap: 0; }
+.service-sibling {
+  border-top: 1px solid var(--business-hair);
+  display: grid;
+  gap: .5rem;
+  padding-block: clamp(1.25rem, 2.4vw, 1.7rem);
+  transition: color .25s ease;
+}
+.service-siblings .service-sibling:last-child { border-bottom: 1px solid var(--business-hair); }
+.service-sibling-name {
+  font-family: var(--business-display);
+  font-size: clamp(1.2rem, 1rem + .6vw, 1.45rem);
+  letter-spacing: -.008em;
+  transition: color .25s ease;
+}
+.service-sibling:hover .service-sibling-name { color: var(--business-sage-deep); }
+.service-sibling-problem { color: var(--business-ink-70); font-size: .95rem; max-width: 46ch; }
+
+@media (min-width: 760px) {
+  .service-who { grid-template-columns: 12rem minmax(0, 1fr); }
+}
+@media (min-width: 880px) {
+  .service-help-grid { align-items: start; grid-template-columns: 1.25fr 1fr; }
+  .service-offer-grid { grid-template-columns: 1fr 1.15fr; }
+  .service-siblings { gap: 0 3rem; grid-template-columns: 1fr 1fr; }
+  .service-siblings .service-sibling:last-child { border-bottom: 0; }
+  .service-siblings .service-sibling { border-bottom: 0; }
+}

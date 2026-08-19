@@ -1,0 +1,258 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import BusinessContact from "@/components/landing/BusinessContact.astro";
+import BusinessFooter from "@/components/landing/BusinessFooter.astro";
+import SiteHeader, { type NavItem } from "@/components/SiteHeader.astro";
+import StructuredData from "@/components/StructuredData.astro";
+import { SITE } from "@/config";
+import { getService, SERVICES, type Service, servicePath } from "@/data/services";
+import Layout from "@/layouts/Layout.astro";
+import { getPath } from "@/utils/get-path";
+import "@/styles/business.css";
+import "@/styles/service.css";
+
+type BlogPost = CollectionEntry<"blog">;
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+
+  const resolvePicks = (service: Service) =>
+    service.writing
+      .map((pick) => ({ post: posts.find((entry) => entry.id === pick.postId), why: pick.why }))
+      .filter((pick): pick is { post: BlogPost; why: string } => Boolean(pick.post));
+
+  return SERVICES.map((service) => ({
+    params: { slug: service.slug },
+    props: {
+      service,
+      picks: resolvePicks(service),
+      siblings: service.siblings.map(getService).filter((sibling) => sibling !== undefined),
+    },
+  }));
+}
+
+const { service, picks, siblings } = Astro.props;
+
+const canonical = new URL(servicePath(service.slug), SITE.website).href;
+
+const navItems: NavItem[] = [
+  ...SERVICES.map((item) => ({
+    label: item.shortName,
+    href: servicePath(item.slug),
+    active: item.slug === service.slug,
+  })),
+  { label: "Writing", href: "/blog" },
+  { label: "Let’s talk", href: "/meet", cta: true },
+];
+---
+
+<Layout title={`${service.documentTitle} — Tomer Gal`} description={service.description}>
+  <div class="business-site service-page">
+    <StructuredData
+      type="Service"
+      data={{
+        name: service.documentTitle,
+        description: service.description,
+        url: canonical,
+        serviceType: service.serviceType,
+        offer: {
+          name: service.offer.name,
+          description: service.offer.intro,
+          anchor: service.offer.anchor,
+          duration: service.offer.duration,
+        },
+      }}
+    />
+    <SiteHeader
+      homeHref="/"
+      homeLabel="Tomer Gal home"
+      mainId="service-main"
+      navAriaLabel="Services navigation"
+      navItems={navItems}
+      variant="business"
+    />
+
+    <main id="service-main">
+      <section class="business-section service-hero">
+        <div class="business-wrap">
+          <span class="business-eyebrow">{service.eyebrow}</span>
+          <h1>{service.pageHeading}</h1>
+          <p class="service-lede">{service.lede}</p>
+          <div class="business-actions">
+            <a class="business-button" href={`#${service.offer.anchor}`}
+              >{service.offer.name} <span class="business-arrow" aria-hidden="true">↓</span></a
+            >
+            <a class="business-linkline" href="/meet">Or just book a call</a>
+          </div>
+          <dl class="service-who">
+            <dt>Who this is for</dt>
+            <dd>{service.who}</dd>
+          </dl>
+        </div>
+      </section>
+
+      <hr class="business-rule" />
+
+      <section class="business-section">
+        <div class="business-wrap">
+          <div class="business-section-head">
+            <div>
+              <span class="business-eyebrow">The reason people call</span>
+              <h2>This sounds familiar if…</h2>
+            </div>
+          </div>
+          <ul class="service-triggers">
+            {service.triggers.map((trigger) => <li class="service-trigger business-reveal">{trigger}</li>)}
+          </ul>
+          <p class="service-trigger-note">
+            One or two of these is normal. Four or five usually means the cause sits underneath all of them.
+          </p>
+        </div>
+      </section>
+
+      <hr class="business-rule" />
+
+      <section class="business-section">
+        <div class="business-wrap">
+          <div class="business-section-head">
+            <div>
+              <span class="business-eyebrow">How this works</span>
+              <h2>{service.help.heading}</h2>
+            </div>
+          </div>
+          <div class="service-help-grid">
+            <div class="service-help-body business-reveal">
+              {
+                service.help.body.map((paragraph) => (
+                  <p set:html={paragraph.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")} />
+                ))
+              }
+            </div>
+            <p class="service-opinion business-reveal">{service.help.opinion}</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="business-section service-offer" id={service.offer.anchor}>
+        <div class="business-wrap">
+          <p class="service-offer-name">{service.offer.name}</p>
+          <h2>{service.offer.heading}</h2>
+          <p class="service-offer-intro">{service.offer.intro}</p>
+
+          <div class="service-offer-grid">
+            <div class="business-reveal">
+              <p class="service-offer-label">{service.offer.looksAtLabel}</p>
+              <ul class="service-list">
+                {service.offer.looksAt.map((item) => <li>{item}</li>)}
+              </ul>
+            </div>
+            <div class="business-reveal">
+              <p class="service-offer-label">What you get back</p>
+              <ul class="service-list service-list--deliverable">
+                {service.offer.deliverable.map((item) => <li>{item}</li>)}
+              </ul>
+            </div>
+          </div>
+
+          <dl class="service-terms">
+            <div class="service-term">
+              <dt>How long</dt>
+              <dd>{service.offer.duration}</dd>
+            </div>
+            <div class="service-term">
+              <dt>Language</dt>
+              <dd>English or Hebrew</dd>
+            </div>
+            <div class="service-term">
+              <dt>Where</dt>
+              <dd>Tel Aviv, or remote</dd>
+            </div>
+          </dl>
+          <p class="service-pricing-note">{service.offer.pricingNote}</p>
+          <a class="business-button" href="/meet"
+            >Start with a conversation <span class="business-arrow" aria-hidden="true">→</span></a
+          >
+        </div>
+      </section>
+
+      <hr class="business-rule" />
+
+      <section class="business-section">
+        <div class="business-wrap">
+          <div class="business-section-head">
+            <div>
+              <span class="business-eyebrow">After that</span>
+              <h2>Where this usually goes.</h2>
+            </div>
+          </div>
+          <div class="business-reveal">
+            <p class="service-next-body">{service.next.body}</p>
+            {service.next.note && <p class="service-next-note">{service.next.note}</p>}
+          </div>
+        </div>
+      </section>
+
+      <hr class="business-rule" />
+
+      {
+        picks.length > 0 && (
+          <section class="business-section">
+            <div class="business-wrap">
+              <div class="business-section-head">
+                <div>
+                  <span class="business-eyebrow">Off the clock</span>
+                  <h2>I've written about this.</h2>
+                </div>
+                <p class="business-section-intro">
+                  Not marketing pieces. Just the parts I was still thinking about after work.
+                </p>
+              </div>
+              <div class="service-writing-list">
+                {picks.map(({ post, why }) => (
+                  <a class="service-pick business-reveal" href={getPath(post.id, post.filePath)}>
+                    <span class="service-pick-title">{post.data.title}</span>
+                    <span class="service-pick-why">{why}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </section>
+        )
+      }
+
+      <hr class="business-rule" />
+
+      <section class="business-section">
+        <div class="business-wrap">
+          <div class="business-section-head">
+            <div>
+              <span class="business-eyebrow">Not quite it?</span>
+              <h2>Two other things I get called about.</h2>
+            </div>
+          </div>
+          <div class="service-siblings">
+            {
+              siblings.map((sibling) => (
+                <a class="service-sibling business-reveal" href={servicePath(sibling.slug)}>
+                  <span class="service-sibling-name">{sibling.shortName}</span>
+                  <span class="service-sibling-problem">{sibling.routerProblem}</span>
+                </a>
+              ))
+            }
+          </div>
+          <p class="service-trigger-note">
+            <a class="business-linkline" href="/#services">All four, and where they overlap</a>
+          </p>
+        </div>
+      </section>
+
+      <BusinessContact
+        heading="Tell me what's going on."
+        note="A few sentences is plenty. What's happening, roughly how big the team or organization is, and the thing you'd fix first if you had the time."
+      />
+    </main>
+
+    <BusinessFooter />
+  </div>
+</Layout>
+
