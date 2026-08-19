@@ -119,7 +119,7 @@ This list matters as much as the other one, and it is where I would be suspiciou
 
 ## How to tell two candidates apart
 
-If you are interviewing for this and both people sounded the same, they probably said the same words. Clarity, velocity, healthy engineering culture. Those words are free. Here are five questions where the answers actually diverge, and what you are listening for.
+If you are interviewing for this and both people sounded the same, they probably said the same words. Clarity, velocity, healthy engineering culture. Those words are free. Here are four questions where the answers actually diverge, and what you are listening for.
 
 ### What will you change in the first month?
 
@@ -137,10 +137,6 @@ Then ask the question that actually separates people: what do you do differently
 
 They should be able to describe the sections without hesitating, because they have written it many times. Ask specifically whether it contains a list of things they could not find out. Everybody's does, and only the honest ones say so before you ask.
 
-### Tell me about a time you got it wrong in the first month.
-
-The single most useful question here. Anyone who has done this more than twice has misread a room, proposed something that landed badly, or diagnosed the wrong cause and had to say so. An answer that is really a success story with a modest opening is the answer to be careful with.
-
 ### What would make you tell me not to hire you?
 
 They should have a real list, and it should come quickly, because they have turned work down. If they cannot name a situation where they are the wrong purchase, they are selling rather than diagnosing.
@@ -149,7 +145,7 @@ One more thing to check, and it decides more than the answers do.
 
 Notice whether they ask you questions back. The good ones are reluctant to commit to anything before they have seen the team, and slightly more interested in your problem than in their method. It is the only item here you can score from memory of a call you have already had.
 
-And one caveat about all six, which usually goes unsaid. These questions are on the open internet, so assume any candidate who prepared properly has read them and arrives with answers ready. That is not a reason to drop them, it is a reason to know which survive preparation. Two do: the failure story, because it requires something to have actually happened, and the one directly above, because it is not a question at all.
+And one caveat about all five, which usually goes unsaid. These questions are on the open internet, so assume any candidate who prepared properly has read them and arrives with answers ready. That is not a reason to drop them, it is a reason to know what survives preparation, and it is not the questions. It is the follow-ups: what specifically would make you change that by week three, and what do you do differently when somebody is guarded. Neither of those is scripted, and both need the person to have done the work rather than read about it. The last thing on this page survives outright, because it is not a question at all.
 
 ---
 

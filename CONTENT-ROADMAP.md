@@ -28,19 +28,6 @@ Plus five older posts retrofitted with a service link, a CTA and a real descript
 
 ---
 
-## Owed on a live post
-
-**Post 09 asks a question it never answers.** It tells the reader that the most useful thing to ask a
-fractional candidate is *tell me about a time you got it wrong in the first month*, and warns them
-about the answer that is really a success story with a modest opening. The article does not answer it
-about me.
-
-One paragraph, straight after the existing line in week three about the room going politely quiet.
-Nobody else can write it. Until it exists, the sharpest section in that article sets a standard it
-does not meet.
-
----
-
 ## Wave 3
 
 ### 11. When Should You Break Up a Monolith?
@@ -149,4 +136,3 @@ through it. Applies hardest to 15.
 - Search Console: verify, submit `/sitemap-index.xml`.
 - godlint branch rule is permanently red on main. Branch and PR, or change the rule.
 - Attribution option (c): tracking stops at the booking click. Needs an email service chosen.
-- One real detail for the cut line in 05, optional.
