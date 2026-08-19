@@ -1,7 +1,8 @@
 ---
 title: "How to Effectively Manage Remote Development Teams"
 pubDatetime: 2023-03-11T12:00:00+03:00
-description: "Managing remote development teams can be a daunting task, but it is becoming increasingly critical in today's digital world. Learn the best practices for effectively managing remote teams."
+modDatetime: 2026-08-19T12:00:00+03:00
+description: "Remote does not break a team. It removes the accidental communication that was covering for unclear ownership. Six practices, and how to tell the difference."
 tags:
   - remote-work
   - team-management
@@ -19,6 +20,8 @@ Managing remote development teams can be a daunting task, but it is becoming inc
 
 Clear communication is essential for managing remote development teams. It is imperative to establish clear communication channels, such as instant messaging, video conferencing, and project management software. Ensure the entire team is familiar with the communication tools and encourage them to use them regularly. Regular communication helps build trust, ensures everyone is on the same page, and reduces misunderstandings.
 
+The tools are the easy half. The harder half is the set of habits underneath them, which I went through separately in [five people skills for leading a team in a tech startup](/posts/2023/leadership-people-skills-tech-startup).
+
 ## 2. Set Clear Expectations
 
 Setting clear expectations is key to managing remote development teams. This includes defining project timelines, goals, and performance expectations. Make sure everyone on the team understands their roles and responsibilities, as well as the overall project objectives. Clear expectations help to keep everyone focused and motivated and ensure that the project is completed on time and to a high standard.
@@ -26,6 +29,8 @@ Setting clear expectations is key to managing remote development teams. This inc
 ## 3. Trust Your Team
 
 Trust is an essential element of managing remote development teams. Trust your team to work independently and take ownership of their work. Avoid micromanaging, and instead, focus on setting clear expectations and providing the necessary resources and support. Trusting your team helps to build a positive team culture, fosters creativity and innovation, and increases productivity.
+
+Trust is also the part that does not survive being announced. You can say it in an all-hands as often as you like; what people actually read is whether the person who raised a problem got helped or got managed. I wrote about what that looks like in practice in [people first, company second](/posts/2026/people-first-company-second).
 
 ## 4. Foster Collaboration
 
@@ -38,6 +43,18 @@ Providing regular feedback is vital for managing remote development teams. Feedb
 ## 6. Invest in the Right Tools
 
 Investing in the right tools is critical to managing remote development teams. This includes project management software, collaboration tools, and communication tools. Make sure that the tools you choose are easy to use, reliable, and secure. Investing in the right tools helps to ensure that the team can work efficiently and effectively, regardless of their location.
+
+None of it matters more than in someone's first two weeks, when they have no context to fall back on and nobody to turn to at the next desk. [Onboarding](/posts/2024/mastering-employee-onboarding) is where remote either works or quietly does not.
+
+---
+
+## When Remote Is Not the Problem
+
+Remote gets blamed for a lot of things it did not cause.
+
+What remote actually removes is the accidental communication — the overheard question, the corridor correction, the person who noticed you were stuck because they could see you were stuck. If ownership was already unclear, if too much routed through one person, if nobody could say who decided what, that was all true in the office. It was just being covered for, for free, by proximity.
+
+So when delivery gets slower after a team goes remote, the useful question is not how to recreate the office. It is which of those things was being propped up, and whether you want to keep propping it up or fix it. That question is [most of what I get called in for](/services/fractional-vp-rnd).
 
 ---
 

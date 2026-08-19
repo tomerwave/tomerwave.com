@@ -1,7 +1,8 @@
 ---
 title: "From Code to Business: Why Generic Isn't Always the Answer"
 pubDatetime: 2025-02-15T12:00:00+03:00
-description: "When building software or starting a company, it's tempting to go broad. While this approach feels efficient, it can often backfire. Whether it's developers overusing generics or startups failing to find a niche, the lesson remains the same: focus on solving one problem well."
+modDatetime: 2026-08-19T12:00:00+03:00
+description: "The interface that unified four integrations, and the startup that served every industry, are the same mistake. How to spot premature abstraction early."
 tags:
   - software-engineering
   - startup
@@ -68,6 +69,8 @@ In one of my startups, we targeted every team across industries. From customer s
 
 Once we pivoted to focus on a single niche — legal teams — we saw exponential growth. By understanding one audience deeply and solving their problems completely, we became the go-to solution in that field.
 
+I have also been on the other side of that, spending a year building something broad enough that nobody recognised themselves in it. That one is written up in [the year we spent convincing ourselves](/posts/2026/the-year-we-spent-convincing-ourselves).
+
 ### The Parallel with Generics in Code
 
 Both cases start from the same motivation: **maximizing impact with minimal effort.** But just like building wealth, the best approach is incremental. Start small, excel in one area, and expand gradually.
@@ -91,7 +94,7 @@ The key is timing. Build specificity first to ensure stability, then expand when
 
 1. **Unrelated Behaviors in One Template:** Are you grouping things together simply because they share a category name?
 2. **Decreased Performance:** Does your abstraction lead to runtime errors or inefficient processing?
-3. **Hard-to-Read Code:** If new developers can't understand your implementation without a PhD in over-engineering, it's time to simplify.
+3. **Hard-to-Read Code:** If new developers can't understand your implementation without a PhD in over-engineering, it's time to simplify. This one shows up fastest in [onboarding](/posts/2024/mastering-employee-onboarding) — a new hire is the only person on the team who cannot route around your abstraction out of habit.
 
 ### In Startups
 
@@ -109,6 +112,10 @@ Whether you're a developer or an aspiring founder, the lesson is the same: **foc
 
 ---
 
-## Call to Action
+## What to Do When It's Already Built
 
-Think about your codebase or business idea. Are you overcomplicating in the name of efficiency? Challenge yourself to strip away the excess, focus on what truly matters, and let simplicity guide you to success.
+The advice above is easy while the abstraction is still a pull request. It is much harder two years in, when four teams depend on it and the person who wrote it has left.
+
+At that point the question stops being whether it was a good idea and becomes narrower and more useful: is this costing you delivery time right now, is it costing you reliability, or is it just ugly? Those get very different answers, and only one of them is worth stopping the roadmap for. Ugly and stable can wait, sometimes for years.
+
+Working out which one you actually have — and what the smallest change is that fixes it — is what an [architecture review](/services/architecture-review) is for.

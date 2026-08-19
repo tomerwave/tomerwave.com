@@ -2,7 +2,7 @@
 title: "Mastering Employee Onboarding: Strategies for a Smooth Start"
 pubDatetime: 2024-07-19T12:00:00+03:00
 modDatetime: 2026-08-19T12:00:00+03:00
-description: "Hiring took weeks. Now she starts on Monday and nobody has decided what her first task is. What a good developer onboarding actually consists of: the first 1:1, choosing first tasks, picking a buddy, and the equipment question most managers skip."
+description: "Hiring took weeks. She starts Monday and nobody has picked her first task. What developer onboarding actually needs: the first 1:1, first tasks, a buddy."
 tags:
   - software-development
   - team-management

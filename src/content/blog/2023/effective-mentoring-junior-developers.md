@@ -1,7 +1,8 @@
 ---
 title: "10 Tips for Effective Mentoring of Junior Developers"
 pubDatetime: 2023-03-09T12:00:00+03:00
-description: "Mentoring junior developers is a critical task for experienced software engineers. It is a rewarding experience that not only benefits the mentee but also helps the mentor enhance their own skills."
+modDatetime: 2026-08-19T12:00:00+03:00
+description: "Ten things that make mentoring a junior developer work, and the point where more mentoring stops being the answer to a seniority gap you have not hired for."
 tags:
   - mentoring
   - developers
@@ -31,6 +32,8 @@ Leading by example is an excellent way to show junior developers what exemplary 
 
 As a mentor, it is key to encourage junior developers to continue learning and expanding their skillset. You should recommend relevant books, online courses, and resources that can help them grow as developers. You can also encourage them to attend conferences and meetups to learn from other developers.
 
+Most of this lands or fails in the first few weeks, before anyone has decided whether asking you a question is safe. That window is [onboarding](/posts/2024/mastering-employee-onboarding), and it is the same job under a different name.
+
 ## 5. Be Patient and Supportive
 
 Mentoring can be a challenging task, but it is important to be patient and supportive throughout the process. Junior developers may make mistakes, and it is necessary to provide guidance and support rather than criticizing them. It is also a necessity to be available to answer questions and provide help when needed.
@@ -43,6 +46,8 @@ It is critical to celebrate the successes of junior developers. This will help b
 
 Mentoring is not just about imparting knowledge but also about listening to your mentee's concerns and challenges. Give them your full attention, ask questions, and actively listen to their responses. This will help you understand their thought process and provide better guidance.
 
+If any of this is happening over video rather than at the next desk, it needs deliberate scheduling rather than goodwill — see [managing remote development teams](/posts/2023/manage-remote-development-teams).
+
 ## 8. Share Your Experiences and Knowledge
 
 One of the most significant aspects of being a mentor is providing your experiences and knowledge to junior developers. You should be open and willing to share your insights, tips, and best practices that you have learned throughout your career. By sharing your experiences, you can help junior developers to avoid common pitfalls and mistakes, and guide them towards best practices and effective approaches.
@@ -54,6 +59,14 @@ As a mentor, it is critical to set realistic expectations for junior developers.
 ## 10. Focus on Soft Skills
 
 In addition to technical skills, it is also imperative to focus on developing soft skills such as communication, teamwork, and problem-solving. These skills are essential for success in any career, and junior developers can benefit greatly from developing them. You can provide opportunities for junior developers to practice these skills by assigning group projects or encouraging them to participate in team meetings.
+
+## When Mentoring Is Covering for Something Else
+
+All ten of these assume the mentoring is the right tool. Sometimes it is not.
+
+If one senior person is mentoring four juniors and is also the reviewer on everything, the bottleneck on every decision, and the only person who understands the deployment, then no amount of good mentoring fixes that. The team does not have a mentoring problem. It has a seniority gap that somebody has been quietly absorbing, usually the person who is best at it and least likely to complain.
+
+The tell is simple: mentoring that keeps working but never ends. Juniors who have been mentored for eighteen months and still cannot ship a change without the same person looking at it are not being mentored, they are being carried. That is a hiring and structure question, and it is one of the things I look at in an [R&D health check](/services/fractional-vp-rnd).
 
 ## To Conclude
 
