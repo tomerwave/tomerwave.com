@@ -74,9 +74,16 @@
   text-align: right;
   top: 50%;
   transform: translateY(-50%);
+  /* A halo in the page colour rather than a filled chip: the label now stays up
+     while you scroll, and at narrower widths it can graze a card title on its
+     way past. This keeps it readable there without drawing a box around it. */
+  text-shadow: 0 0 7px var(--business-paper), 0 0 4px var(--business-paper), 0 0 2px var(--business-paper);
   transition: opacity .3s ease;
   white-space: nowrap;
 }
+/* The label for the section you are in stays up, so the rail says where you
+   are rather than only what you point at. */
+.route-piece[data-current] .route-label,
 .route-piece:hover .route-label,
 .route-piece:focus-visible .route-label { opacity: 1; }
 .route-reader {
@@ -90,9 +97,6 @@
 
 @media (min-width: 1180px) {
   .route { display: block; }
-}
-@media (min-width: 1500px) {
-  .route-piece[data-current] .route-label { opacity: 1; }
 }
 @media (prefers-reduced-motion: reduce) {
   .route-climber, .route-piece::before, .route-label { transition: none; }

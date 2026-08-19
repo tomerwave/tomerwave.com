@@ -49,9 +49,10 @@ body:has(.business-site) { background: var(--business-paper); overflow-x: clip; 
      and the eye reads that slope change as a line even though the colour is
      continuous. Ramping opacity across the whole upper half removes the point
      where the water can be said to begin. The stops approximate an ease so the
-     ramp itself has no kink either. */
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, .04) 12%, rgba(0, 0, 0, .14) 24%, rgba(0, 0, 0, .32) 34%, rgba(0, 0, 0, .58) 44%, rgba(0, 0, 0, .82) 53%, #000 64%);
-  mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, .04) 12%, rgba(0, 0, 0, .14) 24%, rgba(0, 0, 0, .32) 34%, rgba(0, 0, 0, .58) 44%, rgba(0, 0, 0, .82) 53%, #000 64%);
+     ramp itself has no kink either. The tail does the same at the bottom, so
+     the sand thins out into the gap rather than ending as a band. */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, .04) 12%, rgba(0, 0, 0, .14) 24%, rgba(0, 0, 0, .32) 34%, rgba(0, 0, 0, .58) 44%, rgba(0, 0, 0, .82) 53%, #000 66%, rgba(0, 0, 0, .78) 82%, rgba(0, 0, 0, .42) 92%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, .04) 12%, rgba(0, 0, 0, .14) 24%, rgba(0, 0, 0, .32) 34%, rgba(0, 0, 0, .58) 44%, rgba(0, 0, 0, .82) 53%, #000 66%, rgba(0, 0, 0, .78) 82%, rgba(0, 0, 0, .42) 92%, transparent 100%);
 }
 .business-hero-copy { margin-inline: auto; max-width: 52rem; padding-inline: var(--business-gutter); position: relative; z-index: 1; }
 .business-hero .business-eyebrow { margin-bottom: 1.4rem; }
