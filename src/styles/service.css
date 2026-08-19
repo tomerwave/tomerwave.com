@@ -196,3 +196,11 @@
   .service-siblings .service-sibling:last-child { border-bottom: 0; }
   .service-siblings .service-sibling { border-bottom: 0; }
 }
+
+.service-pick-date { color: var(--business-ink-45); display: block; font-family: var(--business-display); font-size: .88rem; font-style: italic; margin-bottom: .3rem; }
+.service-more { margin-top: .25rem; }
+.service-more summary { color: var(--business-ink-70); cursor: pointer; font-size: .92rem; list-style: none; padding-block: .9rem; transition: color .25s ease; }
+.service-more summary::-webkit-details-marker { display: none; }
+.service-more summary:hover { color: var(--business-ink); }
+.service-more[open] .service-more-open, .service-more:not([open]) .service-more-close { display: none; }
+.service-more .service-writing-list { border-top: 1px solid var(--business-hair); }

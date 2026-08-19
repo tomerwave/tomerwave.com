@@ -9,6 +9,7 @@ import { SITE } from "@/config";
 import { getService, SERVICES, type Service, servicePath } from "@/data/services";
 import Layout from "@/layouts/Layout.astro";
 import { getPath } from "@/utils/get-path";
+import getSortedPosts from "@/utils/get-sorted-posts";
 import "@/styles/business.css";
 import "@/styles/route.css";
 import "@/styles/service.css";
@@ -16,12 +17,14 @@ import "@/styles/service.css";
 type BlogPost = CollectionEntry<"blog">;
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog");
+  const sorted = getSortedPosts(await getCollection("blog"));
 
-  const resolvePicks = (service: Service) =>
-    service.writing
-      .map((pick) => ({ post: posts.find((entry) => entry.id === pick.postId), why: pick.why }))
-      .filter((pick): pick is { post: BlogPost; why: string } => Boolean(pick.post));
+  const resolvePicks = (service: Service) => {
+    const annotation = new Map(service.writing.map((pick) => [pick.postId, pick.why]));
+    return sorted
+      .filter((post) => (post.body ?? "").includes(servicePath(service.slug)))
+      .map((post) => ({ post, why: annotation.get(post.id) ?? "" }));
+  };
 
   return SERVICES.map((service) => ({
     params: { slug: service.slug },
@@ -32,6 +35,10 @@ export async function getStaticPaths() {
     },
   }));
 }
+
+const VISIBLE_PICKS = 3;
+const formatDate = (value: Date) =>
+  new Intl.DateTimeFormat("en", { month: "short", year: "numeric" }).format(value);
 
 const { service, picks, siblings } = Astro.props;
 
@@ -221,13 +228,34 @@ const navItems: NavItem[] = [
                 </p>
               </div>
               <div class="service-writing-list">
-                {picks.map(({ post, why }) => (
+                {picks.slice(0, VISIBLE_PICKS).map(({ post, why }) => (
                   <a class="service-pick business-reveal" href={getPath(post.id, post.filePath)}>
+                    <span class="service-pick-date">{formatDate(post.data.pubDatetime)}</span>
                     <span class="service-pick-title">{post.data.title}</span>
-                    <span class="service-pick-why">{why}</span>
+                    <span class="service-pick-why">{why || post.data.description}</span>
                   </a>
                 ))}
               </div>
+              {picks.length > VISIBLE_PICKS && (
+                <details class="service-more">
+                  <summary>
+                    <span class="service-more-open">Show {picks.length - VISIBLE_PICKS} more</span>
+                    <span class="service-more-close">Show fewer</span>
+                  </summary>
+                  <div class="service-writing-list">
+                    {picks.slice(VISIBLE_PICKS).map(({ post, why }) => (
+                      <a class="service-pick" href={getPath(post.id, post.filePath)}>
+                        <span class="service-pick-date">{formatDate(post.data.pubDatetime)}</span>
+                        <span class="service-pick-title">{post.data.title}</span>
+                        <span class="service-pick-why">{why || post.data.description}</span>
+                      </a>
+                    ))}
+                  </div>
+                </details>
+              )}
+              <p class="service-trigger-note">
+                <a class="business-linkline" href="/blog">All of the writing <span class="business-arrow" aria-hidden="true">→</span></a>
+              </p>
             </div>
           </section>
         )
