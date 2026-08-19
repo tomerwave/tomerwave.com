@@ -1,12 +1,12 @@
 .personal-blog {
-  --blog-paper: #faf6ef;
-  --blog-warm: #f3ede2;
-  --blog-ink: #2b3138;
-  --blog-muted: color-mix(in srgb, var(--blog-ink) 72%, transparent);
-  --blog-faint: color-mix(in srgb, var(--blog-ink) 46%, transparent);
-  --blog-sage: #8fa396;
-  --blog-sage-deep: #6e8478;
-  --blog-hair: color-mix(in srgb, var(--blog-ink) 15%, transparent);
+  --blog-paper: var(--surface);
+  --blog-warm: var(--surface-warm);
+  --blog-ink: var(--text);
+  --blog-muted: var(--text-muted);
+  --blog-faint: var(--text-faint);
+  --blog-sage: var(--sage);
+  --blog-sage-deep: var(--sage-deep);
+  --blog-hair: var(--hairline);
   --blog-display: "Fraunces", Georgia, serif;
   --blog-body: "Instrument Sans", system-ui, sans-serif;
   --blog-gutter: clamp(1.5rem, 5vw, 5.5rem);
@@ -17,17 +17,6 @@
   line-height: 1.62;
   min-height: 100svh;
   transition: background-color .35s ease, color .35s ease;
-}
-
-html[data-theme="dark"] .personal-blog {
-  --blog-paper: #15181a;
-  --blog-warm: #1d2124;
-  --blog-ink: #e9e3d6;
-  --blog-muted: color-mix(in srgb, var(--blog-ink) 74%, transparent);
-  --blog-faint: color-mix(in srgb, var(--blog-ink) 46%, transparent);
-  --blog-sage: #a2b7a9;
-  --blog-sage-deep: #a9bdb1;
-  --blog-hair: color-mix(in srgb, var(--blog-ink) 14%, transparent);
 }
 
 .personal-blog *, .personal-blog *::before, .personal-blog *::after { box-sizing: border-box; }

@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./palette.css";
 @import "./header.css";
 
 /* Fallback for anchor jumps when JS is unavailable — see src/scripts/anchor-scroll.ts. */
@@ -9,19 +10,11 @@ html { scroll-padding-top: 5.5rem; }
 
 :root,
 html[data-theme="light"] {
-  --background: #faf6ef;
-  --foreground: #2b3138;
-  --accent: #6e8478;
-  --muted: #f3ede2;
-  --border: color-mix(in srgb, #2b3138 15%, transparent);
-}
-
-html[data-theme="dark"] {
-  --background: #15181a;
-  --foreground: #e9e3d6;
-  --accent: #a9bdb1;
-  --muted: #1d2124;
-  --border: color-mix(in srgb, #e9e3d6 14%, transparent);
+  --background: var(--surface);
+  --foreground: var(--text);
+  --accent: var(--sage-deep);
+  --muted: var(--surface-warm);
+  --border: var(--hairline);
 }
 
 @theme {

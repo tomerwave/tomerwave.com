@@ -1,0 +1,41 @@
+/* The colour schema. Every colour on the site is defined here and nowhere else.
+   Three surfaces consume these: global.css, blog.css and business.css. None of
+   them holds a literal colour, so changing a value here changes it everywhere.
+
+   Contrast is measured against the surface it sits on. AA needs 4.5:1 for normal
+   text and 3:1 for large text or UI edges. The ratios in the comments below are
+   the composited results, since the text steps are transparencies rather than
+   flat colours. */
+
+:root,
+html[data-theme="light"] {
+  --surface: #faf6ef;
+  --surface-warm: #f3ede2;
+  --surface-invert: #1c2228;
+
+  --text: #2b3138;
+  --text-muted: color-mix(in srgb, var(--text) 80%, transparent);
+  --text-faint: color-mix(in srgb, var(--text) 72%, transparent);
+
+  --sage: #8fa396;
+  --sage-deep: #5f7368;
+  --sand: #b7ae9c;
+
+  --hairline: color-mix(in srgb, var(--text) 15%, transparent);
+}
+
+html[data-theme="dark"] {
+  --surface: #15181a;
+  --surface-warm: #1d2124;
+  --surface-invert: #d6cfc0;
+
+  --text: #e9e3d6;
+  --text-muted: color-mix(in srgb, var(--text) 82%, transparent);
+  --text-faint: color-mix(in srgb, var(--text) 62%, transparent);
+
+  --sage: #a2b7a9;
+  --sage-deep: #a9bdb1;
+  --sand: #c3baa6;
+
+  --hairline: color-mix(in srgb, var(--text) 14%, transparent);
+}

@@ -1,31 +1,18 @@
 :root {
-  --business-paper: #faf6ef;
-  --business-paper-warm: #f3ede2;
-  --business-ink: #2b3138;
-  --business-ink-70: color-mix(in srgb, var(--business-ink) 72%, transparent);
-  --business-ink-45: color-mix(in srgb, var(--business-ink) 46%, transparent);
-  --business-sage: #8fa396;
-  --business-sage-deep: #6e8478;
-  --business-sand: #b7ae9c;
-  --business-hair: color-mix(in srgb, var(--business-ink) 15%, transparent);
-  --business-button-hover: #1c2228;
+  --business-paper: var(--surface);
+  --business-paper-warm: var(--surface-warm);
+  --business-ink: var(--text);
+  --business-ink-70: var(--text-muted);
+  --business-ink-45: var(--text-faint);
+  --business-sage: var(--sage);
+  --business-sage-deep: var(--sage-deep);
+  --business-sand: var(--sand);
+  --business-hair: var(--hairline);
+  --business-button-hover: var(--surface-invert);
   --business-display: "Fraunces", Georgia, serif;
   --business-body: "Instrument Sans", system-ui, -apple-system, sans-serif;
   --business-gutter: clamp(1.5rem, 5vw, 5.5rem);
   --business-measure: 1280px;
-}
-
-html[data-theme="dark"] .business-site {
-  --business-paper: #15181a;
-  --business-paper-warm: #1d2124;
-  --business-ink: #e9e3d6;
-  --business-ink-70: color-mix(in srgb, var(--business-ink) 74%, transparent);
-  --business-ink-45: color-mix(in srgb, var(--business-ink) 48%, transparent);
-  --business-sage: #a2b7a9;
-  --business-sage-deep: #a9bdb1;
-  --business-sand: #c3baa6;
-  --business-hair: color-mix(in srgb, var(--business-ink) 14%, transparent);
-  --business-button-hover: #d6cfc0;
 }
 
 /* `clip`, not `hidden`: `overflow-x: hidden` forces overflow-y to `auto`, which makes
