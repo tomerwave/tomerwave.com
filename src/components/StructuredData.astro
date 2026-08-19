@@ -1,6 +1,6 @@
 ---
 export interface Props {
-  type: "BlogPosting" | "Person" | "WebSite";
+  type: "BlogPosting" | "Person" | "Service" | "WebSite";
   data: any;
 }
 
@@ -54,6 +54,42 @@ if (type === "BlogPosting") {
     jobTitle: "Fractional VP of R&D and Software Engineer",
     description:
       "Tomer Gal works with founder-led startups and writes honestly about work, ambition, love, family, and everything underneath.",
+  };
+} else if (type === "Service") {
+  structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: data.name,
+    description: data.description,
+    url: data.url,
+    serviceType: data.serviceType,
+    provider: {
+      "@type": "Person",
+      name: "Tomer Gal",
+      url: "https://tomerwave.com",
+      jobTitle: "Fractional VP of R&D and Software Engineer",
+    },
+    areaServed: [
+      { "@type": "Country", name: "Israel" },
+      { "@type": "AdministrativeArea", name: "Remote, worldwide" },
+    ],
+    availableLanguage: ["English", "Hebrew"],
+    ...(data.offer && {
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: `${data.name} — how to start`,
+        itemListElement: [
+          {
+            "@type": "Offer",
+            name: data.offer.name,
+            description: data.offer.description,
+            url: `${data.url}#${data.offer.anchor}`,
+            category: "Entry engagement",
+            ...(data.offer.duration && { eligibleDuration: data.offer.duration }),
+          },
+        ],
+      },
+    }),
   };
 } else if (type === "WebSite") {
   structuredData = {
