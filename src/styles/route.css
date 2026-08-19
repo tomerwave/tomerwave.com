@@ -70,7 +70,7 @@
   font-style: italic;
   opacity: 0;
   position: absolute;
-  right: 26px;
+  right: 34px; /* clear of the pitch tick, so the label never touches the line */
   text-align: right;
   top: 50%;
   transform: translateY(-50%);
