@@ -88,22 +88,36 @@ const createStage = (canvas: HTMLCanvasElement) => {
   return { render, remeasure };
 };
 
-const animate = (render: (elapsed: number) => void, signal: AbortSignal) => {
+const animate = (
+  canvas: HTMLCanvasElement,
+  render: (elapsed: number) => void,
+  signal: AbortSignal
+) => {
   const started = performance.now();
+  let running = false;
+
   const tick = (now: number) => {
     render(now - started);
     frame = window.requestAnimationFrame(tick);
   };
-  frame = window.requestAnimationFrame(tick);
 
-  document.addEventListener(
-    "visibilitychange",
-    () => {
-      window.cancelAnimationFrame(frame);
-      if (!document.hidden) frame = window.requestAnimationFrame(tick);
-    },
-    { signal }
+  const setRunning = (next: boolean) => {
+    if (next === running) return;
+    running = next;
+    window.cancelAnimationFrame(frame);
+    if (next) frame = window.requestAnimationFrame(tick);
+  };
+
+  setRunning(true);
+  document.addEventListener("visibilitychange", () => setRunning(!document.hidden), { signal });
+
+  if (!("IntersectionObserver" in window)) return;
+  const observer = new IntersectionObserver(
+    ([entry]) => setRunning(entry.isIntersecting && !document.hidden),
+    { threshold: 0 }
   );
+  observer.observe(canvas);
+  signal.addEventListener("abort", () => observer.disconnect());
 };
 
 const watchLayout = (remeasure: () => void, signal: AbortSignal) => {
@@ -130,7 +144,7 @@ export function initHeroHalves() {
   const stage = createStage(canvas);
 
   if (prefersReducedMotion()) stage.render(SETTLED_MS);
-  else animate(stage.render, controller.signal);
+  else animate(canvas, stage.render, controller.signal);
 
   watchLayout(stage.remeasure, controller.signal);
 }

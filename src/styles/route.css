@@ -23,10 +23,11 @@
   height: 7px;
   left: 22px;
   position: absolute;
-  top: 8%;
+  top: 0;
   transform: translate(-50%, -50%);
-  transition: top .14s linear;
+  transition: transform .14s linear;
   width: 7px;
+  will-change: transform;
   z-index: 2;
 }
 .route-piece {
@@ -41,26 +42,25 @@
 .route-piece::before {
   background: var(--business-ink);
   content: "";
-  height: 1.4px;
-  left: 16px;
+  height: 1.6px;
+  left: 12px;
   opacity: .18;
   position: absolute;
   top: 50%;
-  transition: background-color .35s ease, opacity .35s ease, left .35s ease, width .35s ease;
-  width: 12px;
+  transform: scaleX(.6);
+  transform-origin: center;
+  transition: background-color .35s ease, opacity .35s ease, transform .35s ease;
+  width: 20px;
 }
 .route-piece[data-passed]::before {
   background: var(--business-sand);
-  left: 14px;
   opacity: .9;
-  width: 16px;
+  transform: scaleX(.8);
 }
 .route-piece[data-current]::before {
   background: var(--business-sage-deep);
-  height: 2px;
-  left: 12px;
   opacity: 1;
-  width: 20px;
+  transform: scaleX(1);
 }
 .route-label {
   color: var(--business-sage-deep);
