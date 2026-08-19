@@ -13,7 +13,7 @@ const { sections } = Astro.props;
 
 {
   sections.length > 1 && (
-    <nav class="route" aria-label="Section progress" data-route>
+    <nav class="route" aria-label="Section progress" data-section-route>
       <span class="route-line" aria-hidden="true" />
       <span class="route-climber" aria-hidden="true" data-route-climber />
       {sections.map((section) => (
