@@ -1,18 +1,18 @@
-/* Section route: a climbing line down the left margin. Extends business.css tokens. */
+/* Section route: a climbing line down the right margin, clear of the text column. */
 
 .route {
   bottom: clamp(1.5rem, 5vh, 3.5rem);
   display: none;
-  left: clamp(.75rem, 2vw, 1.75rem);
   position: fixed;
+  right: clamp(.5rem, 1vw, .9rem);
   top: 5.5rem;
-  width: 44px;
+  width: 30px;
   z-index: 90;
 }
 .route-line {
   background: var(--business-hair);
   bottom: 0;
-  left: 22px;
+  left: 15px;
   position: absolute;
   top: 0;
   width: 1px;
@@ -21,7 +21,8 @@
   background: var(--business-ink);
   border-radius: 50%;
   height: 7px;
-  left: 22px;
+  left: 15px;
+  pointer-events: none;
   position: absolute;
   top: 0;
   transform: translate(-50%, -50%);
@@ -36,14 +37,14 @@
   left: 0;
   position: absolute;
   transform: translateY(-50%);
-  width: 44px;
+  width: 30px;
   z-index: 1;
 }
 .route-piece::before {
   background: var(--business-ink);
   content: "";
   height: 1.6px;
-  left: 12px;
+  left: 5px;
   opacity: .18;
   position: absolute;
   top: 50%;
@@ -67,15 +68,15 @@
   font-family: var(--business-display);
   font-size: .82rem;
   font-style: italic;
-  left: 38px;
   opacity: 0;
   position: absolute;
+  right: 26px;
+  text-align: right;
   top: 50%;
   transform: translateY(-50%);
   transition: opacity .3s ease;
   white-space: nowrap;
 }
-.route-piece[data-current] .route-label,
 .route-piece:hover .route-label,
 .route-piece:focus-visible .route-label { opacity: 1; }
 .route-reader {
@@ -89,6 +90,9 @@
 
 @media (min-width: 1180px) {
   .route { display: block; }
+}
+@media (min-width: 1500px) {
+  .route-piece[data-current] .route-label { opacity: 1; }
 }
 @media (prefers-reduced-motion: reduce) {
   .route-climber, .route-piece::before, .route-label { transition: none; }
