@@ -31,8 +31,28 @@ body:has(.business-site) { background: var(--business-paper); overflow-x: clip; 
 
 .business-eyebrow { align-items: center; color: var(--business-sage-deep); display: inline-flex; font-family: var(--business-display); font-size: 1.06rem; font-style: italic; font-weight: 400; gap: .7rem; }
 .business-eyebrow::before { background: var(--business-sage); content: ""; flex: none; height: 1px; width: 28px; }
-.business-hero { overflow: hidden; padding-block: clamp(3rem, 7vw, 6rem) clamp(2.5rem, 5.5vw, 5rem); position: relative; text-align: center; }
-.business-hero-canvas { height: 100%; inset: 0; pointer-events: none; position: absolute; width: 100%; z-index: 0; }
+.business-hero { overflow-x: clip; padding-block: clamp(3rem, 7vw, 6rem) clamp(2.5rem, 5.5vw, 5rem); position: relative; text-align: center; }
+/* The shoreline runs from the middle of the hero down past its bottom edge, so
+   the sand carries on into the gap before the next section. `overflow-x: clip`
+   on the hero above keeps the sides clipped while letting it bleed downward.
+   Its own sky and dry-sand stops are --surface, so the box has no visible
+   edges of its own. */
+.business-hero-shore {
+  block-size: calc(50% + 4.5rem);
+  inset-block-end: -4.5rem;
+  inset-inline: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 0;
+  /* The canvas is faded in by a mask rather than by its own top gradient stop.
+     A gradient that starts at the element's edge changes slope abruptly there,
+     and the eye reads that slope change as a line even though the colour is
+     continuous. Ramping opacity across the whole upper half removes the point
+     where the water can be said to begin. The stops approximate an ease so the
+     ramp itself has no kink either. */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, .04) 12%, rgba(0, 0, 0, .14) 24%, rgba(0, 0, 0, .32) 34%, rgba(0, 0, 0, .58) 44%, rgba(0, 0, 0, .82) 53%, #000 64%);
+  mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, .04) 12%, rgba(0, 0, 0, .14) 24%, rgba(0, 0, 0, .32) 34%, rgba(0, 0, 0, .58) 44%, rgba(0, 0, 0, .82) 53%, #000 64%);
+}
 .business-hero-copy { margin-inline: auto; max-width: 52rem; padding-inline: var(--business-gutter); position: relative; z-index: 1; }
 .business-hero .business-eyebrow { margin-bottom: 1.4rem; }
 .business-hero h1 { font-optical-sizing: auto; font-size: clamp(2.1rem, 1rem + 4.6vw, 4.85rem); letter-spacing: -.018em; line-height: 1.04; margin: 0 auto 1.3rem; max-width: 19ch; text-wrap: balance; }

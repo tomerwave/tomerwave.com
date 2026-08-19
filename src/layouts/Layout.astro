@@ -192,7 +192,6 @@ const structuredData = pubDatetime
     <script>
       import { initAnchorScroll } from "@/scripts/anchor-scroll";
       import { initConversionEvents } from "@/scripts/conversion-events";
-      import { initHeroHalves } from "@/scripts/hero-halves";
       import { initRevealOnScroll } from "@/scripts/reveal-on-scroll";
       import { initSectionRoute } from "@/scripts/section-route";
 
@@ -201,7 +200,6 @@ const structuredData = pubDatetime
         initConversionEvents();
         initRevealOnScroll();
         initSectionRoute();
-        initHeroHalves();
       };
 
       document.addEventListener("astro:page-load", initializePageBehaviours);

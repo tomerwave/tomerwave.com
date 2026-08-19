@@ -8,6 +8,8 @@ import { SITE } from "./src/config";
 import { SERVICES, servicePath } from "./src/data/services";
 import { remarkLazyLoadImages } from "./src/utils/remark-lazy-load-images.mjs";
 
+import react from "@astrojs/react";
+
 const DEFAULT_SITEMAP_METADATA = { changefreq: ChangeFreqEnum.MONTHLY, priority: 0.5 };
 const SERVICE_SITEMAP_RULES = SERVICES.map((service) => ({
   matches: (url) => url.endsWith(servicePath(service.slug)),
@@ -42,13 +44,10 @@ export default defineConfig({
       wrap: true,
     },
   },
-  integrations: [
-    mdx(),
-    sitemap({
-      filter: (page) => !page.includes("/posts/2026/signature-strength-report-empathy"),
-      serialize: serializeSitemapItem,
-    }),
-  ],
+  integrations: [mdx(), sitemap({
+    filter: (page) => !page.includes("/posts/2026/signature-strength-report-empathy"),
+    serialize: serializeSitemapItem,
+  }), react()],
   vite: {
     resolve: {
       alias: {
