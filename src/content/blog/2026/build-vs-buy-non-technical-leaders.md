@@ -47,7 +47,7 @@ Some of what you find won't need software. Some of it will need a small change r
 
 ---
 
-## The one economic fact that decides most of these
+## Why does custom software cost so much more over time?
 
 Bought software has thousands of customers. Custom software has one.
 
@@ -114,7 +114,7 @@ One honest note on the promise I made above, that a bought product improves for 
 
 ---
 
-## How to find out whether you're actually unusual
+## How do you know if your requirements are really unique?
 
 Everybody believes their organisation works differently, and everybody is right, in a couple of places. The decision turns entirely on how many places, and on whether they're the ones you think.
 
@@ -133,7 +133,7 @@ The second most common answer is the middle path, and it's the one I recommend m
 
 ---
 
-## When building is genuinely right
+## When is custom software actually the right choice?
 
 There are real cases, and I would rather list them honestly than pretend the answer is always buy.
 
@@ -147,7 +147,7 @@ Notice what isn't on that list. "Off-the-shelf doesn't fit us exactly" isn't a r
 
 ---
 
-## The questions to put to whoever is proposing it
+## What should you ask a vendor proposing a build?
 
 If someone is recommending a build, three questions will tell you most of what you need, and you can send them by email.
 

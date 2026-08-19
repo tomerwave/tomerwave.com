@@ -23,7 +23,7 @@ Which means the useful question is never how much debt do we have. It is: which 
 
 ---
 
-## The four things debt actually charges you
+## What does technical debt actually cost you?
 
 Debt is not one cost. It shows up in four different currencies, and they are not interchangeable, which is why an engineer and a CEO can look at the same thing and honestly disagree about whether it matters.
 
@@ -39,7 +39,7 @@ When your CTO says debt and your CEO says roadmap, they are usually talking abou
 
 ---
 
-## The debt that is fine, and there is a lot of it
+## Which technical debt is safe to ignore?
 
 I want to be blunt about this because the industry is not: most technical debt should be left exactly where it is.
 
@@ -55,7 +55,7 @@ The debt that is not fine is the debt sitting in the path of the next six months
 
 ---
 
-## Two hours to find out which is which
+## How do you work out which debt matters?
 
 You do not need a consultant for this part, and the version you can run yourself is genuinely most of the value.
 
@@ -107,7 +107,7 @@ And the last row is the one that gets misdiagnosed as a rewrite. If the words in
 
 ---
 
-## How to say it to people who do not write code
+## How do you explain technical debt to a CEO?
 
 If you are the CTO, the reason your debt argument keeps losing is probably not that your CEO does not care. It is that you are asking for a quarter and offering a category.
 

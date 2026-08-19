@@ -29,7 +29,7 @@ A cheap proposal for something badly defined is the most expensive thing on your
 
 ---
 
-## What a proposal has to define
+## What does a software proposal have to define?
 
 If any of these is missing, the proposal isn't finished, and you are allowed to say so.
 
@@ -81,7 +81,7 @@ What do we have. What can we use. What do we own. If the answer is nothing, then
 
 And then actually make the call. Ten minutes with a previous customer will tell you more than the whole document. Ask them one thing above all: what did it end up costing, all in.
 
-## Warning signs
+## What are the warning signs in a software proposal?
 
 **A fixed price with a vague scope.** These two can't both be true. Either the scope is tight enough to price, or the price is a guess and one of you is going to lose. Usually you, because they have done this more times.
 

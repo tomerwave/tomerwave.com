@@ -21,7 +21,7 @@ Both people are right about the half they can see, which is why arguing it harde
 
 ---
 
-## The word rewrite covers four different jobs
+## What do people actually mean when they say rewrite?
 
 Most of these arguments are two people using one word for two different things.
 
@@ -37,7 +37,7 @@ Four different costs, four different failure modes, and the meeting treats them 
 
 ---
 
-## The question that actually decides it
+## How do you decide between a rewrite and a refactor?
 
 Finish this sentence, out loud, with something specific:
 
@@ -57,7 +57,7 @@ If you cannot fill that blank with something concrete, you do not have a rewrite
 
 ---
 
-## An afternoon that will tell you more than the argument will
+## How do you find out what is actually slowing you down?
 
 You can settle most of this yourself, and it is an afternoon with the tracker open. Not a fortnight. That distinction matters more than it sounds: if you have already asked twice for time to think about it, a third request for two weeks of data is the thing that makes the person proposing it start taking recruiter calls. Say out loud that it is an afternoon and that you will have an answer on Friday.
 
@@ -75,7 +75,7 @@ Step four is the one that decides it. If most of your code pile points at two or
 
 And if your code pile is short, the system is not your bottleneck, whatever anyone believes about it. That happens more often than you would think, particularly on teams where the code has become the thing everyone is allowed to complain about.
 
-### What the piles usually mean
+### What does each pile of evidence mean?
 
 | If the honest answer is | The move is |
 | --- | --- |
@@ -104,7 +104,7 @@ A related question your CEO will ask within ninety seconds, so have the answer r
 
 ---
 
-## When a rewrite really is the right call
+## When is a rewrite actually the right call?
 
 I would rather you did not do one, and most of what I get asked to look at turns out to need two or three specific things fixed and one decision made properly. But four cases are real.
 
@@ -132,7 +132,7 @@ The other thing to plan for is nearly a law. Given a blank file, a team does not
 
 ---
 
-## What each one actually costs
+## What does each option actually cost?
 
 | The move | Calendar time | What you get | Does the pain come back |
 | --- | --- | --- | --- |

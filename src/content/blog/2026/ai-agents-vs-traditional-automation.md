@@ -37,7 +37,7 @@ That shape is common now and it is the one most "we want an agent" proposals sho
 
 ---
 
-## The question that sorts it
+## How do you decide between rules, a model and an agent?
 
 For each step in the workflow, ask: *could a competent person write down the rule for this?*
 
@@ -53,7 +53,7 @@ Now do the same for the flow. Does this process have a fixed set of steps, or do
 
 ---
 
-## What each one actually costs you
+## What does each option cost to run and maintain?
 
 | Compared on | Rules | Model in one step | Agent |
 | --- | --- | --- | --- |
@@ -79,7 +79,7 @@ Worth being precise about that last row, because as written it flatters rules. A
 
 ---
 
-## What has to be true before you build an agent
+## When should you build an AI agent?
 
 Four tests, and they split into two kinds, which matters because these are positions on a line rather than three separate boxes. Two of them decide whether a full agent is the right position at all. The other two hold everywhere on the line, including for a single model step, and failing one of those moves you along the line rather than off it.
 
@@ -107,7 +107,7 @@ There is one mechanism that makes all of this cheaper and it belongs with the mi
 
 ---
 
-## Where each one belongs
+## Which work suits rules, which suits a model, which suits an agent?
 
 Rather than abstractions, here is roughly how I sort real work.
 

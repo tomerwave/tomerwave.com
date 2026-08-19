@@ -109,7 +109,7 @@ You did not add eight engineers. You added eight engineers and removed a large p
 
 ---
 
-## When your CTO says technical debt
+## What does your CTO mean by technical debt?
 
 You will hear this word, and it is worth knowing that it covers at least three different things.
 
@@ -119,7 +119,7 @@ Only the middle one slows a growing team down in the way you are feeling. So the
 
 ---
 
-## How to actually tell which one you have
+## How do you tell which cause you actually have?
 
 You will have more than one. Everyone has more than one. The question is which is dominant, because fixing the second most important one produces no visible change and a lot of disappointment.
 
@@ -132,7 +132,7 @@ Four steps, about ten minutes a day.
 
 If you are the CEO rather than the CTO, read the warning after the table before you start.
 
-### What each line means
+### What does each line in your notes point at?
 
 | If the line says | The cause is |
 | --- | --- |
@@ -159,7 +159,7 @@ Ask your CTO to run it rather than running it yourself, with one exception that 
 
 ---
 
-## What to fix first
+## Which cause should you fix first?
 
 Fix the one the evidence points at, even if it is not the one you find interesting.
 

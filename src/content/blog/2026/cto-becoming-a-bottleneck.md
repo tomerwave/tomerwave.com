@@ -27,7 +27,7 @@ So before you do anything about it, you need to know which kind you have, becaus
 
 ---
 
-## Four bottlenecks that look the same from your chair
+## Which kind of CTO bottleneck do you have?
 
 **The decision bottleneck.** Work waits for approval rather than for effort. Which library, is this ready to merge, do we need a migration for this, is this design good enough. Individually trivial, collectively a full-time job that nobody has been given the hours for.
 
@@ -47,7 +47,7 @@ If you want the longer version of that exercise, with the other seven things tha
 
 ---
 
-## What each one actually needs
+## What does each kind of bottleneck need?
 
 You will not be certain which row is yours until you have run the experiment further down, and the costs are worth knowing before you start, because two of these are cheap enough that you would not bother diagnosing carefully first.
 
@@ -64,7 +64,7 @@ And there is a version of the third row that people avoid. If your CTO is still 
 
 ---
 
-## Having the conversation
+## How do you raise it with your CTO?
 
 This is the part people ask me about most and the part almost nobody writes down.
 
@@ -96,7 +96,7 @@ The failure mode here is rarely a bad decision. It is two competent people quiet
 
 ---
 
-## The experiment that settles it
+## How do you test whether they really are the bottleneck?
 
 There is a cheap test and almost nobody runs it deliberately, which is a shame, because it produces better evidence than any amount of discussion.
 

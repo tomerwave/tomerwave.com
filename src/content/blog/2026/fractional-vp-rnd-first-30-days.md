@@ -169,7 +169,7 @@ Without that, the best question on the list, the one about what everybody knows 
 
 ---
 
-## Where I would tell you not to do this
+## When should you not hire a fractional VP R&D?
 
 Four situations where a fractional VP R&D is the wrong purchase, and I have talked people out of this more often than into it.
 
@@ -203,7 +203,7 @@ If what actually brought you here is that [your CTO has become the bottleneck](/
 
 ---
 
-## What it costs you, in money and in hours
+## What does a fractional VP R&D cost?
 
 Two things I would want to know before emailing anybody, so here they are.
 

@@ -21,7 +21,7 @@ So the useful question is not what can we automate. Almost anything can be autom
 
 ---
 
-## What makes a workflow worth it
+## What makes a workflow worth automating?
 
 Four things I score, and three that are simply gates: no gate, no build, however good the score. Not to produce a number to hide behind, but because writing them down stops you picking the interesting one.
 
@@ -43,7 +43,7 @@ Ask the same gate backwards, too: how much did this process change in the last y
 
 ---
 
-## Where AI is the wrong tool
+## When is AI the wrong tool?
 
 This is most of the value in an honest audit, and it is the part vendors will not give you.
 
@@ -59,7 +59,7 @@ This is most of the value in an honest audit, and it is the part vendors will no
 
 ---
 
-## What this looks like in practice
+## How do you find the workflows worth automating?
 
 Take a real week and watch where people move information rather than decide things.
 
@@ -85,7 +85,7 @@ The same discipline applies here as anywhere else. Solve one thing completely be
 
 ---
 
-## If you have to report on this
+## What do you tell a board about AI automation?
 
 Most people reading this have someone above them who wants to know what the plan is.
 

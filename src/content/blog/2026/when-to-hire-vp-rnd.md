@@ -35,7 +35,7 @@ Take a real week. Look at what waited. Not what broke, what waited. If a design 
 
 ---
 
-## The signals that actually mean something
+## Which signals actually mean you need one?
 
 Here is what I look for, roughly in the order that they show up.
 
@@ -57,7 +57,7 @@ One or two of these on their own is just a startup. Most of them at once usually
 
 ---
 
-## VP R&D, engineering manager, CTO
+## What is the difference between a VP R&D, an engineering manager and a CTO?
 
 These get used interchangeably and they should not be.
 
@@ -73,7 +73,7 @@ The other failure is the reverse. Hiring a VP when what you actually needed was 
 
 ---
 
-## When it is too early
+## When is it too early to hire a VP R&D?
 
 I have talked founders out of this hire more often than into it.
 
@@ -99,7 +99,7 @@ Write down the split before you interview, not after they accept. A useful versi
 
 ---
 
-## Promote or hire
+## Should you promote from inside or hire externally?
 
 Almost every company at this size has someone internal who might grow into it. Usually a tech lead who has quietly been doing half the job already.
 
