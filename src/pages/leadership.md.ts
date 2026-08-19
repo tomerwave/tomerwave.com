@@ -3,21 +3,37 @@ import type { APIRoute } from "astro";
 export const GET: APIRoute = async () => {
   const markdownContent = `# How I work
 
-I work with early-stage startups as a fractional VP of R&D.
+Strategy when you need direction. Hands-on execution when you need things done.
 
-## Three ways in
+Every engagement starts small and scoped, so you can see how I work before committing to anything larger.
 
-### Fractional VP of R&D
+## [R&D Advisory & Fractional VP R&D](/services/fractional-vp-rnd)
 
-Embedded leadership across strategy, architecture, hiring, delivery, and the day-to-day work of a team that ships.
+Your team grew, but delivery got slower. I help figure out why, what actually needs to change, and what can wait — as an advisor, or by taking the VP R&D seat part-time.
 
-### Hands-on build
+**Start with:** an R&D Health Check. One to two weeks.
 
-I still write the code. When the fastest way to unblock a team is to do the work, I do the work.
+## [Architecture & Technical Strategy](/services/architecture-review)
 
-### Product & AI
+A decision is coming that's hard to undo. Rewrite or refactor, build or buy, what ships first. A rewrite is often the wrong first move.
 
-Deciding what to build, then building it: including the AI and automation systems founders keep asking for.
+**Start with:** an Architecture Review. A few days to two weeks.
+
+## [AI & Automation](/services/ai-automation)
+
+Too much of the work is still manual. Not all of it should be automated. I help find the parts that should be, then build them.
+
+**Start with:** an Opportunity Audit. Scoped per audit.
+
+## [Technology Advisor](/services/technology-advisor)
+
+For organizations without internal technical leadership. You don't need a full-time CTO. You need someone technical you can trust when making expensive technology decisions.
+
+**Start with:** a Technology Assessment. Scoped per organization.
+
+## Hands-on execution
+
+Every one of these can continue into the work itself: writing production code, building automations, leading a migration, managing external developers, or owning a specific project end to end.
 
 ## Contact
 

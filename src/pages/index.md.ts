@@ -1,15 +1,16 @@
 import type { APIRoute } from "astro";
 
 export const GET: APIRoute = async () => {
-  const markdownContent = `# Tomer Gal — Fractional VP R&D
+  const markdownContent = `# Tomer Gal — Technical strategy & hands-on execution
 
-I help early-stage founders make the calls that are easy to postpone and expensive to get wrong: what to build, how to build it, and who builds it with them.
+I help teams and organizations make the technical calls that are easy to postpone and expensive to get wrong. Strategy when you need direction. Hands-on execution when you need things done.
 
-## How I help
+## Four problems I get called about
 
-- **What should we actually build?** I help founders find a direction they can commit to.
-- **Which technical calls are hard to undo?** Architecture, build-versus-buy, and what ships first.
-- **How do you turn a few engineers into a team that ships?** Hiring, ownership, and the habits that make delivery reliable.
+- **[R&D Advisory & Fractional VP R&D](/services/fractional-vp-rnd)** — Your team grew, but delivery got slower. I help figure out why, what actually needs to change, and what can wait. Start with an R&D Health Check.
+- **[Architecture & Technical Strategy](/services/architecture-review)** — A decision is coming that's hard to undo. A rewrite is often the wrong first move. Start with an Architecture Review.
+- **[AI & Automation](/services/ai-automation)** — Too much of the work is still manual. Not all of it should be automated. Start with an Opportunity Audit.
+- **[Technology Advisor](/services/technology-advisor)** — You don't need a full-time CTO. You need someone technical you can trust when making expensive technology decisions. Start with a Technology Assessment.
 
 ## Track record
 
