@@ -1,5 +1,12 @@
 ---
+// Speed Insights groups field data by route. The framework-specific entry points
+// derive it themselves; the generic one does not, so without this every sample
+// lands in the dashboard as "Unknown" and there is no way to tell which page is
+// slow. Passing the pattern rather than the path keeps all 35 posts in one row.
+const route = Astro.routePattern ?? null;
 ---
+
+<meta name="vercel-route" content={route} />
 
 <script>
   const optedOut = () =>
@@ -7,7 +14,12 @@
     (window.navigator as Navigator & { globalPrivacyControl?: boolean }).globalPrivacyControl === true;
 
   if (import.meta.env.PROD && !optedOut()) {
+    const route =
+      document.querySelector('meta[name="vercel-route"]')?.getAttribute("content") || null;
+
     import("@vercel/analytics").then(({ inject }) => inject());
-    import("@vercel/speed-insights").then(({ injectSpeedInsights }) => injectSpeedInsights());
+    import("@vercel/speed-insights").then(({ injectSpeedInsights }) =>
+      injectSpeedInsights({ route })
+    );
   }
 </script>
