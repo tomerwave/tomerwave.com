@@ -59,7 +59,7 @@ const navItems: NavItem[] = [
 ---
 
 <Layout title={`${service.documentTitle} — Tomer Gal`} description={service.description}>
-  <div class="business-site service-page">
+  <div class="business-site service-page" data-service-slug={service.slug}>
     <StructuredData
       type="Service"
       data={{

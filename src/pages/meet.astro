@@ -1,3 +1,39 @@
 ---
-return Astro.redirect("https://calendar.app.google/9F7SQbpLdY3VgTDKA", 302);
+import { BOOKING_URL } from "@/consts";
 ---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Booking a call — Tomer Gal</title>
+    <noscript><meta http-equiv="refresh" content={`0; url=${BOOKING_URL}`} /></noscript>
+    <style>
+      body {
+        align-items: center;
+        background: #faf6ef;
+        color: #2b3138;
+        display: flex;
+        font-family: "Instrument Sans", system-ui, sans-serif;
+        justify-content: center;
+        margin: 0;
+        min-height: 100svh;
+      }
+      p { font-size: 0.95rem; opacity: 0.7; }
+      a { color: inherit; }
+      @media (prefers-color-scheme: dark) {
+        body { background: #15181a; color: #e9e3d6; }
+      }
+    </style>
+  </head>
+  <body data-booking-url={BOOKING_URL}>
+    <p>Taking you to my calendar… <a href={BOOKING_URL}>continue</a></p>
+    <script>
+      import { trackBookingIntent } from "@/scripts/booking-intent";
+
+      trackBookingIntent(document.body.dataset.bookingUrl ?? "/");
+    </script>
+  </body>
+</html>

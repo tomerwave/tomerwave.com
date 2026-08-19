@@ -23,3 +23,5 @@ export const SITE: Site = {
   dynamicOgImage: true,
   lang: "en",
 };
+
+export const BOOKING_URL = "https://calendar.app.google/9F7SQbpLdY3VgTDKA";

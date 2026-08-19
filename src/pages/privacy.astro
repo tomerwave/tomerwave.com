@@ -1,0 +1,140 @@
+---
+import BusinessFooter from "@/components/landing/BusinessFooter.astro";
+import SiteHeader, { type NavItem } from "@/components/SiteHeader.astro";
+import { SERVICES, servicePath } from "@/data/services";
+import Layout from "@/layouts/Layout.astro";
+import "@/styles/business.css";
+import "@/styles/service.css";
+
+const navItems: NavItem[] = [
+  ...SERVICES.map((service) => ({ label: service.shortName, href: servicePath(service.slug) })),
+  { label: "Writing", href: "/blog" },
+  { label: "Let’s talk", href: "/meet", cta: true },
+];
+
+const updated = "19 August 2026";
+---
+
+<Layout
+  title="Privacy — Tomer Gal"
+  description="What this site measures, what it does not, and how to ask for any of it to be removed."
+>
+  <div class="business-site service-page">
+    <SiteHeader
+      homeHref="/"
+      homeLabel="Tomer Gal home"
+      mainId="privacy-main"
+      navAriaLabel="Services navigation"
+      navItems={navItems}
+      variant="business"
+    />
+
+    <main id="privacy-main">
+      <section class="business-section service-hero">
+        <div class="business-wrap">
+          <span class="business-eyebrow">Privacy</span>
+          <h1>What this site measures.</h1>
+          <p class="service-lede">
+            Short version: anonymous page counts, and which buttons get clicked. No cookies, no accounts,
+            no tracking you across other websites.
+          </p>
+        </div>
+      </section>
+
+      <hr class="business-rule" />
+
+      <section class="business-section">
+        <div class="business-wrap">
+          <div class="business-section-head">
+            <div>
+              <span class="business-eyebrow">What is collected</span>
+              <h2>Anonymous traffic, and a handful of clicks.</h2>
+            </div>
+          </div>
+          <ul class="service-list service-list--deliverable">
+            <li>Pages viewed, plus the country, browser and device type your browser reports.</li>
+            <li>The site that linked you here, if any, and any campaign tags in the link you followed.</li>
+            <li>
+              Clicks on a small number of things I care about: booking a call, my email address, opening a
+              service page, and following a link from an article to a service.
+            </li>
+            <li>Page loading speed, so I can tell when the site gets slower.</li>
+          </ul>
+          <p class="service-pricing-note">
+            This runs on Vercel Web Analytics and Vercel Speed Insights. Vercel does not use cookies for
+            this and does not build a cross-site profile of you. Campaign tags and the referring site are
+            kept in your browser for the length of your visit and are cleared when you close the tab.
+          </p>
+        </div>
+      </section>
+
+      <hr class="business-rule" />
+
+      <section class="business-section">
+        <div class="business-wrap">
+          <div class="business-section-head">
+            <div>
+              <span class="business-eyebrow">What is not</span>
+              <h2>Deliberately not collected.</h2>
+            </div>
+          </div>
+          <ul class="service-triggers">
+            <li class="service-trigger">No cookies are set by this site.</li>
+            <li class="service-trigger">No fingerprinting, and no attempt to identify you personally.</li>
+            <li class="service-trigger">No advertising networks, and no data sold or shared for advertising.</li>
+            <li class="service-trigger">No session recording, heatmaps, or A/B testing.</li>
+          </ul>
+        </div>
+      </section>
+
+      <hr class="business-rule" />
+
+      <section class="business-section">
+        <div class="business-wrap">
+          <div class="business-section-head">
+            <div>
+              <span class="business-eyebrow">When you get in touch</span>
+              <h2>Email and booking.</h2>
+            </div>
+          </div>
+          <div class="business-reveal">
+            <p class="service-next-body">
+              If you email me or book a call, I keep what you send me — your name, your email address, and
+              whatever you tell me about your situation — so I can reply and, if we work together, do the
+              work. I keep a short private record of where enquiries came from so I know which writing is
+              worth continuing. I do not add you to a mailing list, and I do not pass any of it on.
+            </p>
+            <p class="service-next-note">
+              Calls are booked through Google Calendar, which has its own privacy policy and collects its
+              own data once you land there.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <hr class="business-rule" />
+
+      <section class="business-section">
+        <div class="business-wrap">
+          <div class="business-section-head">
+            <div>
+              <span class="business-eyebrow">Your call</span>
+              <h2>Asking me to delete it.</h2>
+            </div>
+          </div>
+          <div class="business-reveal">
+            <p class="service-next-body">
+              Email me and I will delete whatever I hold about you, and tell you when it is done. You do
+              not need to give a reason. If your browser sends a Do Not Track or Global Privacy Control
+              signal, no analytics events are recorded for your visit.
+            </p>
+            <p class="service-next-note">Last updated {updated}.</p>
+          </div>
+          <a class="business-mail" href="mailto:tomer.wave@gmail.com">tomer.wave@gmail.com</a>
+        </div>
+      </section>
+    </main>
+
+    <BusinessFooter />
+  </div>
+</Layout>
