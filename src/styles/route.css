@@ -1,0 +1,93 @@
+/* Section route: a climbing line down the left margin. Extends business.css tokens. */
+
+.route {
+  bottom: 0;
+  display: none;
+  left: clamp(.75rem, 2vw, 1.75rem);
+  position: fixed;
+  top: 0;
+  width: 44px;
+  z-index: 90;
+}
+.route-line {
+  background: var(--business-hair);
+  bottom: 8%;
+  left: 22px;
+  position: absolute;
+  top: 8%;
+  width: 1px;
+}
+.route-climber {
+  background: var(--business-ink);
+  border-radius: 50%;
+  height: 7px;
+  left: 22px;
+  position: absolute;
+  top: 8%;
+  transform: translate(-50%, -50%);
+  transition: top .14s linear;
+  width: 7px;
+}
+.route-piece {
+  display: block;
+  height: 24px;
+  left: 0;
+  position: absolute;
+  transform: translateY(-50%);
+  width: 44px;
+}
+.route-piece::before {
+  background: var(--business-ink);
+  content: "";
+  height: 1.4px;
+  left: 16px;
+  opacity: .18;
+  position: absolute;
+  top: 50%;
+  transition: background-color .35s ease, opacity .35s ease, left .35s ease, width .35s ease;
+  width: 12px;
+}
+.route-piece[data-passed]::before {
+  background: var(--business-sand);
+  left: 14px;
+  opacity: .9;
+  width: 16px;
+}
+.route-piece[data-current]::before {
+  background: var(--business-sage-deep);
+  height: 2px;
+  left: 12px;
+  opacity: 1;
+  width: 20px;
+}
+.route-label {
+  color: var(--business-sage-deep);
+  font-family: var(--business-display);
+  font-size: .82rem;
+  font-style: italic;
+  left: 38px;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: opacity .3s ease;
+  white-space: nowrap;
+}
+.route-piece[data-current] .route-label,
+.route-piece:hover .route-label,
+.route-piece:focus-visible .route-label { opacity: 1; }
+.route-reader {
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+@media (min-width: 1180px) {
+  .route { display: block; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .route-climber, .route-piece::before, .route-label { transition: none; }
+}

@@ -2,6 +2,7 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 import BusinessContact from "@/components/landing/BusinessContact.astro";
 import BusinessFooter from "@/components/landing/BusinessFooter.astro";
+import SectionRoute from "@/components/SectionRoute.astro";
 import SiteHeader, { type NavItem } from "@/components/SiteHeader.astro";
 import StructuredData from "@/components/StructuredData.astro";
 import { SITE } from "@/config";
@@ -9,6 +10,7 @@ import { getService, SERVICES, type Service, servicePath } from "@/data/services
 import Layout from "@/layouts/Layout.astro";
 import { getPath } from "@/utils/get-path";
 import "@/styles/business.css";
+import "@/styles/route.css";
 import "@/styles/service.css";
 
 type BlogPost = CollectionEntry<"blog">;
@@ -34,6 +36,16 @@ export async function getStaticPaths() {
 const { service, picks, siblings } = Astro.props;
 
 const canonical = new URL(servicePath(service.slug), SITE.website).href;
+
+const routeSections = [
+  { id: "service-top", label: service.shortName },
+  { id: "service-triggers", label: "Sound familiar?" },
+  { id: "service-help", label: "How this works" },
+  { id: service.offer.anchor, label: service.offer.name },
+  { id: "service-next", label: "What comes next" },
+  ...(picks.length > 0 ? [{ id: "service-writing", label: "Writing" }] : []),
+  { id: "service-contact", label: "Contact" },
+];
 
 const navItems: NavItem[] = [
   ...SERVICES.map((item) => ({
@@ -72,8 +84,9 @@ const navItems: NavItem[] = [
       variant="business"
     />
 
+    <SectionRoute sections={routeSections} />
     <main id="service-main">
-      <section class="business-section service-hero">
+      <section class="business-section service-hero" id="service-top">
         <div class="business-wrap">
           <span class="business-eyebrow">{service.eyebrow}</span>
           <h1>{service.pageHeading}</h1>
@@ -93,7 +106,7 @@ const navItems: NavItem[] = [
 
       <hr class="business-rule" />
 
-      <section class="business-section">
+      <section class="business-section" id="service-triggers">
         <div class="business-wrap">
           <div class="business-section-head">
             <div>
@@ -112,7 +125,7 @@ const navItems: NavItem[] = [
 
       <hr class="business-rule" />
 
-      <section class="business-section">
+      <section class="business-section" id="service-help">
         <div class="business-wrap">
           <div class="business-section-head">
             <div>
@@ -177,7 +190,7 @@ const navItems: NavItem[] = [
 
       <hr class="business-rule" />
 
-      <section class="business-section">
+      <section class="business-section" id="service-next">
         <div class="business-wrap">
           <div class="business-section-head">
             <div>
@@ -196,7 +209,7 @@ const navItems: NavItem[] = [
 
       {
         picks.length > 0 && (
-          <section class="business-section">
+          <section class="business-section" id="service-writing">
             <div class="business-wrap">
               <div class="business-section-head">
                 <div>
@@ -246,10 +259,12 @@ const navItems: NavItem[] = [
         </div>
       </section>
 
+      <div id="service-contact">
       <BusinessContact
         heading="Tell me what's going on."
         note="A few sentences is plenty. What's happening, roughly how big the team or organization is, and the thing you'd fix first if you had the time."
       />
+      </div>
     </main>
 
     <BusinessFooter />

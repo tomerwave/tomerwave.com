@@ -7,10 +7,21 @@ import ConsultingWork from "@/components/landing/ConsultingWork.astro";
 import ServiceRouter from "@/components/landing/ServiceRouter.astro";
 import TrackRecord from "@/components/landing/TrackRecord.astro";
 import WritingBridge from "@/components/landing/WritingBridge.astro";
+import SectionRoute from "@/components/SectionRoute.astro";
 import SiteHeader from "@/components/SiteHeader.astro";
 import StructuredData from "@/components/StructuredData.astro";
 import "@/styles/business.css";
+import "@/styles/route.css";
 import Layout from "@/layouts/Layout.astro";
+
+const routeSections = [
+  { id: "top", label: "Top" },
+  { id: "services", label: "Services" },
+  { id: "track", label: "Track record" },
+  { id: "consulting", label: "Work" },
+  { id: "writing", label: "Writing" },
+  { id: "contact", label: "Contact" },
+];
 
 const navItems = [
   { label: "Services", href: "#services" },
@@ -36,6 +47,7 @@ const navItems = [
       navItems={navItems}
       variant="business"
     />
+    <SectionRoute sections={routeSections} />
     <main id="business-main">
       <BusinessHero />
       <hr class="business-rule" />

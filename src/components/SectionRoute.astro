@@ -1,0 +1,27 @@
+---
+export interface RouteSection {
+  id: string;
+  label: string;
+}
+
+interface Props {
+  sections: RouteSection[];
+}
+
+const { sections } = Astro.props;
+---
+
+{
+  sections.length > 1 && (
+    <nav class="route" aria-label="Section progress" data-route>
+      <span class="route-line" aria-hidden="true" />
+      <span class="route-climber" aria-hidden="true" data-route-climber />
+      {sections.map((section) => (
+        <a class="route-piece" href={`#${section.id}`} data-route-piece={section.id}>
+          <span class="route-label">{section.label}</span>
+          <span class="route-reader">{section.label}</span>
+        </a>
+      ))}
+    </nav>
+  )
+}
