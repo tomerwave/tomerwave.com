@@ -1,5 +1,25 @@
 ---
+import { getService, servicePath } from "@/data/services";
+
+const engagements = [
+  {
+    client: "Marketing personalization platform",
+    service: "ai-automation",
+    text: "Built the clustering engine that segments prospects for personalized marketing data, wired up integrations across the customer's systems, and ran the GCP infrastructure underneath it. Sat in on customer calls and helped get the product listed in marketplaces.",
+  },
+  {
+    client: "Browser infrastructure company",
+    service: "architecture-review",
+    text: "Architected and built a faster, more secure, stealth browser platform. Led authenticated session handling and deterministic, self-healing automated actions on top of it. Helped define company values and shape the R&D org from early on.",
+  },
+  {
+    client: "AI agent reliability infrastructure",
+    service: "fractional-vp-rnd",
+    text: "Refactored a vibe-coded system from scratch — architected and built it all by hand, then put processes and harness tests in place to keep it that way. Hired the engineering team. Trained the SLMs behind real-time remediation of agent failures, from classic errors like 429s to hallucination, drift, and wrong tool calls, resolved in under 80ms.",
+  },
+];
 ---
+
 <section class="business-section" id="consulting">
   <div class="business-wrap">
     <div class="business-section-head">
@@ -7,20 +27,27 @@
         <span class="business-eyebrow">Consulting work</span>
         <h2>Six engagements. Three I can talk about.</h2>
       </div>
+      <p class="business-section-intro">
+        Each one is tagged with the kind of work it was, in case you want to read more about that one.
+      </p>
     </div>
     <div class="business-modes">
-      <div class="business-mode business-reveal">
-        <span class="business-mode-tag">Marketing personalization platform</span>
-        <p>Built the clustering engine that segments prospects for personalized marketing data, wired up integrations across the customer's systems, and ran the GCP infrastructure underneath it. Sat in on customer calls and helped get the product listed in marketplaces.</p>
-      </div>
-      <div class="business-mode business-reveal">
-        <span class="business-mode-tag">Browser infrastructure company</span>
-        <p>Architected and built a faster, more secure, stealth browser platform. Led authenticated session handling and deterministic, self-healing automated actions on top of it. Helped define company values and shape the R&amp;D org from early on.</p>
-      </div>
-      <div class="business-mode business-reveal">
-        <span class="business-mode-tag">AI agent reliability infrastructure</span>
-        <p>Refactored a vibe-coded system from scratch — architected and built it all by hand, then put processes and harness tests in place to keep it that way. Hired the engineering team. Trained the SLMs behind real-time remediation of agent failures, from classic errors like 429s to hallucination, drift, and wrong tool calls, resolved in under 80ms.</p>
-      </div>
+      {
+        engagements.map((engagement) => {
+          const service = getService(engagement.service)!;
+          return (
+            <div class="business-mode business-reveal">
+              <span class="business-mode-tag">{engagement.client}</span>
+              <p>{engagement.text}</p>
+              <p class="business-mode-service">
+                <a class="business-linkline" href={servicePath(service.slug)}>
+                  {service.shortName} <span class="business-arrow" aria-hidden="true">→</span>
+                </a>
+              </p>
+            </div>
+          );
+        })
+      }
     </div>
     <p class="business-consulting-note">+ 3 more, under NDA.</p>
   </div>

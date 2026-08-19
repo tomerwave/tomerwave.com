@@ -4,8 +4,7 @@ import BusinessContact from "@/components/landing/BusinessContact.astro";
 import BusinessFooter from "@/components/landing/BusinessFooter.astro";
 import BusinessHero from "@/components/landing/BusinessHero.astro";
 import ConsultingWork from "@/components/landing/ConsultingWork.astro";
-import EngagementModes from "@/components/landing/EngagementModes.astro";
-import FounderSignals from "@/components/landing/FounderSignals.astro";
+import ServiceRouter from "@/components/landing/ServiceRouter.astro";
 import TrackRecord from "@/components/landing/TrackRecord.astro";
 import WritingBridge from "@/components/landing/WritingBridge.astro";
 import SiteHeader from "@/components/SiteHeader.astro";
@@ -14,17 +13,17 @@ import "@/styles/business.css";
 import Layout from "@/layouts/Layout.astro";
 
 const navItems = [
-  { label: "How I help", href: "#signals" },
+  { label: "Services", href: "#services" },
   { label: "Track record", href: "#track" },
-  { label: "Engagements", href: "#engagements" },
+  { label: "Work", href: "#consulting" },
   { label: "Writing", href: "#writing" },
-  { label: "Contact", href: "#contact", cta: true },
+  { label: "Let’s talk", href: "/meet", cta: true },
 ];
 ---
 
 <Layout
-  title="Tomer Gal — Fractional VP R&D"
-  description="Fractional VP of R&D for startups between their first engineering hire and their first real organization."
+  title="Tomer Gal — Technical strategy and hands-on execution"
+  description="I help teams and organizations make the technical calls that are easy to postpone and expensive to get wrong. Strategy when you need direction. Hands-on execution when you need things done."
 >
   <div class="business-site">
     <StructuredData type="WebSite" data={{}} />
@@ -40,12 +39,11 @@ const navItems = [
     <main id="business-main">
       <BusinessHero />
       <hr class="business-rule" />
-      <FounderSignals />
+      <ServiceRouter />
+      <hr class="business-rule" />
       <TrackRecord />
       <hr class="business-rule" />
       <ConsultingWork />
-      <hr class="business-rule" />
-      <EngagementModes />
       <BusinessAbout />
       <hr class="business-rule" />
       <WritingBridge />
@@ -55,27 +53,3 @@ const navItems = [
   </div>
 </Layout>
 
-<script>
-  const initializeBusinessReveals = () => {
-    const revealItems = document.querySelectorAll<HTMLElement>(".business-reveal");
-
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) {
-      revealItems.forEach((item) => item.classList.add("is-visible"));
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        });
-      },
-      { threshold: 0.16, rootMargin: "0px 0px -8% 0px" },
-    );
-    revealItems.forEach((item) => observer.observe(item));
-  };
-
-  document.addEventListener("astro:page-load", initializeBusinessReveals);
-</script>

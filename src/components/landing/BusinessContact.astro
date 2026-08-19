@@ -1,8 +1,17 @@
 ---
+interface Props {
+  heading?: string;
+  note?: string;
+}
+
+const {
+  heading = "Tell me what's breaking.",
+  note = "A short note is enough: team size, what shipped last quarter, and the thing you'd fix first if you had the time.",
+} = Astro.props;
 ---
 <section class="business-section business-contact" id="contact">
   <div class="business-wrap business-contact-grid">
-    <div class="business-reveal"><span class="business-eyebrow">Contact</span><h2>Tell me what's breaking.</h2><p class="business-contact-note">A short note is enough: team size, what shipped last quarter, and the thing you'd fix first if you had the time.</p></div>
+    <div class="business-reveal"><span class="business-eyebrow">Contact</span><h2>{heading}</h2><p class="business-contact-note">{note}</p></div>
     <div class="business-reveal">
       <a class="business-mail" href="mailto:tomer.wave@gmail.com">tomer.wave@gmail.com</a>
       <a class="business-button business-contact-button" href="/meet">Let’s talk <span class="business-arrow" aria-hidden="true">→</span></a>

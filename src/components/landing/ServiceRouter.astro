@@ -1,0 +1,43 @@
+---
+import { SERVICES, servicePath } from "@/data/services";
+
+const [lead, ...rest] = SERVICES;
+---
+
+<section class="business-section" id="services">
+  <div class="business-wrap">
+    <div class="business-section-head">
+      <div>
+        <span class="business-eyebrow">Where to start</span>
+        <h2>Four problems I get called about.</h2>
+      </div>
+      <p class="business-section-intro">
+        Start with whichever one is hurting most. Most engagements begin as one of these and grow into something else.
+      </p>
+    </div>
+
+    <a class="business-router-lead business-reveal" href={servicePath(lead.slug)}>
+      <span class="business-router-tag">{lead.documentTitle}</span>
+      <span class="business-router-problem">{lead.routerProblem}</span>
+      <span class="business-router-body">{lead.routerBody}</span>
+      <span class="business-linkline business-router-cue"
+        >{lead.shortName} <span class="business-arrow" aria-hidden="true">→</span></span
+      >
+    </a>
+
+    <div class="business-router-rest">
+      {
+        rest.map((service) => (
+          <a class="business-router-item business-reveal" href={servicePath(service.slug)}>
+            <span class="business-router-tag">{service.shortName}</span>
+            <span class="business-router-problem">{service.routerProblem}</span>
+            <span class="business-router-body">{service.routerBody}</span>
+            <span class="business-linkline business-router-cue">
+              Read more <span class="business-arrow" aria-hidden="true">→</span>
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>
