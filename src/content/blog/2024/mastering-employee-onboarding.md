@@ -10,7 +10,6 @@ tags:
   - leadership
 heroImage: /assets/img/2024/mastering-employee-onboarding/hero.jpg
 heroImageAlt: "Team member starting a new role"
-canonicalURL: https://medium.com/beyond-agile-leadership/mastering-employee-onboarding-strategies-for-a-smooth-start-a50606718e2e
 ---
 
 It took you weeks to hire a new team member, and weeks more to convince your manager you need one. She signed the contract and starts in a week. You are getting ready to onboard her to the team.

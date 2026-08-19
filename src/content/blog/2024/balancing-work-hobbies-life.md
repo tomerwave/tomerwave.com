@@ -10,7 +10,6 @@ tags:
   - balanced-life
 heroImage: /assets/img/2024/balancing-work-hobbies-life/hero.jpg
 heroImageAlt: "Mountain peak overlooking a vast landscape"
-canonicalURL: https://tomerwave.medium.com/the-art-of-balancing-work-hobbies-and-life-a-software-engineers-journey-1d99c56ca706
 ---
 
 The cold air bit my cheeks as I stood atop a rugged peak in Nepal, gazing out over a sea of mountains that stretched beyond the horizon. It was here, thousands of miles away from the glow of computer screens and the hum of office life, that a profound realization hit me: the only thing stopping me from living a fuller life was me.

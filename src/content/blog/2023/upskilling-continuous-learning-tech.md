@@ -10,7 +10,6 @@ tags:
   - learning
 heroImage: /assets/img/2023/upskilling-continuous-learning-tech/hero.jpg
 heroImageAlt: "Continuous learning and growth in tech"
-canonicalURL: https://tomerwave.medium.com/upskilling-and-continuous-learning-in-the-tech-industry-creating-a-culture-of-growth-28ece20bb6e6
 ---
 
 In the rapidly evolving world of technology, staying ahead of the curve is essential for both individual professionals and organizations. The key to maintaining relevance and unlocking new opportunities lies in upskilling and embracing a continuous learning culture. In this blog post, we will explore the importance of upskilling in the tech industry. We will also discuss strategies for creating growth cultures within organizations.

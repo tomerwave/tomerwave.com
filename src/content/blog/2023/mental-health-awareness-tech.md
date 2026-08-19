@@ -10,7 +10,6 @@ tags:
   - startup
 heroImage: /assets/img/2023/mental-health-awareness-tech/hero.jpg
 heroImageAlt: "Mental health awareness and well-being"
-canonicalURL: https://tomerwave.medium.com/mental-health-awareness-in-tech-breaking-the-stigma-and-prioritizing-well-being-a569d8fb5c7
 ---
 
 The tech industry is a high-pressure environment that can take a toll on employees' mental health. Long hours, demanding work, and a competitive culture can all contribute to stress, anxiety, and burnout.

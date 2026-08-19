@@ -10,7 +10,6 @@ tags:
   - startup
 heroImage: /assets/img/2023/future-of-work-automation-ai/hero.jpg
 heroImageAlt: "The future of work with automation and AI"
-canonicalURL: https://tomerwave.medium.com/the-future-of-work-how-automation-and-ai-are-impacting-tech-work-culture-981beb16ff93
 ---
 
 The tech industry is constantly evolving, and with it, the way we work. Automation and AI are two of the most disruptive technologies of our time, and they are having a profound impact on the tech work culture.

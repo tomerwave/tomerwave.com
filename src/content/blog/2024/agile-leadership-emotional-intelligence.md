@@ -10,7 +10,6 @@ tags:
   - management
 heroImage: /assets/img/2024/agile-leadership-emotional-intelligence/hero.jpg
 heroImageAlt: "Emotional intelligence in leadership"
-canonicalURL: https://medium.com/beyond-agile-leadership/the-intersection-of-agile-leadership-and-emotional-intelligence-ff52f4422b9b
 ---
 
 As the workplace evolves, so does the definition of effective leadership. No longer are the days when a leader's primary role was to direct and control. Today, the most successful leaders are those who empathize, communicate, and adapt. Emotional intelligence is becoming increasingly recognized as a key component of effective leadership. When paired with agile leadership principles, which value adaptability, collaboration, and continuous improvement, emotional intelligence can enhance a leader's ability to navigate team dynamics and organizational change.

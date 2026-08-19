@@ -9,7 +9,6 @@ tags:
   - work-life-balance
 heroImage: /assets/img/2023/work-life-balance-avoiding-burnout/hero.jpg
 heroImageAlt: "Developer working in a balanced environment"
-canonicalURL: https://tomerwave.medium.com/promoting-work-life-balance-in-the-tech-industry-strategies-for-avoiding-burnout-1c6839edf98c
 ---
 
 The tech industry is known for its long hours, fast-paced environment, and high expectations. This can lead to burnout, which is a state of physical, emotional, and mental exhaustion. Burnout can have a negative impact on your health, your relationships, and your work performance.

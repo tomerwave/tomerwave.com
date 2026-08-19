@@ -10,7 +10,6 @@ tags:
   - positive-attitude
 heroImage: /assets/img/2023/positive-work-culture-tech/hero.jpg
 heroImageAlt: "Positive work culture and team collaboration"
-canonicalURL: https://tomerwave.medium.com/creating-a-positive-work-culture-in-tech-strategies-for-building-a-supportive-environment-174cddf377b0
 ---
 
 The tech industry is known for its fast-paced, competitive environment. This can create a lot of stress for employees, which can lead to burnout and other mental health problems.
