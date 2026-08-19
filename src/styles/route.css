@@ -27,6 +27,7 @@
   transform: translate(-50%, -50%);
   transition: top .14s linear;
   width: 7px;
+  z-index: 2;
 }
 .route-piece {
   display: block;
@@ -35,6 +36,7 @@
   position: absolute;
   transform: translateY(-50%);
   width: 44px;
+  z-index: 1;
 }
 .route-piece::before {
   background: var(--business-ink);
