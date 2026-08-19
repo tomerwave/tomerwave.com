@@ -1,6 +1,8 @@
 const CANVAS_SELECTOR = ".business-hero-canvas";
 const CYCLE_MS = 16000;
 const SETTLED_MS = CYCLE_MS / 2;
+const EDGE_PAD_X = 64;
+const EDGE_PAD_Y = 44;
 
 let controller: AbortController | undefined;
 let frame = 0;
@@ -37,14 +39,18 @@ const measure = (canvas: HTMLCanvasElement) => {
   const context = canvas.getContext("2d");
   context?.setTransform(ratio, 0, 0, ratio, 0, 0);
 
-  const head = canvas.parentElement?.querySelector("h1")?.getBoundingClientRect();
+  const copy = canvas.parentElement?.querySelector(".business-hero-copy")?.getBoundingClientRect();
   return {
     context,
     width: bounds.width,
     height: bounds.height,
-    centreX: head ? head.left - bounds.left + head.width / 2 : bounds.width / 2,
-    centreY: head ? head.top - bounds.top + head.height / 2 : bounds.height / 2,
-    radius: Math.max((head?.width ?? bounds.width * 0.6) * 0.42, 150),
+    centreX: copy ? copy.left - bounds.left + copy.width / 2 : bounds.width / 2,
+    centreY: copy ? copy.top - bounds.top + copy.height / 2 : bounds.height / 2,
+    radiusX: Math.max((copy?.width ?? bounds.width * 0.6) / 2 + EDGE_PAD_X, 180),
+    radiusY: Math.min(
+      Math.max((copy?.height ?? bounds.height * 0.6) / 2 + EDGE_PAD_Y, 140),
+      bounds.height / 2 - 6
+    ),
   };
 };
 
@@ -53,16 +59,16 @@ const createStage = (canvas: HTMLCanvasElement) => {
   let palette = readPalette(canvas);
 
   const render = (elapsed: number) => {
-    const { context, width, height, centreX, centreY, radius } = view;
+    const { context, width, height, centreX, centreY, radiusX, radiusY } = view;
     if (!context) return;
 
     context.clearRect(0, 0, width, height);
     const closeness = Math.sin(((elapsed % CYCLE_MS) / CYCLE_MS) * Math.PI) ** 3;
-    const apart = radius * 0.62 * (1 - closeness);
+    const apart = radiusX * 0.34 * (1 - closeness);
 
     const half = (offset: number, from: number, to: number, colour: (alpha: number) => string) => {
       context.beginPath();
-      context.arc(centreX + offset, centreY, radius, from, to);
+      context.ellipse(centreX + offset, centreY, radiusX, radiusY, 0, from, to);
       context.strokeStyle = colour(0.2 + closeness * 0.28);
       context.lineWidth = 1.2;
       context.stroke();
@@ -73,7 +79,7 @@ const createStage = (canvas: HTMLCanvasElement) => {
 
     if (closeness <= 0.7) return;
     context.beginPath();
-    context.arc(centreX, centreY, radius, 0, Math.PI * 2);
+    context.ellipse(centreX, centreY, radiusX, radiusY, 0, 0, Math.PI * 2);
     context.strokeStyle = palette.ink(((closeness - 0.7) / 0.3) * 0.28);
     context.lineWidth = 1;
     context.stroke();

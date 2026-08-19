@@ -1,20 +1,20 @@
 /* Section route: a climbing line down the left margin. Extends business.css tokens. */
 
 .route {
-  bottom: 0;
+  bottom: clamp(1.5rem, 5vh, 3.5rem);
   display: none;
   left: clamp(.75rem, 2vw, 1.75rem);
   position: fixed;
-  top: 0;
+  top: 5.5rem;
   width: 44px;
   z-index: 90;
 }
 .route-line {
   background: var(--business-hair);
-  bottom: 8%;
+  bottom: 0;
   left: 22px;
   position: absolute;
-  top: 8%;
+  top: 0;
   width: 1px;
 }
 .route-climber {

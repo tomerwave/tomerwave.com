@@ -1,5 +1,5 @@
-const TOP_PERCENT = 8;
-const TRAVEL_PERCENT = 84;
+const HEADER_SELECTOR = "#site-bar";
+const HEADER_GAP = 20;
 const ACTIVE_LINE = 0.42;
 
 let controller: AbortController | undefined;
@@ -14,6 +14,7 @@ interface Layout {
   travel: number;
   documentHeight: number;
   viewport: number;
+  routeHeight: number;
 }
 
 const collectPitches = (route: HTMLElement): Pitch[] =>
@@ -24,18 +25,22 @@ const collectPitches = (route: HTMLElement): Pitch[] =>
     })
     .filter((pitch): pitch is Pitch => pitch !== null);
 
-const remeasure = (pitches: Pitch[]): Layout => {
+const remeasure = (route: HTMLElement, pitches: Pitch[]): Layout => {
+  const header = document.querySelector<HTMLElement>(HEADER_SELECTOR);
+  route.style.top = `${(header?.getBoundingClientRect().height ?? 64) + HEADER_GAP}px`;
+
   const documentHeight = document.documentElement.scrollHeight;
   const viewport = window.innerHeight;
   const travel = Math.max(1, documentHeight - viewport);
+  const routeHeight = route.getBoundingClientRect().height;
 
   pitches.forEach((pitch) => {
     pitch.offset = pitch.section.offsetTop;
     const at = Math.min(1, Math.max(0, (pitch.offset - viewport * 0.3) / travel));
-    pitch.piece.style.top = `${TOP_PERCENT + at * TRAVEL_PERCENT}%`;
+    pitch.piece.style.top = `${at * 100}%`;
   });
 
-  return { travel, documentHeight, viewport };
+  return { travel, documentHeight, viewport, routeHeight };
 };
 
 const activeIndex = (pitches: Pitch[], layout: Layout, scrollY: number) => {
@@ -57,8 +62,8 @@ const markCurrent = (pitches: Pitch[], index: number) => {
   });
 };
 
-const createPainter = (pitches: Pitch[], climber: HTMLElement) => {
-  let layout = remeasure(pitches);
+const createPainter = (route: HTMLElement, pitches: Pitch[], climber: HTMLElement) => {
+  let layout = remeasure(route, pitches);
   let lastIndex = -1;
   let lastTop = "";
   let queued = false;
@@ -67,7 +72,7 @@ const createPainter = (pitches: Pitch[], climber: HTMLElement) => {
     queued = false;
     const scrollY = window.scrollY;
     const progress = Math.min(1, Math.max(0, scrollY / layout.travel));
-    const offset = ((TOP_PERCENT + progress * TRAVEL_PERCENT) / 100) * layout.viewport;
+    const offset = progress * layout.routeHeight;
     const transform = `translate(-50%, -50%) translateY(${offset.toFixed(1)}px)`;
     if (transform !== lastTop) {
       climber.style.transform = transform;
@@ -86,7 +91,7 @@ const createPainter = (pitches: Pitch[], climber: HTMLElement) => {
   };
 
   const refresh = () => {
-    layout = remeasure(pitches);
+    layout = remeasure(route, pitches);
     lastIndex = -1;
     lastTop = "";
     schedule();
@@ -124,7 +129,7 @@ export function initSectionRoute() {
   }
 
   controller = new AbortController();
-  const painter = createPainter(pitches, climber);
+  const painter = createPainter(route, pitches, climber);
 
   painter.schedule();
   window.addEventListener("scroll", painter.schedule, { passive: true, signal: controller.signal });
