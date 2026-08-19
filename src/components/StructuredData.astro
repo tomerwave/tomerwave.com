@@ -4,6 +4,8 @@ export interface Props {
   data: any;
 }
 
+import { AUTHOR_SAME_AS } from "@/constants";
+
 const { type, data } = Astro.props;
 
 let structuredData = {};
@@ -18,6 +20,7 @@ if (type === "BlogPosting") {
       "@type": "Person",
       name: data.author || "Tomer Gal",
       url: "https://tomerwave.com/about",
+      sameAs: AUTHOR_SAME_AS,
     },
     datePublished: data.pubDatetime.toISOString(),
     dateModified: data.modDatetime?.toISOString() || data.pubDatetime.toISOString(),
@@ -46,11 +49,7 @@ if (type === "BlogPosting") {
     name: "Tomer Gal",
     url: "https://tomerwave.com",
     image: "https://tomerwave.com/avatar.jpg",
-    sameAs: [
-      "https://github.com/tomerwave",
-      "https://x.com/TomerWave",
-      "https://www.linkedin.com/in/tomergal14",
-    ],
+    sameAs: AUTHOR_SAME_AS,
     jobTitle: "Fractional VP of R&D and Software Engineer",
     description:
       "Tomer Gal works with founder-led startups and writes honestly about work, ambition, love, family, and everything underneath.",

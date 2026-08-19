@@ -1,6 +1,7 @@
 ---
 import { ClientRouter } from "astro:transitions";
 import { SITE } from "@/config";
+import { AUTHOR_SAME_AS } from "@/constants";
 import "@/styles/fonts.css";
 import "@/styles/global.css";
 import Analytics from "@/components/Analytics.astro";
@@ -44,13 +45,22 @@ const structuredData = pubDatetime
       image: `${socialImageURL}`,
       datePublished: pubDatetime.toISOString(),
       ...(modDatetime && { dateModified: modDatetime.toISOString() }),
+      description,
       author: [
         {
           "@type": "Person",
           name: `${author}`,
           ...(profile && { url: profile }),
+          sameAs: AUTHOR_SAME_AS,
         },
       ],
+      publisher: {
+        "@type": "Person",
+        name: SITE.author,
+        url: SITE.website,
+        sameAs: AUTHOR_SAME_AS,
+      },
+      mainEntityOfPage: { "@type": "WebPage", "@id": `${canonicalURL}` },
     }
   : {
       "@context": "https://schema.org",
@@ -62,6 +72,7 @@ const structuredData = pubDatetime
         "@type": "Person",
         name: author,
         ...(profile && { url: profile }),
+        sameAs: AUTHOR_SAME_AS,
       },
     };
 ---

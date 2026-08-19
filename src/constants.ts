@@ -82,3 +82,7 @@ export const SHARE_LINKS = [
     icon: "mail",
   },
 ] as const;
+
+export const AUTHOR_SAME_AS = SOCIALS.filter(
+  (social) => social.active && !social.href.startsWith("mailto:")
+).map((social) => social.href);
