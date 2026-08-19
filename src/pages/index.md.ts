@@ -4,10 +4,10 @@ import { SERVICES, servicePath } from "@/data/services";
 export const GET: APIRoute = async () => {
   const serviceLines = SERVICES.map(
     (service) =>
-      `- **[${service.pageHeading}](${servicePath(service.slug)})** — ${service.lede} ${service.offer.heading}.`
+      `- **[${service.pageHeading}](${servicePath(service.slug)})** · ${service.lede} ${service.offer.heading}.`
   ).join("\n");
 
-  const markdownContent = `# Tomer Gal — Technical strategy & hands-on execution
+  const markdownContent = `# Tomer Gal · Technical strategy & hands-on execution
 
 I help teams and organizations make the technical calls that are easy to postpone and expensive to get wrong. Strategy when you need direction. Hands-on execution when you need things done.
 
@@ -19,9 +19,9 @@ ${serviceLines}
 
 I started building at twelve, helping run Minecraft servers and writing the plugins behind them. Since then, I have helped grow startups, built my own companies, and worked as a fractional VP of R&D.
 
-- [Tonkean](https://tonkean.com) — founding engineer; helped grow from 0 ARR to several million and from six people to more than 300. Acquired by Coupa.
-- [LayerX](https://layerxsecurity.com) — built the team and the system across integrations, Zero Trust, delivery, and observability. Acquired by Akamai.
-- Butler AI and Lumos AI — founder, product builder, and more than 1,000 customer conversations.
+- [Tonkean](https://tonkean.com): founding engineer; helped grow from 0 ARR to several million and from six people to more than 300. Acquired by Coupa.
+- [LayerX](https://layerxsecurity.com): built the team and the system across integrations, Zero Trust, delivery, and observability. Acquired by Akamai.
+- Butler AI and Lumos AI: founder, product builder, and more than 1,000 customer conversations.
 
 ## Navigation
 

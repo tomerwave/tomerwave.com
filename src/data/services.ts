@@ -49,17 +49,17 @@ export const SERVICES: Service[] = [
     pageHeading: "R&D Advisory & Fractional VP R&D",
     eyebrow: "R&D Advisory",
     description:
-      "Your engineering team grew, but delivery got slower. I help figure out why, what actually needs to change, and what can wait — as an advisor, or as an embedded fractional VP R&D.",
+      "Your engineering team grew, but delivery got slower. I help figure out why, what actually needs to change, and what can wait. As an advisor, or as an embedded fractional VP R&D.",
     lede: "Your engineering team grew, but delivery got slower. I help figure out why, what actually needs to change, and what can wait.",
     routerProblem: "Your team grew, but delivery got slower.",
     routerBody:
-      "More engineers, less predictable output. Ownership is fuzzy. You've become the bottleneck on decisions you never wanted to own. This is the work I've done longest — as a founding engineer, as a team lead, and as a fractional VP R&D.",
+      "More engineers, less predictable output. Ownership is fuzzy. You've become the bottleneck on decisions you never wanted to own. This is the work I've done longest: as a founding engineer, as a team lead, and as a fractional VP R&D.",
     who: "Founders and CTOs at seed to Series A, usually somewhere between five and twenty-five engineers. Or earlier, when there's nobody senior enough to push back on the technical calls and a full-time VP doesn't make sense yet.",
     triggers: [
       "Engineering feels slower than it should, and nobody can say exactly why.",
       "The team grew quickly. The structure around it didn't.",
       "You're the bottleneck. Decisions wait for you.",
-      "Delivery is inconsistent — some quarters land, some don't.",
+      "Delivery is inconsistent. Some quarters land, some don't.",
       "Ownership is unclear, and work falls between people.",
       "Technical debt has stopped being theoretical.",
       "You're starting to wonder whether it's time to hire a VP R&D.",
@@ -68,7 +68,7 @@ export const SERVICES: Service[] = [
       heading: "How I help",
       body: [
         "Two shapes, and most engagements move between them. **Advisory** is the lighter one: we talk regularly, you bring the hard calls, I help you make them and tell you when I think you're wrong.",
-        "**Embedded** is the heavier one. I take the VP R&D seat part-time — strategy, architecture, hiring, delivery, and the day-to-day of a team that ships. Until you're ready to fill the seat properly, or until you decide you don't need to yet.",
+        "**Embedded** is the heavier one. I take the VP R&D seat part-time: strategy, architecture, hiring, delivery, and the day-to-day of a team that ships. Until you're ready to fill the seat properly, or until you decide you don't need to yet.",
       ],
       opinion:
         "Most teams don't need more process. They need clearer ownership and fewer people waiting on one person.",
@@ -78,7 +78,7 @@ export const SERVICES: Service[] = [
       name: "R&D Health Check",
       heading: "Start with an R&D Health Check",
       intro:
-        "A short, focused look at how engineering actually works here. Not an audit in the uncomfortable sense — I talk to people, read some code, watch how work moves, and tell you what I see.",
+        "A short, focused look at how engineering actually works here. Not an audit in the uncomfortable sense. I talk to people, read some code, watch how work moves, and tell you what I see.",
       looksAtLabel: "What I look at",
       looksAt: [
         "Team structure and who owns what",
@@ -92,13 +92,13 @@ export const SERVICES: Service[] = [
       ],
       deliverable: [
         "What's working, and worth protecting.",
-        "The biggest problems, and why they're happening — the cause, not the symptom.",
+        "The biggest problems, and why they're happening. The cause rather than the symptom.",
         "What to fix in what order.",
         "What to change over the next 30, 60, and 90 days.",
       ],
       duration: "One to two weeks",
       pricingNote:
-        "No price listed — the scope varies more than I'd like to pretend. Tell me your team size and what's hurting, and I'll give you a number.",
+        "No price listed, because the scope varies more than I'd like to pretend. Tell me your team size and what's hurting, and I'll give you a number.",
     },
     next: {
       body: "Some people take the assessment and run it themselves, which is a perfectly good outcome. Most ask me to stay for the parts that are hardest to do alone: the hiring, the reorganizing, and the architecture decision sitting underneath all of it.",
@@ -130,7 +130,7 @@ export const SERVICES: Service[] = [
     pageHeading: "Architecture & Technical Strategy",
     eyebrow: "Architecture",
     description:
-      "A technical decision is coming that's hard to undo. An architecture review tells you what to change, what to leave alone, and what to decide later — before it gets expensive.",
+      "A technical decision is coming that's hard to undo. An architecture review tells you what to change, what to leave alone, and what to decide later, before it gets expensive.",
     lede: "A decision is coming that's hard to undo. It's much cheaper to think it through now than to find out in eight months.",
     routerProblem: "A decision is coming that's hard to undo.",
     routerBody:
@@ -148,7 +148,7 @@ export const SERVICES: Service[] = [
     help: {
       heading: "How I help",
       body: [
-        "I look at what you have, what you're planning, and what's likely to break between here and there. Then I tell you what I'd do — including the parts I'd leave alone, which is usually more of it than people expect.",
+        "I look at what you have, what you're planning, and what's likely to break between here and there. Then I tell you what I'd do, including the parts I'd leave alone, which is usually more of it than people expect.",
         "I've split monoliths without downtime, built systems handling tens of millions of events a second, and rebuilt a codebase by hand that should never have been generated in the first place. Most of what I've learned is about what not to touch.",
       ],
       opinion:
@@ -192,7 +192,7 @@ export const SERVICES: Service[] = [
       },
       {
         postId: "2026/building-in-the-dark",
-        why: "On deciding when you don't have enough information — and doing it anyway.",
+        why: "On deciding when you don't have enough information, and doing it anyway.",
       },
     ],
     siblings: ["fractional-vp-rnd", "ai-automation"],
@@ -212,7 +212,7 @@ export const SERVICES: Service[] = [
     routerProblem: "Too much of the work is still manual.",
     routerBody:
       "People moving information between systems, answering the same question for the fortieth time, filling in the same form. Not every process should be automated. I help find the ones that should be, then build them.",
-    who: "Companies and organizations with real repetitive work — operations, support, admin, reporting. Often teams already using AI tools inconsistently, with not much to show for it yet.",
+    who: "Companies and organizations with real repetitive work: operations, support, admin, reporting. Often teams already using AI tools inconsistently, with not much to show for it yet.",
     triggers: [
       "People spend hours moving information between systems.",
       "The same questions get answered by hand, over and over.",
@@ -224,11 +224,11 @@ export const SERVICES: Service[] = [
     help: {
       heading: "How I help",
       body: [
-        "I start with the work, not the technology. Which workflows are expensive, repetitive, and stable enough to be worth automating — then which of those are reliable enough to trust once they're running unattended.",
+        "I start with the work, not the technology. Which workflows are expensive, repetitive, and stable enough to be worth automating. Then which of those are reliable enough to trust once they're running unattended.",
         "Then I build them, or lead the people building them. I do both halves on purpose. The plan is more honest when the person writing it has to build the thing afterwards.",
       ],
       opinion:
-        "Anything that has to be right every single time is a bad first candidate. Start where being occasionally wrong is survivable — and where you can tell that it happened.",
+        "Anything that has to be right every single time is a bad first candidate. Start where being occasionally wrong is survivable, and where you can tell that it happened.",
     },
     offer: {
       anchor: "opportunity-audit",
@@ -287,7 +287,7 @@ export const SERVICES: Service[] = [
     pageHeading: "Technology Advisor",
     eyebrow: "Technology Advisory",
     description:
-      "You don't need a full-time CTO. You need someone technical you can trust when making expensive technology decisions — reading the proposals, checking the quotes, and telling you plainly what's worth doing.",
+      "You don't need a full-time CTO. You need someone technical you can trust when making expensive technology decisions. Reading the proposals, checking the quotes, and telling you plainly what's worth doing.",
     lede: "You don't need a full-time CTO. You need someone technical you can trust when making expensive technology decisions.",
     routerProblem: "You're spending on technology without anyone technical on your side.",
     routerBody:
@@ -316,7 +316,7 @@ export const SERVICES: Service[] = [
       name: "Technology Assessment",
       heading: "Start with a Technology Assessment",
       intro:
-        "I spend time understanding how your organization actually works — not how the org chart says it works. Then I answer one question: what should you improve, replace, automate, buy, build, or simply leave alone?",
+        "I spend time understanding how your organization actually works, rather than how the org chart says it works. Then I answer one question: what should you improve, replace, automate, buy, build, or simply leave alone?",
       looksAtLabel: "What I look at",
       looksAt: [
         "How the work really gets done, day to day",
@@ -330,7 +330,7 @@ export const SERVICES: Service[] = [
       deliverable: [
         "A short roadmap in plain language. What's worth doing, in what order, and roughly what each one involves.",
         "Which tools to keep, which to drop, and which you're paying for twice.",
-        "Where automation would genuinely give staff time back — with the hours attached.",
+        "Where automation would genuinely give staff time back, with the hours attached.",
         "Where a vendor is worth the money, and where you'd be buying something you don't need.",
         "What I'd leave exactly as it is.",
       ],
@@ -339,7 +339,7 @@ export const SERVICES: Service[] = [
         "It depends on the size of the organization and how many systems are involved. A first conversation costs nothing and usually makes the shape clear.",
     },
     next: {
-      body: "Most organizations don't need a technical person full-time. They need one available. The usual continuation is a standing arrangement — you send me the vendor proposal, the quote, the contract, the question about whether AI would help with something. I answer within a day or two. No project, no minimum.",
+      body: "Most organizations don't need a technical person full-time. They need one available. The usual continuation is a standing arrangement. You send me the vendor proposal, the quote, the contract, the question about whether AI would help with something. I answer within a day or two. No project, no minimum.",
       note: "I can also oversee a project you've already committed to, and hold the vendor to what they promised.",
     },
     writing: [
