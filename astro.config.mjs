@@ -49,7 +49,11 @@ export default defineConfig({
     },
   },
   integrations: [mdx(), sitemap({
-    filter: (page) => !page.includes("/posts/2026/signature-strength-report-empathy"),
+    filter: (page) =>
+        // A support utility that wipes the visitor's cache and redirects. Nobody
+        // should arrive here from a search result.
+        !page.includes("/reset-local-cache") &&
+        !page.includes("/posts/2026/signature-strength-report-empathy"),
     serialize: serializeSitemapItem,
   }), react()],
   vite: {
