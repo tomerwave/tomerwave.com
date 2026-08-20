@@ -236,4 +236,4 @@ For the questions people find hardest to answer to your face, particularly the o
 
 And the other thing, which no arrangement fixes and which is the honest limit of doing this yourself: you will not know what you missed. Not the specific things, which is obvious, but the fact of them. Your notes will look complete, because the gaps in them are exactly the shape of what people decided not to say to you.
 
-If you want somebody to run the month rather than running it yourself, that is what an [R&D health check](/services/fractional-vp-rnd#health-check) is, and the terms are set out above.
+If you want somebody to run the month rather than running it yourself, that is what hiring a [fractional VP R&D](/services/fractional-vp-rnd) looks like, and the terms of the [R&D health check](/services/fractional-vp-rnd#health-check) are set out above.

@@ -50,11 +50,11 @@ export const SERVICES: Service[] = [
     eyebrow: "R&D Advisory",
     description:
       "Your engineering team grew, but delivery got slower. I help figure out why, what actually needs to change, and what can wait. As an advisor, or as an embedded fractional VP R&D.",
-    lede: "Your engineering team grew, but delivery got slower. I help figure out why, what actually needs to change, and what can wait.",
+    lede: "Your engineering team grew, but delivery got slower. I help figure out why, what actually needs to change, and what can wait. Hire a fractional VP R&D for the months you need one, without the full-time hire.",
     routerProblem: "Your team grew, but delivery got slower.",
     routerBody:
-      "More engineers, less predictable output. Ownership is fuzzy. You've become the bottleneck on decisions you never wanted to own. This is the work I've done longest: as a founding engineer, as a team lead, and as a fractional VP R&D.",
-    who: "Founders and CTOs at seed to Series A, usually somewhere between five and twenty-five engineers. Or earlier, when there's nobody senior enough to push back on the technical calls and a full-time VP doesn't make sense yet.",
+      "More engineers, less predictable output. Ownership is fuzzy. You've become the bottleneck on decisions you never wanted to own. This is the work I've done longest: as a founding engineer, as a team lead, and as a part-time and fractional VP of R&D.",
+    who: "Founders and CTOs at seed to Series A, usually somewhere between five and twenty-five engineers. Or earlier, when there's nobody senior enough to push back on the technical calls and a full-time VP doesn't make sense yet. I'm based in Israel and work with teams here and remotely across Europe and the US.",
     triggers: [
       "Engineering feels slower than it should, and nobody can say exactly why.",
       "The team grew quickly. The structure around it didn't.",

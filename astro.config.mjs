@@ -24,9 +24,13 @@ const SITEMAP_RULES = [
   { matches: (url) => /\/posts\/201\d/.test(url), metadata: { changefreq: ChangeFreqEnum.YEARLY, priority: 0.4 } },
 ];
 
+// SITE.website carries a trailing slash, and item.url has had its own stripped by
+// the time we compare them, so match on the slashless form of both.
+const HOME_URL = SITE.website.replace(/\/$/, "");
+
 function serializeSitemapItem(item) {
   if (item.url.endsWith("/") && item.url !== `${SITE.website}/`) item.url = item.url.slice(0, -1);
-  if (item.url === SITE.website || item.url === `${SITE.website}/`) return { ...item, changefreq: ChangeFreqEnum.DAILY, priority: 1.0, lastmod: new Date().toISOString() };
+  if (item.url === HOME_URL) return { ...item, changefreq: ChangeFreqEnum.DAILY, priority: 1.0, lastmod: new Date().toISOString() };
   return { ...item, ...(SITEMAP_RULES.find((rule) => rule.matches(item.url))?.metadata ?? DEFAULT_SITEMAP_METADATA) };
 }
 
