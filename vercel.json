@@ -135,6 +135,15 @@
   ],
   "headers": [
     {
+      "source": "/(.*).txt",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        }
+      ]
+    },
+    {
       "source": "/(.*)",
       "headers": [
         {
@@ -152,6 +161,10 @@
         {
           "key": "Referrer-Policy",
           "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "x-humans",
+          "value": "/humans.txt"
         },
         {
           "key": "Content-Security-Policy",

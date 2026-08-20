@@ -191,12 +191,14 @@ const structuredData = pubDatetime
     <Analytics />
     <script>
       import { initAnchorScroll } from "@/scripts/anchor-scroll";
+      import { initConsoleEgg } from "@/scripts/console-egg";
       import { initConversionEvents } from "@/scripts/conversion-events";
       import { initRevealOnScroll } from "@/scripts/reveal-on-scroll";
       import { initSectionRoute } from "@/scripts/section-route";
 
       const initializePageBehaviours = () => {
         initAnchorScroll();
+        initConsoleEgg();
         initConversionEvents();
         initRevealOnScroll();
         initSectionRoute();
