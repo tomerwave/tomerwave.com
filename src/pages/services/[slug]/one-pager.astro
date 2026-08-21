@@ -1,13 +1,13 @@
 ---
+import { SITE } from "@/config";
+import { SERVICES, type Service, servicePath } from "@/data/services";
+import Layout from "@/layouts/Layout.astro";
 /* The printable one-pager for a service.
    Everything on this page comes out of SERVICES, so it cannot drift from the
    service page it summarises: change the copy once and both surfaces move.
    The counts below are the only editorial decision the sheet makes on its own,
    and they exist because A4 is a fixed height. */
 import iconMarkup from "../../../../public/tomerwave-icon.svg?raw";
-import { SITE } from "@/config";
-import { SERVICES, servicePath, type Service } from "@/data/services";
-import Layout from "@/layouts/Layout.astro";
 import "@/styles/onepager.css";
 
 /* The line under the name is who he is, not what the sheet argues — the
@@ -54,8 +54,7 @@ const dropEchoedOpening = (lede: string, headline: string) => {
 };
 
 /* Same bold-to-strong pass the service page runs on these paragraphs. */
-const emphasise = (paragraph: string) =>
-  paragraph.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+const emphasise = (paragraph: string) => paragraph.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
 
 const triggers = service.triggers.slice(0, TRIGGER_COUNT);
 const deliverables = service.offer.deliverable.slice(0, DELIVERABLE_COUNT);
@@ -71,7 +70,7 @@ const lede = dropEchoedOpening(service.lede, service.routerProblem);
 >
   <div class="onepager">
     <div class="onepager-bar">
-      <button class="onepager-print" type="button" data-onepager-print>Save as PDF</button>
+      <button class="onepager-print" type="button" data-onepager-print>Print / save as PDF</button>
       <a class="onepager-back" href={servicePath(service.slug)}>Back to {service.shortName}</a>
     </div>
 
@@ -151,29 +150,14 @@ const lede = dropEchoedOpening(service.lede, service.routerProblem);
       </footer>
     </article>
   </div>
+
+  <script>
+    const bind = () => {
+      const button = document.querySelector<HTMLButtonElement>("[data-onepager-print]");
+      if (button) button.onclick = () => window.print();
+    };
+
+    bind();
+    document.addEventListener("astro:page-load", bind);
+  </script>
 </Layout>
-
-<script>
-  /* Arriving with ?print (the link on the service page) opens the dialog once
-     the fonts and the portrait have settled, so the preview is the real sheet
-     rather than a fallback-font approximation of it. */
-  const print = () => window.print();
-
-  const bind = () => {
-    document
-      .querySelector<HTMLButtonElement>("[data-onepager-print]")
-      ?.addEventListener("click", print);
-
-    if (new URLSearchParams(window.location.search).has("print")) {
-      Promise.all([document.fonts.ready, ...Array.from(document.images, (image) =>
-        image.complete ? Promise.resolve() : new Promise((done) => {
-          image.addEventListener("load", done, { once: true });
-          image.addEventListener("error", done, { once: true });
-        }),
-      )]).then(print);
-    }
-  };
-
-  bind();
-  document.addEventListener("astro:page-load", bind);
-</script>
