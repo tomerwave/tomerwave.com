@@ -1,6 +1,7 @@
 const HEADER_SELECTOR = "#site-bar";
 const HEADER_GAP = 20;
 const ACTIVE_LINE = 0.42;
+const SECTION_ROUTE_SELECTOR = "nav[data-section-route]";
 
 let controller: AbortController | undefined;
 
@@ -117,13 +118,7 @@ const watchLayout = (refresh: () => void, signal: AbortSignal) => {
 
 export function initSectionRoute() {
   controller?.abort();
-
-  /* Matched by tag as well as attribute, because the miss here is destructive:
-     whatever this selects with fewer than two pitches in it gets removed below.
-     It used to look for `data-route`, which Vercel Speed Insights also puts on
-     the script it injects into the head — so it deleted the analytics script on
-     every load and never wired the rail. */
-  const route = document.querySelector<HTMLElement>("nav[data-section-route]");
+  const route = document.querySelector<HTMLElement>(SECTION_ROUTE_SELECTOR);
   const climber = document.querySelector<HTMLElement>("[data-route-climber]");
   if (!route || !climber) return;
 
