@@ -15,6 +15,10 @@ export interface Service {
   routerBody: string;
   who: string;
   triggers: string[];
+  onePager: {
+    triggerIndexes: number[];
+    deliverableIndexes: number[];
+  };
   help: {
     heading: string;
     body: string[];
@@ -64,6 +68,10 @@ export const SERVICES: Service[] = [
       "Technical debt has stopped being theoretical.",
       "You're starting to wonder whether it's time to hire a VP R&D.",
     ],
+    onePager: {
+      triggerIndexes: [0, 1, 2],
+      deliverableIndexes: [0, 1, 2, 3],
+    },
     help: {
       heading: "How I help",
       body: [
@@ -145,6 +153,10 @@ export const SERVICES: Service[] = [
       "Growth is coming and you're not sure what breaks first.",
       "You want a second opinion from someone with nothing riding on the answer.",
     ],
+    onePager: {
+      triggerIndexes: [0, 1, 2],
+      deliverableIndexes: [0, 1, 2, 3],
+    },
     help: {
       heading: "How I help",
       body: [
@@ -221,6 +233,10 @@ export const SERVICES: Service[] = [
       "Someone built an automation last year and now nobody quite trusts it.",
       "Leadership wants AI on the roadmap and nobody wants to own the maintenance.",
     ],
+    onePager: {
+      triggerIndexes: [0, 1, 2],
+      deliverableIndexes: [0, 1, 2, 3],
+    },
     help: {
       heading: "How I help",
       body: [
@@ -302,6 +318,10 @@ export const SERVICES: Service[] = [
       "A project is going badly and you can't tell whose fault it is.",
       "You need someone technical in the room who is working for you.",
     ],
+    onePager: {
+      triggerIndexes: [0, 1, 2],
+      deliverableIndexes: [0, 1, 2, 3],
+    },
     help: {
       heading: "How I help",
       body: [

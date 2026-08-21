@@ -204,3 +204,7 @@
 .service-more summary:hover { color: var(--business-ink); }
 .service-more[open] .service-more-open, .service-more:not([open]) .service-more-close { display: none; }
 .service-more .service-writing-list { border-top: 1px solid var(--business-hair); }
+
+/* The offer's two ways forward: talk, or take the sheet away and think. */
+.service-offer-actions { align-items: center; justify-content: flex-start; margin-top: 1.75rem; }
+.service-offer-actions .business-button { margin-top: 0; }

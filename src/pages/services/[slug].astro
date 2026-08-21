@@ -189,9 +189,14 @@ const navItems: NavItem[] = [
             </div>
           </dl>
           <p class="service-pricing-note">{service.offer.pricingNote}</p>
-          <a class="business-button" href="/meet"
-            >Start with a conversation <span class="business-arrow" aria-hidden="true">→</span></a
-          >
+          <div class="business-actions service-offer-actions">
+            <a class="business-button" href="/meet"
+              >Start with a conversation <span class="business-arrow" aria-hidden="true">→</span></a
+            >
+            <a class="business-linkline" href={`${servicePath(service.slug)}/one-pager`}
+              >Or view the printable one-pager</a
+            >
+          </div>
         </div>
       </section>
 
@@ -298,4 +303,3 @@ const navItems: NavItem[] = [
     <BusinessFooter />
   </div>
 </Layout>
-

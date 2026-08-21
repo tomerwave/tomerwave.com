@@ -53,6 +53,9 @@ export default defineConfig({
         // A support utility that wipes the visitor's cache and redirects. Nobody
         // should arrive here from a search result.
         !page.includes("/reset-local-cache") &&
+        // The printable service sheets. They duplicate the service page they
+        // summarise, so the service page is the one that should rank.
+        !page.includes("/one-pager") &&
         !page.includes("/posts/2026/signature-strength-report-empathy"),
     serialize: serializeSitemapItem,
   }), react()],
