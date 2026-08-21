@@ -55,15 +55,6 @@
 
 /* ---- the sheet ---- */
 
-.onepager-sheet-shell {
-  --onepager-fit-scale: 1;
-  --onepager-shell-height: var(--sheet-h);
-
-  block-size: calc(var(--onepager-shell-height) * var(--onepager-fit-scale));
-  inline-size: calc(var(--sheet-w) * var(--onepager-fit-scale));
-  position: relative;
-}
-
 .onepager-sheet {
   background: var(--paper);
   box-shadow: 0 1px 2px rgb(0 0 0 / 9%), 0 18px 40px -18px rgb(0 0 0 / 28%);
@@ -73,12 +64,8 @@
   flex: none;
   font-family: var(--body);
   font-size: 1rem;
+  height: var(--sheet-h);
   line-height: 1.62;
-  min-height: var(--sheet-h);
-  inset: 0 auto auto 0;
-  position: absolute;
-  transform: scale(var(--onepager-fit-scale));
-  transform-origin: top left;
   width: var(--sheet-w);
   -webkit-font-smoothing: antialiased;
 }
@@ -305,7 +292,7 @@
    Let it reflow for touch-sized viewports; the print rules below restore the
    fixed A4 canvas and its two-column composition. */
 @media screen and (max-width: 850px) {
-  .onepager:not(.onepager--measure-print) {
+  .onepager {
     --sheet-pad: clamp(1.25rem, 6vw, 2.25rem);
 
     background: var(--paper);
@@ -313,43 +300,37 @@
     padding: 0.75rem 0 0;
   }
 
-  .onepager:not(.onepager--measure-print) .onepager-bar {
+  .onepager-bar {
     justify-content: center;
     padding-inline: 1rem;
     width: 100%;
   }
 
-  .onepager:not(.onepager--measure-print) .onepager-sheet-shell {
-    block-size: auto;
-    inline-size: 100%;
-  }
-
-  .onepager:not(.onepager--measure-print) .onepager-sheet {
+  .onepager-sheet {
     box-shadow: none;
+    height: auto;
     min-height: 0;
-    position: static;
-    transform: none;
     width: 100%;
   }
 
-  .onepager:not(.onepager--measure-print) .onepager-top { gap: 1rem; padding-block-start: 24px; }
-  .onepager:not(.onepager--measure-print) .onepager-top > .onepager-eyebrow { text-align: right; }
-  .onepager:not(.onepager--measure-print) .onepager-hero h1 { font-size: clamp(1.7rem, 8vw, 2rem); }
+  .onepager-top { gap: 1rem; padding-block-start: 24px; }
+  .onepager-top > .onepager-eyebrow { text-align: right; }
+  .onepager-hero h1 { font-size: clamp(1.7rem, 8vw, 2rem); }
 
-  .onepager:not(.onepager--measure-print) .onepager-cols,
-  .onepager:not(.onepager--measure-print) .onepager-offer-grid {
+  .onepager-cols,
+  .onepager-offer-grid {
     gap: 1.75rem;
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .onepager:not(.onepager--measure-print) .onepager-close {
+  .onepager-close {
     flex-direction: column;
     gap: 1.5rem;
   }
 
-  .onepager:not(.onepager--measure-print) .onepager-opinion { max-width: 38ch; }
+  .onepager-opinion { max-width: 38ch; }
 
-  .onepager:not(.onepager--measure-print) .onepager-foot {
+  .onepager-foot {
     align-items: flex-start;
     flex-direction: column;
     gap: 1rem;
@@ -358,31 +339,33 @@
 
 /* ---- print ---- */
 @media print {
-  @page { margin: 0; size: A4; }
+  @page { margin: 0; }
 
   html, body { background: #fff; margin: 0; padding: 0; }
 
   .onepager {
     background: none;
+    display: block;
     min-height: 0;
     padding: 0;
   }
 
   .onepager-bar { display: none; }
 
-  .onepager-sheet-shell {
-    block-size: 297mm;
-    break-inside: avoid;
-    inline-size: 210mm;
-    margin: 0;
-    overflow: hidden;
-    page-break-inside: avoid;
-  }
-
   .onepager-sheet {
     box-shadow: none;
-    inset: 0 auto auto 0;
+    height: auto;
+    max-width: 100%;
+    min-height: 0;
+    width: var(--sheet-w);
   }
+
+  .onepager-top { padding-block: 26px 10px; }
+  .onepager-hero { padding-block: 14px 12px; }
+  .onepager-cols { padding-block: 12px 14px; }
+  .onepager-offer { padding-block: 14px 12px; }
+  .onepager-close { margin-top: 0; padding-block: 10px 8px; }
+  .onepager-foot { padding-block: 10px 12px; }
 
   /* Warm paper and the sage rules are the design, not decoration. */
   .onepager-sheet, .onepager-offer { print-color-adjust: exact; -webkit-print-color-adjust: exact; }

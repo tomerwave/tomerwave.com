@@ -68,96 +68,85 @@ const lede = dropEchoedOpening(service.lede, service.routerProblem);
   canonicalURL={canonical}
   noindex={true}
 >
-  <div class="onepager" data-fit-ready="false" data-onepager-root>
+  <div class="onepager">
     <div class="onepager-bar">
       <a class="onepager-back" href={servicePath(service.slug)}>Back to {service.shortName}</a>
     </div>
 
-    <div class="onepager-sheet-shell" data-fit-state="pending" data-onepager-shell data-service-slug={service.slug}>
-      <article class="onepager-sheet" data-onepager-sheet>
-        <header class="onepager-top onepager-pad">
-          <div class="onepager-mark">
-            <Fragment set:html={icon} />
-            <span class="onepager-name">Tomer Gal</span>
-          </div>
-          <span class="onepager-eyebrow">{service.eyebrow}</span>
-        </header>
-        <hr class="onepager-rule" />
-
-        <div class="onepager-hero onepager-pad">
-          <h1>{service.routerProblem}</h1>
-          <p class="onepager-lede">{lede}</p>
+    <article class="onepager-sheet">
+      <header class="onepager-top onepager-pad">
+        <div class="onepager-mark">
+          <Fragment set:html={icon} />
+          <span class="onepager-name">Tomer Gal</span>
         </div>
-        <hr class="onepager-rule" />
+        <span class="onepager-eyebrow">{service.eyebrow}</span>
+      </header>
+      <hr class="onepager-rule" />
 
-        <div class="onepager-cols onepager-pad">
+      <div class="onepager-hero onepager-pad">
+        <h1>{service.routerProblem}</h1>
+        <p class="onepager-lede">{lede}</p>
+      </div>
+      <hr class="onepager-rule" />
+
+      <div class="onepager-cols onepager-pad">
+        <div>
+          <span class="onepager-eyebrow">The reason people call</span>
+          <h2>This sounds familiar if…</h2>
+          <ul class="onepager-triggers">
+            {triggers.map((trigger) => <li>{trigger}</li>)}
+          </ul>
+        </div>
+        <div>
+          <span class="onepager-eyebrow">How this works</span>
+          <h2>{service.help.heading}</h2>
+          <div class="onepager-help">
+            {help.map((paragraph) => <p set:html={emphasise(paragraph)} />)}
+          </div>
+        </div>
+      </div>
+
+      <div class="onepager-offer onepager-pad">
+        <div class="onepager-offer-grid">
           <div>
-            <span class="onepager-eyebrow">The reason people call</span>
-            <h2>This sounds familiar if…</h2>
-            <ul class="onepager-triggers">
-              {triggers.map((trigger) => <li>{trigger}</li>)}
+            <p class="onepager-offer-name">{service.offer.name}</p>
+            <h2>{service.offer.heading}</h2>
+            <p class="onepager-offer-intro">{service.offer.intro}</p>
+            <dl class="onepager-terms">
+              <div class="onepager-term">
+                <dt>How long</dt>
+                <dd>{service.offer.duration}</dd>
+              </div>
+              <div class="onepager-term">
+                <dt>Where</dt>
+                <dd>Tel Aviv, or remote</dd>
+              </div>
+            </dl>
+          </div>
+          <div>
+            <p class="onepager-offer-label">What you get back</p>
+            <ul class="onepager-list">
+              {deliverables.map((item) => <li>{item}</li>)}
             </ul>
           </div>
-          <div>
-            <span class="onepager-eyebrow">How this works</span>
-            <h2>{service.help.heading}</h2>
-            <div class="onepager-help">
-              {help.map((paragraph) => <p set:html={emphasise(paragraph)} />)}
-            </div>
-          </div>
         </div>
+      </div>
 
-        <div class="onepager-offer onepager-pad">
-          <div class="onepager-offer-grid">
-            <div>
-              <p class="onepager-offer-name">{service.offer.name}</p>
-              <h2>{service.offer.heading}</h2>
-              <p class="onepager-offer-intro">{service.offer.intro}</p>
-              <dl class="onepager-terms">
-                <div class="onepager-term">
-                  <dt>How long</dt>
-                  <dd>{service.offer.duration}</dd>
-                </div>
-                <div class="onepager-term">
-                  <dt>Where</dt>
-                  <dd>Tel Aviv, or remote</dd>
-                </div>
-              </dl>
-            </div>
-            <div>
-              <p class="onepager-offer-label">What you get back</p>
-              <ul class="onepager-list">
-                {deliverables.map((item) => <li>{item}</li>)}
-              </ul>
-            </div>
-          </div>
-        </div>
+      <div class="onepager-close onepager-pad">
+        <p class="onepager-opinion">{service.help.opinion}</p>
+        <figure class="onepager-me">
+          <img alt="Tomer Gal" height="62" src="/avatar.jpg" width="62" />
+          <figcaption>
+            Tomer Gal
+            <span class="onepager-role">{SHEET_ROLE}</span>
+          </figcaption>
+        </figure>
+      </div>
 
-        <div class="onepager-close onepager-pad">
-          <p class="onepager-opinion">{service.help.opinion}</p>
-          <figure class="onepager-me">
-            <img alt="Tomer Gal" height="62" src="/avatar.jpg" width="62" />
-            <figcaption>
-              Tomer Gal
-              <span class="onepager-role">{SHEET_ROLE}</span>
-            </figcaption>
-          </figure>
-        </div>
-
-        <footer class="onepager-foot onepager-pad">
-          <a class="onepager-mail" href="mailto:tomer.wave@gmail.com">tomer.wave@gmail.com</a>
-          <span class="onepager-cta">Let’s talk · tomerwave.com/meet</span>
-        </footer>
-      </article>
-    </div>
+      <footer class="onepager-foot onepager-pad">
+        <a class="onepager-mail" href="mailto:tomer.wave@gmail.com">tomer.wave@gmail.com</a>
+        <span class="onepager-cta">Let’s talk · tomerwave.com/meet</span>
+      </footer>
+    </article>
   </div>
-
-  <script>
-    import { initOnePagerFit } from "@/scripts/onepager-fit";
-
-    const bind = () => initOnePagerFit();
-
-    bind();
-    document.addEventListener("astro:page-load", bind);
-  </script>
 </Layout>
