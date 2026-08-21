@@ -352,26 +352,41 @@
 }
 
 /* ---- print ----
-   The sheet is already A4-sized in CSS pixels, so printing is a matter of
-   removing everything around it and letting the page box match. */
+   Screen dimensions use rounded CSS pixels. Print uses physical units so the
+   sheet cannot round beyond the A4 page boundary. */
 @media print {
-  @page { margin: 0; size: A4; }
+  @page { margin: 0; size: 210mm 297mm; }
 
-  html, body { background: #fff; margin: 0; padding: 0; }
+  html,
+  body,
+  body > div[data-pagefind-ignore] {
+    background: #fff;
+    height: 297mm;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    width: 210mm;
+  }
 
   .onepager {
     background: none;
     display: block;
-    min-height: 0;
+    height: 297mm;
+    min-height: 297mm;
+    overflow: hidden;
     padding: 0;
+    width: 210mm;
   }
 
   .onepager-bar { display: none; }
 
   .onepager-sheet {
+    break-inside: avoid;
     box-shadow: none;
-    height: var(--sheet-h);
-    width: var(--sheet-w);
+    height: 297mm;
+    overflow: hidden;
+    page-break-inside: avoid;
+    width: 210mm;
   }
 
   /* Warm paper and the sage rules are the design, not decoration. */
