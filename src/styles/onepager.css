@@ -17,6 +17,16 @@
   --hair: color-mix(in srgb, var(--ink) 15%, transparent);
   --display: "Fraunces", Georgia, serif;
   --body: "Instrument Sans", system-ui, -apple-system, sans-serif;
+  --business-paper: var(--paper);
+  --business-paper-warm: var(--paper-warm);
+  --business-ink: var(--ink);
+  --business-ink-70: var(--ink-70);
+  --business-ink-45: var(--ink-45);
+  --business-sage: var(--sage);
+  --business-sage-deep: var(--sage-deep);
+  --business-hair: var(--hair);
+  --business-display: var(--display);
+  --business-body: var(--body);
 
   /* A4 at 96dpi, and the horizontal margin the sheet keeps on every edge. */
   --sheet-w: 794px;
@@ -86,13 +96,8 @@
 
 .onepager-rule { background: var(--hair); border: 0; height: 1px; margin-inline: var(--sheet-pad); }
 
-/* Matches .business-eyebrow. */
 .onepager-eyebrow {
-  color: var(--sage-deep);
-  display: block;
-  font-family: var(--display);
   font-size: 1rem;
-  font-style: italic;
 }
 
 /* Masthead */
@@ -134,26 +139,12 @@
 }
 .onepager-cols h2 { font-size: 1.18rem; margin-top: 6px; }
 
-/* Matches .service-trigger. */
-.onepager-triggers { display: grid; list-style: none; margin-top: 14px; }
-.onepager-triggers li {
-  align-items: baseline;
-  border-top: 1px solid var(--hair);
-  color: var(--ink);
-  display: flex;
+.onepager-triggers { margin-top: 14px; }
+.onepager-triggers .service-trigger {
   font-size: 0.89rem;
   gap: 0.8rem;
   line-height: 1.42;
   padding-block: 0.5rem;
-}
-.onepager-triggers li:last-child { border-bottom: 1px solid var(--hair); }
-.onepager-triggers li::before {
-  background: var(--sage);
-  content: "";
-  flex: none;
-  height: 1px;
-  margin-top: 0.8em;
-  width: 16px;
 }
 
 .onepager-help { margin-top: 14px; }
@@ -161,58 +152,38 @@
 .onepager-help p + p { border-top: 1px solid var(--hair); margin-top: 12px; padding-top: 12px; }
 .onepager-help strong { color: var(--ink); font-weight: 500; }
 
-/* The entry offer, on warm paper, as on the service page. */
 .onepager-offer { background: var(--paper-warm); padding-block: 18px 16px; }
 .onepager-offer-grid { display: grid; gap: 0 46px; grid-template-columns: 1fr 1fr; }
 .onepager-offer-name {
-  color: var(--sage-deep);
-  font-family: var(--display);
   font-size: 1.02rem;
-  font-style: italic;
   margin-bottom: 0.7rem;
 }
 .onepager-offer h2 { font-size: 1.2rem; max-width: 24ch; }
 .onepager-offer-intro {
-  color: var(--ink-70);
   font-size: 0.89rem;
   line-height: 1.5;
   margin-top: 10px;
   max-width: 44ch;
 }
 .onepager-offer-label {
-  color: var(--ink-45);
-  font-family: var(--display);
   font-size: 0.97rem;
-  font-style: italic;
   margin-bottom: 0.8rem;
 }
 
-/* Matches .service-list--deliverable. */
-.onepager-list { display: grid; list-style: none; }
 .onepager-list li {
-  border-top: 1px solid var(--hair);
-  color: var(--ink);
   font-size: 0.885rem;
   line-height: 1.42;
   padding-block: 0.5rem;
 }
-.onepager-list li:last-child { border-bottom: 1px solid var(--hair); }
 
-/* Matches .service-terms. */
 .onepager-terms {
-  border-top: 1px solid var(--hair);
-  display: flex;
-  flex-wrap: wrap;
   gap: 0.5rem 2rem;
   margin-top: 16px;
   padding-top: 12px;
 }
-.onepager-term { align-items: baseline; display: flex; gap: 0.6rem; }
+.onepager-term { gap: 0.6rem; }
 .onepager-term dt {
-  color: var(--ink-45);
-  font-family: var(--display);
   font-size: 0.9rem;
-  font-style: italic;
 }
 .onepager-term dd { font-size: 0.9rem; }
 
@@ -226,15 +197,10 @@
   padding-block: 14px 10px;
 }
 
-/* Matches .service-opinion. */
 .onepager-opinion {
-  border-left: 2px solid var(--sage);
-  font-family: var(--display);
   font-size: 1.05rem;
-  font-style: italic;
-  letter-spacing: -0.006em;
   line-height: 1.34;
-  max-width: 32ch;
+  max-width: 32ch !important;
   padding-left: 16px;
 }
 
@@ -266,25 +232,14 @@
   padding-block: 12px 18px;
 }
 
-/* Matches .business-mail. */
 .onepager-mail {
-  border-bottom: 1px solid var(--hair);
-  color: var(--ink);
-  font-family: var(--display);
   font-size: 1.15rem;
   letter-spacing: -0.01em;
   padding-bottom: 0.3rem;
 }
 
-/* Matches .business-button. */
 .onepager-cta {
-  align-items: center;
-  background: var(--ink);
-  border-radius: 2px;
-  color: var(--paper);
-  display: inline-flex;
   font-size: 0.9rem;
-  gap: 0.6rem;
   padding: 0.72rem 1.3rem;
 }
 
@@ -341,7 +296,7 @@
 @media print {
   @page { margin: 0; }
 
-  html { font-size: 15px; }
+  html { font-size: 13px; }
   html, body { background: #fff; margin: 0; padding: 0; }
 
   .onepager {
@@ -365,7 +320,12 @@
   .onepager-hero { padding-block: 14px 12px; }
   .onepager-cols { padding-block: 12px 14px; }
   .onepager-offer { padding-block: 14px 12px; }
-  .onepager-close { display: none; }
+  .onepager-close { gap: 20px; margin-top: 0; padding-block: 6px; }
+  .onepager-opinion { font-size: 0.9rem; max-width: 44ch !important; padding-left: 10px; }
+  .onepager-me { gap: 8px; }
+  .onepager-me img { height: 44px; width: 44px; }
+  .onepager-me figcaption { font-size: 0.9rem; }
+  .onepager-role { font-size: 0.75rem; margin-top: 0.15rem; max-width: 22ch; }
   .onepager-foot { padding-block: 8px 10px; }
 
   /* Warm paper and the sage rules are the design, not decoration. */

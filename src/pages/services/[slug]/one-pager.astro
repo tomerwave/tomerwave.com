@@ -8,15 +8,13 @@ import Layout from "@/layouts/Layout.astro";
    The counts below are the only editorial decision the sheet makes on its own,
    and they exist because A4 is a fixed height. */
 import iconMarkup from "../../../../public/tomerwave-icon.svg?raw";
+import "@/styles/business.css";
+import "@/styles/service.css";
 import "@/styles/onepager.css";
 
 /* The line under the name is who he is, not what the sheet argues — the
    eyebrow at the top already carries the service. */
 const SHEET_ROLE = "Fractional VP of R&D for founder-led startups";
-
-const TRIGGER_COUNT = 3;
-const DELIVERABLE_COUNT = 4;
-const HELP_PARAGRAPHS = 2;
 
 export async function getStaticPaths() {
   return SERVICES.map((service) => ({
@@ -56,9 +54,11 @@ const dropEchoedOpening = (lede: string, headline: string) => {
 /* Same bold-to-strong pass the service page runs on these paragraphs. */
 const emphasise = (paragraph: string) => paragraph.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
 
-const triggers = service.triggers.slice(0, TRIGGER_COUNT);
-const deliverables = service.offer.deliverable.slice(0, DELIVERABLE_COUNT);
-const help = service.help.body.slice(0, HELP_PARAGRAPHS);
+const triggers = service.onePager.triggerIndexes.map((index) => service.triggers[index]);
+const deliverables = service.onePager.deliverableIndexes.map(
+  (index) => service.offer.deliverable[index]
+);
+const help = service.help.body;
 const lede = dropEchoedOpening(service.lede, service.routerProblem);
 ---
 
@@ -79,7 +79,7 @@ const lede = dropEchoedOpening(service.lede, service.routerProblem);
           <Fragment set:html={icon} />
           <span class="onepager-name">Tomer Gal</span>
         </div>
-        <span class="onepager-eyebrow">{service.eyebrow}</span>
+        <span class="business-eyebrow onepager-eyebrow">{service.eyebrow}</span>
       </header>
       <hr class="onepager-rule" />
 
@@ -91,16 +91,16 @@ const lede = dropEchoedOpening(service.lede, service.routerProblem);
 
       <div class="onepager-cols onepager-pad">
         <div>
-          <span class="onepager-eyebrow">The reason people call</span>
+          <span class="business-eyebrow onepager-eyebrow">The reason people call</span>
           <h2>This sounds familiar if…</h2>
-          <ul class="onepager-triggers">
-            {triggers.map((trigger) => <li>{trigger}</li>)}
+          <ul class="service-triggers onepager-triggers">
+            {triggers.map((trigger) => <li class="service-trigger">{trigger}</li>)}
           </ul>
         </div>
         <div>
-          <span class="onepager-eyebrow">How this works</span>
+          <span class="business-eyebrow onepager-eyebrow">How this works</span>
           <h2>{service.help.heading}</h2>
-          <div class="onepager-help">
+          <div class="service-help-body onepager-help">
             {help.map((paragraph) => <p set:html={emphasise(paragraph)} />)}
           </div>
         </div>
@@ -109,23 +109,23 @@ const lede = dropEchoedOpening(service.lede, service.routerProblem);
       <div class="onepager-offer onepager-pad">
         <div class="onepager-offer-grid">
           <div>
-            <p class="onepager-offer-name">{service.offer.name}</p>
+            <p class="service-offer-name onepager-offer-name">{service.offer.name}</p>
             <h2>{service.offer.heading}</h2>
-            <p class="onepager-offer-intro">{service.offer.intro}</p>
-            <dl class="onepager-terms">
-              <div class="onepager-term">
+            <p class="service-offer-intro onepager-offer-intro">{service.offer.intro}</p>
+            <dl class="service-terms onepager-terms">
+              <div class="service-term onepager-term">
                 <dt>How long</dt>
                 <dd>{service.offer.duration}</dd>
               </div>
-              <div class="onepager-term">
+              <div class="service-term onepager-term">
                 <dt>Where</dt>
                 <dd>Tel Aviv, or remote</dd>
               </div>
             </dl>
           </div>
           <div>
-            <p class="onepager-offer-label">What you get back</p>
-            <ul class="onepager-list">
+            <p class="service-offer-label onepager-offer-label">What you get back</p>
+            <ul class="service-list service-list--deliverable onepager-list">
               {deliverables.map((item) => <li>{item}</li>)}
             </ul>
           </div>
@@ -133,7 +133,7 @@ const lede = dropEchoedOpening(service.lede, service.routerProblem);
       </div>
 
       <div class="onepager-close onepager-pad">
-        <p class="onepager-opinion">{service.help.opinion}</p>
+        <p class="service-opinion onepager-opinion">{service.help.opinion}</p>
         <figure class="onepager-me">
           <img alt="Tomer Gal" height="62" src="/avatar.jpg" width="62" />
           <figcaption>
@@ -144,8 +144,8 @@ const lede = dropEchoedOpening(service.lede, service.routerProblem);
       </div>
 
       <footer class="onepager-foot onepager-pad">
-        <a class="onepager-mail" href="mailto:tomer.wave@gmail.com">tomer.wave@gmail.com</a>
-        <span class="onepager-cta">Let’s talk · tomerwave.com/meet</span>
+        <a class="business-mail onepager-mail" href="mailto:tomer.wave@gmail.com">tomer.wave@gmail.com</a>
+        <a class="business-button onepager-cta" href="/meet">Let’s talk · tomerwave.com/meet</a>
       </footer>
     </article>
   </div>
