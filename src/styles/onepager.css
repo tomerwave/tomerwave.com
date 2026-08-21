@@ -1,0 +1,324 @@
+/* The printable service sheet. One A4 page per service, built from the same
+   data the service page renders, so the two can never drift.
+
+   The sheet is paper. It stays on the light palette in every theme, because a
+   dark one-pager is a page nobody can print. The tokens below are the light
+   values from palette.css, redeclared rather than referenced, so a theme switch
+   on the surrounding page leaves the sheet alone. */
+
+.onepager {
+  --paper: #faf6ef;
+  --paper-warm: #f3ede2;
+  --ink: #2b3138;
+  --ink-70: color-mix(in srgb, var(--ink) 80%, transparent);
+  --ink-45: color-mix(in srgb, var(--ink) 72%, transparent);
+  --sage: #8fa396;
+  --sage-deep: #5f7368;
+  --hair: color-mix(in srgb, var(--ink) 15%, transparent);
+  --display: "Fraunces", Georgia, serif;
+  --body: "Instrument Sans", system-ui, -apple-system, sans-serif;
+
+  /* A4 at 96dpi, and the horizontal margin the sheet keeps on every edge. */
+  --sheet-w: 794px;
+  --sheet-h: 1123px;
+  --sheet-pad: 52px;
+
+  background: #e6e0d4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  min-height: 100vh;
+  padding: 2.5rem 1rem 4rem;
+}
+
+/* The toolbar exists on screen only. Print drops it. */
+.onepager-bar {
+  align-items: center;
+  color: var(--ink-45);
+  display: flex;
+  flex-wrap: wrap;
+  font-family: var(--body);
+  font-size: 0.9rem;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.onepager-print {
+  background: var(--ink);
+  border: 0;
+  border-radius: 2px;
+  color: var(--paper);
+  cursor: pointer;
+  font-family: var(--body);
+  font-size: 0.9rem;
+  padding: 0.7rem 1.3rem;
+}
+
+.onepager-back {
+  border-bottom: 1px solid var(--hair);
+  color: var(--ink-45);
+  padding-bottom: 2px;
+}
+
+/* ---- the sheet ---- */
+
+.onepager-sheet {
+  background: var(--paper);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 9%), 0 18px 40px -18px rgb(0 0 0 / 28%);
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  flex: none;
+  font-family: var(--body);
+  font-size: 1rem;
+  height: var(--sheet-h);
+  line-height: 1.62;
+  width: var(--sheet-w);
+  -webkit-font-smoothing: antialiased;
+}
+
+.onepager-sheet *,
+.onepager-sheet *::before,
+.onepager-sheet *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+.onepager-sheet h1,
+.onepager-sheet h2 {
+  font-family: var(--display);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+}
+
+.onepager-pad { padding-inline: var(--sheet-pad); }
+
+.onepager-rule { background: var(--hair); border: 0; height: 1px; margin-inline: var(--sheet-pad); }
+
+/* Matches .business-eyebrow. */
+.onepager-eyebrow {
+  color: var(--sage-deep);
+  display: block;
+  font-family: var(--display);
+  font-size: 1rem;
+  font-style: italic;
+}
+
+/* Masthead */
+.onepager-top {
+  align-items: center;
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+  padding-block: 32px 12px;
+}
+
+.onepager-mark { align-items: center; display: flex; gap: 11px; }
+.onepager-icon { display: block; flex: none; height: 25px; width: 25px; }
+.onepager-name { font-family: var(--display); font-size: 1.05rem; letter-spacing: -0.012em; }
+
+/* Hero */
+.onepager-hero { padding-block: 18px 16px; }
+.onepager-hero h1 {
+  font-size: 2rem;
+  letter-spacing: -0.018em;
+  margin-top: 8px;
+  max-width: 24ch;
+  text-wrap: balance;
+}
+.onepager-lede {
+  color: var(--ink-70);
+  font-size: 1.04rem;
+  line-height: 1.48;
+  margin-top: 12px;
+  max-width: 52ch;
+}
+
+/* The two columns: why people call, and how the work is shaped. */
+.onepager-cols {
+  display: grid;
+  gap: 0 46px;
+  grid-template-columns: 1fr 1fr;
+  padding-block: 16px 18px;
+}
+.onepager-cols h2 { font-size: 1.18rem; margin-top: 6px; }
+
+/* Matches .service-trigger. */
+.onepager-triggers { display: grid; list-style: none; margin-top: 14px; }
+.onepager-triggers li {
+  align-items: baseline;
+  border-top: 1px solid var(--hair);
+  color: var(--ink);
+  display: flex;
+  font-size: 0.89rem;
+  gap: 0.8rem;
+  line-height: 1.42;
+  padding-block: 0.5rem;
+}
+.onepager-triggers li:last-child { border-bottom: 1px solid var(--hair); }
+.onepager-triggers li::before {
+  background: var(--sage);
+  content: "";
+  flex: none;
+  height: 1px;
+  margin-top: 0.8em;
+  width: 16px;
+}
+
+.onepager-help { margin-top: 14px; }
+.onepager-help p { color: var(--ink-70); font-size: 0.88rem; line-height: 1.5; }
+.onepager-help p + p { border-top: 1px solid var(--hair); margin-top: 12px; padding-top: 12px; }
+.onepager-help strong { color: var(--ink); font-weight: 500; }
+
+/* The entry offer, on warm paper, as on the service page. */
+.onepager-offer { background: var(--paper-warm); padding-block: 18px 16px; }
+.onepager-offer-grid { display: grid; gap: 0 46px; grid-template-columns: 1fr 1fr; }
+.onepager-offer-name {
+  color: var(--sage-deep);
+  font-family: var(--display);
+  font-size: 1.02rem;
+  font-style: italic;
+  margin-bottom: 0.7rem;
+}
+.onepager-offer h2 { font-size: 1.2rem; max-width: 24ch; }
+.onepager-offer-intro {
+  color: var(--ink-70);
+  font-size: 0.89rem;
+  line-height: 1.5;
+  margin-top: 10px;
+  max-width: 44ch;
+}
+.onepager-offer-label {
+  color: var(--ink-45);
+  font-family: var(--display);
+  font-size: 0.97rem;
+  font-style: italic;
+  margin-bottom: 0.8rem;
+}
+
+/* Matches .service-list--deliverable. */
+.onepager-list { display: grid; list-style: none; }
+.onepager-list li {
+  border-top: 1px solid var(--hair);
+  color: var(--ink);
+  font-size: 0.885rem;
+  line-height: 1.42;
+  padding-block: 0.5rem;
+}
+.onepager-list li:last-child { border-bottom: 1px solid var(--hair); }
+
+/* Matches .service-terms. */
+.onepager-terms {
+  border-top: 1px solid var(--hair);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+  margin-top: 16px;
+  padding-top: 12px;
+}
+.onepager-term { align-items: baseline; display: flex; gap: 0.6rem; }
+.onepager-term dt {
+  color: var(--ink-45);
+  font-family: var(--display);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+.onepager-term dd { font-size: 0.9rem; }
+
+/* The closing opinion, and the person making it. */
+.onepager-close {
+  align-items: flex-start;
+  display: flex;
+  gap: 40px;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-block: 14px 10px;
+}
+
+/* Matches .service-opinion. */
+.onepager-opinion {
+  border-left: 2px solid var(--sage);
+  font-family: var(--display);
+  font-size: 1.05rem;
+  font-style: italic;
+  letter-spacing: -0.006em;
+  line-height: 1.34;
+  max-width: 32ch;
+  padding-left: 16px;
+}
+
+.onepager-me { align-items: flex-start; display: flex; flex: none; gap: 14px; }
+.onepager-me img { display: block; height: 62px; object-fit: cover; width: 62px; }
+.onepager-me figcaption {
+  font-family: var(--display);
+  font-size: 1.05rem;
+  letter-spacing: -0.012em;
+  padding-top: 2px;
+}
+.onepager-role {
+  color: var(--sage-deep);
+  display: block;
+  font-family: var(--display);
+  font-size: 0.95rem;
+  font-style: italic;
+  line-height: 1.3;
+  margin-top: 0.3rem;
+  max-width: 15ch;
+}
+
+.onepager-foot {
+  align-items: center;
+  border-top: 1px solid var(--hair);
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+  padding-block: 12px 18px;
+}
+
+/* Matches .business-mail. */
+.onepager-mail {
+  border-bottom: 1px solid var(--hair);
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+  padding-bottom: 0.3rem;
+}
+
+/* Matches .business-button. */
+.onepager-cta {
+  align-items: center;
+  background: var(--ink);
+  border-radius: 2px;
+  color: var(--paper);
+  display: inline-flex;
+  font-size: 0.9rem;
+  gap: 0.6rem;
+  padding: 0.72rem 1.3rem;
+}
+
+/* ---- print ----
+   The sheet is already A4-sized in CSS pixels, so printing is a matter of
+   removing everything around it and letting the page box match. */
+@media print {
+  @page { margin: 0; size: A4; }
+
+  html, body { background: #fff; margin: 0; padding: 0; }
+
+  .onepager {
+    background: none;
+    display: block;
+    min-height: 0;
+    padding: 0;
+  }
+
+  .onepager-bar { display: none; }
+
+  .onepager-sheet {
+    box-shadow: none;
+    height: var(--sheet-h);
+    width: var(--sheet-w);
+  }
+
+  /* Warm paper and the sage rules are the design, not decoration. */
+  .onepager-sheet, .onepager-offer { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+}
