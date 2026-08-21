@@ -341,6 +341,7 @@
 @media print {
   @page { margin: 0; }
 
+  html { font-size: 15px; }
   html, body { background: #fff; margin: 0; padding: 0; }
 
   .onepager {
@@ -364,8 +365,8 @@
   .onepager-hero { padding-block: 14px 12px; }
   .onepager-cols { padding-block: 12px 14px; }
   .onepager-offer { padding-block: 14px 12px; }
-  .onepager-close { margin-top: 0; padding-block: 10px 8px; }
-  .onepager-foot { padding-block: 10px 12px; }
+  .onepager-close { display: none; }
+  .onepager-foot { padding-block: 8px 10px; }
 
   /* Warm paper and the sage rules are the design, not decoration. */
   .onepager-sheet, .onepager-offer { print-color-adjust: exact; -webkit-print-color-adjust: exact; }

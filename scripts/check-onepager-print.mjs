@@ -7,8 +7,8 @@ import path from "node:path";
 import { SERVICES } from "../src/data/services.ts";
 
 const DIST = path.resolve("dist");
-const HEIGHT_BUDGET = 1035;
-const PRINT_SPACING_REDUCTION = 46;
+const HEIGHT_BUDGET = 930;
+const PRINT_SPACING_REDUCTION = 44;
 const slugs = SERVICES.map(({ slug }) => slug);
 
 const report = `<!doctype html>
@@ -38,6 +38,7 @@ const report = `<!doctype html>
 
     const sheet = page.querySelector(".onepager-sheet");
     const screenHeight = [...sheet.children]
+      .filter((child) => !child.classList.contains("onepager-close"))
       .reduce((total, child) => total + child.getBoundingClientRect().height, 0);
 
     results.push({
