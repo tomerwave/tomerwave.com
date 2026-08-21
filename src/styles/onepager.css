@@ -44,20 +44,6 @@
   justify-content: center;
 }
 
-.onepager-print {
-  align-items: center;
-  background: var(--ink);
-  border: 0;
-  border-radius: 2px;
-  color: var(--paper);
-  cursor: pointer;
-  display: inline-flex;
-  font-family: var(--body);
-  font-size: 0.9rem;
-  min-height: 44px;
-  padding: 0.7rem 1.3rem;
-}
-
 .onepager-back {
   align-items: center;
   border-bottom: 1px solid var(--hair);
@@ -315,7 +301,7 @@
   }
 
   .onepager-bar {
-    justify-content: space-between;
+    justify-content: center;
     padding-inline: 1rem;
     width: 100%;
   }
@@ -351,42 +337,25 @@
   }
 }
 
-/* ---- print ----
-   Screen dimensions use rounded CSS pixels. Print uses physical units so the
-   sheet cannot round beyond the A4 page boundary. */
+/* ---- print ---- */
 @media print {
-  @page { margin: 0; size: 210mm 297mm; }
+  @page { margin: 0; size: A4; }
 
-  html,
-  body,
-  body > div[data-pagefind-ignore] {
-    background: #fff;
-    height: 297mm;
-    margin: 0;
-    overflow: hidden;
-    padding: 0;
-    width: 210mm;
-  }
+  html, body { background: #fff; margin: 0; padding: 0; }
 
   .onepager {
     background: none;
-    display: block;
-    height: 297mm;
-    min-height: 297mm;
-    overflow: hidden;
+    min-height: 0;
     padding: 0;
-    width: 210mm;
   }
 
   .onepager-bar { display: none; }
 
   .onepager-sheet {
-    break-inside: avoid;
     box-shadow: none;
-    height: 297mm;
-    overflow: hidden;
-    page-break-inside: avoid;
-    width: 210mm;
+    height: var(--sheet-h);
+    width: var(--sheet-w);
+    zoom: 0.94;
   }
 
   /* Warm paper and the sage rules are the design, not decoration. */

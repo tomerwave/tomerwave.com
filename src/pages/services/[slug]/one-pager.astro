@@ -70,7 +70,6 @@ const lede = dropEchoedOpening(service.lede, service.routerProblem);
 >
   <div class="onepager">
     <div class="onepager-bar">
-      <button class="onepager-print" type="button" data-onepager-print>Print / save as PDF</button>
       <a class="onepager-back" href={servicePath(service.slug)}>Back to {service.shortName}</a>
     </div>
 
@@ -150,14 +149,4 @@ const lede = dropEchoedOpening(service.lede, service.routerProblem);
       </footer>
     </article>
   </div>
-
-  <script>
-    const bind = () => {
-      const button = document.querySelector<HTMLButtonElement>("[data-onepager-print]");
-      if (button) button.onclick = () => window.print();
-    };
-
-    bind();
-    document.addEventListener("astro:page-load", bind);
-  </script>
 </Layout>
