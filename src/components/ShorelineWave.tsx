@@ -2,77 +2,34 @@
 
 import { useEffect, useRef } from "react";
 
-/* =====================================================================
-   ShorelineWave
-   Aerial shoreline: long calm swells at the horizon that steepen, break
-   into foam at the surf line, then wash out across the sand.
-
-   Each line is a swell travelling shoreward. Roughness, brightness and
-   fade are all functions of how far it has travelled, so a line
-   naturally smooths at the horizon and shatters at the break. Lines
-   recycle to the horizon on their own, which is what makes it loop
-   without a visible seam.
-
-     <section className="relative overflow-hidden">
-       <ShorelineWave />
-       <div className="relative z-10">…</div>
-     </section>
-   ===================================================================== */
-
 export interface ShorelineColors {
-  /** Warm band above the water. */
   sky: string;
-  /** Water at the horizon. */
   seaLight: string;
-  /** Water just before the break. The deepest, coolest tone. */
   seaDeep: string;
-  /** Wet sand immediately past the surf. */
   sandWet: string;
-  /** Dry sand at the bottom edge. */
   sandDry: string;
-  /** Foam lines. Almost always white or near-white. */
   foam: string;
 }
 
 export interface ShorelineWaveProps {
-  /** Six-stop vertical palette. Defaults to the pale sage and warm sand set. */
   colors?: Partial<ShorelineColors>;
-
-  /** Where the water starts, 0 = top edge. */
   horizon?: number;
-  /** Where the water breaks into sand, 0..1 down the canvas. */
   shoreline?: number;
-  /** How far foam runs up the sand past the shoreline, in canvas fractions. */
   runup?: number;
-
-  /** Swell count. Cost is linear. 110 reads dense, 40 reads graphic. */
   lines?: number;
-  /** Base swell height as a fraction of canvas height, before roughness. */
   swell?: number;
-  /** Master multiplier on how jagged the surf gets. 0 keeps every line smooth. */
   roughness?: number;
-  /** How fast swells travel shoreward. One unit is roughly one full pass per 25s. */
   speed?: number;
-  /** Master alpha on the foam lines. The gradient is unaffected. */
   opacity?: number;
-  /** Soft halo around the brightest foam. Set 0 for crisp hairlines. */
   glow?: number;
-
-  /** Hold the current frame. Prop changes still repaint. */
   paused?: boolean;
-  /** Frame cap. Nothing here moves fast, so 30 is plenty. */
   fps?: number;
-  /** Stop painting while scrolled out of view. */
   pauseWhenOffscreen?: boolean;
-  /** Render one still frame when the OS asks for reduced motion. */
   respectReducedMotion?: boolean;
-
-  /** Merged onto the canvas. Defaults to filling the positioned parent. */
   className?: string;
 }
 
 export const SHORELINE_PALETTES = {
-  /** Sampled from the tomerwave hero: pale sage water, warm cream sand. */
   sage: {
     sky: "#FAF6EF",
     seaLight: "#EDECE4",
@@ -81,7 +38,6 @@ export const SHORELINE_PALETTES = {
     sandDry: "#FBF6EF",
     foam: "#FFFFFF",
   },
-  /** Cooler, closer to open Atlantic on an overcast day. */
   slate: {
     sky: "#F4F5F6",
     seaLight: "#DFE4E7",
@@ -90,7 +46,6 @@ export const SHORELINE_PALETTES = {
     sandDry: "#F2EFEA",
     foam: "#FFFFFF",
   },
-  /** Inverted for dark sections. Foam reads as light on deep water. */
   night: {
     sky: "#0B1116",
     seaLight: "#101A21",
@@ -120,215 +75,366 @@ const DEFAULTS = {
 
 type Cfg = typeof DEFAULTS;
 
-const TAU = Math.PI * 2;
-const clamp = (v: number, a: number, b: number) => (v < a ? a : v > b ? b : v);
+interface RenderState {
+  width: number;
+  height: number;
+  visible: boolean;
+  clock: number;
+  last: number;
+  bank: number;
+  painted: number;
+  raf: number;
+}
 
-/** Hermite ease between two edges. */
-function smoothstep(edge0: number, edge1: number, x: number) {
-  const t = clamp((x - edge0) / (edge1 - edge0 || 1e-6), 0, 1);
-  return t * t * (3 - 2 * t);
+interface ShorelineBounds {
+  top: number;
+  shore: number;
+  end: number;
+}
+
+interface SwellLine {
+  seed: number;
+  rough: number;
+  surf: number;
+  alpha: number;
+  y0: number;
+  amp: number;
+  width: number;
+}
+
+interface SwellBuildInput {
+  cfg: Cfg;
+  state: RenderState;
+  bounds: ShorelineBounds;
+  index: number;
+  count: number;
+  drift: number;
+}
+
+interface SwellTraceInput {
+  ctx: CanvasRenderingContext2D;
+  width: number;
+  steps: number;
+  line: SwellLine;
+  index: number;
+  clock: number;
+}
+
+interface SwellDrawInput {
+  ctx: CanvasRenderingContext2D;
+  state: RenderState;
+  cfg: Cfg;
+  bounds: ShorelineBounds;
+  foam: [number, number, number];
+}
+
+interface FrameInput {
+  state: RenderState;
+  cfg: Cfg;
+  still: boolean;
+  version: number;
+  now: number;
+}
+
+interface LoopInput {
+  state: RenderState;
+  cfgRef: { current: Cfg };
+  versionRef: { current: number };
+  still: boolean;
+  paint: () => void;
+}
+
+interface BackdropInput {
+  ctx: CanvasRenderingContext2D;
+  width: number;
+  height: number;
+  colors: ShorelineColors;
+  bounds: ShorelineBounds;
+}
+
+const TAU = Math.PI * 2;
+
+const clamp = (value: number, minimum: number, maximum: number) =>
+  value < minimum ? minimum : value > maximum ? maximum : value;
+
+const rgba = (rgb: [number, number, number], alpha: number) =>
+  `rgba(${rgb[0]},${rgb[1]},${rgb[2]},${alpha.toFixed(3)})`;
+
+function smoothstep(edge0: number, edge1: number, value: number) {
+  const progress = clamp((value - edge0) / (edge1 - edge0 || 1e-6), 0, 1);
+  return progress * progress * (3 - 2 * progress);
 }
 
 function hexToRgb(hex: string): [number, number, number] {
-  const h = hex.trim().replace("#", "");
-  const f =
-    h.length === 3
-      ? h
+  const normalized = hex.trim().replace("#", "");
+  const expanded =
+    normalized.length === 3
+      ? normalized
           .split("")
-          .map((c) => c + c)
+          .map((segment) => segment + segment)
           .join("")
-      : h;
-  const n = parseInt(f, 16);
-  return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+      : normalized;
+  const parsed = parseInt(expanded, 16);
+  return [(parsed >> 16) & 255, (parsed >> 8) & 255, parsed & 255];
 }
 
-/**
- * Six octaves of sine. The top three only switch on as `rough` rises, so
- * the same function gives glassy swells offshore and shattered foam inshore.
- */
-function crest(x: number, seed: number, rough: number, t: number) {
-  const r2 = rough * rough;
-  const r3 = r2 * rough;
+function crest(x: number, seed: number, rough: number, time: number) {
+  const roughSquared = rough * rough;
+  const roughCubed = roughSquared * rough;
   return (
-    (Math.sin(x * 1.7 + seed * 3.1 + t * 0.3) * 1.0 +
-      Math.sin(x * 3.3 - seed * 1.7 + t * 0.42) * 0.5 +
-      Math.sin(x * 6.1 + seed * 5.3 - t * 0.55) * 0.26 * rough +
-      Math.sin(x * 11.7 - seed * 2.9 + t * 0.8) * 0.14 * r2 +
-      Math.sin(x * 23.3 + seed * 7.1 + t * 1.2) * 0.07 * r3 +
-      Math.sin(x * 41.0 - seed * 4.3 - t * 1.7) * 0.035 * r3 * rough) /
+    (Math.sin(x * 1.7 + seed * 3.1 + time * 0.3) * 1.0 +
+      Math.sin(x * 3.3 - seed * 1.7 + time * 0.42) * 0.5 +
+      Math.sin(x * 6.1 + seed * 5.3 - time * 0.55) * 0.26 * rough +
+      Math.sin(x * 11.7 - seed * 2.9 + time * 0.8) * 0.14 * roughSquared +
+      Math.sin(x * 23.3 + seed * 7.1 + time * 1.2) * 0.07 * roughCubed +
+      Math.sin(x * 41.0 - seed * 4.3 - time * 1.7) * 0.035 * roughCubed * rough) /
     1.9
   );
 }
 
-export default function ShorelineWave(props: ShorelineWaveProps) {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  const cfg: Cfg = {
+function resolveConfig(props: ShorelineWaveProps): Cfg {
+  return {
     ...DEFAULTS,
     ...stripUndefined(props),
     colors: { ...DEFAULTS.colors, ...props.colors },
   } as Cfg;
+}
 
+function createRenderState(still: boolean): RenderState {
+  return {
+    width: 0,
+    height: 0,
+    visible: true,
+    clock: still ? 12 : 0,
+    last: 0,
+    bank: 0,
+    painted: -1,
+    raf: 0,
+  };
+}
+
+function getBounds(cfg: Cfg): ShorelineBounds {
+  const shore = clamp(cfg.shoreline, 0.1, 0.99);
+  const top = clamp(cfg.horizon, 0, shore - 0.05);
+  return {
+    top,
+    shore,
+    end: clamp(shore + cfg.runup, shore, 1.05),
+  };
+}
+
+function measureCanvas(
+  canvas: HTMLCanvasElement,
+  ctx: CanvasRenderingContext2D,
+  state: RenderState
+) {
+  const rect = canvas.getBoundingClientRect();
+  if (!rect.width || !rect.height) return;
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  state.width = rect.width;
+  state.height = rect.height;
+  canvas.width = Math.round(rect.width * dpr);
+  canvas.height = Math.round(rect.height * dpr);
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  state.painted = -1;
+}
+
+function fillBackdrop({ ctx, width, height, colors, bounds }: BackdropInput) {
+  const gradient = ctx.createLinearGradient(0, 0, 0, height);
+  gradient.addColorStop(0, colors.sky);
+  gradient.addColorStop(clamp(bounds.top, 0.001, 0.99), colors.seaLight);
+  gradient.addColorStop(
+    clamp(bounds.top + (bounds.shore - bounds.top) * 0.55, 0.002, 0.99),
+    colors.seaLight
+  );
+  gradient.addColorStop(clamp(bounds.shore - 0.02, 0.003, 0.99), colors.seaDeep);
+  gradient.addColorStop(clamp(bounds.shore + 0.03, 0.004, 0.995), colors.sandWet);
+  gradient.addColorStop(1, colors.sandDry);
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, width, height);
+}
+
+function buildSwellLine({ cfg, state, bounds, index, count, drift }: SwellBuildInput) {
+  const seed = (index * 12.9898) % 6.2831;
+  const jitter = ((Math.sin(index * 78.233) + 1) / 2) * 0.6 + 0.7;
+  const v = (index / count + drift) % 1;
+  const rough = smoothstep(0.28, 0.92, v) * cfg.roughness;
+  const fadeIn = smoothstep(0, 0.07, v);
+  const surf = smoothstep(0.32, 0.87, v);
+  const wash = 1 - smoothstep(0.87, 1, v);
+  const alpha = cfg.opacity * fadeIn * wash * (0.09 + 0.8 * surf) * jitter * 0.55;
+  if (alpha < 0.004) return null;
+  return {
+    seed,
+    rough,
+    surf,
+    alpha,
+    y0: (bounds.top + (bounds.end - bounds.top) * v ** 1.18) * state.height,
+    amp: cfg.swell * state.height * (0.12 + rough * 0.95) * jitter,
+    width: 0.6 + surf * 0.9,
+  } satisfies SwellLine;
+}
+
+function traceSwellPath({ ctx, width, steps, line, index, clock }: SwellTraceInput) {
+  ctx.beginPath();
+  for (let step = 0; step <= steps; step++) {
+    const progress = step / steps;
+    const y =
+      line.y0 + crest(progress * TAU, line.seed, line.rough, clock + index * 0.37) * line.amp;
+    if (step === 0) ctx.moveTo(progress * width, y);
+    else ctx.lineTo(progress * width, y);
+  }
+}
+
+function strokeSwell(
+  ctx: CanvasRenderingContext2D,
+  foam: [number, number, number],
+  glow: number,
+  line: SwellLine
+) {
+  if (glow > 0 && line.surf > 0.35) {
+    ctx.strokeStyle = rgba(foam, line.alpha * 0.16 * glow);
+    ctx.lineWidth = line.width * 5;
+    ctx.stroke();
+  }
+  ctx.strokeStyle = rgba(foam, clamp(line.alpha, 0, 1));
+  ctx.lineWidth = line.width;
+  ctx.stroke();
+}
+
+function drawSwells({ ctx, state, cfg, bounds, foam }: SwellDrawInput) {
+  const count = Math.max(4, Math.round(cfg.lines));
+  const steps = Math.max(64, Math.round(state.width / 9));
+  const drift = (state.clock * cfg.speed) / 25;
+  ctx.lineCap = "round";
+  ctx.lineJoin = "round";
+
+  for (let index = 0; index < count; index++) {
+    const line = buildSwellLine({ cfg, state, bounds, index, count, drift });
+    if (!line) continue;
+    traceSwellPath({ ctx, width: state.width, steps, line, index, clock: state.clock });
+    strokeSwell(ctx, foam, cfg.glow, line);
+  }
+}
+
+function paintScene(ctx: CanvasRenderingContext2D, state: RenderState, cfg: Cfg) {
+  if (!state.width || !state.height) return;
+  const bounds = getBounds(cfg);
+  fillBackdrop({ ctx, width: state.width, height: state.height, colors: cfg.colors, bounds });
+  drawSwells({ ctx, state, cfg, bounds, foam: hexToRgb(cfg.colors.foam) });
+}
+
+function readDelta(state: RenderState, now: number) {
+  const delta = Math.min((now - state.last) / 1000 || 0, 0.1);
+  state.last = now;
+  return delta;
+}
+
+function shouldFreeze(cfg: Cfg, still: boolean, visible: boolean) {
+  return cfg.paused || still || (cfg.pauseWhenOffscreen && !visible);
+}
+
+function advanceFrame({ state, cfg, still, version, now }: FrameInput) {
+  const dirty = state.painted !== version;
+  const delta = readDelta(state, now);
+  if (shouldFreeze(cfg, still, state.visible)) return dirty;
+  state.clock += delta;
+  state.bank += delta;
+  if (state.bank < 1 / Math.max(1, cfg.fps) && !dirty) return false;
+  state.bank = 0;
+  return true;
+}
+
+function observeCanvas(canvas: HTMLCanvasElement, measure: () => void, state: RenderState) {
+  const resizeObserver = new ResizeObserver(measure);
+  const intersectionObserver = new IntersectionObserver(
+    ([entry]) => {
+      state.visible = entry?.isIntersecting ?? true;
+    },
+    { rootMargin: "140px" }
+  );
+
+  resizeObserver.observe(canvas);
+  intersectionObserver.observe(canvas);
+
+  return () => {
+    resizeObserver.disconnect();
+    intersectionObserver.disconnect();
+  };
+}
+
+function createLoop({ state, cfgRef, versionRef, still, paint }: LoopInput) {
+  const loop = (now: number) => {
+    state.raf = requestAnimationFrame(loop);
+    const ready = advanceFrame({
+      state,
+      cfg: cfgRef.current,
+      still,
+      version: versionRef.current,
+      now,
+    });
+    if (!ready) return;
+    state.painted = versionRef.current;
+    paint();
+  };
+  return loop;
+}
+
+function mountShoreline(
+  canvas: HTMLCanvasElement,
+  cfgRef: { current: Cfg },
+  versionRef: { current: number }
+) {
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return;
+  const reduced =
+    typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const still = reduced && cfgRef.current.respectReducedMotion;
+  const state = createRenderState(still);
+  const measure = () => measureCanvas(canvas, ctx, state);
+  const paint = () => paintScene(ctx, state, cfgRef.current);
+  const stopObserving = observeCanvas(canvas, measure, state);
+  const loop = createLoop({ state, cfgRef, versionRef, still, paint });
+
+  measure();
+  paint();
+  state.raf = requestAnimationFrame(loop);
+
+  return () => {
+    cancelAnimationFrame(state.raf);
+    stopObserving();
+  };
+}
+
+export default function ShorelineWave(props: ShorelineWaveProps) {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const cfg = resolveConfig(props);
   const cfgRef = useRef(cfg);
   cfgRef.current = cfg;
 
-  // Bumped every render so a paused canvas still repaints on prop changes.
   const versionRef = useRef(0);
-  versionRef.current++;
+  versionRef.current += 1;
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    const reduced =
-      typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const still = reduced && cfgRef.current.respectReducedMotion;
-
-    let w = 0,
-      h = 0;
-    let visible = true;
-    let clock = still ? 12 : 0;
-    let last = 0,
-      bank = 0,
-      painted = -1,
-      raf = 0;
-
-    const measure = () => {
-      const r = canvas.getBoundingClientRect();
-      if (!r.width || !r.height) return;
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      w = r.width;
-      h = r.height;
-      canvas.width = Math.round(w * dpr);
-      canvas.height = Math.round(h * dpr);
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      painted = -1;
-    };
-
-    const paint = () => {
-      const c = cfgRef.current;
-      if (!w || !h) return;
-
-      const shore = clamp(c.shoreline, 0.1, 0.99);
-      const top = clamp(c.horizon, 0, shore - 0.05);
-      const end = clamp(shore + c.runup, shore, 1.05);
-      const foam = hexToRgb(c.colors.foam);
-
-      /* ---- water and sand ---- */
-      const g = ctx.createLinearGradient(0, 0, 0, h);
-      g.addColorStop(0, c.colors.sky);
-      g.addColorStop(clamp(top, 0.001, 0.99), c.colors.seaLight);
-      g.addColorStop(clamp(top + (shore - top) * 0.55, 0.002, 0.99), c.colors.seaLight);
-      g.addColorStop(clamp(shore - 0.02, 0.003, 0.99), c.colors.seaDeep);
-      g.addColorStop(clamp(shore + 0.03, 0.004, 0.995), c.colors.sandWet);
-      g.addColorStop(1, c.colors.sandDry);
-      ctx.fillStyle = g;
-      ctx.fillRect(0, 0, w, h);
-
-      /* ---- swells ---- */
-      const count = Math.max(4, Math.round(c.lines));
-      const steps = Math.max(64, Math.round(w / 9));
-      const travel = end - top;
-      const drift = (clock * c.speed) / 25;
-
-      ctx.lineCap = "round";
-      ctx.lineJoin = "round";
-
-      for (let i = 0; i < count; i++) {
-        // Deterministic per-line jitter, so no two swells share a shape.
-        const seed = (i * 12.9898) % 6.2831;
-        const jitter = ((Math.sin(i * 78.233) + 1) / 2) * 0.6 + 0.7;
-
-        // Position cycles from horizon to runup, then recycles.
-        const v = (i / count + drift) % 1;
-
-        const rough = smoothstep(0.28, 0.92, v) * c.roughness;
-        const fadeIn = smoothstep(0, 0.07, v);
-        const surf = smoothstep(0.32, 0.87, v);
-        const wash = 1 - smoothstep(0.87, 1, v);
-        const alpha = c.opacity * fadeIn * wash * (0.09 + 0.8 * surf) * jitter * 0.55;
-        if (alpha < 0.004) continue;
-
-        // Swells compress toward the shore, the way they do in shallow water.
-        const y0 = (top + travel * v ** 1.18) * h;
-        const amp = c.swell * h * (0.12 + rough * 0.95) * jitter;
-        const width = 0.6 + surf * 0.9;
-
-        ctx.beginPath();
-        for (let s = 0; s <= steps; s++) {
-          const u = s / steps;
-          const y = y0 + crest(u * TAU, seed, rough, clock + i * 0.37) * amp;
-          s ? ctx.lineTo(u * w, y) : ctx.moveTo(u * w, y);
-        }
-
-        // Cheap halo: one wide soft pass under one crisp pass.
-        if (c.glow > 0 && surf > 0.35) {
-          ctx.strokeStyle = `rgba(${foam[0]},${foam[1]},${foam[2]},${(alpha * 0.16 * c.glow).toFixed(3)})`;
-          ctx.lineWidth = width * 5;
-          ctx.stroke();
-        }
-        ctx.strokeStyle = `rgba(${foam[0]},${foam[1]},${foam[2]},${clamp(alpha, 0, 1).toFixed(3)})`;
-        ctx.lineWidth = width;
-        ctx.stroke();
-      }
-    };
-
-    const loop = (now: number) => {
-      raf = requestAnimationFrame(loop);
-      const c = cfgRef.current;
-      const dt = Math.min((now - last) / 1000 || 0, 0.1);
-      last = now;
-
-      const dirty = painted !== versionRef.current;
-      const frozen = c.paused || still || (c.pauseWhenOffscreen && !visible);
-      if (frozen && !dirty) return;
-      if (!frozen) {
-        clock += dt;
-        bank += dt;
-        if (bank < 1 / Math.max(1, c.fps) && !dirty) return;
-        bank = 0;
-      }
-      if (c.pauseWhenOffscreen && !visible && !dirty) return;
-
-      painted = versionRef.current;
-      paint();
-    };
-
-    const ro = new ResizeObserver(measure);
-    ro.observe(canvas);
-    const io = new IntersectionObserver(
-      (e) => {
-        visible = e[0].isIntersecting;
-      },
-      { rootMargin: "140px" }
-    );
-    io.observe(canvas);
-
-    measure();
-    paint();
-    raf = requestAnimationFrame(loop);
-
-    return () => {
-      cancelAnimationFrame(raf);
-      ro.disconnect();
-      io.disconnect();
-    };
+    return mountShoreline(canvas, cfgRef, versionRef);
   }, []);
 
   return (
-    // biome-ignore lint/a11y/noAriaHiddenOnFocusable: a canvas is not focusable without a tabindex, and this one is purely decorative
     <canvas
       ref={canvasRef}
       aria-hidden="true"
+      tabIndex={-1}
       className={props.className ?? "pointer-events-none absolute inset-0 block h-full w-full"}
     />
   );
 }
 
-function stripUndefined<T extends object>(o: T): Partial<T> {
-  const out: Record<string, unknown> = {};
-  for (const [k, v] of Object.entries(o)) if (v !== undefined) out[k] = v;
-  return out as Partial<T>;
+function stripUndefined<T extends object>(value: T): Partial<T> {
+  const output: Record<string, unknown> = {};
+  for (const [key, item] of Object.entries(value)) {
+    if (item !== undefined) output[key] = item;
+  }
+  return output as Partial<T>;
 }

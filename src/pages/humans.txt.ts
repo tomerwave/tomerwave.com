@@ -1,10 +1,6 @@
 import type { APIRoute } from "astro";
 import { SITE } from "@/config";
 
-/* The counterpart to llms.txt. That one is written for machines; this is the old
-   humanstxt.org convention, written for the people who still go looking. Both
-   say who is behind the site. Only one of them gets to sound like a person. */
-
 const origin = SITE.website.replace(/\/$/, "");
 
 export const GET: APIRoute = () => {
