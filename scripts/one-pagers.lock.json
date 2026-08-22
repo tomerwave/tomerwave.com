@@ -6,23 +6,47 @@
   "sheets": [
     {
       "slug": "ai-automation",
-      "file": "public/one-pagers/ai-automation.pdf",
-      "fingerprint": "5490db4624ded1ea369783cd5725087943fcc15d57eb950da2c33d060813e8cc"
+      "file": "public/one-pagers/ai-automation.pdf"
     },
     {
       "slug": "architecture-review",
-      "file": "public/one-pagers/architecture-review.pdf",
-      "fingerprint": "0d686ed5d2b929d06b1076e3f78803584dae6a84388100f3021ebfa9f2ff5c57"
+      "file": "public/one-pagers/architecture-review.pdf"
     },
     {
       "slug": "fractional-vp-rnd",
-      "file": "public/one-pagers/fractional-vp-rnd.pdf",
-      "fingerprint": "67f218cfecd1455873e005b25acdfe7d2d63f11f4a7d9e9af5a05c8c51ade54c"
+      "file": "public/one-pagers/fractional-vp-rnd.pdf"
     },
     {
       "slug": "technology-advisor",
-      "file": "public/one-pagers/technology-advisor.pdf",
-      "fingerprint": "97a0add9200c9883d7ae9153d50bd0cffb87aab57ead97263cd0cfd78fdac2cb"
+      "file": "public/one-pagers/technology-advisor.pdf"
     }
-  ]
+  ],
+  "inputs": {
+    "public/avatar.jpg": "0c55bc1cd28e4f9d335eb5e76ffbf3365791e5030d54c881f21a2d001ae3734e",
+    "public/fonts/fraunces-latin-italic.woff2": "4af9c759c8059b53923b4b50ba377ba51029876e1af1ea757efb07bc67d97896",
+    "public/fonts/fraunces-latin.woff2": "48282a415ec22e31beaf0a0666e6fae0c8cbddcd0b1f6e729f27c3ade8a64e43",
+    "public/fonts/instrument-sans-latin.woff2": "6219bc4bfdfc5d9b2201dcdf046218b122a758f932e25ed5f168f929b7ca2311",
+    "public/tomerwave-icon.svg": "bec68897dc1c47274ba7b81d910ed87424bd49e313237d46f182d73c7ef8bcc6",
+    "src/components/Analytics.astro": "4e2510201173a24169a5396468182d2d81a21091a692d8a8ec25b1fa84797b02",
+    "src/components/SiteIcons.astro": "1bbf5bb4b02e4f56210578b70646ce4d31e2d84dcb7ae862cf1c2ac0d73467b0",
+    "src/config.ts": "c486582d3d0e7d41493ea5ea5fcea6be48c74f64302b8a5e17e7091fa4672b6b",
+    "src/constants.ts": "f6761e99ee724fe0f669c5a3e14091b8fcd32851ce52833e36ac8f8970aef4ea",
+    "src/consts.ts": "56b26625aaf476f727d61d6a22d4737fb5390e6f8f766210b1d14a4d03cc071a",
+    "src/data/services.ts": "c9a7d81fef20675df1ddfad48d0307546e2bddac7029d1e7a466da3b9c4456e8",
+    "src/layouts/Layout.astro": "cd89dabc7a3ff76930064b136ee640da500eaf57b4be8eb14326ea580664edf9",
+    "src/pages/services/[slug]/one-pager.astro": "fa814c879b2450ce1aa6bd3430ec7937a23504e8a0415967bcc2e7b9f6ec6336",
+    "src/scripts/anchor-scroll.ts": "254d10e70cb32c157751a5f89d169e35a66475e05f6f1de1830a98d617819114",
+    "src/scripts/attribution.ts": "27a93e625e1db0d551a463813bd7fb38954ddda2324bf8f5f1675b53dea73ec6",
+    "src/scripts/console-egg.ts": "ef8904e09c4fc750cacc7f5df11b4bdb535afcd0e5ca4ce9159d190ce4a9b2c3",
+    "src/scripts/conversion-events.ts": "7f5376be26551e0db1d2171860feb13ec68d3dd91f005e0b50b13d2f94301d89",
+    "src/scripts/reveal-on-scroll.ts": "c07d2040f62ba3109e1f5c3af7d23bc9732e47e40e917f74232fcfd7f4987fb4",
+    "src/scripts/section-route.ts": "7cebeca60b21ccae78b29fc7e51c8c04371c026c0f9680296079b3f1c9a8f9cc",
+    "src/styles/business.css": "4a4d002d1cd3ef33d1f8ec3fa796a83a224d938545d8de3a795886a2981e6c1b",
+    "src/styles/fonts.css": "7fe24d91d46a8a15dd83a688aef37bfb8b8f88214f8c7eb944a2ff8c846fcdf6",
+    "src/styles/global.css": "acfa4d3382cd2491937aca3d1fe429c8cf0777da9b53083a41ec7d69adc647f0",
+    "src/styles/header.css": "855f3ca983debffdb0d6e15e3a6e601fac32e435136af226dcaf5ef9bb34a340",
+    "src/styles/onepager.css": "9629291e61f9d6759739c6a98dbf4acfb3c6e089e144c1afea7bd6d43c81e513",
+    "src/styles/palette.css": "7396cb6a49daaf039ce486ad0d55f5c3d9a487ad3ad6a58d36e4d9caed03e096",
+    "src/styles/service.css": "195d5f6ff5d598716ecf1530e28cae8151c3a4e81b2d123be8745111b489f6fd"
+  }
 }

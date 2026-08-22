@@ -8,25 +8,29 @@
  *
  * Because the PDFs are build output living in the repository, they can fall
  * behind the data they came from. The lock file this writes is how CI notices:
- * it fingerprints each sheet's built page, and the Astro Build workflow fails
- * when a fingerprint moves without the PDFs being rebuilt.
+ * it hashes every file the sheet is built from, and the Astro Build workflow
+ * fails when one of them moves without the PDFs being rebuilt.
  *
- * The fingerprint is taken from dist rather than from a list of source files,
- * because a list has to be maintained by hand and stops covering the sheet the
- * moment someone imports a stylesheet nobody remembered to add to it. Astro
- * fingerprints its CSS filenames, so a style change shows up as a changed href
- * inside the built HTML; the assets that keep stable URLs — the portrait, the
- * fonts — get hashed alongside it.
+ * The files it watches are found by walking the route's imports, not by keeping
+ * a list: a list has to be maintained by hand and stops covering the sheet the
+ * moment someone imports a stylesheet nobody remembered to add to it. The walk
+ * is over source rather than over dist, because build output is not identical
+ * across machines and Node versions while the files it came from are.
+ *
+ * The walk errs wide: it follows the layout too, so a few files that cannot
+ * change a printed sheet are watched along with the ones that can. That costs
+ * an occasional regeneration nobody needed. Erring the other way costs a sheet
+ * that is quietly wrong, which is the failure this exists to prevent.
  *
  *   npm run one-pagers          render, assuming dist/ is current
  *   npm run one-pagers -- --build   build the site first
  *   npm run one-pagers -- --check   verify the lock file, write nothing
  */
 import { createHash } from "node:crypto";
-import { createReadStream } from "node:fs";
+import { createReadStream, existsSync } from "node:fs";
 import { access, mkdir, readdir, readFile, writeFile } from "node:fs/promises";
 import { createServer } from "node:http";
-import { extname, join, resolve } from "node:path";
+import { dirname, extname, join, relative, resolve } from "node:path";
 import { argv, exit } from "node:process";
 import { spawnSync } from "node:child_process";
 import { chromium } from "playwright";
@@ -35,6 +39,7 @@ const ROOT = resolve(import.meta.dirname, "..");
 const DIST = join(ROOT, "dist");
 const OUT_DIR = join(ROOT, "public", "one-pagers");
 const LOCK = join(ROOT, "scripts", "one-pagers.lock.json");
+const ENTRY = join(ROOT, "src/pages/services/[slug]/one-pager.astro");
 
 /* A4 at 96dpi, matching --sheet-w and --sheet-h in onepager.css. */
 const SHEET = { width: 794, height: 1123 };
@@ -51,41 +56,83 @@ const MIME = {
   ".woff2": "font/woff2",
 };
 
-/* Absolute same-origin URLs, wherever a document or stylesheet can name one. */
+/* Absolute same-origin URLs, wherever markup or a stylesheet can name one. */
 const ASSET_URL = /(?:href=|src=|url\()["']?(\/[^"')\s>]+)/g;
+const IMPORT = /(?:from\s*|import\s*)["']([^"']+)["']/g;
+const CSS_IMPORT = /@import\s*["']([^"']+)["']/g;
 
-/* Only what can change how the sheet looks. The page also links things like the
-   sitemap, which carries a build timestamp and would otherwise move the
-   fingerprint on every build and cry wolf on every pull request. */
-const RENDERED = /\.(?:css|woff2?|ttf|otf|jpe?g|png|svg|webp|avif|gif)$/;
+/* Only files that can change how the sheet looks. */
+const WATCHED = /\.(?:astro|ts|css|woff2?|ttf|otf|jpe?g|png|svg|webp|avif|gif)$/;
 
-const assetsIn = (text) =>
-  new Set(
-    Array.from(text.matchAll(ASSET_URL), ([, url]) => url.split("?")[0]).filter((url) =>
-      RENDERED.test(url)
-    )
+/* Where an import specifier lands on disk, or null when it leaves the project
+   (a bare package name, or anything that does not resolve to a real file). */
+const locate = (specifier, importer) => {
+  const bare = specifier.split("?")[0];
+
+  const path = bare.startsWith("@/")
+    ? join(ROOT, "src", bare.slice(2))
+    : bare.startsWith(".")
+      ? resolve(dirname(importer), bare)
+      : bare.startsWith("/")
+        ? join(ROOT, "public", bare)
+        : null;
+
+  if (!path) return null;
+  if (WATCHED.test(path)) return path;
+
+  /* Module specifiers usually leave the extension off. */
+  for (const candidate of [`${path}.ts`, `${path}.astro`, join(path, "index.ts")]) {
+    if (existsSync(candidate)) return candidate;
+  }
+
+  return null;
+};
+
+/* Everything the sheet is built out of, found by walking the route's imports
+   rather than by keeping a list. The walk is over source, not over dist,
+   because build output differs between machines and Node versions while the
+   files it came from do not. */
+const inputsOf = async (entry) => {
+  const found = new Set();
+  const queue = [entry];
+
+  while (queue.length > 0) {
+    const file = queue.shift();
+    if (found.has(file)) continue;
+
+    const bytes = await readFile(file).catch(() => null);
+    if (!bytes) continue;
+    found.add(file);
+
+    if (!/\.(?:astro|ts|css)$/.test(file)) continue;
+
+    const text = bytes.toString();
+    const patterns = file.endsWith(".css") ? [CSS_IMPORT, ASSET_URL] : [IMPORT, ASSET_URL];
+
+    for (const pattern of patterns) {
+      for (const [, specifier] of text.matchAll(pattern)) {
+        const next = locate(specifier, file);
+        if (next) queue.push(next);
+      }
+    }
+  }
+
+  return [...found].sort();
+};
+
+const hashInputs = async () => {
+  const files = await inputsOf(ENTRY);
+
+  const entries = await Promise.all(
+    files.map(async (file) => [
+      relative(ROOT, file),
+      createHash("sha256")
+        .update(await readFile(file))
+        .digest("hex"),
+    ])
   );
 
-/* Everything the built page is made of: its own markup, the stylesheets it
-   links, and whatever those two reference by a URL that does not change when
-   its contents do. */
-const fingerprint = async (pagePath) => {
-  const html = await readFile(join(DIST, pagePath, "index.html"));
-  const assets = assetsIn(html.toString());
-
-  for (const url of [...assets].filter((url) => url.endsWith(".css"))) {
-    const css = await readFile(join(DIST, url), "utf8").catch(() => "");
-    for (const nested of assetsIn(css)) assets.add(nested);
-  }
-
-  const digest = createHash("sha256").update(html);
-
-  for (const url of [...assets].sort()) {
-    const bytes = await readFile(join(DIST, url)).catch(() => null);
-    if (bytes) digest.update(url).update(bytes);
-  }
-
-  return digest.digest("hex");
+  return Object.fromEntries(entries);
 };
 
 /* Serves dist/ so the page loads with the same absolute asset paths it will
@@ -172,29 +219,18 @@ const check = async () => {
     return 1;
   }
 
-  const routes = await sheetRoutes();
-  if (routes.length === 0) {
-    console.error("No built sheets under dist/services. Build the site before checking.");
-    return 1;
-  }
+  const current = await hashInputs();
+  const moved = Object.keys(current).filter((path) => lock.inputs[path] !== current[path]);
+  const gone = Object.keys(lock.inputs).filter((path) => !(path in current));
 
-  const locked = new Map(lock.sheets.map((sheet) => [sheet.slug, sheet.fingerprint]));
-
-  const stale = [];
-  for (const route of routes) {
-    if ((await fingerprint(route.path)) !== locked.get(route.slug)) stale.push(route.slug);
-  }
-
-  const removed = lock.sheets.filter((sheet) => !routes.some((route) => route.slug === sheet.slug));
-
-  if (stale.length === 0 && removed.length === 0) {
-    console.log(`One-pagers are current (${routes.length} sheets).`);
+  if (moved.length === 0 && gone.length === 0) {
+    console.log(`One-pagers are current (${lock.sheets.length} sheets).`);
     return 0;
   }
 
-  console.error("The service sheets are out of date:\n");
-  for (const slug of stale) console.error(`  ${slug} — the page it is rendered from changed`);
-  for (const sheet of removed) console.error(`  ${sheet.slug} — no longer built`);
+  console.error("The service sheets are out of date. These changed:\n");
+  for (const path of moved) console.error(`  ${path}`);
+  for (const path of gone) console.error(`  ${path} — no longer part of the sheet`);
   console.error("\nRegenerate them and commit the PDFs:\n");
   console.error("  npm run one-pagers -- --build\n");
   return 1;
@@ -241,11 +277,7 @@ const render = async ({ build }) => {
     console.log(`  ${slug.padEnd(22)} ${String(Math.round(pdf.length / 1024)).padStart(5)} KB  ${status}`);
     if (pages !== 1) failures += 1;
 
-    sheets.push({
-      slug,
-      file: `public/one-pagers/${slug}.pdf`,
-      fingerprint: await fingerprint(path),
-    });
+    sheets.push({ slug, file: `public/one-pagers/${slug}.pdf` });
   }
 
   await browser.close();
@@ -256,7 +288,10 @@ const render = async ({ build }) => {
     return 1;
   }
 
-  await writeFile(LOCK, `${JSON.stringify({ sheet: SHEET, sheets }, null, 2)}\n`);
+  await writeFile(
+    LOCK,
+    `${JSON.stringify({ sheet: SHEET, sheets, inputs: await hashInputs() }, null, 2)}\n`
+  );
 
   console.log(`\nWrote ${sheets.length} sheets and scripts/one-pagers.lock.json`);
   return 0;
