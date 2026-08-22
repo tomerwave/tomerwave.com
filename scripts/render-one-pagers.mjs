@@ -229,7 +229,10 @@ const check = async () => {
   }
 
   console.error("The service sheets are out of date. These changed:\n");
-  for (const path of moved) console.error(`  ${path}`);
+  for (const path of moved) {
+    const was = lock.inputs[path]?.slice(0, 12) ?? "not in the lock";
+    console.error(`  ${path}\n      locked ${was}\n       found ${current[path].slice(0, 12)}`);
+  }
   for (const path of gone) console.error(`  ${path} — no longer part of the sheet`);
   console.error("\nRegenerate them and commit the PDFs:\n");
   console.error("  npm run one-pagers -- --build\n");
