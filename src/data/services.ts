@@ -381,3 +381,7 @@ export const SERVICES: Service[] = [
 export const getService = (slug: string) => SERVICES.find((service) => service.slug === slug);
 
 export const servicePath = (slug: string) => `/services/${slug}`;
+
+/* The committed PDF of a service's one-pager. Rendered by
+   scripts/render-one-pagers.mjs, not by the site build. */
+export const onePagerPath = (slug: string) => `/one-pagers/${slug}.pdf`;

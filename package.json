@@ -20,7 +20,8 @@
     "format": "biome format --write src",
     "check": "biome check src",
     "check:fix": "biome check --write src",
-    "prepare": "husky"
+    "prepare": "husky",
+    "one-pagers": "node scripts/render-one-pagers.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.6",
@@ -68,6 +69,7 @@
     "cz-conventional-changelog": "^3.3.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
+    "playwright": "^1.62.1",
     "postcss": "^8.5.6"
   },
   "config": {

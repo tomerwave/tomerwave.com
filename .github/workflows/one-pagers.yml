@@ -1,0 +1,43 @@
+name: One-pagers
+
+# The service sheets are PDFs committed to the repository, so they can fall
+# behind the copy they were rendered from. This fails the moment a change to
+# the service data or the sheet's markup or styles lands without the PDFs being
+# regenerated, which is the only way that drift would otherwise get noticed:
+# a stale sheet still opens, still looks right, and quietly says the old thing.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  NODE_VERSION: "22"
+  ASTRO_TELEMETRY_DISABLED: "1"
+
+permissions:
+  contents: read
+
+jobs:
+  current:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+
+      # The check only hashes files, so the browser this pulls in is not needed.
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
+
+      - name: Check the sheets match their sources
+        run: npm run one-pagers -- --check

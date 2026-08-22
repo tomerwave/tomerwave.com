@@ -6,7 +6,7 @@ import SectionRoute from "@/components/SectionRoute.astro";
 import SiteHeader, { type NavItem } from "@/components/SiteHeader.astro";
 import StructuredData from "@/components/StructuredData.astro";
 import { SITE } from "@/config";
-import { getService, SERVICES, type Service, servicePath } from "@/data/services";
+import { getService, onePagerPath, SERVICES, type Service, servicePath } from "@/data/services";
 import Layout from "@/layouts/Layout.astro";
 import { getPath } from "@/utils/get-path";
 import getSortedPosts from "@/utils/get-sorted-posts";
@@ -193,8 +193,8 @@ const navItems: NavItem[] = [
             <a class="business-button" href="/meet"
               >Start with a conversation <span class="business-arrow" aria-hidden="true">→</span></a
             >
-            <a class="business-linkline" href={`${servicePath(service.slug)}/one-pager`}
-              >Or view the printable one-pager</a
+            <a class="business-linkline" download href={onePagerPath(service.slug)}
+              >Or take the one-pager (PDF)</a
             >
           </div>
         </div>
