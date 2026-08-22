@@ -193,8 +193,11 @@ const navItems: NavItem[] = [
             <a class="business-button" href="/meet"
               >Start with a conversation <span class="business-arrow" aria-hidden="true">→</span></a
             >
-            <a class="business-linkline" download href={onePagerPath(service.slug)}
-              >Or take the one-pager (PDF)</a
+            <a
+              class="business-linkline"
+              href={onePagerPath(service.slug)}
+              rel="noopener"
+              target="_blank">Or read the one-pager (PDF)</a
             >
           </div>
         </div>
