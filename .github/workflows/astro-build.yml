@@ -9,7 +9,6 @@ on:
 env:
   NODE_VERSION: "22"
   ASTRO_TELEMETRY_DISABLED: "1"
-  # Rendering the sheets needs a browser; checking they are current does not.
   PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
 
 permissions:
@@ -23,9 +22,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: TEMP probe after checkout
-        run: sha256sum src/consts.ts src/scripts/console-egg.ts src/scripts/section-route.ts
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -35,25 +31,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: TEMP probe after npm ci
-        run: sha256sum src/consts.ts src/scripts/console-egg.ts src/scripts/section-route.ts
-
       - name: Build Astro site
         run: npm run build
-
-      - name: TEMP probe after build
-        run: |
-          sha256sum src/consts.ts src/scripts/console-egg.ts src/scripts/section-route.ts
-          git status --short || true
-          git diff --stat || true
 
       - name: Check build output
         run: ls -la dist/
 
-      # The service sheets are PDFs committed to the repository, so they can
-      # fall behind the pages they were rendered from. This fingerprints each
-      # built sheet and fails when one has moved without the PDF being rebuilt,
-      # which is the only way that drift would get noticed: a stale sheet still
-      # opens, still looks right, and quietly says the old thing.
-      - name: Check the service sheets match their pages
+      - name: Check the service sheets are not stale
         run: npm run one-pagers -- --check
