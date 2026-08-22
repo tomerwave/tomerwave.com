@@ -294,9 +294,13 @@
 
 /* ---- print ---- */
 @media print {
-  @page { margin: 0; }
+  /* The sheet is already an A4 box in CSS pixels, so printing is a matter of
+     removing everything around it and letting the page box match exactly. No
+     scaling and no reflow: what the PDF renderer sees here is the composition
+     that was measured, which is why the page has no dead strip at the bottom. */
+  @page { margin: 0; size: A4; }
 
-  html { font-size: 13px; }
+  html { font-size: 16px; }
   html, body { background: #fff; margin: 0; padding: 0; }
 
   .onepager {
@@ -310,23 +314,12 @@
 
   .onepager-sheet {
     box-shadow: none;
-    height: auto;
-    max-width: 100%;
+    height: var(--sheet-h);
+    max-width: none;
     min-height: 0;
+    overflow: hidden;
     width: var(--sheet-w);
   }
-
-  .onepager-top { padding-block: 26px 10px; }
-  .onepager-hero { padding-block: 14px 12px; }
-  .onepager-cols { padding-block: 12px 14px; }
-  .onepager-offer { padding-block: 14px 12px; }
-  .onepager-close { gap: 20px; margin-top: 0; padding-block: 6px; }
-  .onepager-opinion { font-size: 0.9rem; max-width: 44ch !important; padding-left: 10px; }
-  .onepager-me { gap: 8px; }
-  .onepager-me img { height: 44px; width: 44px; }
-  .onepager-me figcaption { font-size: 0.9rem; }
-  .onepager-role { font-size: 0.75rem; margin-top: 0.15rem; max-width: 22ch; }
-  .onepager-foot { padding-block: 8px 10px; }
 
   /* Warm paper and the sage rules are the design, not decoration. */
   .onepager-sheet, .onepager-offer { print-color-adjust: exact; -webkit-print-color-adjust: exact; }

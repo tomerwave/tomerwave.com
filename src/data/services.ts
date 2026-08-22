@@ -381,3 +381,5 @@ export const SERVICES: Service[] = [
 export const getService = (slug: string) => SERVICES.find((service) => service.slug === slug);
 
 export const servicePath = (slug: string) => `/services/${slug}`;
+
+export const onePagerPath = (slug: string) => `/one-pagers/${slug}.pdf`;

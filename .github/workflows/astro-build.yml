@@ -9,6 +9,7 @@ on:
 env:
   NODE_VERSION: "22"
   ASTRO_TELEMETRY_DISABLED: "1"
+  PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
 
 permissions:
   contents: read
@@ -35,3 +36,6 @@ jobs:
 
       - name: Check build output
         run: ls -la dist/
+
+      - name: Check the service sheets are not stale
+        run: npm run one-pagers -- --check
