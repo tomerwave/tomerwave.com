@@ -5,35 +5,24 @@
   },
   "sheets": [
     {
-      "slug": "fractional-vp-rnd",
-      "file": "public/one-pagers/fractional-vp-rnd.pdf",
-      "pages": 1
+      "slug": "ai-automation",
+      "file": "public/one-pagers/ai-automation.pdf",
+      "fingerprint": "5490db4624ded1ea369783cd5725087943fcc15d57eb950da2c33d060813e8cc"
     },
     {
       "slug": "architecture-review",
       "file": "public/one-pagers/architecture-review.pdf",
-      "pages": 1
+      "fingerprint": "0d686ed5d2b929d06b1076e3f78803584dae6a84388100f3021ebfa9f2ff5c57"
     },
     {
-      "slug": "ai-automation",
-      "file": "public/one-pagers/ai-automation.pdf",
-      "pages": 1
+      "slug": "fractional-vp-rnd",
+      "file": "public/one-pagers/fractional-vp-rnd.pdf",
+      "fingerprint": "67f218cfecd1455873e005b25acdfe7d2d63f11f4a7d9e9af5a05c8c51ade54c"
     },
     {
       "slug": "technology-advisor",
       "file": "public/one-pagers/technology-advisor.pdf",
-      "pages": 1
+      "fingerprint": "97a0add9200c9883d7ae9153d50bd0cffb87aab57ead97263cd0cfd78fdac2cb"
     }
-  ],
-  "inputs": {
-    "src/data/services.ts": "c9a7d81fef20675df1ddfad48d0307546e2bddac7029d1e7a466da3b9c4456e8",
-    "src/pages/services/[slug]/one-pager.astro": "fa814c879b2450ce1aa6bd3430ec7937a23504e8a0415967bcc2e7b9f6ec6336",
-    "src/styles/onepager.css": "9629291e61f9d6759739c6a98dbf4acfb3c6e089e144c1afea7bd6d43c81e513",
-    "src/styles/business.css": "4a4d002d1cd3ef33d1f8ec3fa796a83a224d938545d8de3a795886a2981e6c1b",
-    "src/styles/service.css": "195d5f6ff5d598716ecf1530e28cae8151c3a4e81b2d123be8745111b489f6fd",
-    "src/styles/palette.css": "7396cb6a49daaf039ce486ad0d55f5c3d9a487ad3ad6a58d36e4d9caed03e096",
-    "src/styles/fonts.css": "7fe24d91d46a8a15dd83a688aef37bfb8b8f88214f8c7eb944a2ff8c846fcdf6",
-    "public/avatar.jpg": "0c55bc1cd28e4f9d335eb5e76ffbf3365791e5030d54c881f21a2d001ae3734e",
-    "public/tomerwave-icon.svg": "bec68897dc1c47274ba7b81d910ed87424bd49e313237d46f182d73c7ef8bcc6"
-  }
+  ]
 }

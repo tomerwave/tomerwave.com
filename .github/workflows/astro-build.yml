@@ -9,6 +9,8 @@ on:
 env:
   NODE_VERSION: "22"
   ASTRO_TELEMETRY_DISABLED: "1"
+  # Rendering the sheets needs a browser; checking they are current does not.
+  PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
 
 permissions:
   contents: read
@@ -35,3 +37,11 @@ jobs:
 
       - name: Check build output
         run: ls -la dist/
+
+      # The service sheets are PDFs committed to the repository, so they can
+      # fall behind the pages they were rendered from. This fingerprints each
+      # built sheet and fails when one has moved without the PDF being rebuilt,
+      # which is the only way that drift would get noticed: a stale sheet still
+      # opens, still looks right, and quietly says the old thing.
+      - name: Check the service sheets match their pages
+        run: npm run one-pagers -- --check
