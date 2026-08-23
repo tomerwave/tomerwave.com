@@ -122,6 +122,8 @@ const formatDate = (value) =>
 
 const topicFor = (service) => env[`RESEND_TOPIC_${service.toUpperCase().replace(/-/g, "_")}`];
 
+const isPast = (letter) => new Date(letter.data.pubDatetime).valueOf() <= Date.now();
+
 const alreadySent = (lock, letter) =>
   lock.sent.some(
     (entry) => entry.service === letter.service && entry.issue === Number(letter.data.issue),
@@ -175,6 +177,16 @@ const scheduleBroadcast = async (letter, service, html, credentials) => {
   return response.json();
 };
 
+const blockedReason = (letter, credentials, lock) => {
+  if (!credentials.key || !credentials.segment || !credentials.topic) {
+    return "missing Resend configuration";
+  }
+  if (alreadySent(lock, letter)) return "already scheduled";
+  if (letter.data.draft === "true") return "marked draft";
+  if (isPast(letter) && !has("force")) return "dated in the past, use --force to send anyway";
+  return null;
+};
+
 const sendLetter = async (letter, service, html, lock) => {
   const credentials = {
     key: env.RESEND_API_KEY,
@@ -182,12 +194,9 @@ const sendLetter = async (letter, service, html, lock) => {
     topic: topicFor(letter.service),
   };
 
-  if (!credentials.key || !credentials.segment || !credentials.topic) {
-    warn(`cannot send ${letter.service}/${letter.data.issue}: missing Resend configuration`);
-    return;
-  }
-  if (alreadySent(lock, letter)) {
-    say(`already sent ${letter.service}/${letter.data.issue}, skipping`);
+  const blocked = blockedReason(letter, credentials, lock);
+  if (blocked) {
+    warn(`not sending ${letter.service}/${letter.data.issue}: ${blocked}`);
     return;
   }
 

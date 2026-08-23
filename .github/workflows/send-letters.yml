@@ -1,0 +1,68 @@
+name: Send Letters
+
+on:
+  schedule:
+    - cron: "0 9 * * 0"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Render only, do not schedule anything with Resend"
+        type: boolean
+        default: false
+      service:
+        description: "Limit to one service slug"
+        type: string
+        default: ""
+
+env:
+  NODE_VERSION: "22"
+  ASTRO_TELEMETRY_DISABLED: "1"
+  PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: send-letters
+  cancel-in-progress: false
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Render the letters
+        env:
+          ONLY_SERVICE: ${{ inputs.service }}
+        run: npm run letters -- ${ONLY_SERVICE:+--service="$ONLY_SERVICE"}
+
+      - name: Schedule them with Resend
+        if: ${{ inputs.dry_run != true }}
+        env:
+          ONLY_SERVICE: ${{ inputs.service }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          RESEND_SEGMENT_ID: ${{ secrets.RESEND_SEGMENT_ID }}
+          RESEND_TOPIC_FRACTIONAL_VP_RND: ${{ secrets.RESEND_TOPIC_FRACTIONAL_VP_RND }}
+          RESEND_TOPIC_ARCHITECTURE_REVIEW: ${{ secrets.RESEND_TOPIC_ARCHITECTURE_REVIEW }}
+          RESEND_TOPIC_AI_AUTOMATION: ${{ secrets.RESEND_TOPIC_AI_AUTOMATION }}
+          RESEND_TOPIC_TECHNOLOGY_ADVISOR: ${{ secrets.RESEND_TOPIC_TECHNOLOGY_ADVISOR }}
+          LETTER_FROM: ${{ secrets.LETTER_FROM }}
+        run: npm run letters -- --send ${ONLY_SERVICE:+--service="$ONLY_SERVICE"}
+
+      - name: Record what was scheduled
+        if: ${{ inputs.dry_run != true }}
+        run: bash scripts/commit-letters-lock.sh
