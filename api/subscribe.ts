@@ -16,7 +16,6 @@ const SITE = "https://tomerwave.com";
 const INK = "#2b3138";
 const INK_MUTED = "#4a5058";
 const INK_FAINT = "#6b7178";
-const SAGE = "#8fa396";
 const SAGE_DEEP = "#5f7368";
 const PAPER = "#fffdf8";
 const SURFACE = "#faf6ef";
