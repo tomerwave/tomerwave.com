@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import { mkdir, readdir, readFile, writeFile } from "node:fs/promises";
+import matter from "gray-matter";
 import { join, resolve } from "node:path";
 import { argv, env, exit, stderr, stdout } from "node:process";
 import { pathToFileURL } from "node:url";
@@ -19,69 +20,26 @@ const warn = (line) => stderr.write(`${line}\n`);
 const flag = (name) => argv.find((arg) => arg.startsWith(`--${name}=`))?.split("=")[1];
 const has = (name) => argv.includes(`--${name}`);
 
-const unquote = (value) => value.replace(/^["'](.*)["']$/, "$1");
-
-const readScalar = (data, key, value) => {
-  data[key] = value === "" ? [] : unquote(value);
-};
-
-const parseFrontmatter = (raw) => {
-  const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/);
-  if (!match) return null;
-
-  const data = {};
-  let key = null;
-  for (const line of match[1].split(/\r?\n/)) {
-    const pair = line.match(/^([a-zA-Z]+):\s*(.*)$/);
-    if (pair) {
-      key = pair[1];
-      readScalar(data, key, pair[2]);
-      continue;
-    }
-    const item = line.match(/^\s*-\s*(.*)$/);
-    if (item && key && Array.isArray(data[key])) data[key].push(item[1]);
-  }
-  return { data, body: match[2] };
-};
-
-const linkField = (entry, name) =>
-  entry.match(new RegExp(`${name}:\\s*(.*)`))?.[1] ? unquote(entry.match(new RegExp(`${name}:\\s*(.*)`))[1]) : "";
-
-const loadLinks = (raw) => {
-  const match = raw.match(/^links:\s*\r?\n([\s\S]*?)(?=\r?\n[a-zA-Z]+:|\r?\n---)/m);
-  if (!match) return [];
-  return match[1]
-    .split(/\r?\n\s*-\s+/)
-    .slice(1)
-    .map((entry) => ({
-      title: linkField(entry, "title"),
-      url: linkField(entry, "url"),
-      source: linkField(entry, "source"),
-      take: linkField(entry, "take"),
-    }))
-    .filter((link) => link.url);
-};
-
-const postInYear = async (year, slug) => {
+const postsInYear = async (year) => {
   const files = await readdir(join(BLOG, year));
-  const match = files.find((name) => name === `${slug}.md` || name === `${slug}.mdx`);
-  if (!match) return null;
-  const parsed = parseFrontmatter(await readFile(join(BLOG, year, match), "utf8"));
-  if (!parsed) return null;
-  return {
-    title: parsed.data.title,
-    description: parsed.data.description,
-    url: `${SITE}/posts/${year}/${slug}`,
-  };
+  const found = [];
+  for (const file of files.filter((name) => /\.mdx?$/.test(name))) {
+    const { data } = matter(await readFile(join(BLOG, year, file), "utf8"));
+    const slug = file.replace(/\.mdx?$/, "");
+    found.push([
+      slug,
+      { title: data.title, description: data.description, url: `${SITE}/posts/${year}/${slug}` },
+    ]);
+  }
+  return found;
 };
 
-const findPost = async (slug) => {
+const indexPosts = async () => {
   const years = await readdir(BLOG, { withFileTypes: true });
-  for (const year of years.filter((entry) => entry.isDirectory())) {
-    const found = await postInYear(year.name, slug);
-    if (found) return found;
-  }
-  return null;
+  const groups = await Promise.all(
+    years.filter((entry) => entry.isDirectory()).map((entry) => postsInYear(entry.name)),
+  );
+  return new Map(groups.flat());
 };
 
 const readLock = async () => {
@@ -92,19 +50,22 @@ const readLock = async () => {
   }
 };
 
+const readLetter = async (service, file) => {
+  try {
+    const { data, content } = matter(await readFile(join(LETTERS, service, file), "utf8"));
+    return { data, body: content, file, service };
+  } catch (error) {
+    warn(`skipped ${service}/${file}: ${error.message.split("\n")[0]}`);
+    return null;
+  }
+};
+
 const lettersInService = async (service) => {
   const files = await readdir(join(LETTERS, service));
-  const found = [];
-  for (const file of files.filter((name) => name.endsWith(".md"))) {
-    const raw = await readFile(join(LETTERS, service, file), "utf8");
-    const parsed = parseFrontmatter(raw);
-    if (!parsed) {
-      warn(`skipped ${file}: no frontmatter`);
-      continue;
-    }
-    found.push({ ...parsed, links: loadLinks(raw), file, service });
-  }
-  return found;
+  const found = await Promise.all(
+    files.filter((name) => name.endsWith(".md")).map((file) => readLetter(service, file)),
+  );
+  return found.filter(Boolean);
 };
 
 const collectLetters = async () => {
@@ -112,7 +73,7 @@ const collectLetters = async () => {
   const groups = await Promise.all(
     services.filter((entry) => entry.isDirectory()).map((entry) => lettersInService(entry.name)),
   );
-  return groups.flat().sort((a, b) => Number(a.data.issue) - Number(b.data.issue));
+  return groups.flat().sort((a, b) => a.data.issue - b.data.issue);
 };
 
 const formatDate = (value) =>
@@ -126,21 +87,21 @@ const isPast = (letter) => new Date(letter.data.pubDatetime).valueOf() <= Date.n
 
 const alreadySent = (lock, letter) =>
   lock.sent.some(
-    (entry) => entry.service === letter.service && entry.issue === Number(letter.data.issue),
+    (entry) => entry.service === letter.service && entry.issue === letter.data.issue,
   );
 
-const buildEmail = async (letter, service, render) => {
+const buildEmail = async (letter, service, render, posts) => {
   const { ask, paragraphs } = render.splitBody(letter.body);
   return render.renderLetterEmail({
     serviceName: service.shortName,
-    issue: Number(letter.data.issue),
+    issue: letter.data.issue,
     date: formatDate(letter.data.pubDatetime),
     subject: letter.data.subject,
     preview: letter.data.preview,
     paragraphs,
     ask,
-    links: letter.links,
-    post: letter.data.post ? ((await findPost(letter.data.post)) ?? undefined) : undefined,
+    links: letter.data.links,
+    post: letter.data.post ? posts.get(letter.data.post) : undefined,
     offer: { name: service.offer.name, url: `${SITE}/services/${service.slug}` },
     problem: service.routerProblem,
     issueUrl: `${SITE}/letters/${letter.service}/${letter.data.issue}`,
@@ -182,7 +143,7 @@ const blockedReason = (letter, credentials, lock) => {
     return "missing Resend configuration";
   }
   if (alreadySent(lock, letter)) return "already scheduled";
-  if (letter.data.draft === "true") return "marked draft";
+  if (letter.data.draft === true) return "marked draft";
   if (isPast(letter) && !has("force")) return "dated in the past, use --force to send anyway";
   return null;
 };
@@ -205,7 +166,7 @@ const sendLetter = async (letter, service, html, lock) => {
 
   lock.sent.push({
     service: letter.service,
-    issue: Number(letter.data.issue),
+    issue: letter.data.issue,
     broadcastId: created.id,
     scheduledAt: new Date(letter.data.pubDatetime).toISOString(),
   });
@@ -219,7 +180,7 @@ const renderAndSend = async (letter, context) => {
     return;
   }
 
-  const html = await buildEmail(letter, service, context.render);
+  const html = await buildEmail(letter, service, context.render, context.posts);
   const out = join(OUT_DIR, `${letter.service}-${String(letter.data.issue).padStart(3, "0")}.html`);
   await writeFile(out, html);
   say(`rendered ${out}`);
@@ -249,10 +210,11 @@ async function run() {
 
   const send = has("send");
   const lock = await readLock();
+  const posts = await indexPosts();
   await mkdir(OUT_DIR, { recursive: true });
 
   for (const letter of letters) {
-    await renderAndSend(letter, { services: servicesBySlug, render, send, lock });
+    await renderAndSend(letter, { services: servicesBySlug, render, send, lock, posts });
   }
 
   if (send) await writeFile(LOCK, `${JSON.stringify(lock, null, 2)}\n`);
