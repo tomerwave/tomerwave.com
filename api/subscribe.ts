@@ -164,7 +164,7 @@ const welcomeHtml = (welcome: Welcome) => `<!doctype html>
 <p style="margin:18px 0 0;color:${INK_MUTED};font-family:${DISPLAY};font-size:17px;font-style:italic;">Tomer</p>
 </td></tr>
 <tr><td style="background:${SURFACE};border-top:1px solid ${HAIRLINE};padding:22px 36px 26px;">
-<p style="margin:0 0 6px;color:${INK_FAINT};font-family:${BODY};font-size:12px;line-height:1.6;">You are getting this because you signed up at <a href="${SITE}/letters" style="color:${INK_FAINT};text-decoration:underline;">tomerwave.com/letters</a>. If that was not you, ignore this and nothing else will arrive.</p>
+<p style="margin:0 0 6px;color:${INK_FAINT};font-family:${BODY};font-size:12px;line-height:1.6;">You are getting this because this address was signed up at <a href="${SITE}/letters" style="color:${INK_FAINT};text-decoration:underline;">tomerwave.com/letters</a>. If that was not you, reply with the word stop and I will take it off, or use the unsubscribe link at the bottom of Monday's letter.</p>
 <p style="margin:0;color:${INK_FAINT};font-family:${BODY};font-size:12px;">Tomer Gal, Israel</p>
 </td></tr>
 </table></td></tr></table></body></html>`;
