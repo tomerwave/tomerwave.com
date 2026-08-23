@@ -33,6 +33,7 @@ export interface LetterEmailInput {
   preview: string;
   paragraphs: string[];
   ask: string;
+  askIndex?: number;
   links?: LetterLink[];
   post?: { title: string; description: string; url: string };
   offer: { name: string; url: string };
@@ -52,13 +53,15 @@ export const splitBody = (markdown: string) => {
     .map((block) => block.trim())
     .filter(Boolean);
 
-  const askBlock = blocks.find((block) => block.startsWith(">"));
+  const isAsk = (block: string) => block.startsWith(">");
+  const askBlock = blocks.find(isAsk);
   const ask = askBlock ? askBlock.replace(/^>\s?/gm, "").replace(/\s+/g, " ").trim() : "";
   const paragraphs = blocks
-    .filter((block) => !block.startsWith(">"))
+    .filter((block) => !isAsk(block))
     .map((block) => block.replace(/\s+/g, " ").trim());
+  const askIndex = askBlock ? blocks.indexOf(askBlock) : paragraphs.length;
 
-  return { ask, paragraphs };
+  return { ask, paragraphs, askIndex };
 };
 
 const row = (content: string, padding: string) =>
@@ -109,10 +112,15 @@ const postBlock = (post: NonNullable<LetterEmailInput["post"]>) =>
     "30px 36px 8px"
   );
 
+const soundsLikeVowel = (name: string) =>
+  /^[aeiou]/i.test(name) || /^[FHLMNRSX](?![a-z])/.test(name);
+
+const articleFor = (name: string) => (soundsLikeVowel(name) ? "An" : "A");
+
 const ctaBlock = (input: LetterEmailInput) =>
   rule() +
   row(
-    `<p style="margin:0;color:${EMAIL_PALETTE.inkMuted};font-family:${BODY};font-size:15px;line-height:1.6;">${escapeHtml(input.problem)} An <a href="${escapeHtml(input.offer.url)}" style="color:${EMAIL_PALETTE.sageDeep};font-weight:600;text-decoration:underline;">${escapeHtml(input.offer.name)}</a> is the short version of finding out.</p>`,
+    `<p style="margin:0;color:${EMAIL_PALETTE.inkMuted};font-family:${BODY};font-size:15px;line-height:1.6;">${escapeHtml(input.problem)} ${articleFor(input.offer.name)} <a href="${escapeHtml(input.offer.url)}" style="color:${EMAIL_PALETTE.sageDeep};font-weight:600;text-decoration:underline;">${escapeHtml(input.offer.name)}</a> is where that starts getting answered.</p>`,
     "26px 36px 30px"
   );
 
@@ -128,9 +136,15 @@ export function renderLetterEmail(input: LetterEmailInput) {
     row(kicker(input), "34px 36px 0") +
     row(
       headline(input.subject) +
-        input.paragraphs.slice(0, 2).map(paragraph).join("") +
+        input.paragraphs
+          .slice(0, input.askIndex ?? 2)
+          .map(paragraph)
+          .join("") +
         (input.ask ? `<div style="margin:24px 0;">${askLine(input.ask)}</div>` : "") +
-        input.paragraphs.slice(2).map(paragraph).join("") +
+        input.paragraphs
+          .slice(input.askIndex ?? 2)
+          .map(paragraph)
+          .join("") +
         `<p style="margin:22px 0 0;color:${EMAIL_PALETTE.inkMuted};font-family:${DISPLAY};font-size:17px;font-style:italic;">Tomer</p>`,
       "0 36px 4px"
     ) +
