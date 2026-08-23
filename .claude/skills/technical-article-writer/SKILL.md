@@ -47,6 +47,12 @@ Then put the answer block high on the page. This is the cheatsheet for the quest
 - **The decision rules.** Use a short table or a tight numbered list. Attach a why of one or two sentences to every rule. A rule without a reason cannot be applied to a case the article did not anticipate, and it will not survive an argument with a colleague.
 - **The exceptions.** Say when the verdict changes.
 
+**The decision rules are transferable tests, not a catalogue of cases.** The rule is the concept. The example only shows the concept working. A good cheatsheet still answers a reader whose situation is not on the list. A catalogue does not.
+
+Write each rule as a test the reader can apply to anything. "If a mistake here is expensive to reverse, a person signs" works on a refund, a deploy, a vendor contract, or a permission change. "Do not automate refund approvals" answers exactly one case and leaves the reader stuck on the next. Give every rule an example after it, clearly as an illustration, because a rule with no example is abstract and does not stick.
+
+**Transfer check:** Take a case the article never mentions and run it through the rules. If the rules do not produce an answer, they are a list of cases wearing the costume of a method. Rewrite them one level up. Three to six rules is usually right. If there are fifteen, they are almost certainly cases rather than concepts, and there is a smaller set of tests underneath them that has not been found yet.
+
 The answer block must make sense on its own, read cold, by somebody who has forgotten the rest of the article. A reader coming back for the third time should get the answer from the first screen and never need to scroll.
 
 When a candidate fails several rules at once, state the order of precedence and let the strictest verdict win. Check that every worked example resolves correctly under that precedence. A table that contradicts its own rules destroys trust.
@@ -76,6 +82,17 @@ Non-negotiables:
 
 Banned: unlock, leverage, transformation, synergy, end-to-end, best-in-class, seamless, robust, drive value, game-changing, delve, landscape, tapestry, "it's important to note", "in today's".
 
+### Put people in the picture
+
+Tomer's position is: "I don't want to change the world. I want to change the people. I want the people who work with me to walk out at the end of it as a better version of themselves than the one that walked in."
+
+- Somewhere in every article, name who is actually affected and what it costs them. Not "the organisation loses velocity", but the engineer who stopped raising things, the ops person checking a bot's output by hand every morning, or the bottleneck who cannot put the load down.
+- Advice that is efficient for the company and quietly bad for its people is wrong advice. Say so when somebody is given a surface they did not want, a pause that held their judgement is automated away, or a hire is used to cover an unowned system.
+- Write to the reader as a person under pressure, usually with a difficult conversation ahead, not as a machine optimising throughput.
+- Keep it honest, not sentimental. One or two sentences in the right place beat a values paragraph. Never create a section called "the human element" or anything like it.
+
+An article that never names or describes a real person has failed this check.
+
 ## Step 5: Make it findable again
 
 Readers come back to these. Anything they will return for goes in a form they can scan:
@@ -85,6 +102,8 @@ Readers come back to these. Anything they will return for goes in a form they ca
 - **Cost and effort become a table.** Cause, what fixing it takes, does it fade on its own.
 - **A list of questions becomes a list of headings**, one question each. Six italic paragraphs in a row all look the same.
 - **Tables have at most four columns.** A wide grid of Y and N is unreadable, and people cannot tell what a column means by the time they reach it. If a decision needs seven inputs, score them in prose and show only what decided each row plus the verdict.
+- **Table cells hold short values, not prose.** Use a label, a verdict, a number, or a few words. If any cell would run past about ten words, the table is the wrong shape for the content.
+- **When a rule needs a why of one or two sentences, use a numbered list or bold lead-ins**, with the why underneath. Every rule still needs a why because that is what makes it usable. When both rules apply, the list wins and the table goes.
 
 ## Step 6: Wire it in
 
@@ -103,8 +122,11 @@ Run every one of these. Each exists because it was missed once.
 - [ ] The title is a question, or reads naturally as one.
 - [ ] The answer block answers that question within the first screen.
 - [ ] Every rule has a why of one or two sentences.
+- [ ] A case the article never mentions can be resolved by the rules alone.
 - [ ] Worked examples resolve correctly under the stated precedence, with the strictest verdict winning when several rules fail.
 - [ ] No table exceeds four columns.
+- [ ] No table cell runs past about ten words.
+- [ ] At least one real person is named or described in the article.
 - [ ] **Every number in a worked example survives arithmetic.** 90 seconds x 4 a day x 6 people is 36 minutes a day, which is about 13 hours a month on working days, not 18. State the assumption in the sentence.
 - [ ] **Counts match.** If the text says six things, count the bold items. If a heading, a lede and a recap all state a number, all three agree. Check the frontmatter description too, which is the count most readers meet first.
 - [ ] **The advice does not disable itself.** Telling a CEO to have the CTO collect the data makes the CTO-as-bottleneck cause undetectable. Read every instruction against every diagnosis.
