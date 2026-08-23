@@ -41,6 +41,8 @@ Do it once with real numbers and it changes arguments. Four people spending fort
 
 **Then say out loud which kind of saving it is, because this is where business cases get taken apart.** If nobody leaves and no post is cut, you do not bank that money. The hours get absorbed into other work, and your cash position at year end is identical. That is a real benefit and it is not a cashable one, and the two belong in different parts of the paper. Put the hours in the case for doing it, and never net them against the cost, because the first trustee who has run a budget will spot it and you will lose the argument you should have won.
 
+There is one exception worth looking for. If those hours let you avoid a hire you were about to make, that is genuinely cashable and you should say so loudly, because it is the strongest version of this argument and it is the one people forget to check.
+
 The number cuts both ways, and you should let it. Sometimes it says buy the thing immediately. Sometimes it says the manual process is genuinely cheaper than the licence and you should stop feeling bad about the spreadsheet.
 
 ### 3. The three year total, not the first year
@@ -53,7 +55,7 @@ The number cuts both ways, and you should let it. Sometimes it says buy the thin
 
 **How to get it:** ask about the contract first and the data second, because most people do it the other way round and the contract is the expensive half.
 
-**The contract question:** what is the minimum term, what is the notice period, and what do we owe if we exit in year two? Signing three years is not an annual cost, it is a commitment for the whole term, and it belongs on your balance sheet as one. Negotiating a three-year term down to twelve months rolling will usually de-risk a deal more than anything else you can do to it, and it costs you nothing to ask.
+**The contract question:** what is the minimum term, what is the notice period, and what do we owe if we exit in year two? Signing three years is not an annual cost, it is a commitment for the whole term, and it belongs in your commitments note as one. Negotiating a three-year term down to twelve months rolling will usually de-risk a deal more than anything else you can do to it, and it costs you nothing to ask.
 
 **The data question:** who owns the data, and in what format can we get all of it out. Get it in writing and treat vagueness as an answer in itself.
 
@@ -83,7 +85,9 @@ I want to be careful here, because the lazy version of this argument is that fun
 
 **The real problem is not refusal, it is the term.** Funders fund three years. Software runs for ten. So a bid that correctly includes the running cost still produces a cliff in year four, and everybody involved did their job properly on the way to it.
 
-Which means the fix is an accounting one rather than a fundraising one. **Put the recurring cost into your support cost pool from year one and apportion it across the whole restricted portfolio**, on the same basis you already use for finance, IT and premises. Then it is carried by many grants for as long as you have grants, rather than depending on one funder volunteering to keep a system alive that has nothing to do with the outcomes they care about. That conversation is with your finance lead, it is unglamorous, and it is what actually prevents the pattern below.
+Which means the fix is an accounting one rather than a fundraising one. **Put the recurring cost into your support cost pool from year one and apportion it across the whole restricted portfolio**, on the same basis you already use for finance, IT and premises. Then it is carried by many grants for as long as you have grants, instead of depending on one funder volunteering to keep a system alive that has nothing to do with the outcomes they care about. That conversation is with your finance lead, it is unglamorous, and it is what actually prevents the pattern below.
+
+Do not treat the pool as the whole answer, though. Recovery is usually partial, because plenty of funders cap overhead at ten or fifteen percent or apply a flat rate, and the pool only recovers against the restricted income you actually win. So it softens the cliff rather than removing it. Work out what is left over and where that comes from before you rely on it, because an unfunded residual you have sized is a budget line and an unfunded residual you have not is exactly the surprise this article is about.
 
 Because the pattern is reliable. A funder pays for a new case management system. It goes live, it works, everyone is pleased and the report is genuinely good. Two years later the licence renews, the person who ran it has left, there is no line for support, and the organisation is running critical operations on something nobody owns. The system did not fail. The funding model did what it always does, and nobody moved the cost anywhere it could survive the grant ending.
 
