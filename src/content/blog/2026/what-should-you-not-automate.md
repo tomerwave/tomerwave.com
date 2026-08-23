@@ -1,6 +1,7 @@
 ---
 title: "What Should You Not Automate?"
 pubDatetime: 2026-08-23T09:00:00+03:00
+modDatetime: 2026-08-23T19:05:00+03:00
 description: "Six tests for what stays with a person. When an approval is theatre, when nobody notices a bad run, and what automation moves rather than removes."
 tags:
   - ai
@@ -33,7 +34,7 @@ The second half is the one people skip, and it is where this rule earns its plac
 
 Automating the action does not move who owns it, either. Air Canada tried that in front of a tribunal in 2024, after its chatbot invented a bereavement fare policy that did not exist, and suggested the chatbot was responsible for its own statements. The tribunal called that a remarkable submission and made the airline pay.
 
-**Example:** a bot that drafts the refund and puts it in a queue passes. A bot that issues the refund does not.
+**Example:** a bot that drafts the refund and puts it in a queue passes. A bot that issues the refund does not, unless it is issuing inside a ceiling you have named out loud. Failing this rule does not always mean a person presses go. It means the machine does not get to act without a limit on how far it can get.
 
 ### 2. The approval nobody has ever refused
 
@@ -85,7 +86,9 @@ If it is the thing you are about to automate, you are buying this year's hours w
 
 The aggregate half matters just as much. Rules one to five test a single run. Threshold automations fail in the total, where every individual case was fine.
 
-**Example:** auto-approve credit increases under five thousand and each approval passes every other test on this list. Three requests of four thousand eight hundred over six weeks is fourteen thousand four hundred of exposure that never met a person. Lowering the threshold rarely helps, because somebody who wants more does not need to know where the line is. They just ask again. Cap the total per customer per quarter instead. The cap is the control, and it is the one that holds whether or not anyone has worked out how the thing behaves.
+**Example:** auto-approve credit increases under five thousand and each approval passes every other test on this list. Three requests of four thousand eight hundred over six weeks is fourteen thousand four hundred of exposure that never met a person. Lowering the threshold rarely helps, because somebody who wants more does not need to know where the line is. They just ask again. Cap the totals instead, and note that you need two numbers rather than one.
+
+**Per customer, per quarter**, which stops the repeat requester. And **a portfolio ceiling across everything the automation approves unattended**, which is the one people forget. Five thousand a quarter each, across four hundred customers, is two million of exposure that never met a person, with every single account comfortably inside its limit. That is rule six's own failure mode walking straight through a control that looks like it handles rule six. If you only ask for one cap you will be given the per-customer one, everybody will agree it is sensible, and you will have bounded nothing that matters.
 
 Varying the line is a second, narrower move, and only where there is no relationship on the other end. It works for fraud scoring. It is wrong for credit terms on a named account, because a limit that moves for no visible reason means your sales rep cannot tell that customer what to expect, and "it depends" from a rep sounds a lot like "we do not trust you."
 
@@ -100,7 +103,7 @@ Run all six regardless. Stopping at the first failure is how you miss the collec
 | 1. Hard to reverse | Veto | Draft only. A person acts. | No |
 | 3. Silent failure | Veto | Not until detection exists. | Yes |
 | 2. Approval is theatre | Tiebreaker | Voids any claim 1 is handled. | Yes |
-| 6. Learnable threshold | Design | Cap the total exposure. | Yes |
+| 6. Learnable threshold | Design | Cap per customer and overall. | Yes |
 | 4. Learning ground | Design | Automate less of it. | Slowly |
 | 5. Checking moved | Design | Automate less of it. | Yes |
 
@@ -109,7 +112,9 @@ A veto is a gate, not a scoring input, and it beats a strong return on investmen
 - **The machine drafts and a person acts.** Almost every proposal has this version inside it.
 - **The machine acts inside a hard ceiling**, low enough that the worst total it can reach is one you can absorb.
 
-The second route is why rule six still matters for something that already failed rule one. Credit increases fail rule one, because the shipment that went out against the limit does not come back. They can still be automated under a quarterly exposure cap, because the cap is what makes the worst case survivable. What you cannot do is automate them with no ceiling and call each approval small. If you cannot name the ceiling, you have not cleared the veto, you have just not looked for the number.
+The second route is why rule six still matters for something that already failed rule one. Credit increases fail rule one, because the shipment that went out against the limit does not come back. They can still be automated under a named exposure ceiling, per customer and across the portfolio, because that ceiling is what makes the worst case survivable. What you cannot do is automate them with no ceiling and call each approval small. If you cannot name the ceiling, you have not cleared the veto, you have just not looked for the number.
+
+Be ready for what happens when you do look for it. "A total you can absorb" is not a technical quantity, and your finance director will answer it an order of magnitude differently from you. That argument is not a distraction from the decision, it is the decision, and it is the one conversation this whole list exists to force.
 
 Rule two is not a veto of its own. It answers the argument you will actually have, which is somebody insisting rule one is handled because there is an approval step. Check the rejection rate.
 
