@@ -1,6 +1,31 @@
-import { resendConfig, SERVICE_SLUGS } from "../src/utils/resend-config.ts";
+const TOPIC_ENV: Record<string, string> = {
+  "fractional-vp-rnd": "RESEND_TOPIC_FRACTIONAL_VP_RND",
+  "architecture-review": "RESEND_TOPIC_ARCHITECTURE_REVIEW",
+  "ai-automation": "RESEND_TOPIC_AI_AUTOMATION",
+  "technology-advisor": "RESEND_TOPIC_TECHNOLOGY_ADVISOR",
+};
+
+const SERVICE_SLUGS = Object.keys(TOPIC_ENV);
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+const CONTACTS = "https://api.resend.com/contacts";
+
+interface ResendConfig {
+  apiKey: string;
+  segmentId: string;
+  topicId: string;
+}
+
+const setting = (name: string) => globalThis.process?.env?.[name] ?? "";
+
+const resendConfig = (service: string): ResendConfig | null => {
+  const apiKey = setting("RESEND_API_KEY");
+  const segmentId = setting("RESEND_SEGMENT_ID");
+  const topicId = setting(TOPIC_ENV[service] ?? "");
+  if (!apiKey || !segmentId || !topicId) return null;
+  return { apiKey, segmentId, topicId };
+};
 
 const json = (body: unknown, status: number) =>
   new Response(JSON.stringify(body), {
@@ -21,9 +46,8 @@ const cleanEmail = (value: unknown) =>
 
 const validEmail = (email: string) => EMAIL.test(email) && email.length <= 254;
 
-const addContact = async (email: string, config: ReturnType<typeof resendConfig>) => {
-  if (!config) return false;
-  const response = await fetch("https://api.resend.com/contacts", {
+const addContact = async (email: string, config: ResendConfig) => {
+  const response = await fetch(CONTACTS, {
     method: "POST",
     headers: { Authorization: `Bearer ${config.apiKey}`, "Content-Type": "application/json" },
     body: JSON.stringify({
