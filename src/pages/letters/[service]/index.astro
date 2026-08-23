@@ -53,8 +53,9 @@ const canonical = new URL(letterIndexPath(service.slug), SITE.website).href;
           <span class="business-eyebrow">{service.shortName} letters</span>
           <h1>{service.routerProblem}</h1>
           <p class="service-lede">
-            One short idea a week about exactly that, plus two or three things worth reading. Monday
-            morning. Every issue is on this page, so you can read a few before deciding.
+            One short idea a week about exactly that, plus two or three things worth reading. {
+              service.letterDay
+            } at midday. Every issue is on this page, so you can read a few before deciding.
           </p>
           <LetterSignup service={service} />
         </div>

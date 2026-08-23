@@ -2,7 +2,7 @@ const ENDPOINT = "/api/subscribe";
 
 const MESSAGES = {
   pending: "One moment.",
-  sent: "You are on the list. There is a note in your inbox, and the next letter arrives Monday.",
+  sent: "You are on the list. There is a note in your inbox, and the next letter is on its way.",
   invalid: "That address does not look right. Check it and try again.",
   failed: "That did not go through. Try again, or email me and I will add you by hand.",
 };

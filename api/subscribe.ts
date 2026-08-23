@@ -34,7 +34,7 @@ const WELCOME: Record<string, Welcome> = {
   "fractional-vp-rnd": {
     name: "R&D Advisory",
     opening:
-      "One short idea a week about engineering organisations that grew faster than the structure around them. It arrives Monday morning and takes about a minute to read.",
+      "One short idea a week about engineering organisations that grew faster than the structure around them. It arrives Thursday at midday and takes about a minute to read.",
     picks: [
       {
         title: "What a Fractional VP R&D Actually Does in the First 30 Days",
@@ -53,7 +53,7 @@ const WELCOME: Record<string, Welcome> = {
   "architecture-review": {
     name: "Architecture",
     opening:
-      "One short idea a week about technical decisions that are hard to undo. It arrives Monday morning and takes about a minute to read.",
+      "One short idea a week about technical decisions that are hard to undo. It arrives Wednesday at midday and takes about a minute to read.",
     picks: [
       {
         title: "Rewrite vs Refactor: How to Actually Decide",
@@ -72,7 +72,7 @@ const WELCOME: Record<string, Welcome> = {
   "ai-automation": {
     name: "AI & Automation",
     opening:
-      "One short idea a week about the work that should be automated, and the work that shouldn't. It lands Monday morning and takes about a minute to read.",
+      "One short idea a week about the work that should be automated, and the work that shouldn't. It lands Monday at midday and takes about a minute to read.",
     picks: [
       {
         title: "How to Find Processes Worth Automating With AI",
@@ -91,7 +91,7 @@ const WELCOME: Record<string, Welcome> = {
   "technology-advisor": {
     name: "Technology Advisory",
     opening:
-      "One short idea a week for organisations spending real money on technology without anyone technical in the room. It lands Monday morning and takes about a minute to read.",
+      "One short idea a week for organisations spending real money on technology without anyone technical in the room. It lands Tuesday at midday and takes about a minute to read.",
     picks: [
       {
         title: "How to Evaluate a Software Development Proposal When You're Not Technical",
@@ -155,7 +155,7 @@ const welcomeHtml = (welcome: Welcome) => `<!doctype html>
 </td></tr>
 <tr><td style="padding:0 36px;"><div style="border-top:1px solid ${HAIRLINE};font-size:0;line-height:0;height:1px;">&nbsp;</div></td></tr>
 <tr><td style="padding:26px 36px 8px;">
-<p style="margin:0 0 16px;color:${INK_FAINT};font-family:${DISPLAY};font-size:15px;font-style:italic;">Until Monday, these are the ones worth your time</p>
+<p style="margin:0 0 16px;color:${INK_FAINT};font-family:${DISPLAY};font-size:15px;font-style:italic;">Until then, these are the ones worth your time</p>
 <table cellpadding="0" cellspacing="0" border="0" width="100%" role="presentation">${welcome.picks.map(pickRow).join("")}</table>
 </td></tr>
 <tr><td style="padding:0 36px;"><div style="border-top:1px solid ${HAIRLINE};font-size:0;line-height:0;height:1px;">&nbsp;</div></td></tr>

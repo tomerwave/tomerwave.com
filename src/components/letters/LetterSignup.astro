@@ -13,7 +13,7 @@ const formId = `signup-${service.slug}`;
 <form class="letter-signup" data-letter-signup id={formId} novalidate>
   <input name="service" type="hidden" value={service.slug} />
   <label class="letter-signup-label" for={`${formId}-email`}>
-    {heading}. One letter a week, Monday morning. Leave whenever you like.
+    {heading}. One letter a week, {service.letterDay} at midday. Leave whenever you like.
   </label>
   <div class="letter-signup-row">
     <input
