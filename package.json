@@ -21,7 +21,8 @@
     "check": "biome check src",
     "check:fix": "biome check --write src",
     "prepare": "husky",
-    "one-pagers": "node scripts/render-one-pagers.mjs"
+    "one-pagers": "node scripts/render-one-pagers.mjs",
+    "letters": "node scripts/render-letters.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.6",
