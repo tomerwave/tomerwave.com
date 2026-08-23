@@ -204,7 +204,7 @@ const sendLetter = async (letter, service, html, lock) => {
 };
 
 const renderAndSend = async (letter, context) => {
-  const service = context.services.find((entry) => entry.slug === letter.service);
+  const service = context.services.get(letter.service);
   if (!service) {
     warn(`skipped ${letter.file}: unknown service`);
     return;
@@ -230,6 +230,8 @@ async function run() {
   const { SERVICES } = await import(pathToFileURL(join(ROOT, "src/data/services.ts")).href);
   const render = await import(pathToFileURL(join(ROOT, "src/utils/letter-email.ts")).href);
 
+  const servicesBySlug = new Map(SERVICES.map((service) => [service.slug, service]));
+
   const letters = selectLetters(await collectLetters());
   if (letters.length === 0) {
     warn("no letters matched");
@@ -241,7 +243,7 @@ async function run() {
   await mkdir(OUT_DIR, { recursive: true });
 
   for (const letter of letters) {
-    await renderAndSend(letter, { services: SERVICES, render, send, lock });
+    await renderAndSend(letter, { services: servicesBySlug, render, send, lock });
   }
 
   if (send) await writeFile(LOCK, `${JSON.stringify(lock, null, 2)}\n`);
