@@ -1,91 +1,136 @@
 ---
 name: newsletter-letter-writer
-description: Writes weekly ICP newsletter letters for tomerwave.com (src/content/letters). Use when drafting or rewriting a letter that pairs this week's news with a companion commercial blog post for one service. Not for long-form articles (technical-article-writer), personal posts (personal-blog-writer), or LinkedIn reactions (tech-observation-posts).
+description: Writes TomerWave service newsletter letters for tomerwave.com (architecture-review, fractional-vp-rnd, ai-automation, technology-advisor). Use for src/content/letters/<service>/<issue>.md weekly letters with researched links, a short body, one tip blockquote, and optional companion blog post. Not for LinkedIn (tech-observation-posts), long commercial blog (technical-article-writer), or personal writing (personal-blog-writer).
 ---
 
-You are writing a short weekly letter for one TomerWave ICP. The letter has two jobs: show the reader you are paying attention to what happened in their world this week, and put the new companion blog post in front of them without turning the email into a sales page.
+You are writing a weekly service letter: short, useful, and specific to one ICP. It is not a blog post, not a LinkedIn observation, and not a hard sell. The soft CTA lives in the email template from the service offer. Your job is the week, the takes, and one tip worth acting on.
 
-**Check you are in the right skill.**
+**Check you are in the right skill.** Four skills write in his voice and they are not interchangeable:
 
-- **This one** for `src/content/letters/<service>/<issue>.md` on tomerwave.com.
-- **`technical-article-writer`** for the long commercial blog the letter features.
-- **`personal-blog-writer`** for personal essays.
-- **`tech-observation-posts`** for LinkedIn news reactions.
+- **This one** for `src/content/letters/<service>/<issue>.md` newsletters tied to one service and one ICP.
+- **`technical-article-writer`** for long commercial articles on tomerwave.com that answer a search query and lead to a service.
+- **`tech-observation-posts`** for short LinkedIn posts reacting to technology news.
+- **`personal-blog-writer`** for posts about his life. Interview-first, sells nothing.
 
-## Step 1: Pin four things before writing
+If the piece needs 1,400+ words, a free method, and a named entry offer close, use `technical-article-writer`. If it is a timely one-claim LinkedIn observation with image direction, use `tech-observation-posts`.
+
+## Step 1: Pin service, issue, ICP, and companion post
+
+Write these down before researching or drafting.
 
 | | |
 |---|---|
-| **Service / ICP** | One of: architecture-review, fractional-vp-rnd, ai-automation, technology-advisor |
-| **Issue number** | Next integer for that service folder |
-| **Companion post** | Blog slug shipping the same week (frontmatter `post:`) |
-| **This week's links** | 2 to 4 real public URLs with a one-line take each |
+| **Service** | One of: `architecture-review`, `fractional-vp-rnd`, `ai-automation`, `technology-advisor`. |
+| **Issue** | The issue number / slug for this letter (matches the filename under that service). |
+| **ICP** | Who exactly this letter is for. "Founder at seed to Series A with 5 to 25 engineers", not "startups". |
+| **Companion blog** | Optional `post` slug: filename of a blog post without path or extension. Omit if there is no companion this week. |
 
-If you do not have real URLs yet, stop and find them. Never invent links.
+File path: `src/content/letters/<service>/<issue>.md`.
 
-## Step 2: Frontmatter schema
+## Step 2: Schema (content.config.ts)
 
-Match `src/content.config.ts` for the letters collection:
+Frontmatter fields:
+
+| Field | Required | Notes |
+|---|---|---|
+| `service` | yes | Must match the folder / one of the four services. |
+| `issue` | yes | Issue identifier for this letter. |
+| `subject` | yes | Email subject. **Max 60 characters.** |
+| `preview` | yes | One-line preview text. |
+| `pubDatetime` | yes | Publish datetime. |
+| `links` | optional, **required for full weekly letters** | Array of `{ title, url, source, take }`. |
+| `post` | optional | Companion blog slug (filename without path/ext). |
+| `draft` | optional | Only set `true` when asked. |
+
+Example shape:
 
 ```yaml
 ---
-service: architecture-review
-issue: 2
-subject: Ownership got fuzzy after you hired past ten
-preview: One line the inbox shows before open.
-pubDatetime: 2026-08-24T08:00:00+03:00
+service: fractional-vp-rnd
+issue: "12"
+subject: "Your eng org is shipping less, not slower"
+preview: "Three moves teams make when throughput drops, and which one actually helps."
+pubDatetime: 2026-08-23T09:00:00+03:00
+post: why-engineering-teams-get-slower
 links:
-  - title: Concrete headline of the piece
-    url: https://example.com/real-article
-    source: Outlet name
-    take: One sentence on why this ICP should care.
-post: companion-blog-slug
+  - title: "Example headline from a real source"
+    url: "https://example.com/real-article"
+    source: "Source name"
+    take: "One sentence tailored to the ICP."
+draft: false
 ---
 ```
 
-Rules:
+## Step 3: How email render uses the file (letter-email.ts)
 
-- `subject` max 60 characters.
-- `links` is what the email renders as **Worth your week**.
-- `post` is the blog slug; the email renders **New on the blog** from that post's title and description.
-- `draft: true` only if Tomer asked for a draft.
+Know what the template does so you do not fight it:
 
-## Step 3: Body shape
+- **Body markdown** becomes paragraphs, plus exactly one `>` tip (the ask / tip block).
+- **`links`** become the **Worth your week** section.
+- **`post`** becomes the **New on the blog** card; title, description, and url are resolved from the blog collection. Pass the slug only.
 
-The email renderer (`src/utils/letter-email.ts`) splits markdown into paragraphs and one `>` tip, then appends the links block and the post block for you.
+Do not invent a second tip block, a manual "Worth your week" heading in the body, or a hard-coded blog card. The template owns those.
 
-Write:
+## Step 4: Research 2 to 3 real news items
 
-1. **One or two short paragraphs** on what this week made visible for this ICP. Specific, dated, tied to the links you chose.
-2. **Optional third paragraph** that bridges to the companion essay without summarizing the whole article.
-3. **Exactly one tip block** starting with `>` (one or two sentences).
+For a full weekly letter, research **2 to 3** real items from this week (or very recent, still relevant).
 
-Do **not** add headings like "Worth your week" or "New on the blog" in the body. The template owns those.
+Non-negotiables:
 
-Keep the whole body short. Letters are scanned on a phone.
+- **Never invent URLs.** Prefer primary sources: company blogs, official docs, papers, filings, reputable trade press.
+- Verify each link opens and matches the title you cite.
+- Each link gets:
+  - `title`: accurate headline or clear descriptive title
+  - `url`: real, working URL
+  - `source`: outlet or publisher name
+  - `take`: one sentence tailored to **this letter's ICP and service**, not a generic summary
 
-## Step 4: Voice
+If you cannot find enough real items, write fewer and say so at handoff. Do not pad with fabrications.
 
-- No em dashes or en dashes. Use commas, periods, or restructure.
-- Contractions are fine.
-- Specific over impressive. Name the company, the number, the failure mode.
-- Soft CTA only if it earns it; the service CTA is already appended by the email template.
-- Banned: unlock, leverage, synergy, seamless, robust, delve, landscape, "it's important to note".
+## Step 5: Write the body
 
-## Step 5: Weekly cadence
+Structure:
 
-Every week: **one letter per ICP** (four letters) paired with **one commercial blog per ICP** (four blogs). The letter's `post:` must point at that week's blog for the same service.
+1. **1 to 3 short paragraphs** on the week / situation, in the ICP's words. Open on their problem, not a definition.
+2. **Exactly one** tip as a markdown blockquote:
 
-## Step 6: Self-check
+```markdown
+> Do this one concrete thing this week.
+```
 
-- [ ] Grep for em dash and en dash returns 0
-- [ ] `subject` length is at most 60
-- [ ] Every `links[].url` is a real https URL you opened or verified
-- [ ] `post` slug matches a blog file in the same ship
-- [ ] Exactly one `>` tip block
-- [ ] Body does not duplicate Worth your week / New on the blog headers
-- [ ] Build passes (`npm run build`); Godlint branch naming uses feat, fix, docs, chore, or the other allowed prefixes
+That tip is the ask. Make it specific enough to act on Monday.
 
-## Step 7: Hand-off
+Voice (shared with the commercial skills):
 
-Put the file at `src/content/letters/<service>/<NNN>.md` (zero-padded issue as the repo already uses, e.g. `002.md`). Open a PR. Tell Tomer which links you used and which blog it features.
+- **No em dashes or en dashes.** Commas, full stops, or restructure.
+- **Use contractions.** Their absence is the strongest machine-tell.
+- Short, direct, observational. Specific over impressive.
+- Soft CTA belongs in the email template from the service offer. **Do not hard-sell in the body.**
+
+Banned: unlock, leverage, transformation, synergy, end-to-end, best-in-class, seamless, robust, drive value, game-changing, delve, landscape, tapestry, "it's important to note", "in today's".
+
+Subject and preview:
+
+- `subject` max 60 characters
+- `preview` one line
+- No em/en dashes in either
+
+## Step 6: Checklist before handoff
+
+Run every one of these:
+
+- [ ] Service, issue, ICP, and companion `post` slug (if any) were pinned before writing.
+- [ ] File path is `src/content/letters/<service>/<issue>.md`.
+- [ ] Frontmatter matches schema: `service`, `issue`, `subject` (max 60), `preview`, `pubDatetime`.
+- [ ] Full weekly letter has 2 to 3 `links` with real `title`, `url`, `source`, `take` (ICP-tailored).
+- [ ] Every URL was verified; none invented.
+- [ ] Body is 1 to 3 short paragraphs plus **exactly one** `>` tip.
+- [ ] No em dash or en dash characters anywhere (grep returns 0).
+- [ ] Contractions used; tone does not hard-sell (template owns soft CTA).
+- [ ] `post`, if set, is a slug only (no path, no `.md`).
+- [ ] `draft: true` only if asked.
+- [ ] Wrong skill check: not LinkedIn, not long commercial blog, not personal.
+
+## Step 7: Hand it over
+
+Give the file path, subject, and a one-line summary of the tip. Flag any link you could not fully verify, and anything left for his judgement. Do not commit unless asked.
