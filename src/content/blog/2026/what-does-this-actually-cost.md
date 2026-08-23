@@ -49,11 +49,11 @@ The number cuts both ways, and you should let it. Sometimes it says buy the thin
 
 **How to get it:** ask the vendor for a three year cost including licences, support, hosting, and any upgrade they know is coming. In writing. Then add the internal cost of whoever will administer it, which the vendor will not include because it is not theirs.
 
-**Why it misleads:** first year pricing is frequently a discount, sometimes an aggressive one, and comparing two options on year one is comparing a deposit to a purchase price. It is also the number that has to outlive the grant, which is the subject of the next section.
+**Why it misleads:** first year pricing is frequently a discount, sometimes an aggressive one, and comparing two options on year one compares a deposit with a purchase price. It is also the number that has to outlive the grant, which is the subject of the next section.
 
 ### 4. What it costs to leave
 
-**How to get it:** ask about the contract first and the data second, because most people do it the other way round and the contract is the expensive half.
+**How to get it:** ask about the contract first and the data second, because most people do it the other way round and the contract is the expensive half of the two.
 
 **The contract question:** what is the minimum term, what is the notice period, and what do we owe if we exit in year two? Signing three years is not an annual cost, it is a commitment for the whole term, and it belongs in your commitments note as one. Negotiating a three-year term down to twelve months rolling will usually de-risk a deal more than anything else you can do to it, and it costs you nothing to ask.
 
@@ -63,7 +63,7 @@ The number cuts both ways, and you should let it. Sometimes it says buy the thin
 
 ### 5. Who pays when it breaks, and out of which budget line
 
-**How to get it:** name the budget line rather than the department, and check it exists next year. Then take the recurring figure to whoever owns your reserves policy and ask what an unfunded commitment of that size for the length of the term does to your free reserves position. That is a five minute conversation and it is the one that decides this.
+**How to get it:** name the budget line, not the department, and check it exists next year. Then take the recurring figure to whoever owns your reserves policy and ask what an unfunded commitment of that size for the length of the term does to your free reserves position. That is a five minute conversation and it is the one that decides this.
 
 **Why it misleads:** this is the one that actually closes projects. Everything above is a number. This one asks whether the number has anywhere to live, and in an organisation funded in cycles that is a different question with a different answer.
 
@@ -85,7 +85,7 @@ I want to be careful here, because the lazy version of this argument is that fun
 
 **The real problem is not refusal, it is the term.** Funders fund three years. Software runs for ten. So a bid that correctly includes the running cost still produces a cliff in year four, and everybody involved did their job properly on the way to it.
 
-Which means the fix is an accounting one rather than a fundraising one. **Put the recurring cost into your support cost pool from year one and apportion it across the whole restricted portfolio**, on the same basis you already use for finance, IT and premises. Then it is carried by many grants for as long as you have grants, instead of depending on one funder volunteering to keep a system alive that has nothing to do with the outcomes they care about. That conversation is with your finance lead, it is unglamorous, and it is what actually prevents the pattern below.
+Which means the fix is an accounting one, not a fundraising one. **Put the recurring cost into your support cost pool from year one and apportion it across the whole restricted portfolio**, on the same basis you already use for finance, IT and premises. Then it is carried by many grants for as long as you have grants, instead of depending on one funder volunteering to keep a system alive that has nothing to do with the outcomes they care about. That conversation is with your finance lead, it is unglamorous, and it is what actually prevents the pattern below.
 
 Do not treat the pool as the whole answer, though. Recovery is usually partial, because plenty of funders cap overhead at ten or fifteen percent or apply a flat rate, and the pool only recovers against the restricted income you actually win. So it softens the cliff rather than removing it. Work out what is left over and where that comes from before you rely on it, because an unfunded residual you have sized is a budget line and an unfunded residual you have not is exactly the surprise this article is about.
 
