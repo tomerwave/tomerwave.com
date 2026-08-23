@@ -33,7 +33,7 @@
     "src/constants.ts": "f6761e99ee724fe0f669c5a3e14091b8fcd32851ce52833e36ac8f8970aef4ea",
     "src/consts.ts": "22b4c3da7da9efb121e8e56197e68bfa3e936e00468bf578f0c321d73a920820",
     "src/data/services.ts": "631177cf5022dd61d82ab8336ee1914795ce28505702911a51234928ee27e57d",
-    "src/layouts/Layout.astro": "cd89dabc7a3ff76930064b136ee640da500eaf57b4be8eb14326ea580664edf9",
+    "src/layouts/Layout.astro": "48d83b593ee8e793b4c61c92286758b0b7b2580c3bbd405de364a2d6f37e058c",
     "src/pages/services/[slug]/one-pager.astro": "fa814c879b2450ce1aa6bd3430ec7937a23504e8a0415967bcc2e7b9f6ec6336",
     "src/styles/business.css": "4a4d002d1cd3ef33d1f8ec3fa796a83a224d938545d8de3a795886a2981e6c1b",
     "src/styles/fonts.css": "7fe24d91d46a8a15dd83a688aef37bfb8b8f88214f8c7eb944a2ff8c846fcdf6",
