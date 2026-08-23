@@ -2,17 +2,21 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 import BusinessContact from "@/components/landing/BusinessContact.astro";
 import BusinessFooter from "@/components/landing/BusinessFooter.astro";
+import LetterSignup from "@/components/letters/LetterSignup.astro";
 import SectionRoute from "@/components/SectionRoute.astro";
-import SiteHeader, { type NavItem } from "@/components/SiteHeader.astro";
+import SiteHeader from "@/components/SiteHeader.astro";
 import StructuredData from "@/components/StructuredData.astro";
 import { SITE } from "@/config";
 import { getService, onePagerPath, SERVICES, type Service, servicePath } from "@/data/services";
 import Layout from "@/layouts/Layout.astro";
 import { getPath } from "@/utils/get-path";
 import getSortedPosts from "@/utils/get-sorted-posts";
+import { letterIndexPath } from "@/utils/letters";
+import { siteNavItems } from "@/utils/site-nav";
 import "@/styles/business.css";
 import "@/styles/route.css";
 import "@/styles/service.css";
+import "@/styles/letter.css";
 
 type BlogPost = CollectionEntry<"blog">;
 
@@ -50,19 +54,12 @@ const routeSections = [
   { id: "service-help", label: "How this works" },
   { id: service.offer.anchor, label: service.offer.name },
   { id: "service-next", label: "What comes next" },
+  { id: "service-letter", label: "The letter" },
   ...(picks.length > 0 ? [{ id: "service-writing", label: "Writing" }] : []),
   { id: "service-contact", label: "Contact" },
 ];
 
-const navItems: NavItem[] = [
-  ...SERVICES.map((item) => ({
-    label: item.shortName,
-    href: servicePath(item.slug),
-    active: item.slug === service.slug,
-  })),
-  { label: "Writing", href: "/blog" },
-  { label: "Let’s talk", href: "/meet", cta: true },
-];
+const navItems = siteNavItems(service.slug);
 ---
 
 <Layout title={`${service.documentTitle} · Tomer Gal`} description={service.description}>
@@ -216,6 +213,28 @@ const navItems: NavItem[] = [
           <div class="business-reveal">
             <p class="service-next-body">{service.next.body}</p>
             {service.next.note && <p class="service-next-note">{service.next.note}</p>}
+          </div>
+        </div>
+      </section>
+
+      <hr class="business-rule" />
+
+      <section class="business-section" id="service-letter">
+        <div class="business-wrap">
+          <div class="business-section-head">
+            <div>
+              <span class="business-eyebrow">Not ready to talk</span>
+              <h2>Take the letter instead.</h2>
+            </div>
+          </div>
+          <div class="business-reveal">
+            <p class="service-next-body">
+              One short idea a week about exactly this, plus two or three things worth reading. <a
+                class="letter-inline-link"
+                href={letterIndexPath(service.slug)}>Read the last few first</a
+              > if you would rather see what arrives before deciding.
+            </p>
+            <LetterSignup service={service} />
           </div>
         </div>
       </section>

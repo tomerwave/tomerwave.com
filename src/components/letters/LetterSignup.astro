@@ -1,0 +1,31 @@
+---
+import type { Service } from "@/data/services";
+
+interface Props {
+  service: Service;
+  heading?: string;
+}
+
+const { service, heading = "Get this one" } = Astro.props;
+const formId = `signup-${service.slug}`;
+---
+
+<form class="letter-signup" data-letter-signup id={formId} novalidate>
+  <input name="service" type="hidden" value={service.slug} />
+  <label class="letter-signup-label" for={`${formId}-email`}>
+    {heading}. One letter a week, Monday morning. Leave whenever you like.
+  </label>
+  <div class="letter-signup-row">
+    <input
+      autocomplete="email"
+      class="letter-signup-input"
+      id={`${formId}-email`}
+      name="email"
+      placeholder="you@company.com"
+      required
+      type="email"
+    />
+    <button class="business-button letter-signup-button" type="submit">Subscribe</button>
+  </div>
+  <p class="letter-signup-status" data-signup-status hidden role="status"></p>
+</form>

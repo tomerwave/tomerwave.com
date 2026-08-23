@@ -1,0 +1,86 @@
+---
+import BusinessFooter from "@/components/landing/BusinessFooter.astro";
+import SiteHeader from "@/components/SiteHeader.astro";
+import { SITE } from "@/config";
+import Layout from "@/layouts/Layout.astro";
+import {
+  formatLetterDate,
+  getLatestPerService,
+  letterIndexPath,
+  letterPath,
+} from "@/utils/letters";
+import { siteNavItems } from "@/utils/site-nav";
+import "@/styles/business.css";
+import "@/styles/service.css";
+import "@/styles/letter.css";
+
+const lists = await getLatestPerService();
+
+const navItems = siteNavItems();
+
+const canonical = new URL("/letters", SITE.website).href;
+---
+
+<Layout
+  title="Letters · Tomer Gal"
+  description="Four short letters, one for each service. One idea a week, plus what is worth reading, for the people who already have that problem."
+  canonicalURL={canonical}
+>
+  <div class="business-site service-page">
+    <SiteHeader
+      homeHref="/"
+      homeLabel="Tomer Gal home"
+      mainId="letters-main"
+      navAriaLabel="Services navigation"
+      navItems={navItems}
+      variant="business"
+    />
+
+    <main id="letters-main">
+      <section class="business-section service-hero">
+        <div class="business-wrap">
+          <span class="business-eyebrow">Letters</span>
+          <h1>Four letters. Pick the one that is your problem.</h1>
+          <p class="service-lede">
+            One short idea a week, plus what was worth reading, written for the people who already have
+            that particular problem. Monday morning. Leave whenever you like.
+          </p>
+        </div>
+      </section>
+
+      <hr class="business-rule" />
+
+      <section class="business-section">
+        <div class="business-wrap">
+          <ul class="letter-lists">
+            {
+              lists.map(({ service, latest, count }) => (
+                <li class="letter-list">
+                  <a class="letter-list-link" href={letterIndexPath(service.slug)}>
+                    <span class="letter-list-name">{service.shortName}</span>
+                  </a>
+                  <p class="letter-list-who">{service.routerProblem}</p>
+                  {latest ? (
+                    <a class="letter-list-latest" href={letterPath(service.slug, latest.data.issue)}>
+                      <span class="letter-list-subject">{latest.data.subject}</span>
+                      <span class="letter-list-meta">
+                        Issue {latest.data.issue}, {formatLetterDate(latest.data.pubDatetime)}
+                      </span>
+                    </a>
+                  ) : (
+                    <p class="letter-list-meta">The first one goes out shortly.</p>
+                  )}
+                  <p class="letter-list-count">
+                    {count === 0 ? "Not started yet" : count === 1 ? "1 issue" : `${count} issues`}
+                  </p>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <BusinessFooter />
+  </div>
+</Layout>

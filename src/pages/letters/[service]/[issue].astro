@@ -1,0 +1,119 @@
+---
+import { getCollection, render } from "astro:content";
+import BusinessFooter from "@/components/landing/BusinessFooter.astro";
+import LetterSignup from "@/components/letters/LetterSignup.astro";
+import SiteHeader from "@/components/SiteHeader.astro";
+import { SITE } from "@/config";
+import { getService, servicePath } from "@/data/services";
+import Layout from "@/layouts/Layout.astro";
+import { formatLetterDate, getLetters, letterIndexPath, letterPath } from "@/utils/letters";
+import { siteNavItems } from "@/utils/site-nav";
+import "@/styles/business.css";
+import "@/styles/service.css";
+import "@/styles/letter.css";
+
+export async function getStaticPaths() {
+  const letters = await getLetters();
+  const posts = await getCollection("blog");
+
+  const featuredFor = (slug: string | undefined) =>
+    slug ? posts.find((post) => post.id.split("/").pop() === slug) : undefined;
+
+  return letters.map((letter) => ({
+    params: { service: letter.data.service, issue: String(letter.data.issue) },
+    props: { letter, featured: featuredFor(letter.data.post) },
+  }));
+}
+
+const { letter, featured } = Astro.props;
+const service = getService(letter.data.service);
+const { Content } = await render(letter);
+
+const navItems = siteNavItems();
+
+const canonical = new URL(letterPath(letter.data.service, letter.data.issue), SITE.website).href;
+---
+
+<Layout
+  title={`${letter.data.subject} · Tomer Gal`}
+  description={letter.data.preview}
+  canonicalURL={canonical}
+  pubDatetime={letter.data.pubDatetime}
+>
+  <div class="business-site service-page">
+    <SiteHeader
+      homeHref="/"
+      homeLabel="Tomer Gal home"
+      mainId="letter-main"
+      navAriaLabel="Services navigation"
+      navItems={navItems}
+      variant="business"
+    />
+
+    <main id="letter-main">
+      <article class="business-section letter-issue">
+        <div class="business-wrap">
+          <p class="letter-issue-kicker">
+            <a href={letterIndexPath(letter.data.service)}>{service?.shortName}</a>
+            <span class="letter-issue-sep">/</span>
+            <span>Issue {letter.data.issue}, {formatLetterDate(letter.data.pubDatetime)}</span>
+          </p>
+
+          <h1 class="letter-issue-title">{letter.data.subject}</h1>
+
+          <div class="letter-issue-body">
+            <Content />
+          </div>
+
+          {
+            letter.data.links && letter.data.links.length > 0 && (
+              <section class="letter-issue-block">
+                <h2 class="letter-issue-block-title">Worth your week</h2>
+                <ul class="letter-links">
+                  {letter.data.links.map((link) => (
+                    <li class="letter-link">
+                      <span class="letter-link-source">{link.source}</span>
+                      <a class="letter-link-title" href={link.url} rel="noopener" target="_blank">
+                        {link.title}
+                      </a>
+                      <p class="letter-link-take">{link.take}</p>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )
+          }
+
+          {
+            featured && (
+              <section class="letter-issue-block">
+                <h2 class="letter-issue-block-title">New on the blog</h2>
+                <a class="letter-post" href={`/posts/${featured.id}`}>
+                  <span class="letter-post-title">{featured.data.title}</span>
+                  <span class="letter-post-desc">{featured.data.description}</span>
+                </a>
+              </section>
+            )
+          }
+
+          {
+            service && (
+              <p class="letter-issue-cta">
+                {service.routerProblem} An <a href={servicePath(service.slug)}>{service.offer.name}</a> is
+                the short version of finding out.
+              </p>
+            )
+          }
+        </div>
+      </article>
+
+      <hr class="business-rule" />
+
+      <section class="business-section">
+        <div class="business-wrap">{service && <LetterSignup service={service} heading="Get these" />}</div>
+      </section>
+    </main>
+
+    <BusinessFooter />
+  </div>
+</Layout>

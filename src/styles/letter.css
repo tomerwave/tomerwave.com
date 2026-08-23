@@ -1,0 +1,105 @@
+/* Letter pages. Extends business.css — assumes the .business-site wrapper for tokens. */
+
+/* Signup */
+.letter-signup { display: flex; flex-direction: column; gap: .8rem; margin-top: 2.2rem; max-width: 34rem; }
+.letter-signup-label { color: var(--business-ink-70); font-size: .95rem; line-height: 1.5; max-width: 44ch; }
+.letter-signup-row { display: flex; flex-wrap: wrap; gap: .7rem; }
+.letter-signup-input {
+  background: var(--business-paper);
+  border: 1px solid var(--business-hair);
+  color: var(--business-ink);
+  flex: 1 1 16rem;
+  font-family: inherit;
+  font-size: 1rem;
+  padding: .8rem 1rem;
+}
+.letter-signup-input::placeholder { color: var(--business-ink-45); }
+.letter-signup-input:focus-visible { border-color: var(--business-sage-deep); }
+.letter-signup-button { flex: 0 0 auto; }
+.letter-signup-status { color: var(--business-sage-deep); font-size: .92rem; }
+.letter-signup-status--failed { color: var(--business-ink-70); }
+
+/* Index of the four lists */
+.letter-lists {
+  display: grid;
+  gap: clamp(1.8rem, 3.5vw, 2.8rem);
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  list-style: none;
+}
+.letter-list { border-top: 1px solid var(--business-hair); display: flex; flex-direction: column; gap: .55rem; padding-top: 1.4rem; }
+.service-page .letter-list-name { font-family: var(--business-display); font-size: 1.5rem; letter-spacing: -.01em; }
+.letter-list-link:hover .letter-list-name { color: var(--business-sage-deep); }
+.letter-list-who { color: var(--business-ink-45); font-size: .93rem; line-height: 1.5; }
+.letter-list-latest { display: flex; flex-direction: column; gap: .25rem; margin-top: .6rem; }
+.letter-list-subject { font-size: 1rem; font-weight: 500; line-height: 1.35; }
+.letter-list-latest:hover .letter-list-subject { color: var(--business-sage-deep); }
+.letter-list-meta, .letter-list-count { color: var(--business-ink-45); font-size: .82rem; }
+.letter-list-count { margin-top: auto; padding-top: .9rem; }
+
+/* Archive of one list */
+.letter-archive { display: grid; gap: 0; list-style: none; max-width: 46rem; }
+.letter-archive-item { border-top: 1px solid var(--business-hair); }
+.letter-archive-link { display: flex; flex-direction: column; gap: .3rem; padding-block: clamp(1.2rem, 2.4vw, 1.7rem); }
+.letter-archive-meta { color: var(--business-ink-45); font-size: .82rem; }
+.service-page .letter-archive-subject { font-family: var(--business-display); font-size: clamp(1.35rem, 1.1rem + .9vw, 1.75rem); letter-spacing: -.014em; line-height: 1.14; }
+.letter-archive-link:hover .letter-archive-subject { color: var(--business-sage-deep); }
+.letter-archive-preview { color: var(--business-ink-70); font-size: .95rem; line-height: 1.5; max-width: 54ch; }
+
+/* One issue */
+.letter-issue { padding-block: clamp(2.5rem, 6vw, 4.5rem); }
+.letter-issue .business-wrap { display: flex; flex-direction: column; }
+.service-page .letter-issue-kicker { align-items: baseline; border-bottom: 1px solid var(--business-hair); color: var(--business-sage-deep); display: flex; flex-wrap: wrap; font-family: var(--business-display); font-size: 1rem; font-style: italic; gap: .55rem; max-width: 42rem; padding-bottom: 1rem; }
+.letter-issue-kicker a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.letter-issue-sep { color: var(--business-sand); font-style: normal; }
+.letter-issue-kicker span:last-child { color: var(--business-ink-45); }
+.service-page .letter-issue-title { font-size: clamp(2rem, 1.3rem + 2.6vw, 3.1rem); letter-spacing: -.02em; line-height: 1.06; margin-block: 1.6rem 1.5rem; max-width: 20ch; text-wrap: balance; }
+
+.letter-issue-body { display: flex; flex-direction: column; gap: 1.15rem; max-width: 42rem; }
+.letter-issue-body p { font-size: clamp(1.03rem, 1rem + .25vw, 1.15rem); line-height: 1.62; max-width: 42rem; }
+.letter-issue-body blockquote {
+  border-left: 2px solid var(--business-sage);
+  color: var(--business-sage-deep);
+  font-family: var(--business-display);
+  font-size: clamp(1.2rem, 1.05rem + .7vw, 1.5rem);
+  font-style: italic;
+  line-height: 1.32;
+  padding-left: 1.2rem;
+}
+.letter-issue-body blockquote p { font-size: inherit; }
+
+.letter-issue-block { border-top: 1px solid var(--business-hair); margin-top: clamp(2.4rem, 4.5vw, 3.4rem); max-width: 42rem; padding-top: 1.6rem; }
+
+/* Beats `.service-page h2` and `.business-site h2`, which otherwise set the
+   display face at heading scale on what is only a section label. */
+.service-page .letter-issue-block-title {
+  color: var(--business-ink-45);
+  font-family: var(--business-display);
+  font-size: .98rem;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.3;
+  margin-bottom: 1.3rem;
+  max-width: none;
+  text-transform: none;
+}
+
+.letter-links { display: flex; flex-direction: column; gap: 1.5rem; list-style: none; }
+.letter-link { display: flex; flex-direction: column; gap: .3rem; }
+.letter-link-source { color: var(--business-ink-45); font-family: var(--business-display); font-size: .92rem; font-style: italic; }
+.letter-link-title { color: var(--business-sage-deep); font-size: 1.05rem; font-weight: 500; line-height: 1.35; text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--business-sage) 55%, transparent); text-underline-offset: 3px; }
+.letter-link-take { color: var(--business-ink-70); font-size: .96rem; line-height: 1.55; }
+
+.letter-post { background: var(--business-paper-warm); border: 1px solid var(--business-hair); display: flex; flex-direction: column; gap: .4rem; padding: 1.4rem; }
+.service-page .letter-post-title { font-family: var(--business-display); font-size: 1.35rem; letter-spacing: -.012em; line-height: 1.16; }
+.letter-post:hover .letter-post-title { color: var(--business-sage-deep); }
+.letter-post-desc { color: var(--business-ink-70); font-size: .95rem; line-height: 1.55; }
+
+.letter-issue-cta { border-top: 1px solid var(--business-hair); color: var(--business-ink-70); margin-top: clamp(2.4rem, 4.5vw, 3.4rem); max-width: 42rem; padding-top: 1.5rem; }
+.letter-issue-cta a { color: var(--business-sage-deep); font-weight: 500; text-decoration: underline; text-underline-offset: 3px; }
+
+.letter-inline-link { color: var(--business-sage-deep); text-decoration: underline; text-underline-offset: 3px; }
+
+/* The letter sits at the quiet end of a service page, so its head does not need
+   the full section rhythm the louder sections above it use. */
+#service-letter .business-section-head { margin-bottom: clamp(1.25rem, 2vw, 1.75rem); }
