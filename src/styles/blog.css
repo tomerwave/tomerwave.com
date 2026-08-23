@@ -142,7 +142,11 @@
   border-bottom: 1px solid color-mix(in srgb, var(--blog-ink) 9%, transparent);
   padding: .75rem 1.2rem .75rem 0; vertical-align: top;
 }
-.blog-prose tbody tr td:first-child { font-family: var(--blog-display); white-space: nowrap; }
+/* The first column is a label, so it stays on the display face. It used to be
+   `nowrap`, which was fine for one-word labels and collapsed every other column
+   to a single word per line as soon as a label got long. Cap it instead. */
+.blog-prose tbody tr td:first-child { font-family: var(--blog-display); max-width: 22ch; }
+.blog-prose tbody td:not(:first-child) { min-width: 12ch; }
 .blog-prose tbody tr:last-child td { border-bottom: 0; }
 
 .blog-prose ul, .blog-prose ol { margin-block: 1.5rem; padding-left: 1.6rem; }
