@@ -1,0 +1,114 @@
+---
+import BusinessFooter from "@/components/landing/BusinessFooter.astro";
+import LetterSignup from "@/components/letters/LetterSignup.astro";
+import SiteHeader, { type NavItem } from "@/components/SiteHeader.astro";
+import { SITE } from "@/config";
+import { SERVICES, servicePath } from "@/data/services";
+import Layout from "@/layouts/Layout.astro";
+import {
+  formatLetterDate,
+  getLettersByService,
+  letterIndexPath,
+  letterPath,
+} from "@/utils/letters";
+import "@/styles/business.css";
+import "@/styles/service.css";
+import "@/styles/letter.css";
+
+export async function getStaticPaths() {
+  return Promise.all(
+    SERVICES.map(async (service) => ({
+      params: { service: service.slug },
+      props: { service, issues: await getLettersByService(service.slug) },
+    }))
+  );
+}
+
+const { service, issues } = Astro.props;
+
+const navItems: NavItem[] = [
+  ...SERVICES.map((item) => ({ label: item.shortName, href: servicePath(item.slug) })),
+  { label: "Writing", href: "/blog" },
+  { label: "Let’s talk", href: "/meet", cta: true },
+];
+
+const canonical = new URL(letterIndexPath(service.slug), SITE.website).href;
+---
+
+<Layout
+  title={`${service.shortName} letters · Tomer Gal`}
+  description={`A weekly letter for people who already have this problem: ${service.routerProblem} One short idea, plus what is worth reading.`}
+  canonicalURL={canonical}
+>
+  <div class="business-site service-page">
+    <SiteHeader
+      homeHref="/"
+      homeLabel="Tomer Gal home"
+      mainId="letter-index-main"
+      navAriaLabel="Services navigation"
+      navItems={navItems}
+      variant="business"
+    />
+
+    <main id="letter-index-main">
+      <section class="business-section service-hero">
+        <div class="business-wrap">
+          <span class="business-eyebrow">{service.shortName} letters</span>
+          <h1>{service.routerProblem}</h1>
+          <p class="service-lede">
+            One short idea a week about exactly that, plus two or three things worth reading. Monday
+            morning. Every issue is on this page, so you can read a few before deciding.
+          </p>
+          <LetterSignup service={service} />
+        </div>
+      </section>
+
+      <hr class="business-rule" />
+
+      <section class="business-section">
+        <div class="business-wrap">
+          {
+            issues.length === 0 ? (
+              <p class="service-next-body">The first one goes out shortly.</p>
+            ) : (
+              <ul class="letter-archive">
+                {issues.map((letter) => (
+                  <li class="letter-archive-item">
+                    <a class="letter-archive-link" href={letterPath(service.slug, letter.data.issue)}>
+                      <span class="letter-archive-meta">
+                        Issue {letter.data.issue} · {formatLetterDate(letter.data.pubDatetime)}
+                      </span>
+                      <span class="letter-archive-subject">{letter.data.subject}</span>
+                      <span class="letter-archive-preview">{letter.data.preview}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )
+          }
+        </div>
+      </section>
+
+      <hr class="business-rule" />
+
+      <section class="business-section">
+        <div class="business-wrap">
+          <div class="business-section-head">
+            <div>
+              <span class="business-eyebrow">If it is more urgent than a letter</span>
+              <h2>{service.offer.name}.</h2>
+            </div>
+          </div>
+          <div class="business-reveal">
+            <p class="service-next-body">{service.routerBody}</p>
+            <a class="business-button" href={servicePath(service.slug)}>
+              {service.shortName}
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <BusinessFooter />
+  </div>
+</Layout>

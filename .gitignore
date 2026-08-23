@@ -43,3 +43,7 @@ src/content/temp/
 .omx/
 .omc/
 docs/superpowers/
+
+.letters
+.vercel
+.env*
