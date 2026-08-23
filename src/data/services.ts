@@ -6,6 +6,7 @@ export interface ServiceWritingPick {
 export interface Service {
   slug: string;
   shortName: string;
+  letterDay: string;
   documentTitle: string;
   pageHeading: string;
   eyebrow: string;
@@ -49,6 +50,7 @@ export const SERVICES: Service[] = [
   {
     slug: "fractional-vp-rnd",
     shortName: "R&D Advisory",
+    letterDay: "Thursday",
     documentTitle: "R&D Advisory & Fractional VP R&D",
     pageHeading: "R&D Advisory & Fractional VP R&D",
     eyebrow: "R&D Advisory",
@@ -134,6 +136,7 @@ export const SERVICES: Service[] = [
   {
     slug: "architecture-review",
     shortName: "Architecture",
+    letterDay: "Wednesday",
     documentTitle: "Architecture Review & Technical Strategy",
     pageHeading: "Architecture & Technical Strategy",
     eyebrow: "Architecture",
@@ -215,6 +218,7 @@ export const SERVICES: Service[] = [
   {
     slug: "ai-automation",
     shortName: "AI & Automation",
+    letterDay: "Monday",
     documentTitle: "AI & Automation",
     pageHeading: "AI & Automation",
     eyebrow: "AI & Automation",
@@ -299,6 +303,7 @@ export const SERVICES: Service[] = [
   {
     slug: "technology-advisor",
     shortName: "Technology Advisory",
+    letterDay: "Tuesday",
     documentTitle: "Technology Advisor for Organizations Without a CTO",
     pageHeading: "Technology Advisor",
     eyebrow: "Technology Advisory",

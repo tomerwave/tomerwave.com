@@ -1,6 +1,6 @@
 ---
 title: "What Should You Not Automate?"
-pubDatetime: 2026-08-23T09:00:00+03:00
+pubDatetime: 2026-08-24T09:00:00+03:00
 modDatetime: 2026-08-23T19:05:00+03:00
 description: "Six tests for what stays with a person. When an approval is theatre, when nobody notices a bad run, and what automation moves rather than removes."
 tags:

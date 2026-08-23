@@ -1,6 +1,6 @@
 ---
 title: "Is This Project Failing Because of the Vendor, or Because of Us?"
-pubDatetime: 2026-08-31T09:00:00+03:00
+pubDatetime: 2026-09-01T09:00:00+03:00
 description: "Four questions that tell you whose problem it is, the two numbers that decide what you do about it, and how to report any of it to a board you answer to."
 tags:
   - technology-advisory
