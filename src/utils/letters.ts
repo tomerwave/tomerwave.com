@@ -7,12 +7,10 @@ export const letterPath = (service: string, issue: number) => `/letters/${servic
 
 export const letterIndexPath = (service: string) => `/letters/${service}`;
 
-export const issueNumber = (letter: Letter) => letter.data.issue;
-
 const byNewest = (a: Letter, b: Letter) =>
   b.data.pubDatetime.valueOf() - a.data.pubDatetime.valueOf();
 
-export const isPublished = (letter: Letter) =>
+const isPublished = (letter: Letter) =>
   letter.data.draft !== true && letter.data.pubDatetime.valueOf() <= Date.now();
 
 export async function getLetters() {

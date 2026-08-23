@@ -4,7 +4,7 @@ import BusinessContact from "@/components/landing/BusinessContact.astro";
 import BusinessFooter from "@/components/landing/BusinessFooter.astro";
 import LetterSignup from "@/components/letters/LetterSignup.astro";
 import SectionRoute from "@/components/SectionRoute.astro";
-import SiteHeader, { type NavItem } from "@/components/SiteHeader.astro";
+import SiteHeader from "@/components/SiteHeader.astro";
 import StructuredData from "@/components/StructuredData.astro";
 import { SITE } from "@/config";
 import { getService, onePagerPath, SERVICES, type Service, servicePath } from "@/data/services";
@@ -12,6 +12,7 @@ import Layout from "@/layouts/Layout.astro";
 import { getPath } from "@/utils/get-path";
 import getSortedPosts from "@/utils/get-sorted-posts";
 import { letterIndexPath } from "@/utils/letters";
+import { siteNavItems } from "@/utils/site-nav";
 import "@/styles/business.css";
 import "@/styles/route.css";
 import "@/styles/service.css";
@@ -58,15 +59,7 @@ const routeSections = [
   { id: "service-contact", label: "Contact" },
 ];
 
-const navItems: NavItem[] = [
-  ...SERVICES.map((item) => ({
-    label: item.shortName,
-    href: servicePath(item.slug),
-    active: item.slug === service.slug,
-  })),
-  { label: "Writing", href: "/blog" },
-  { label: "Let’s talk", href: "/meet", cta: true },
-];
+const navItems = siteNavItems(service.slug);
 ---
 
 <Layout title={`${service.documentTitle} · Tomer Gal`} description={service.description}>

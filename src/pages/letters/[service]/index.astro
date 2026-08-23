@@ -1,7 +1,7 @@
 ---
 import BusinessFooter from "@/components/landing/BusinessFooter.astro";
 import LetterSignup from "@/components/letters/LetterSignup.astro";
-import SiteHeader, { type NavItem } from "@/components/SiteHeader.astro";
+import SiteHeader from "@/components/SiteHeader.astro";
 import { SITE } from "@/config";
 import { SERVICES, servicePath } from "@/data/services";
 import Layout from "@/layouts/Layout.astro";
@@ -11,6 +11,7 @@ import {
   letterIndexPath,
   letterPath,
 } from "@/utils/letters";
+import { siteNavItems } from "@/utils/site-nav";
 import "@/styles/business.css";
 import "@/styles/service.css";
 import "@/styles/letter.css";
@@ -26,11 +27,7 @@ export async function getStaticPaths() {
 
 const { service, issues } = Astro.props;
 
-const navItems: NavItem[] = [
-  ...SERVICES.map((item) => ({ label: item.shortName, href: servicePath(item.slug) })),
-  { label: "Writing", href: "/blog" },
-  { label: "Let’s talk", href: "/meet", cta: true },
-];
+const navItems = siteNavItems();
 
 const canonical = new URL(letterIndexPath(service.slug), SITE.website).href;
 ---

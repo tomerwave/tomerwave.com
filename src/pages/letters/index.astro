@@ -1,8 +1,7 @@
 ---
 import BusinessFooter from "@/components/landing/BusinessFooter.astro";
-import SiteHeader, { type NavItem } from "@/components/SiteHeader.astro";
+import SiteHeader from "@/components/SiteHeader.astro";
 import { SITE } from "@/config";
-import { SERVICES, servicePath } from "@/data/services";
 import Layout from "@/layouts/Layout.astro";
 import {
   formatLetterDate,
@@ -10,17 +9,14 @@ import {
   letterIndexPath,
   letterPath,
 } from "@/utils/letters";
+import { siteNavItems } from "@/utils/site-nav";
 import "@/styles/business.css";
 import "@/styles/service.css";
 import "@/styles/letter.css";
 
 const lists = await getLatestPerService();
 
-const navItems: NavItem[] = [
-  ...SERVICES.map((service) => ({ label: service.shortName, href: servicePath(service.slug) })),
-  { label: "Writing", href: "/blog" },
-  { label: "Let’s talk", href: "/meet", cta: true },
-];
+const navItems = siteNavItems();
 
 const canonical = new URL("/letters", SITE.website).href;
 ---

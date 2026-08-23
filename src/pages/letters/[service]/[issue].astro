@@ -2,11 +2,12 @@
 import { getCollection, render } from "astro:content";
 import BusinessFooter from "@/components/landing/BusinessFooter.astro";
 import LetterSignup from "@/components/letters/LetterSignup.astro";
-import SiteHeader, { type NavItem } from "@/components/SiteHeader.astro";
+import SiteHeader from "@/components/SiteHeader.astro";
 import { SITE } from "@/config";
-import { getService, SERVICES, servicePath } from "@/data/services";
+import { getService, servicePath } from "@/data/services";
 import Layout from "@/layouts/Layout.astro";
 import { formatLetterDate, getLetters, letterIndexPath, letterPath } from "@/utils/letters";
+import { siteNavItems } from "@/utils/site-nav";
 import "@/styles/business.css";
 import "@/styles/service.css";
 import "@/styles/letter.css";
@@ -28,11 +29,7 @@ const { letter, featured } = Astro.props;
 const service = getService(letter.data.service);
 const { Content } = await render(letter);
 
-const navItems: NavItem[] = [
-  ...SERVICES.map((item) => ({ label: item.shortName, href: servicePath(item.slug) })),
-  { label: "Writing", href: "/blog" },
-  { label: "Let’s talk", href: "/meet", cta: true },
-];
+const navItems = siteNavItems();
 
 const canonical = new URL(letterPath(letter.data.service, letter.data.issue), SITE.website).href;
 ---
