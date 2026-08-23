@@ -91,7 +91,7 @@ const alreadySent = (lock, letter) =>
   );
 
 const buildEmail = async (letter, service, render, posts) => {
-  const { ask, paragraphs } = render.splitBody(letter.body);
+  const { ask, paragraphs, askIndex } = render.splitBody(letter.body);
   return render.renderLetterEmail({
     serviceName: service.shortName,
     issue: letter.data.issue,
@@ -100,6 +100,7 @@ const buildEmail = async (letter, service, render, posts) => {
     preview: letter.data.preview,
     paragraphs,
     ask,
+    askIndex,
     links: letter.data.links,
     post: letter.data.post ? posts.get(letter.data.post) : undefined,
     offer: { name: service.offer.name, url: `${SITE}/services/${service.slug}` },
