@@ -14,6 +14,8 @@ export const EMAIL_PALETTE = {
 const DISPLAY = "Georgia, 'Times New Roman', serif";
 const BODY = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif";
 
+const SITE = "https://tomerwave.com";
+
 const WIDTH = 600;
 
 export interface LetterLink {
@@ -72,6 +74,7 @@ const blockLabel = (text: string) =>
   `<p style="margin:0 0 16px;color:${EMAIL_PALETTE.inkFaint};font-family:${DISPLAY};font-size:15px;font-style:italic;">${escapeHtml(text)}</p>`;
 
 const kicker = (input: LetterEmailInput) =>
+  `<img src="${SITE}/android-chrome-192x192.png" width="40" height="40" alt="Tomer Gal" style="display:block;border:0;outline:none;width:40px;height:40px;margin:0 0 20px;">` +
   `<p style="margin:0;color:${EMAIL_PALETTE.sageDeep};font-family:${DISPLAY};font-size:15px;font-style:italic;">${escapeHtml(input.serviceName)} <span style="color:${EMAIL_PALETTE.sand};font-style:normal;">/</span> <span style="color:${EMAIL_PALETTE.inkFaint};">Issue ${input.issue}, ${escapeHtml(input.date)}</span></p>`;
 
 const headline = (subject: string) =>

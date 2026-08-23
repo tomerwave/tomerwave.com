@@ -147,6 +147,7 @@ const welcomeHtml = (welcome: Welcome) => `<!doctype html>
 <tr><td align="center" style="padding:28px 12px;">
 <table cellpadding="0" cellspacing="0" border="0" width="600" role="presentation" style="width:600px;max-width:100%;background:${PAPER};border:1px solid ${HAIRLINE};">
 <tr><td style="padding:34px 36px 0;">
+<img src="${SITE}/android-chrome-192x192.png" width="40" height="40" alt="Tomer Gal" style="display:block;border:0;outline:none;width:40px;height:40px;margin:0 0 20px;">
 <p style="margin:0;color:${SAGE_DEEP};font-family:${DISPLAY};font-size:15px;font-style:italic;">${escapeHtml(welcome.name)}</p>
 <h1 style="margin:22px 0 20px;color:${INK};font-family:${DISPLAY};font-size:28px;font-weight:400;letter-spacing:-0.5px;line-height:1.14;">You are on the list. Thank you.</h1>
 <p style="margin:0 0 16px;color:${INK};font-family:${BODY};font-size:16px;line-height:1.62;">${escapeHtml(welcome.opening)}</p>
