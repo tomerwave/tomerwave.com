@@ -99,6 +99,7 @@ const structuredData = pubDatetime
     {noindex && <meta name="googlebot" content="noindex, nofollow" />}
 
     <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={pubDatetime ? "article" : "website"} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
