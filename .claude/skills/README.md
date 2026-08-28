@@ -21,6 +21,9 @@ copies stay in step. The format is the same everywhere, so it is a plain copy.
 - `tomerwave-pdf` designs and renders standalone branded PDFs (proposals,
   cheat sheets, one-off client documents) in the site's visual identity —
   not part of the Astro build, output stays local unless asked otherwise.
+- `tomerwave-deck` designs and renders standalone branded presentation
+  decks (16:9 slides, PDF output) in the site's visual identity — sibling
+  to `tomerwave-pdf`, same local-only-by-default rule.
 
 A fourth skill, `tech-observation-posts`, is not copied here because it writes
 LinkedIn reactions rather than anything on this site. It still lives in the

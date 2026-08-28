@@ -170,6 +170,7 @@ Delete the temp script from the repo after running it — it's a one-off, not pa
 - Page count matches what you intended (`grep -c '/Type\s*/Page[^s]'` against the raw PDF bytes, or just count `.sheet` elements you rendered).
 - No content is silently clipped — `.sheet` has `overflow: hidden`, so a section that's too long will vanish rather than error. Screenshot each `.sheet` at 794×1123 and actually look, don't just trust the page count.
 - For RTL docs, do the arrow/eyebrow/border checks above with a cropped screenshot, not the raw PDF text extraction.
+- **The PDF contains real vector text, not a stitched screenshot.** If your environment's sandbox blocks a genuine headless-Chromium `page.pdf()` call, the tempting workaround is screenshotting each `.sheet` as a PNG and wrapping those images into a PDF instead. That file has the right page count and looks fine at a glance, but has zero embedded fonts, reads visibly softer at any zoom, and is far larger than it needs to be. Confirm before handing off: `python3 -c "data=open('<file>.pdf','rb').read(); assert b'/Font' in data and data.count(b'/Subtype/Image') < <page_count>"`. If your environment genuinely can't produce a real export, say so — don't silently ship the degraded fallback as if it were the real thing.
 
 ## Where the output goes
 
