@@ -1,0 +1,24 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "command": "godharness adapter-hook codex --event session-start",
+            "type": "command"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "command": "godharness adapter-hook codex --event user-prompt-submit",
+            "type": "command"
+          }
+        ]
+      }
+    ]
+  }
+}

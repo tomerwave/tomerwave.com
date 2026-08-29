@@ -1,0 +1,6 @@
+version: 1
+suites:
+- recommended@1
+adapters:
+  claude-code: true
+  codex: true

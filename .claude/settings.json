@@ -1,0 +1,24 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "command": "godharness adapter-hook claude-code --event session-start",
+            "type": "command"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "command": "godharness adapter-hook claude-code --event user-prompt-submit",
+            "type": "command"
+          }
+        ]
+      }
+    ]
+  }
+}
