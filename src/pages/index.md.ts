@@ -35,7 +35,7 @@ I started building at twelve, helping run Minecraft servers and writing the plug
 
 - LinkedIn: [Tomer Gal](https://www.linkedin.com/in/tomergal14)
 - Personal blog: [tomerwave.com/blog](https://tomerwave.com/blog)
-- Email: tomer.wave@gmail.com
+- Email: tomer@tomerwave.com
 
 ---
 

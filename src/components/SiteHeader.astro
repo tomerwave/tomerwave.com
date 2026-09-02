@@ -49,6 +49,7 @@ const {
           navItems.map((item) => (
             <a
               href={item.href}
+              data-placement={item.cta ? "nav" : undefined}
               class:list={[{ "site-nav-cta": item.cta, "site-nav-muted": item.muted, "is-active": item.active }]}
             >
               {item.label}
@@ -64,6 +65,7 @@ const {
             navItems.map((item) => (
               <a
                 href={item.href}
+                data-placement={item.cta ? "mobile_nav" : undefined}
                 class:list={[{ "is-active": item.active }]}
               >
                 {item.label}
