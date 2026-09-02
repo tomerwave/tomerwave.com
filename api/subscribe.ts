@@ -1,3 +1,4 @@
+import { isValidEmail } from "../src/utils/email-validation.js";
 import {
   type SignupAttribution,
   sanitizeSignupAttribution,
@@ -12,8 +13,6 @@ const TOPIC_ENV: Record<string, string> = {
 };
 
 const SERVICE_SLUGS = Object.keys(TOPIC_ENV);
-
-const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 const CONTACTS = "https://api.resend.com/contacts";
 const EMAILS = "https://api.resend.com/emails";
@@ -190,8 +189,6 @@ const readPayload = async (request: Request) => {
 const cleanEmail = (value: unknown) =>
   typeof value === "string" ? value.trim().toLowerCase() : "";
 
-const validEmail = (email: string) => EMAIL.test(email) && email.length <= 254;
-
 const post = (url: string, apiKey: string, body: unknown) =>
   fetch(url, {
     method: "POST",
@@ -229,7 +226,7 @@ const rejection = (
   payload: { email?: unknown; service?: unknown; attribution?: unknown } | null
 ) => {
   if (!payload) return json({ error: "invalid_body" }, 400);
-  if (!validEmail(cleanEmail(payload.email))) return json({ error: "invalid_email" }, 400);
+  if (!isValidEmail(cleanEmail(payload.email))) return json({ error: "invalid_email" }, 400);
   if (!SERVICE_SLUGS.includes(String(payload.service))) {
     return json({ error: "invalid_service" }, 400);
   }
