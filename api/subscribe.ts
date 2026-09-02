@@ -2,7 +2,7 @@ import {
   type SignupAttribution,
   sanitizeSignupAttribution,
   toContactProperties,
-} from "../src/utils/signup-attribution";
+} from "../src/utils/signup-attribution.js";
 
 const TOPIC_ENV: Record<string, string> = {
   "fractional-vp-rnd": "RESEND_TOPIC_FRACTIONAL_VP_RND",
