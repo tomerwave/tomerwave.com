@@ -1,3 +1,9 @@
+import {
+  type SignupAttribution,
+  sanitizeSignupAttribution,
+  toContactProperties,
+} from "../src/utils/signup-attribution";
+
 const TOPIC_ENV: Record<string, string> = {
   "fractional-vp-rnd": "RESEND_TOPIC_FRACTIONAL_VP_RND",
   "architecture-review": "RESEND_TOPIC_ARCHITECTURE_REVIEW",
@@ -171,7 +177,11 @@ const welcomeHtml = (welcome: Welcome) => `<!doctype html>
 
 const readPayload = async (request: Request) => {
   try {
-    return (await request.json()) as { email?: unknown; service?: unknown };
+    return (await request.json()) as {
+      email?: unknown;
+      service?: unknown;
+      attribution?: unknown;
+    };
   } catch {
     return null;
   }
@@ -189,12 +199,17 @@ const post = (url: string, apiKey: string, body: unknown) =>
     body: JSON.stringify(body),
   });
 
-const addContact = async (email: string, config: ResendConfig) => {
+const addContact = async (
+  email: string,
+  config: ResendConfig,
+  attribution: SignupAttribution
+) => {
   const response = await post(CONTACTS, config.apiKey, {
     email,
     unsubscribed: false,
     segments: [{ id: config.segmentId }],
     topics: [{ id: config.topicId, subscription: "opt_in" }],
+    properties: toContactProperties(attribution),
   });
   return response.ok;
 };
@@ -210,7 +225,9 @@ const sendWelcome = async (email: string, service: string, config: ResendConfig)
   });
 };
 
-const rejection = (payload: { email?: unknown; service?: unknown } | null) => {
+const rejection = (
+  payload: { email?: unknown; service?: unknown; attribution?: unknown } | null
+) => {
   if (!payload) return json({ error: "invalid_body" }, 400);
   if (!validEmail(cleanEmail(payload.email))) return json({ error: "invalid_email" }, 400);
   if (!SERVICE_SLUGS.includes(String(payload.service))) {
@@ -229,7 +246,8 @@ export async function POST(request: Request) {
   if (!config) return json({ error: "not_configured" }, 503);
 
   const email = cleanEmail(payload?.email);
-  if (!(await addContact(email, config))) return json({ error: "upstream" }, 502);
+  const attribution = sanitizeSignupAttribution(payload?.attribution);
+  if (!(await addContact(email, config, attribution))) return json({ error: "upstream" }, 502);
 
   await sendWelcome(email, service, config).catch(() => undefined);
   return json({ ok: true }, 200);
