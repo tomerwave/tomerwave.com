@@ -10,6 +10,7 @@
     "build": "astro build && pagefind --site dist",
     "build:check": "astro check && astro build && pagefind --site dist",
     "preview": "astro preview",
+    "test": "node --experimental-strip-types --test tests/*.test.ts",
     "astro": "astro",
     "deploy": "scripts/deploy.sh",
     "add-source-metadata": "node scripts/add-source-metadata.mjs",
