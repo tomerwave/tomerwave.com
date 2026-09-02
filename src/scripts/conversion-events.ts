@@ -8,6 +8,7 @@ import {
 } from "./attribution";
 
 const BOOK_CALL_SELECTOR = 'a[href^="/meet"]';
+const ONE_PAGER_SELECTOR = 'a[href^="/one-pagers/"][href$=".pdf"]';
 const EMAIL_SELECTOR = 'a[href^="mailto:"]';
 const ARTICLE_SERVICE_SELECTOR = '.blog-prose a[href^="/services/"]';
 
@@ -37,8 +38,17 @@ const bookCallPlacement = (node: HTMLElement) => {
   return "unknown";
 };
 
+const onePagerDetails = (node: HTMLElement) => {
+  const href = node.getAttribute("href") ?? "";
+  const file = href.split("/").pop() ?? "";
+  const service = file.replace(/\.pdf$/, "");
+  const placement = node.dataset.placement ?? (node.closest(".service-offer") ? "service_offer" : "unknown");
+  return { service, placement };
+};
+
 const CLICK_EVENTS: Array<[string, string, (node: HTMLElement) => Record<string, string>]> = [
   [BOOK_CALL_SELECTOR, "book_call_clicked", (node) => ({ placement: bookCallPlacement(node) })],
+  [ONE_PAGER_SELECTOR, "one_pager_opened", onePagerDetails],
   [EMAIL_SELECTOR, "email_clicked", () => ({})],
   [
     ARTICLE_SERVICE_SELECTOR,
