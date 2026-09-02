@@ -8,7 +8,7 @@ import "@/styles/service.css";
 
 const navItems = siteNavItems();
 
-const updated = "23 August 2026";
+const updated = "2 September 2026";
 ---
 
 <Layout
@@ -31,8 +31,9 @@ const updated = "23 August 2026";
           <span class="business-eyebrow">Privacy</span>
           <h1>What this site measures.</h1>
           <p class="service-lede">
-            Short version: anonymous page counts, and which buttons get clicked. No cookies, no accounts,
-            no tracking you across other websites.
+            Short version: cookie-less traffic and engagement analytics. If you choose to join a letter,
+            I also keep the address you gave me, the letter you chose, and a small amount of first-touch
+            attribution so I can understand what brought people here.
           </p>
         </div>
       </section>
@@ -44,7 +45,7 @@ const updated = "23 August 2026";
           <div class="business-section-head">
             <div>
               <span class="business-eyebrow">What is collected</span>
-              <h2>Anonymous traffic, and a handful of clicks.</h2>
+              <h2>Traffic, useful actions, and reading signals.</h2>
             </div>
           </div>
           <ul class="service-list service-list--deliverable">
@@ -54,12 +55,17 @@ const updated = "23 August 2026";
               Clicks on a small number of things I care about: booking a call, my email address, opening a
               service page, and following a link from an article to a service.
             </li>
+            <li>
+              Two coarse reading signals on articles: whether the article was still open after about 30
+              seconds, and whether the page reached roughly three quarters of the article.
+            </li>
             <li>Page loading speed, so I can tell when the site gets slower.</li>
           </ul>
           <p class="service-pricing-note">
             This runs on Vercel Web Analytics and Vercel Speed Insights. Vercel does not use cookies for
             this and does not build a cross-site profile of you. Campaign tags and the referring site are
             kept in your browser for the length of your visit and are cleared when you close the tab.
+            These website analytics events are not attached to your newsletter email address.
           </p>
         </div>
       </section>
@@ -75,10 +81,11 @@ const updated = "23 August 2026";
             </div>
           </div>
           <ul class="service-triggers">
-            <li class="service-trigger">No cookies are set by this site.</li>
-            <li class="service-trigger">No fingerprinting, and no attempt to identify you personally.</li>
+            <li class="service-trigger">No cookies are set by this site for analytics.</li>
+            <li class="service-trigger">No fingerprinting or attempt to reconstruct your identity from browser signals.</li>
             <li class="service-trigger">No advertising networks, and no data sold or shared for advertising.</li>
             <li class="service-trigger">No session recording, heatmaps, or A/B testing.</li>
+            <li class="service-trigger">No individual browsing history is built against your newsletter address.</li>
           </ul>
         </div>
       </section>
@@ -122,23 +129,24 @@ const updated = "23 August 2026";
           <div class="business-reveal">
             <p class="service-next-body">
               There are four letters, one for each service, and the only way to get one is to ask for it
-              on the form yourself. Signing up stores your email address and which letters you chose.
-              Nothing else, and nothing you have not typed into the form.
+              on the form yourself. Signing up stores your email address and which letter you chose.
+              When analytics are allowed by your browser, I also store the first source, campaign and
+              landing page that brought you here, the referring domain if there was one, and when that
+              visit first started. I use that only to understand which routes to the list are working.
             </p>
             <p class="service-next-body">
-              The letters do record whether you opened them and which links you clicked. I use it to
-              work out which subjects were worth writing about, and nothing else. It is the one place on
-              this site where something is measured against you rather than anonymously, so it is worth
-              saying plainly. If you would rather it did not, tell me and I will turn it off for your
-              address.
+              The letters record whether they were opened and which links were clicked. I use that to
+              work out which subjects were worth writing about. This email engagement history is tied to
+              your contact in Resend; the separate website reading signals described above are not.
             </p>
             <p class="service-next-body">
               Every letter has a link at the bottom that lets you change which ones you get, or stop all
               of them. It takes one click, it works without me, and you do not need to give a reason.
             </p>
             <p class="service-next-note">
-              The letters are sent through Resend, which stores the address on my behalf and has its own
-              privacy policy. I do not pass it on to anyone else.
+              The letters are sent through Resend, which stores the address, subscription preferences,
+              signup attribution and email engagement on my behalf and has its own privacy policy. I do
+              not sell that information or pass it to anyone else for advertising.
             </p>
           </div>
         </div>
@@ -158,11 +166,12 @@ const updated = "23 August 2026";
             <p class="service-next-body">
               Email me and I will delete whatever I hold about you, and tell you when it is done. You do
               not need to give a reason. If your browser sends a Do Not Track or Global Privacy Control
-              signal, no analytics events are recorded for your visit.
+              signal, no website analytics events are recorded for your visit and no signup attribution
+              is attached to your newsletter contact.
             </p>
             <p class="service-next-note">Last updated {updated}.</p>
           </div>
-          <a class="business-mail" href="mailto:tomer.wave@gmail.com">tomer.wave@gmail.com</a>
+          <a class="business-mail" href="mailto:tomer@tomerwave.com">tomer@tomerwave.com</a>
         </div>
       </section>
     </main>
