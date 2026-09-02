@@ -1,6 +1,7 @@
 import { track } from "@vercel/analytics";
 import { sanitizeSignupAttribution } from "../utils/signup-attribution";
 import { getAttribution, optedOutOfTracking } from "./attribution";
+import { initBotProtection } from "./bot-protection";
 
 const ENDPOINT = "/api/subscribe";
 
@@ -81,6 +82,7 @@ const submit = async (form: HTMLFormElement, signal: AbortSignal) => {
 };
 
 export const initLetterSignup = () => {
+  initBotProtection();
   controller?.abort();
   controller = new AbortController();
   const { signal } = controller;
