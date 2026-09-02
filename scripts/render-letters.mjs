@@ -112,24 +112,27 @@ const buildEmail = async (letter, service, render, posts) => {
 };
 
 const scheduleBroadcast = async (letter, service, html, credentials) => {
+  const payload = {
+    segment_id: credentials.segment,
+    topic_id: credentials.topic,
+    from: FROM,
+    subject: letter.data.subject,
+    name: `${service.shortName} issue ${letter.data.issue}`,
+    html,
+    send: true,
+    open_tracking: true,
+    click_tracking: true,
+  };
+
+  if (!has("now")) payload.scheduled_at = new Date(letter.data.pubDatetime).toISOString();
+
   const response = await fetch(BROADCASTS, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${credentials.key}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      segment_id: credentials.segment,
-      topic_id: credentials.topic,
-      from: FROM,
-      subject: letter.data.subject,
-      name: `${service.shortName} issue ${letter.data.issue}`,
-      html,
-      send: true,
-      open_tracking: true,
-      click_tracking: true,
-      scheduled_at: new Date(letter.data.pubDatetime).toISOString(),
-    }),
+    body: JSON.stringify(payload),
   });
 
   if (!response.ok) {
@@ -145,7 +148,9 @@ const blockedReason = (letter, credentials, lock) => {
   }
   if (alreadySent(lock, letter)) return "already scheduled";
   if (letter.data.draft === true) return "marked draft";
-  if (isPast(letter) && !has("force")) return "dated in the past, use --force to send anyway";
+  if (isPast(letter) && !has("force") && !has("now")) {
+    return "dated in the past, use --now to send immediately or --force to keep the original date";
+  }
   return null;
 };
 
@@ -169,9 +174,11 @@ const sendLetter = async (letter, service, html, lock) => {
     service: letter.service,
     issue: letter.data.issue,
     broadcastId: created.id,
-    scheduledAt: new Date(letter.data.pubDatetime).toISOString(),
+    scheduledAt: has("now")
+      ? new Date().toISOString()
+      : new Date(letter.data.pubDatetime).toISOString(),
   });
-  say(`scheduled ${letter.service}/${letter.data.issue} as ${created.id}`);
+  say(`${has("now") ? "sent" : "scheduled"} ${letter.service}/${letter.data.issue} as ${created.id}`);
 };
 
 const renderAndSend = async (letter, context) => {

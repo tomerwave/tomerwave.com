@@ -23,7 +23,8 @@
     "check:fix": "biome check --write src",
     "prepare": "husky",
     "one-pagers": "node scripts/render-one-pagers.mjs",
-    "letters": "node scripts/render-letters.mjs"
+    "letters": "node scripts/render-letters.mjs",
+    "letter:publish": "node scripts/publish-letter.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.6",
