@@ -29,8 +29,16 @@ const emit = (name: string, extra: Record<string, string> = {}) => {
 const closestMatch = (event: MouseEvent, selector: string) =>
   (event.target as Element | null)?.closest<HTMLElement>(selector) ?? null;
 
+const bookCallPlacement = (node: HTMLElement) => {
+  if (node.dataset.placement) return node.dataset.placement;
+  if (node.closest("#service-top")) return "service_hero";
+  if (node.closest(".service-offer")) return "service_offer";
+  if (node.closest("#article")) return "article";
+  return "unknown";
+};
+
 const CLICK_EVENTS: Array<[string, string, (node: HTMLElement) => Record<string, string>]> = [
-  [BOOK_CALL_SELECTOR, "book_call_clicked", (node) => ({ placement: node.dataset.placement ?? "unknown" })],
+  [BOOK_CALL_SELECTOR, "book_call_clicked", (node) => ({ placement: bookCallPlacement(node) })],
   [EMAIL_SELECTOR, "email_clicked", () => ({})],
   [
     ARTICLE_SERVICE_SELECTOR,
