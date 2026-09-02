@@ -5,6 +5,16 @@
   "installCommand": "npm install",
   "framework": "astro",
   "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/149e9513-01fa-4fb0-aad4-566afd725d1b/2d206a39-8ed7-437e-a3be-862e0f06eea3/a-4-a/c.js",
+      "destination": "https://api.vercel.com/bot-protection/v1/challenge"
+    },
+    {
+      "source": "/149e9513-01fa-4fb0-aad4-566afd725d1b/2d206a39-8ed7-437e-a3be-862e0f06eea3/:path*",
+      "destination": "https://api.vercel.com/bot-protection/v1/proxy/:path*"
+    }
+  ],
   "redirects": [
     {
       "source": "/",
@@ -169,6 +179,19 @@
         {
           "key": "Content-Security-Policy",
           "value": "default-src 'self' https://tomerwave.com https://*.vercel.app https://platform.twitter.com https://syndication.twitter.com https://player.vimeo.com https://vimeo.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: data: https://tomerwave.com https://*.vercel.app https://platform.twitter.com https://cdn.syndication.twimg.com https://player.vimeo.com https://vercel.live https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline' https://tomerwave.com https://*.vercel.app https://platform.twitter.com; img-src 'self' data: https: blob: https://ghchart.rshah.org; font-src 'self' https://tomerwave.com https://*.vercel.app; connect-src 'self' https://tomerwave.com https://*.vercel.app https://platform.twitter.com https://player.vimeo.com https://vimeo.com https://vitals.vercel-insights.com https://va.vercel-scripts.com; media-src 'self' https://tomerwave.com https://*.vercel.app https://player.vimeo.com https://vimeo.com; object-src 'none'; frame-ancestors 'none'; frame-src https://platform.twitter.com https://syndication.twitter.com https://player.vimeo.com https://vercel.live https://www.youtube.com https://youtube.com https://*.youtube.com https://www.youtube-nocookie.com https://*.youtube-nocookie.com; worker-src 'self' blob:"
+        }
+      ]
+    },
+    {
+      "source": "/149e9513-01fa-4fb0-aad4-566afd725d1b/2d206a39-8ed7-437e-a3be-862e0f06eea3/:path*",
+      "headers": [
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self' https://tomerwave.com https://*.vercel.app https://platform.twitter.com https://syndication.twitter.com https://player.vimeo.com https://vimeo.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: data: https://tomerwave.com https://*.vercel.app https://platform.twitter.com https://cdn.syndication.twimg.com https://player.vimeo.com https://vercel.live https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline' https://tomerwave.com https://*.vercel.app https://platform.twitter.com; img-src 'self' data: https: blob: https://ghchart.rshah.org; font-src 'self' https://tomerwave.com https://*.vercel.app; connect-src 'self' https://tomerwave.com https://*.vercel.app https://platform.twitter.com https://player.vimeo.com https://vimeo.com https://vitals.vercel-insights.com https://va.vercel-scripts.com; media-src 'self' https://tomerwave.com https://*.vercel.app https://player.vimeo.com https://vimeo.com; object-src 'none'; frame-ancestors 'self'; frame-src 'self' https://platform.twitter.com https://syndication.twitter.com https://player.vimeo.com https://vercel.live https://www.youtube.com https://youtube.com https://*.youtube.com https://www.youtube-nocookie.com https://*.youtube-nocookie.com; worker-src 'self' blob:"
         }
       ]
     }
