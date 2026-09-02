@@ -1,4 +1,5 @@
 import { track } from "@vercel/analytics";
+import { ARTICLE_ENGAGED_MS, hasReachedDeepRead } from "../utils/article-engagement";
 import {
   type Attribution,
   captureFirstTouchAttribution,
@@ -52,6 +53,40 @@ const trackServiceView = () => {
   emit("service_viewed", { service: service.dataset.serviceSlug ?? "" });
 };
 
+const scheduleArticleEngaged = (signal: AbortSignal) => {
+  const timer = window.setTimeout(() => {
+    if (document.visibilityState === "visible") emit("article_engaged");
+  }, ARTICLE_ENGAGED_MS);
+  signal.addEventListener("abort", () => window.clearTimeout(timer), { once: true });
+};
+
+const deepReadInput = (article: HTMLElement) => ({
+  articleTop: window.scrollY + article.getBoundingClientRect().top,
+  articleHeight: article.scrollHeight,
+  viewportBottom: window.scrollY + window.innerHeight,
+});
+
+const listenForDeepRead = (article: HTMLElement, signal: AbortSignal) => {
+  let sent = false;
+  const check = () => {
+    if (sent || !hasReachedDeepRead(deepReadInput(article))) return;
+    sent = true;
+    emit("article_deep_read");
+  };
+
+  window.addEventListener("scroll", check, { passive: true, signal });
+  window.addEventListener("resize", check, { signal });
+  check();
+};
+
+const trackArticleEngagement = () => {
+  const article = document.querySelector<HTMLElement>("#article");
+  const signal = controller?.signal;
+  if (!article || !signal) return;
+  scheduleArticleEngaged(signal);
+  listenForDeepRead(article, signal);
+};
+
 export function initConversionEvents() {
   controller?.abort();
   if (optedOutOfTracking()) return;
@@ -60,4 +95,5 @@ export function initConversionEvents() {
   captureFirstTouchAttribution();
   document.addEventListener("click", handleClick, { signal: controller.signal });
   trackServiceView();
+  trackArticleEngagement();
 }

@@ -1,3 +1,7 @@
+import { track } from "@vercel/analytics";
+import { sanitizeSignupAttribution } from "../utils/signup-attribution";
+import { getAttribution, optedOutOfTracking } from "./attribution";
+
 const ENDPOINT = "/api/subscribe";
 
 const MESSAGES = {
@@ -17,29 +21,62 @@ const setStatus = (form: HTMLFormElement, message: string, failed: boolean) => {
   status.classList.toggle("letter-signup-status--failed", failed);
 };
 
+const signupFields = (form: HTMLFormElement) => {
+  const formData = new FormData(form);
+  return { email: formData.get("email"), service: formData.get("service") };
+};
+
+const signupAttribution = () =>
+  optedOutOfTracking() ? undefined : sanitizeSignupAttribution(getAttribution());
+
+const postSignup = async (
+  email: string,
+  service: FormDataEntryValue | null,
+  attribution: ReturnType<typeof signupAttribution>,
+  signal: AbortSignal
+) => {
+  const response = await fetch(ENDPOINT, {
+    body: JSON.stringify({ email, service, attribution }),
+    headers: { "Content-Type": "application/json" },
+    method: "POST",
+    signal,
+  });
+  if (!response.ok) throw new Error(String(response.status));
+};
+
+const trackSignup = (
+  service: FormDataEntryValue | null,
+  attribution: NonNullable<ReturnType<typeof signupAttribution>> | undefined
+) => {
+  if (!attribution) return;
+  track("newsletter_signup", {
+    service: typeof service === "string" ? service : "",
+    source: attribution.source,
+    medium: attribution.medium,
+    campaign: attribution.campaign,
+    landing: attribution.landing,
+    referrer: attribution.referrer,
+    page: window.location.pathname,
+  });
+};
+
 const submit = async (form: HTMLFormElement, signal: AbortSignal) => {
-  const email = new FormData(form).get("email");
-  const service = new FormData(form).get("service");
+  const { email, service } = signupFields(form);
   if (typeof email !== "string" || !form.checkValidity()) {
     setStatus(form, MESSAGES.invalid, true);
     return;
   }
 
   setStatus(form, MESSAGES.pending, false);
+  const attribution = signupAttribution();
 
   try {
-    const response = await fetch(ENDPOINT, {
-      body: JSON.stringify({ email, service }),
-      headers: { "Content-Type": "application/json" },
-      method: "POST",
-      signal,
-    });
-    if (!response.ok) throw new Error(String(response.status));
+    await postSignup(email, service, attribution, signal);
+    trackSignup(service, attribution);
     setStatus(form, MESSAGES.sent, false);
     form.reset();
   } catch (error) {
-    if (signal.aborted) return;
-    setStatus(form, MESSAGES.failed, true);
+    if (!signal.aborted) setStatus(form, MESSAGES.failed, true);
   }
 };
 
