@@ -1,3 +1,4 @@
+import { checkBotId } from "botid/server";
 import { isValidEmail } from "../src/utils/email-validation.js";
 import {
   type SignupAttribution,
@@ -233,7 +234,17 @@ const rejection = (
   return null;
 };
 
+const botRejection = async () => {
+  const verification = await checkBotId({
+    advancedOptions: { checkLevel: "basic" },
+  });
+  return verification.isBot ? json({ error: "bot_detected" }, 403) : null;
+};
+
 export async function POST(request: Request) {
+  const blocked = await botRejection();
+  if (blocked) return blocked;
+
   const payload = await readPayload(request);
   const rejected = rejection(payload);
   if (rejected) return rejected;
