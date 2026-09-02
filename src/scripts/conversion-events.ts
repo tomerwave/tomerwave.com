@@ -1,4 +1,5 @@
 import { track } from "@vercel/analytics";
+import { ARTICLE_ENGAGED_MS, hasReachedDeepRead } from "../utils/article-engagement";
 import {
   type Attribution,
   captureFirstTouchAttribution,
@@ -52,6 +53,40 @@ const trackServiceView = () => {
   emit("service_viewed", { service: service.dataset.serviceSlug ?? "" });
 };
 
+const trackArticleEngagement = () => {
+  const article = document.querySelector<HTMLElement>("#article");
+  const signal = controller?.signal;
+  if (!article || !signal) return;
+
+  const engagedTimer = window.setTimeout(() => {
+    if (document.visibilityState === "visible") emit("article_engaged");
+  }, ARTICLE_ENGAGED_MS);
+  signal.addEventListener("abort", () => window.clearTimeout(engagedTimer), { once: true });
+
+  let deepReadSent = false;
+  const checkDepth = () => {
+    if (deepReadSent) return;
+    const rect = article.getBoundingClientRect();
+    const articleTop = window.scrollY + rect.top;
+    const viewportBottom = window.scrollY + window.innerHeight;
+    if (
+      !hasReachedDeepRead({
+        articleTop,
+        articleHeight: article.scrollHeight,
+        viewportBottom,
+      })
+    ) {
+      return;
+    }
+    deepReadSent = true;
+    emit("article_deep_read");
+  };
+
+  window.addEventListener("scroll", checkDepth, { passive: true, signal });
+  window.addEventListener("resize", checkDepth, { signal });
+  checkDepth();
+};
+
 export function initConversionEvents() {
   controller?.abort();
   if (optedOutOfTracking()) return;
@@ -60,4 +95,5 @@ export function initConversionEvents() {
   captureFirstTouchAttribution();
   document.addEventListener("click", handleClick, { signal: controller.signal });
   trackServiceView();
+  trackArticleEngagement();
 }
