@@ -53,38 +53,38 @@ const trackServiceView = () => {
   emit("service_viewed", { service: service.dataset.serviceSlug ?? "" });
 };
 
+const scheduleArticleEngaged = (signal: AbortSignal) => {
+  const timer = window.setTimeout(() => {
+    if (document.visibilityState === "visible") emit("article_engaged");
+  }, ARTICLE_ENGAGED_MS);
+  signal.addEventListener("abort", () => window.clearTimeout(timer), { once: true });
+};
+
+const deepReadInput = (article: HTMLElement) => ({
+  articleTop: window.scrollY + article.getBoundingClientRect().top,
+  articleHeight: article.scrollHeight,
+  viewportBottom: window.scrollY + window.innerHeight,
+});
+
+const listenForDeepRead = (article: HTMLElement, signal: AbortSignal) => {
+  let sent = false;
+  const check = () => {
+    if (sent || !hasReachedDeepRead(deepReadInput(article))) return;
+    sent = true;
+    emit("article_deep_read");
+  };
+
+  window.addEventListener("scroll", check, { passive: true, signal });
+  window.addEventListener("resize", check, { signal });
+  check();
+};
+
 const trackArticleEngagement = () => {
   const article = document.querySelector<HTMLElement>("#article");
   const signal = controller?.signal;
   if (!article || !signal) return;
-
-  const engagedTimer = window.setTimeout(() => {
-    if (document.visibilityState === "visible") emit("article_engaged");
-  }, ARTICLE_ENGAGED_MS);
-  signal.addEventListener("abort", () => window.clearTimeout(engagedTimer), { once: true });
-
-  let deepReadSent = false;
-  const checkDepth = () => {
-    if (deepReadSent) return;
-    const rect = article.getBoundingClientRect();
-    const articleTop = window.scrollY + rect.top;
-    const viewportBottom = window.scrollY + window.innerHeight;
-    if (
-      !hasReachedDeepRead({
-        articleTop,
-        articleHeight: article.scrollHeight,
-        viewportBottom,
-      })
-    ) {
-      return;
-    }
-    deepReadSent = true;
-    emit("article_deep_read");
-  };
-
-  window.addEventListener("scroll", checkDepth, { passive: true, signal });
-  window.addEventListener("resize", checkDepth, { signal });
-  checkDepth();
+  scheduleArticleEngaged(signal);
+  listenForDeepRead(article, signal);
 };
 
 export function initConversionEvents() {
