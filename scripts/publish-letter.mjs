@@ -69,7 +69,6 @@ if (send) {
 
 const result = spawnSync(process.execPath, commandArgs, {
   cwd: ROOT,
-  env: process.env,
   stdio: "inherit",
 });
 
