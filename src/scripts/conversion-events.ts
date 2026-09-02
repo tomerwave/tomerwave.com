@@ -42,7 +42,8 @@ const onePagerDetails = (node: HTMLElement) => {
   const href = node.getAttribute("href") ?? "";
   const file = href.split("/").pop() ?? "";
   const service = file.replace(/\.pdf$/, "");
-  const placement = node.dataset.placement ?? (node.closest(".service-offer") ? "service_offer" : "unknown");
+  const placement =
+    node.dataset.placement ?? (node.closest(".service-offer") ? "service_offer" : "unknown");
   return { service, placement };
 };
 
