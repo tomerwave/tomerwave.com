@@ -1,6 +1,6 @@
 import { track } from "@vercel/analytics";
-import { getAttribution, optedOutOfTracking } from "./attribution";
 import { sanitizeSignupAttribution } from "../utils/signup-attribution";
+import { getAttribution, optedOutOfTracking } from "./attribution";
 
 const ENDPOINT = "/api/subscribe";
 
