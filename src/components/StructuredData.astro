@@ -7,6 +7,9 @@ export interface Props {
 import { AUTHOR_SAME_AS } from "@/constants";
 
 const { type, data } = Astro.props;
+const POSITION = "Technical Advisor and Fractional VP of R&D";
+const POSITION_DESCRIPTION =
+  "Tomer Gal helps teams and organizations make high-stakes technical decisions and execute them across R&D leadership, architecture, AI automation, and technology advisory.";
 
 let structuredData = {};
 
@@ -50,9 +53,10 @@ if (type === "BlogPosting") {
     url: "https://tomerwave.com",
     image: "https://tomerwave.com/avatar.jpg",
     sameAs: AUTHOR_SAME_AS,
-    jobTitle: "Fractional VP of R&D and Software Engineer",
-    description:
-      "Tomer Gal works with founder-led startups and writes honestly about work, ambition, love, family, and everything underneath.",
+    jobTitle: POSITION,
+    description: POSITION_DESCRIPTION,
+    email: "mailto:tomer@tomerwave.com",
+    knowsLanguage: ["en", "he"],
   };
 } else if (type === "Service") {
   structuredData = {
@@ -66,7 +70,7 @@ if (type === "BlogPosting") {
       "@type": "Person",
       name: "Tomer Gal",
       url: "https://tomerwave.com",
-      jobTitle: "Fractional VP of R&D and Software Engineer",
+      jobTitle: POSITION,
       sameAs: AUTHOR_SAME_AS,
       knowsLanguage: ["en", "he"],
     },
@@ -98,10 +102,11 @@ if (type === "BlogPosting") {
     name: "Tomer Gal",
     url: "https://tomerwave.com",
     description:
-      "Essays about work, ambition, love, family, and the things that are hardest to say out loud.",
+      "Technical strategy and hands-on execution for teams and organizations making expensive technical decisions.",
     author: {
       "@type": "Person",
       name: "Tomer Gal",
+      url: "https://tomerwave.com",
     },
   };
 }
