@@ -7,6 +7,7 @@ import {
   optedOutOfTracking,
 } from "./attribution";
 
+const BOOK_CALL_SELECTOR = 'a[href^="/meet"]';
 const EMAIL_SELECTOR = 'a[href^="mailto:"]';
 const ARTICLE_SERVICE_SELECTOR = '.blog-prose a[href^="/services/"]';
 
@@ -29,6 +30,7 @@ const closestMatch = (event: MouseEvent, selector: string) =>
   (event.target as Element | null)?.closest<HTMLElement>(selector) ?? null;
 
 const CLICK_EVENTS: Array<[string, string, (node: HTMLElement) => Record<string, string>]> = [
+  [BOOK_CALL_SELECTOR, "book_call_clicked", (node) => ({ placement: node.dataset.placement ?? "unknown" })],
   [EMAIL_SELECTOR, "email_clicked", () => ({})],
   [
     ARTICLE_SERVICE_SELECTOR,
