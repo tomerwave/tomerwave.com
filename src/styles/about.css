@@ -159,7 +159,6 @@
 @media (hover: none) { .about-route-cue { opacity: 1; } }
 
 .about-signals-head { align-items: baseline; display: flex; flex-wrap: wrap; gap: .4rem 1rem; margin-bottom: .9rem; }
-.about-note { color: var(--text-faint); font-size: .84rem; }
 .about-signals { display: grid; gap: 1rem 2.25rem; }
 @media (min-width: 720px) { .about-signals { gap: 0 2.25rem; grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 /* The quote treatment the landing page already uses for .business-signal-said. */

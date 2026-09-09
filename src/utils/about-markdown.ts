@@ -15,8 +15,6 @@ ${content.routes.map((route) => `- [${route.name}](${route.href}.md) — ${route
 
 ## ${content.signalsLabel}
 
-${content.signalsNote}
-
 ${content.signals.map((signal) => `> ${signal}`).join("\n\n")}
 
 ## Elsewhere

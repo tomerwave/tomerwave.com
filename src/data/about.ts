@@ -33,7 +33,6 @@ export interface AboutContent {
   routesLabel: string;
   routes: AboutRoute[];
   signalsLabel: string;
-  signalsNote: string;
   signals: string[];
   podcastLabel: string;
   podcastName: string;
@@ -94,7 +93,6 @@ export const ABOUT_EN: AboutContent = {
     problem: service.routerProblem,
   })),
   signalsLabel: "You’ll recognize the moment",
-  signalsNote: "What founders tend to say the week before they call.",
   signals: [
     "We shipped less this quarter than last, with twice the engineers.",
     "Every technical decision waits for me.",
@@ -117,7 +115,7 @@ export const ABOUT_HE: AboutContent = {
   title: "אודות תומר גל · TomerWave",
   aboutLabel: "אודות",
   description:
-    "תומר גל הוא CTO במשרה חלקית לסטארטאפים מונעי־מייסדים — ארכיטקטורה, צוות ואספקה, מתל אביב ומרחוק באירופה ובארה״ב.",
+    "תומר גל הוא CTO במשרה חלקית לסטארטאפים בהובלת מייסדים — ארכיטקטורה, צוות ודליברי. גר בתל אביב, עובד גם מרחוק.",
   nav: [
     { label: "שירותים", href: "/#services" },
     { label: "כתיבה", href: "/blog" },
@@ -132,18 +130,18 @@ export const ABOUT_HE: AboutContent = {
   points: [
     {
       strong: "ייעוץ או שילוב בצוות.",
-      rest: "מושב קבוע בהחלטות הקשות, או CTO במשרה חלקית בתוך הצוות.",
+      rest: "נוכחות קבועה בהחלטות הקשות, או CTO במשרה חלקית בתוך הצוות.",
     },
     {
-      strong: "ארכיטקטורה, רף גיוס, קצב אספקה.",
+      strong: "ארכיטקטורה, רף גיוס, קצב דליברי.",
       rest: "הדברים שמתייקרים כשאין להם בעלים.",
     },
     {
-      strong: "עדיין עם הידיים בקוד.",
-      rest: "תשתיות, אינטגרציות ויכולות AI, כשהפער הוא ביצוע.",
+      strong: "עדיין כותב קוד.",
+      rest: "תשתיות, אינטגרציות ופיצ׳רים של AI — כשמה שחסר זה ידיים.",
     },
     {
-      strong: "מבוסס בתל אביב, עובד מרחוק",
+      strong: "גר בתל אביב, עובד מרחוק",
       rest: "עם צוותים בישראל, באירופה ובארה״ב.",
     },
     {
@@ -159,12 +157,12 @@ export const ABOUT_HE: AboutContent = {
     {
       href: servicePath("fractional-vp-rnd"),
       name: "ייעוץ פיתוח ו־CTO חלקי",
-      problem: "הצוות גדל, אבל האספקה נהייתה איטית יותר.",
+      problem: "הצוות גדל, אבל הדליברי נהיה איטי יותר.",
     },
     {
       href: servicePath("architecture-review"),
       name: "ארכיטקטורה",
-      problem: "מתקרבת החלטה שקשה לחזור ממנה.",
+      problem: "יש החלטה באופק שקשה לחזור ממנה.",
     },
     {
       href: servicePath("ai-automation"),
@@ -178,9 +176,8 @@ export const ABOUT_HE: AboutContent = {
     },
   ],
   signalsLabel: "תזהו את הרגע",
-  signalsNote: "מה שמייסדים נוטים להגיד בשבוע שלפני שהם מתקשרים.",
   signals: [
-    "סיפקנו ברבעון הזה פחות מברבעון הקודם, עם פי שניים מהנדסים.",
+    "דילברנו ברבעון הזה פחות מברבעון הקודם, עם פי שניים מהנדסים.",
     "כל החלטה טכנית מחכה לי.",
     "אנחנו עומדים להתחייב למשהו שאני לא יודע להעריך.",
   ],
