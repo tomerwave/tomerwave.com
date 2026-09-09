@@ -115,7 +115,7 @@ export const ABOUT_HE: AboutContent = {
   title: "אודות תומר גל · TomerWave",
   aboutLabel: "אודות",
   description:
-    "תומר גל הוא CTO במשרה חלקית לסטארטאפים בהובלת מייסדים — ארכיטקטורה, צוות ודליברי. גר בתל אביב, עובד גם מרחוק.",
+    "תומר גל הוא CTO במשרה חלקית לסטארטאפים בהובלת מייסדים — ארכיטקטורה, צוות ודילבור. גר בתל אביב, עובד גם מרחוק.",
   nav: [
     { label: "שירותים", href: "/#services" },
     { label: "כתיבה", href: "/blog" },
@@ -133,7 +133,7 @@ export const ABOUT_HE: AboutContent = {
       rest: "נוכחות קבועה בהחלטות הקשות, או CTO במשרה חלקית בתוך הצוות.",
     },
     {
-      strong: "ארכיטקטורה, רף גיוס, קצב דליברי.",
+      strong: "ארכיטקטורה, רף גיוס, קצב דילבור.",
       rest: "הדברים שמתייקרים כשאין להם בעלים.",
     },
     {
@@ -157,7 +157,7 @@ export const ABOUT_HE: AboutContent = {
     {
       href: servicePath("fractional-vp-rnd"),
       name: "ייעוץ פיתוח ו־CTO חלקי",
-      problem: "הצוות גדל, אבל הדליברי נהיה איטי יותר.",
+      problem: "הצוות גדל, אבל הדילבור נהיה איטי יותר.",
     },
     {
       href: servicePath("architecture-review"),
