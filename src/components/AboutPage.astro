@@ -2,6 +2,7 @@
 import SiteHeader from "@/components/SiteHeader.astro";
 import StructuredData from "@/components/StructuredData.astro";
 import TomerwaveSignature from "@/components/TomerwaveSignature.astro";
+import { SITE } from "@/consts";
 import { ABOUT_ALTERNATES, type AboutContent, aboutSibling } from "@/data/about";
 import Layout from "@/layouts/Layout.astro";
 import "@/styles/about.css";
@@ -27,7 +28,12 @@ const navItems = [
   dir={content.dir}
   alternates={ABOUT_ALTERNATES}
 >
-  <StructuredData type="Person" data={{}} />
+  <StructuredData type="ProfilePage" data={{
+    url: new URL(content.path, SITE.website).href,
+    title: content.title,
+    description: content.description,
+    lang: content.lang,
+  }} />
 
   <div class="about-site" dir={content.dir} lang={content.lang}>
     <SiteHeader
