@@ -115,7 +115,7 @@ export const ABOUT_HE: AboutContent = {
   title: "אודות תומר גל · TomerWave",
   aboutLabel: "אודות",
   description:
-    "תומר גל עובד כ־CTO במשרה חלקית עם סטארטאפים שהמייסדים מנהלים בעצמם — ארכיטקטורה, ניהול צוותי פיתוח ודילבור. גר בתל אביב ועובד מרחוק עם צוותים בישראל, באירופה ובארה״ב.",
+    "תומר גל עובד כ־CTO במשרה חלקית עם סטארטאפים שהמייסדים מנהלים בעצמם — ארכיטקטורה, ניהול צוותי פיתוח והוצאה לפועל. גר בתל אביב ועובד מרחוק עם צוותים בישראל, באירופה ובארה״ב.",
   nav: [
     { label: "שירותים", href: "/#services" },
     { label: "כתיבה", href: "/blog" },
@@ -124,17 +124,17 @@ export const ABOUT_HE: AboutContent = {
   switchHref: "/about",
   switchLang: "en",
   name: "תומר גל",
-  role: "TomerWave · גר בתל אביב, עובד מרחוק · עברית ואנגלית",
-  headline: "ההחלטות הטכניות שקל",
-  headlineQuiet: "לדחות.",
+  role: "TomerWave · CTO במשרה חלקית · עברית ואנגלית",
+  headline: "עוזר לכם לקבל החלטות טכנולוגיות",
+  headlineQuiet: "ולהוציא אותן לפועל.",
   points: [
     {
-      strong: "מייעץ מבחוץ או עובד כחלק מהצוות.",
-      rest: "מלווה אתכם בקבלת ההחלטות הקשות, או נכנס לצוות כ־CTO במשרה חלקית.",
+      strong: "מלווה אתכם כיועץ",
+      rest: "או מצטרף לצוות כ־CTO במשרה חלקית.",
     },
     {
-      strong: "ארכיטקטורה, על מי מתפשרים בגיוס, קצב דילבור.",
-      rest: "כשאף אחד לא אחראי על זה, משלמים על זה אחר כך.",
+      strong: "ארכיטקטורה, גיוס וקצב העבודה.",
+      rest: "על מה אפשר להתפשר ועל מה לא — וכשאין לזה אחראי, משלמים על זה אחר כך.",
     },
     {
       strong: "עדיין כותב קוד.",
@@ -145,7 +145,7 @@ export const ABOUT_HE: AboutContent = {
       rest: "עם צוותים בישראל, באירופה ובארה״ב.",
     },
     {
-      strong: "רקורד.",
+      strong: "קצת על הרקע שלי.",
       rest: "הייתי founding engineer ב־Tonkean, שנרכשה על ידי Coupa. ב־LayerX עבדתי על אינטגרציות ו־Zero Trust, והיא נרכשה על ידי Akamai. הקמתי את Butler AI ואת Lumos AI.",
     },
   ],
@@ -157,7 +157,7 @@ export const ABOUT_HE: AboutContent = {
     {
       href: servicePath("fractional-vp-rnd"),
       name: "ייעוץ לניהול הפיתוח ו־CTO במשרה חלקית",
-      problem: "הצוות גדל, אבל הדילבור נהיה איטי יותר.",
+      problem: "הצוות גדל, אבל לוקח יותר זמן להוציא דברים לפועל.",
     },
     {
       href: servicePath("architecture-review"),
@@ -167,7 +167,7 @@ export const ABOUT_HE: AboutContent = {
     {
       href: servicePath("ai-automation"),
       name: "AI ואוטומציה",
-      problem: "יותר מדי מהעבודה עדיין נעשית ידנית.",
+      problem: "יותר מדי זמן הולך על עבודה ידנית.",
     },
     {
       href: servicePath("technology-advisor"),
@@ -177,8 +177,8 @@ export const ABOUT_HE: AboutContent = {
   ],
   signalsLabel: "נשמע מוכר?",
   signals: [
-    "דילברנו ברבעון הזה פחות מברבעון הקודם, עם פי שניים מהנדסים.",
-    "כל החלטה טכנית מחכה לי.",
+    "הצוות גדל פי שניים, אבל הספקנו פחות מהרבעון הקודם.",
+    "כל החלטה טכנולוגית צריכה לעבור דרכי.",
     "אנחנו עומדים להתחייב למשהו, ואין לי דרך לדעת אם זו החלטה טובה.",
   ],
   podcastLabel: "פודקאסט",
