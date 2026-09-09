@@ -17,8 +17,18 @@ type Props = CollectionEntry<"blog">["data"] & {
   readingTime?: string;
 };
 
-const { title, seoTitle, heroImageAlt, author, description, pubDatetime, modDatetime, heroImage, slug, readingTime } =
-  Astro.props;
+const {
+  title,
+  seoTitle,
+  heroImageAlt,
+  author,
+  description,
+  pubDatetime,
+  modDatetime,
+  heroImage,
+  slug,
+  readingTime,
+} = Astro.props;
 
 const dateOf = (value: Date) =>
   new Intl.DateTimeFormat("en", { day: "numeric", month: "short", year: "numeric" }).format(value);
