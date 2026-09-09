@@ -17,6 +17,16 @@
   ],
   "redirects": [
     {
+      "source": "/services/fractional-vp-rnd",
+      "destination": "/services/fractional-cto",
+      "permanent": true
+    },
+    {
+      "source": "/one-pagers/fractional-vp-rnd.pdf",
+      "destination": "/one-pagers/fractional-cto.pdf",
+      "permanent": true
+    },
+    {
       "source": "/",
       "has": [
         {

@@ -25,7 +25,6 @@ export const SITE: Site = {
 };
 
 export const BOOKING_URL = "https://calendar.app.google/9F7SQbpLdY3VgTDKA";
-export const NOW =
-  "Fractional VP of R&D for founder-led startups, and writing at tomerwave.com/blog.";
+export const NOW = "Fractional CTO for founder-led startups, and writing at tomerwave.com/blog.";
 export const WHY =
   "Because the technical calls that are easy to postpone are the ones that get expensive, and most teams have nobody whose job it is to make them.";

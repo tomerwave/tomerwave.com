@@ -121,7 +121,7 @@ Sometimes you do all of this and it still goes badly. The tasks were refined, th
 
 That is usually not an onboarding problem. It is ownership that was never clear, or a team that grew faster than the structure around it, or every decision still routing through one person. Onboarding is just where you notice it, because a new person walks straight into whatever is already broken and has no idea it is supposed to be that way.
 
-If that sounds familiar, working out which of those it actually is [is most of what I do](/services/fractional-vp-rnd).
+If that sounds familiar, working out which of those it actually is [is most of what I do](/services/fractional-cto).
 
 ## To Summarize
 

@@ -1,0 +1,203 @@
+/* The about page. One screen at desktop heights, mirrored for the Hebrew page
+   at /he/about — every rule here is direction-agnostic (inline-start/end, never
+   left/right), so the same stylesheet serves both. Colours come from
+   palette.css, type from fonts.css; nothing is defined twice. */
+
+.about-site {
+  --about-display: "Fraunces", "Frank Ruhl Libre", Georgia, serif;
+  --about-body: "Instrument Sans", "Assistant", system-ui, -apple-system, sans-serif;
+  --about-gutter: clamp(1.35rem, 4.5vw, 3.5rem);
+  --about-measure: 1120px;
+  --business-measure: var(--about-measure);
+  --business-gutter: var(--about-gutter);
+
+  background: var(--surface);
+  color: var(--text);
+  display: grid;
+  font-family: var(--about-body);
+  grid-template-rows: auto 1fr auto;
+  line-height: 1.5;
+  min-height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* The Hebrew faces carry no Latin glyphs and the Latin faces carry no Hebrew
+   ones, so both stacks stay listed in both directions and each character
+   resolves to the face that actually has it. Only the order flips. */
+.about-site[dir="rtl"] {
+  --about-display: "Frank Ruhl Libre", "Fraunces", Georgia, serif;
+  --about-body: "Assistant", "Instrument Sans", system-ui, sans-serif;
+}
+
+.about-site *,
+.about-site *::before,
+.about-site *::after { box-sizing: border-box; margin: 0; padding: 0; }
+.about-site a { color: inherit; text-decoration: none; }
+/* global.css constrains every bare `section`/`footer` to max-w-3xl with inline
+   padding; the business and blog surfaces opt out the same way. */
+.about-site section,
+.about-site footer { margin-inline: 0; max-width: none; padding-inline: 0; }
+.about-site :focus-visible { border-radius: 1px; outline: 2px solid var(--sage-deep); outline-offset: 3px; }
+
+.about-site h1 {
+  font-family: var(--about-display);
+  font-size: clamp(1.75rem, 1.05rem + 2.3vw, 2.65rem);
+  font-weight: 400;
+  letter-spacing: -.014em;
+  line-height: 1.06;
+  max-width: 17ch;
+  text-wrap: balance;
+}
+/* Hebrew sets wider per character than the Latin faces, so the same 17ch
+   measure breaks the headline onto an extra line. */
+.about-site[dir="rtl"] h1 { letter-spacing: 0; line-height: 1.24; max-width: 21ch; }
+.about-quiet { color: var(--text-faint); font-style: italic; }
+.about-site[dir="rtl"] .about-quiet { font-style: normal; }
+
+.about-main {
+  align-content: center;
+  display: grid;
+  gap: clamp(1.5rem, 3.5vw, 3.25rem);
+  margin-inline: auto;
+  max-width: var(--about-measure);
+  padding: clamp(1.2rem, 2.5vh, 2.25rem) var(--about-gutter);
+  width: 100%;
+}
+.about-top { display: grid; gap: clamp(1.5rem, 4vw, 3.25rem); }
+@media (min-width: 880px) {
+  .about-top { align-items: start; grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); }
+}
+
+.about-who { display: grid; gap: .8rem; justify-items: start; }
+.about-id { align-items: center; display: flex; gap: .95rem; }
+/* Square, like .blog-avatar — the identity has no round photos. */
+.about-portrait {
+  border: 1px solid var(--hairline);
+  flex: none;
+  height: 76px;
+  object-fit: cover;
+  object-position: center 20%;
+  width: 76px;
+}
+.about-id-name { font-family: var(--about-display); font-size: 1.18rem; line-height: 1.2; }
+.about-id-role { color: var(--text-faint); font-size: .85rem; margin-top: .15rem; }
+
+.about-points { display: grid; gap: .55rem; list-style: none; max-width: 46ch; }
+.about-points li {
+  color: var(--text-muted);
+  font-size: .93rem;
+  padding-inline-start: 1.1rem;
+  position: relative;
+}
+.about-points li::before {
+  background: var(--sage);
+  border-radius: 50%;
+  content: "";
+  height: 5px;
+  inset-inline-start: 0;
+  position: absolute;
+  top: .62em;
+  width: 5px;
+}
+.about-points b { color: var(--text); font-weight: 500; }
+
+.about-actions { align-items: center; display: flex; flex-wrap: wrap; gap: 1.1rem; margin-top: .35rem; }
+.about-site .about-button {
+  align-items: center;
+  background: var(--text);
+  border-radius: 2px;
+  color: var(--surface);
+  display: inline-flex;
+  font-size: .91rem;
+  gap: .55rem;
+  padding: .75rem 1.35rem;
+  transition: background .25s ease;
+}
+.about-button:hover { background: var(--surface-invert); }
+.about-arrow { transition: transform .3s cubic-bezier(.2, .7, .3, 1); }
+.about-site[dir="rtl"] .about-arrow { transform: scaleX(-1); }
+.about-button:hover .about-arrow { transform: translateX(4px); }
+.about-site[dir="rtl"] .about-button:hover .about-arrow { transform: scaleX(-1) translateX(4px); }
+.about-linkline {
+  border-bottom: 1px solid var(--hairline);
+  color: var(--text-muted);
+  font-size: .89rem;
+  padding-bottom: 2px;
+  transition: border-color .25s ease, color .25s ease;
+}
+.about-linkline:hover { border-color: var(--sage-deep); color: var(--text); }
+
+.about-label {
+  align-items: center;
+  color: var(--sage-deep);
+  display: inline-flex;
+  font-family: var(--about-display);
+  font-size: .93rem;
+  font-style: italic;
+  gap: .6rem;
+}
+.about-label { margin-bottom: .85rem; }
+.about-label::before { background: var(--sage); content: ""; flex: none; height: 1px; width: 22px; }
+.about-site[dir="rtl"] .about-label { font-size: .87rem; font-style: normal; letter-spacing: .02em; }
+
+.about-routes { display: grid; }
+.about-route {
+  align-items: baseline;
+  border-top: 1px solid var(--hairline);
+  display: grid;
+  gap: .1rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  padding-block: .68rem;
+  transition: padding-inline .25s ease;
+}
+.about-route:last-of-type { border-bottom: 1px solid var(--hairline); }
+.about-route:hover { padding-inline-start: .35rem; }
+.about-route-name { font-family: var(--about-display); font-size: 1.02rem; }
+.about-route-problem { color: var(--text-muted); font-size: .85rem; grid-column: 1 / -1; }
+.about-route-cue { color: var(--sage-deep); font-size: .84rem; opacity: 0; transition: opacity .25s ease; }
+.about-route:hover .about-route-cue,
+.about-route:focus-visible .about-route-cue { opacity: 1; }
+.about-site[dir="rtl"] .about-route-cue { display: inline-block; transform: scaleX(-1); }
+@media (hover: none) { .about-route-cue { opacity: 1; } }
+
+.about-signals { display: grid; gap: 1rem 2.25rem; }
+@media (min-width: 720px) { .about-signals { gap: 0 2.25rem; grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+/* The quote treatment the landing page already uses for .business-signal-said. */
+.about-said {
+  border-top: 1px solid var(--hairline);
+  font-family: var(--about-display);
+  font-size: clamp(1rem, .92rem + .4vw, 1.18rem);
+  font-style: italic;
+  letter-spacing: -.006em;
+  line-height: 1.34;
+  padding-top: 1rem;
+}
+.about-site[dir="rtl"] .about-said { font-style: normal; letter-spacing: 0; line-height: 1.5; }
+.about-said::before, .about-said::after { color: var(--sage); }
+.about-said::before { content: "\201C"; margin-inline-end: .04em; }
+.about-said::after { content: "\201D"; }
+.about-site[dir="rtl"] .about-said::before { content: "\201D"; }
+.about-site[dir="rtl"] .about-said::after { content: "\201C"; }
+
+.about-foot { border-top: 1px solid var(--hairline); color: var(--text-faint); font-size: .83rem; }
+.about-foot-inner {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .8rem 2rem;
+  justify-content: space-between;
+  margin-inline: auto;
+  max-width: var(--about-measure);
+  padding: 1rem var(--about-gutter);
+  width: 100%;
+}
+.about-foot-podcast { color: var(--text-muted); display: inline-flex; gap: .4rem; }
+.about-foot-podcast a { border-bottom: 1px solid var(--hairline); }
+.about-foot-podcast a:hover { border-color: var(--sage-deep); }
+.about-foot-links { display: inline-flex; flex-wrap: wrap; gap: .5rem; }
+.about-foot-links a { border-bottom: 1px solid transparent; }
+.about-foot-links a:hover { border-color: var(--sage); }
+
+@media (prefers-reduced-motion: reduce) {
+  .about-site *, .about-site *::before, .about-site *::after { transition: none !important; }
+}
