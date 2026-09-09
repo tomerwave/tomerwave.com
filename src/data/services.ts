@@ -51,15 +51,15 @@ export const SERVICES: Service[] = [
     slug: "fractional-vp-rnd",
     shortName: "R&D Advisory",
     letterDay: "Thursday",
-    documentTitle: "R&D Advisory & Fractional VP R&D",
-    pageHeading: "R&D Advisory & Fractional VP R&D",
+    documentTitle: "R&D Advisory & Fractional CTO",
+    pageHeading: "R&D Advisory & Fractional CTO",
     eyebrow: "R&D Advisory",
     description:
-      "Your engineering team grew, but delivery got slower. I help figure out why, what actually needs to change, and what can wait. As an advisor, or as an embedded fractional VP R&D.",
-    lede: "Your engineering team grew, but delivery got slower. I help figure out why, what actually needs to change, and what can wait. Hire a fractional VP R&D for the months you need one, without the full-time hire.",
+      "Your engineering team grew, but delivery got slower. I help figure out why, what actually needs to change, and what can wait. As an advisor, or as an embedded fractional CTO.",
+    lede: "Your engineering team grew, but delivery got slower. I help figure out why, what actually needs to change, and what can wait. Hire a fractional CTO for the months you need one, without the full-time hire.",
     routerProblem: "Your team grew, but delivery got slower.",
     routerBody:
-      "More engineers, less predictable output. Ownership is fuzzy. You've become the bottleneck on decisions you never wanted to own. This is the work I've done longest: as a founding engineer, as a team lead, and as a part-time and fractional VP of R&D.",
+      "More engineers, less predictable output. Ownership is fuzzy. You've become the bottleneck on decisions you never wanted to own. This is the work I've done longest: as a founding engineer, as a team lead, and as a part-time and fractional CTO.",
     who: "Founders and CTOs at seed to Series A, usually somewhere between five and twenty-five engineers. Or earlier, when there's nobody senior enough to push back on the technical calls and a full-time VP doesn't make sense yet. I'm based in Israel and work with teams here and remotely across Europe and the US.",
     triggers: [
       "Engineering feels slower than it should, and nobody can say exactly why.",
@@ -68,7 +68,7 @@ export const SERVICES: Service[] = [
       "Delivery is inconsistent. Some quarters land, some don't.",
       "Ownership is unclear, and work falls between people.",
       "Technical debt has stopped being theoretical.",
-      "You're starting to wonder whether it's time to hire a VP R&D.",
+      "You're starting to wonder whether it's time to hire a VP R&D or a CTO.",
     ],
     onePager: {
       triggerIndexes: [0, 1, 2],
@@ -78,7 +78,7 @@ export const SERVICES: Service[] = [
       heading: "How I help",
       body: [
         "Two shapes, and most engagements move between them. **Advisory** is the lighter one: we talk regularly, you bring the hard calls, I help you make them and tell you when I think you're wrong.",
-        "**Embedded** is the heavier one. I take the VP R&D seat part-time: strategy, architecture, hiring, delivery, and the day-to-day of a team that ships. Until you're ready to fill the seat properly, or until you decide you don't need to yet.",
+        "**Embedded** is the heavier one. I take the CTO seat part-time: strategy, architecture, hiring, delivery, and the day-to-day of a team that ships. Until you're ready to fill the seat properly, or until you decide you don't need to yet.",
       ],
       opinion:
         "Most teams don't need more process. They need clearer ownership and fewer people waiting on one person.",
@@ -112,7 +112,7 @@ export const SERVICES: Service[] = [
     },
     next: {
       body: "Some people take the assessment and run it themselves, which is a perfectly good outcome. Most ask me to stay for the parts that are hardest to do alone: the hiring, the reorganizing, and the architecture decision sitting underneath all of it.",
-      note: "That usually turns into a fractional VP R&D arrangement, or standing advisory.",
+      note: "That usually turns into a fractional CTO arrangement, or standing advisory.",
     },
     writing: [
       {

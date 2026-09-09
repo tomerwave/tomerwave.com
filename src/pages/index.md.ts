@@ -17,7 +17,7 @@ ${serviceLines}
 
 ## Track record
 
-I started building at twelve, helping run Minecraft servers and writing the plugins behind them. Since then, I have helped grow startups, built my own companies, and worked as a fractional VP of R&D.
+I started building at twelve, helping run Minecraft servers and writing the plugins behind them. Since then, I have helped grow startups, built my own companies, and worked as a fractional CTO.
 
 - [Tonkean](https://tonkean.com): founding engineer; helped grow from 0 ARR to several million and from six people to more than 300. Acquired by Coupa.
 - [LayerX](https://layerxsecurity.com): built the team and the system across integrations, Zero Trust, delivery, and observability. Acquired by Akamai.
