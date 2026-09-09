@@ -1,27 +1,37 @@
 ---
+import StructuredData from "@/components/StructuredData.astro";
 import BlogFooter from "@/components/blog/BlogFooter.astro";
 import SiteHeader from "@/components/SiteHeader.astro";
 import { SITE } from "@/config";
 import "@/styles/blog.css";
 import Layout from "./Layout.astro";
 
-const navItems = [
-  { label: "Writing", href: "/blog" },
-  { label: "About", href: "/about", active: true },
-  { label: "Studio", href: "/", muted: true, external: true },
-];
-
 export interface Props {
   frontmatter: {
     title: string;
+    lang?: "en" | "he";
     description?: string;
   };
 }
 
 const { frontmatter } = Astro.props;
+const lang = frontmatter.lang ?? "en";
+const he = lang === "he";
+const pageURL = new URL(he ? "/he/about" : "/about", SITE.website).href;
+const navItems = [
+  { label: he ? "כתיבה" : "Writing", href: "/blog" },
+  { label: he ? "אודות" : "About", href: he ? "/he/about" : "/about", active: true },
+  { label: he ? "TomerWave" : "Studio", href: "/", muted: true, external: true },
+];
+const languageAlternates = [
+  { lang: "en", href: new URL("/about", SITE.website).href },
+  { lang: "he", href: new URL("/he/about", SITE.website).href },
+  { lang: "x-default", href: new URL("/about", SITE.website).href },
+];
 ---
 
-<Layout title={`${frontmatter.title} | ${SITE.title}`} description={frontmatter.description}>
+<Layout title={frontmatter.title} description={frontmatter.description} lang={lang} canonicalURL={pageURL} languageAlternates={languageAlternates} ogImage="/about-avatar-480.jpg">
+  <StructuredData type="ProfilePage" data={{ url: pageURL, title: frontmatter.title, description: frontmatter.description, lang }} />
   <div class="personal-blog">
     <SiteHeader
       homeHref="/blog"
@@ -29,13 +39,26 @@ const { frontmatter } = Astro.props;
       mainId="blog-main"
       navAriaLabel="Personal blog navigation"
       navItems={navItems}
+      lang={lang}
     />
     <main id="blog-main" class="blog-about">
       <section id="about" class="blog-about-column blog-prose">
-        <span class="blog-kicker">About</span>
+        <nav aria-label={he ? "שפת העמוד" : "Page language"} class="about-languages">
+          <a href="/about" lang="en" hreflang="en" aria-current={!he ? "page" : undefined}>English</a>
+          <a href="/he/about" lang="he" hreflang="he" aria-current={he ? "page" : undefined}>עברית</a>
+        </nav>
+        <span class="blog-kicker">{he ? "אודות" : "About"}</span>
         <slot />
       </section>
     </main>
     <BlogFooter />
   </div>
 </Layout>
+
+<style>
+  .about-languages { display: flex; gap: 1rem; margin-block-end: 2rem; font-size: 1rem; }
+  .about-languages [aria-current="page"] { font-weight: 600; }
+  :global(html[lang="he"] .blog-about) { font-family: Arial, sans-serif; }
+  :global(html[lang="he"] .blog-about h1),
+  :global(html[lang="he"] .blog-about h2) { font-family: Arial, sans-serif; letter-spacing: normal; }
+</style>

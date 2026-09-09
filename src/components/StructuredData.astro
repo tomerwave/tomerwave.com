@@ -1,6 +1,6 @@
 ---
 export interface Props {
-  type: "BlogPosting" | "Person" | "Service" | "WebSite";
+  type: "BlogPosting" | "Person" | "Service" | "WebSite" | "ProfilePage";
   data: any;
 }
 
@@ -45,19 +45,33 @@ if (type === "BlogPosting") {
     wordCount: data.wordCount,
     timeRequired: data.readingTime,
   };
-} else if (type === "Person") {
+} else if (type === "Person" || type === "ProfilePage") {
   structuredData = {
     "@context": "https://schema.org",
     "@type": "Person",
+    "@id": "https://tomerwave.com/#person",
     name: "Tomer Gal",
-    url: "https://tomerwave.com",
+    alternateName: "תומר גל",
+    url: "https://tomerwave.com/about",
     image: "https://tomerwave.com/avatar.jpg",
-    sameAs: AUTHOR_SAME_AS,
+    sameAs: AUTHOR_SAME_AS.filter((url) => !url.includes("open.spotify.com")),
     jobTitle: POSITION,
     description: POSITION_DESCRIPTION,
     email: "mailto:tomer@tomerwave.com",
     knowsLanguage: ["en", "he"],
   };
+  if (type === "ProfilePage") {
+    structuredData = {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "@id": data.url,
+      url: data.url,
+      name: data.title,
+      description: data.description,
+      inLanguage: data.lang,
+      mainEntity: structuredData,
+    };
+  }
 } else if (type === "Service") {
   structuredData = {
     "@context": "https://schema.org",

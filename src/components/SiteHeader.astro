@@ -11,6 +11,7 @@ export interface NavItem {
 }
 
 interface Props {
+  lang?: "en" | "he";
   homeHref: string;
   homeLabel: string;
   mainId: string;
@@ -21,6 +22,7 @@ interface Props {
 }
 
 const {
+  lang = "en",
   homeHref,
   homeLabel,
   mainId,
@@ -31,7 +33,7 @@ const {
 } = Astro.props;
 ---
 
-<a class="site-skip" href={`#${mainId}`}>Skip to content</a>
+<a class="site-skip" href={`#${mainId}`}>{lang === "he" ? "דלג לתוכן" : "Skip to content"}</a>
 <header class:list={["site-bar", `site-bar--${variant}`]} id="site-bar">
   <div class="site-wrap site-bar-inner">
     <TomerwaveSignature
@@ -59,7 +61,7 @@ const {
         }
       </nav>
       <details class="site-mobile-menu">
-        <summary>Menu <span aria-hidden="true">+</span></summary>
+        <summary>{lang === "he" ? "תפריט" : "Menu"} <span aria-hidden="true">+</span></summary>
         <nav aria-label={`${navAriaLabel} menu`}>
           {
             navItems.map((item) => (

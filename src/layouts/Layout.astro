@@ -10,6 +10,8 @@ import SiteIcons from "@/components/SiteIcons.astro";
 const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
 
 export interface Props {
+  lang?: "en" | "he";
+  languageAlternates?: { lang: string; href: string }[];
   title?: string;
   author?: string;
   profile?: string;
@@ -23,6 +25,8 @@ export interface Props {
 }
 
 const {
+  lang = SITE.lang ?? "en",
+  languageAlternates = [],
   title = SITE.title,
   author = SITE.author,
   profile = SITE.profile,
@@ -78,7 +82,7 @@ const structuredData = pubDatetime
 ---
 
 <!doctype html>
-<html lang=`${SITE.lang ?? "en"}` class={`${scrollSmooth && "scroll-smooth"}`}>
+<html lang={lang} dir={lang === "he" ? "rtl" : "ltr"} class={`${scrollSmooth && "scroll-smooth"}`}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -87,6 +91,9 @@ const structuredData = pubDatetime
     <link rel="preload" href="/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
     <SiteIcons />
     <link rel="canonical" href={canonicalURL} />
+    {languageAlternates.map((alternate) => (
+      <link rel="alternate" hreflang={alternate.lang} href={alternate.href} />
+    ))}
     <meta name="generator" content={Astro.generator} />
 
     <!-- General Meta Tags -->
