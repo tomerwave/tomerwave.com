@@ -66,7 +66,7 @@ All ten of these assume the mentoring is the right tool. Sometimes it is not.
 
 If one senior person is mentoring four juniors and is also the reviewer on everything, the bottleneck on every decision, and the only person who understands the deployment, then no amount of good mentoring fixes that. The team does not have a mentoring problem. It has a seniority gap that somebody has been quietly absorbing, usually the person who is best at it and least likely to complain.
 
-The tell is simple: mentoring that keeps working but never ends. Juniors who have been mentored for eighteen months and still cannot ship a change without the same person looking at it are not being mentored, they are being carried. That is a hiring and structure question, and it is one of the things I look at in an [R&D health check](/services/fractional-vp-rnd).
+The tell is simple: mentoring that keeps working but never ends. Juniors who have been mentored for eighteen months and still cannot ship a change without the same person looking at it are not being mentored, they are being carried. That is a hiring and structure question, and it is one of the things I look at in an [R&D health check](/services/fractional-cto).
 
 ## To Conclude
 

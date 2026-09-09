@@ -48,7 +48,7 @@ export interface Service {
 
 export const SERVICES: Service[] = [
   {
-    slug: "fractional-vp-rnd",
+    slug: "fractional-cto",
     shortName: "R&D Advisory",
     letterDay: "Thursday",
     documentTitle: "R&D Advisory & Fractional CTO",
@@ -210,7 +210,7 @@ export const SERVICES: Service[] = [
         why: "On deciding when you don't have enough information, and doing it anyway.",
       },
     ],
-    siblings: ["fractional-vp-rnd", "ai-automation"],
+    siblings: ["fractional-cto", "ai-automation"],
     sitemapPriority: 0.8,
     serviceType: "Software architecture review and technical strategy",
   },
@@ -295,7 +295,7 @@ export const SERVICES: Service[] = [
         why: "On watching a problem you understood get solved by someone else.",
       },
     ],
-    siblings: ["fractional-vp-rnd", "technology-advisor"],
+    siblings: ["fractional-cto", "technology-advisor"],
     sitemapPriority: 0.8,
     serviceType: "AI and workflow automation consulting",
   },
@@ -377,7 +377,7 @@ export const SERVICES: Service[] = [
         why: "On the part of any technology decision that's really about people.",
       },
     ],
-    siblings: ["ai-automation", "fractional-vp-rnd"],
+    siblings: ["ai-automation", "fractional-cto"],
     sitemapPriority: 0.8,
     serviceType: "Independent technology advisory",
   },

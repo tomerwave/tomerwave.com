@@ -137,6 +137,6 @@ One catch, and it is worth taking seriously. If you are the CTO, you cannot reli
 
 Two weeks of that tells you more than any framework will, and it costs you an hour. If the same name is on most of the lines, you have a bottleneck and you can fix it without hiring anyone. If the lines are scattered and none of them have an owner at all, that is the org shape problem, and that is the one a VP R&D is actually for.
 
-If you want somebody to do that with you and tell you plainly which one you have, that is what an [R&D health check](/services/fractional-vp-rnd#health-check) is. A couple of weeks, and you come out of it knowing whether this is a hire, a structure change, or a conversation nobody has been willing to have.
+If you want somebody to do that with you and tell you plainly which one you have, that is what an [R&D health check](/services/fractional-cto#health-check) is. A couple of weeks, and you come out of it knowing whether this is a hire, a structure change, or a conversation nobody has been willing to have.
 
 The worst version of this is deciding by feel, at the end of a quarter that went badly, with a title in mind and no idea what the person is actually supposed to fix.

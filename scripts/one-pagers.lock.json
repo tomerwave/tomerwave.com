@@ -13,8 +13,8 @@
       "file": "public/one-pagers/architecture-review.pdf"
     },
     {
-      "slug": "fractional-vp-rnd",
-      "file": "public/one-pagers/fractional-vp-rnd.pdf"
+      "slug": "fractional-cto",
+      "file": "public/one-pagers/fractional-cto.pdf"
     },
     {
       "slug": "technology-advisor",
@@ -33,8 +33,8 @@
     "src/components/SiteIcons.astro": "1bbf5bb4b02e4f56210578b70646ce4d31e2d84dcb7ae862cf1c2ac0d73467b0",
     "src/config.ts": "c486582d3d0e7d41493ea5ea5fcea6be48c74f64302b8a5e17e7091fa4672b6b",
     "src/constants.ts": "f6761e99ee724fe0f669c5a3e14091b8fcd32851ce52833e36ac8f8970aef4ea",
-    "src/consts.ts": "386faff8c142b0fb356f3f61b22ae6a07eb4c66afa13f972a864dbc4961bed14",
-    "src/data/services.ts": "1b57ecf6f0989f4b7bedea23b8869f524c29c090ff92dd89e8b3d069f2748ed3",
+    "src/consts.ts": "548d0a93d0c8a2b394fb1289775d1bc2eed830c0f5a75dcd185326b03a464921",
+    "src/data/services.ts": "c2158d7ab659c6481445c30be3eeb8a02702111b6e45bfd880d76b989360398e",
     "src/layouts/Layout.astro": "b5d7273c50e048da75163744c80672b9ff13e20cfb17a642e38c12d10620953a",
     "src/pages/services/[slug]/one-pager.astro": "9d9dd0a81081ab1a2a14b9fdf9af546eef948e1ba70a6324e300604b9d11ce43",
     "src/styles/business.css": "525677354b7c9e5dd64fd515e5f47e0ba76de1f0ce36e9a196b5b54afe3191c7",

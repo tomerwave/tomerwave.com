@@ -54,7 +54,7 @@ Remote gets blamed for a lot of things it did not cause.
 
 What remote actually removes is the accidental communication — the overheard question, the corridor correction, the person who noticed you were stuck because they could see you were stuck. If ownership was already unclear, if too much routed through one person, if nobody could say who decided what, that was all true in the office. It was just being covered for, for free, by proximity.
 
-So when delivery gets slower after a team goes remote, the useful question is not how to recreate the office. It is which of those things was being propped up, and whether you want to keep propping it up or fix it. That question is [most of what I get called in for](/services/fractional-vp-rnd).
+So when delivery gets slower after a team goes remote, the useful question is not how to recreate the office. It is which of those things was being propped up, and whether you want to keep propping it up or fix it. That question is [most of what I get called in for](/services/fractional-cto).
 
 ---
 

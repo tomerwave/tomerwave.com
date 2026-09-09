@@ -150,7 +150,7 @@ export const ABOUT_HE: AboutContent = {
   routesLabel: "ארבע בעיות שבגללן פונים אליי",
   routes: [
     {
-      href: servicePath("fractional-vp-rnd"),
+      href: servicePath("fractional-cto"),
       name: "ייעוץ לניהול הפיתוח ו־CTO במשרה חלקית",
       problem: "הצוות גדל, אבל לוקח יותר זמן להוציא דברים לפועל.",
     },
