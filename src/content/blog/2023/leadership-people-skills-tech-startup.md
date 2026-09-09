@@ -1,4 +1,5 @@
 ---
+seoTitle: "People Skills for Tech Startup Leaders"
 title: "Mastering the Art of Leadership: 5 Essential People Skills for Leading a Team in a Tech Startup"
 pubDatetime: 2023-05-11T12:00:00+03:00
 description: "Leading a team in a tech startup requires a unique blend of technical expertise and exceptional people skills. Explore five essential people skills that every tech startup leader should cultivate."
@@ -8,8 +9,8 @@ tags:
   - leadership
   - startup
   - people-skills
+heroImageAlt: "Two people discussing a diagram on a whiteboard"
 heroImage: /assets/img/2023/leadership-people-skills-tech-startup/hero.jpg
-heroImageAlt: "Team leadership in a tech startup"
 ---
 
 Leading a team in a tech startup requires a unique blend of technical expertise and exceptional people skills. While technical prowess is undoubtedly essential, the ability to effectively communicate, inspire, and collaborate with team members is equally crucial. In this blog post, we will explore five essential people skills that every tech startup leader should cultivate to foster a productive and motivated team.

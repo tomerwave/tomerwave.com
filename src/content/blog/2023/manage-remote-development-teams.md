@@ -8,8 +8,8 @@ tags:
   - team-management
   - leadership
   - startup
+heroImageAlt: "A laptop and monitor on a desk beside a window"
 heroImage: /assets/img/2023/manage-remote-development-teams/hero.jpg
-heroImageAlt: "Developer working remotely on a laptop"
 ---
 
 Managing remote development teams can be a daunting task, but it is becoming increasingly critical in today's digital world. Remote teams offer many benefits, such as access to a larger pool of talent, increased productivity, and reduced costs. However, the management of remote teams requires a different approach than leading in-person teams. In this blog post, we will discuss the best practices for effectively managing remote development teams.

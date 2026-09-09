@@ -17,7 +17,7 @@ type Props = CollectionEntry<"blog">["data"] & {
   readingTime?: string;
 };
 
-const { title, author, description, pubDatetime, modDatetime, heroImage, slug, readingTime } =
+const { title, seoTitle, heroImageAlt, author, description, pubDatetime, modDatetime, heroImage, slug, readingTime } =
   Astro.props;
 
 const dateOf = (value: Date) =>
@@ -30,7 +30,7 @@ const canonicalURL = new URL(canonicalPath, Astro.site).toString();
 ---
 
 <Layout
-  title={title}
+  title={seoTitle ?? title}
   author={author}
   description={description}
   canonicalURL={canonicalURL}
@@ -55,7 +55,7 @@ const canonicalURL = new URL(canonicalPath, Astro.site).toString();
         <h1>{title}</h1>
         <p class="blog-standfirst">{description}</p>
         <div id="article" class="blog-prose">
-          {heroImage && <img src={heroImage} alt="" loading="lazy" />}
+          {heroImage && <img src={heroImage} alt={heroImageAlt ?? ""} loading="lazy" />}
           <slot />
         </div>
       </article>

@@ -1,4 +1,5 @@
 ---
+seoTitle: "Mental Health in Tech: Making Room for the Conversation"
 title: "Mental Health Awareness in Tech: Breaking the Stigma and Prioritizing Well-being"
 pubDatetime: 2023-05-27T12:00:00+03:00
 description: "The tech industry is a high-pressure environment that can take a toll on employees' mental health. Learn how companies and individuals can break the stigma and prioritize well-being."
@@ -8,8 +9,8 @@ tags:
   - work-life-balance
   - mental-health
   - startup
+heroImageAlt: "A person sitting on a sofa and looking to the side"
 heroImage: /assets/img/2023/mental-health-awareness-tech/hero.jpg
-heroImageAlt: "Mental health awareness and well-being"
 ---
 
 The tech industry is a high-pressure environment that can take a toll on employees' mental health. Long hours, demanding work, and a competitive culture can all contribute to stress, anxiety, and burnout.

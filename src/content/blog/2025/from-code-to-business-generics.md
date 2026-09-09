@@ -9,8 +9,8 @@ tags:
   - code-quality
   - leadership
   - best-practices
+heroImageAlt: "A speaker addressing a seated group in an office"
 heroImage: /assets/img/2025/from-code-to-business-generics/hero.jpg
-heroImageAlt: "Team collaborating in an office environment"
 ---
 
 When building software or starting a company, it's tempting to go broad, aiming for flexibility and universal solutions. While this approach feels efficient, it can often backfire, leading to complexity, inefficiency, and missed opportunities. Whether it's developers overusing generics in their code or startups failing to find a clear niche, the lesson remains the same: **"Keep it simple, stupid."** Focus on solving one problem well before expanding.

@@ -1,4 +1,5 @@
 ---
+seoTitle: "Building a Positive Work Culture in Tech"
 title: "Creating a Positive Work Culture in Tech: Strategies for Building a Supportive Environment"
 pubDatetime: 2023-05-30T12:00:00+03:00
 description: "The tech industry is known for its fast-paced, competitive environment. Here are strategies for building a supportive work culture that reduces stress and improves employee well-being."
@@ -8,8 +9,8 @@ tags:
   - work-culture
   - startup
   - positive-attitude
+heroImageAlt: "A group gathered around a table in a shared workspace"
 heroImage: /assets/img/2023/positive-work-culture-tech/hero.jpg
-heroImageAlt: "Positive work culture and team collaboration"
 ---
 
 The tech industry is known for its fast-paced, competitive environment. This can create a lot of stress for employees, which can lead to burnout and other mental health problems.

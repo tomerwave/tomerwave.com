@@ -1,4 +1,5 @@
 ---
+seoTitle: "Keeping Your Skills Current in Tech"
 title: "Upskilling and Continuous Learning in the Tech Industry: Creating a Culture of Growth"
 pubDatetime: 2023-05-06T12:00:00+03:00
 description: "In the rapidly evolving world of technology, staying ahead of the curve is essential. The key to maintaining relevance and unlocking new opportunities lies in upskilling and embracing a continuous learning culture."
@@ -8,8 +9,8 @@ tags:
   - tech
   - growth
   - learning
+heroImageAlt: "A small green seedling growing in soil"
 heroImage: /assets/img/2023/upskilling-continuous-learning-tech/hero.jpg
-heroImageAlt: "Continuous learning and growth in tech"
 ---
 
 In the rapidly evolving world of technology, staying ahead of the curve is essential for both individual professionals and organizations. The key to maintaining relevance and unlocking new opportunities lies in upskilling and embracing a continuous learning culture. In this blog post, we will explore the importance of upskilling in the tech industry. We will also discuss strategies for creating growth cultures within organizations.
