@@ -115,7 +115,7 @@ export const ABOUT_HE: AboutContent = {
   title: "אודות תומר גל · TomerWave",
   aboutLabel: "אודות",
   description:
-    "תומר גל הוא CTO במשרה חלקית לסטארטאפים בהובלת מייסדים — ארכיטקטורה, צוות ודילבור. גר בתל אביב, עובד גם מרחוק.",
+    "תומר גל עובד כ־CTO במשרה חלקית עם סטארטאפים שהמייסדים מנהלים בעצמם — ארכיטקטורה, ניהול צוותי פיתוח ודילבור. גר בתל אביב ועובד מרחוק עם צוותים בישראל, באירופה ובארה״ב.",
   nav: [
     { label: "שירותים", href: "/#services" },
     { label: "כתיבה", href: "/blog" },
@@ -124,21 +124,21 @@ export const ABOUT_HE: AboutContent = {
   switchHref: "/about",
   switchLang: "en",
   name: "תומר גל",
-  role: "TomerWave · תל אביב ומרחוק · עברית ואנגלית",
+  role: "TomerWave · גר בתל אביב, עובד מרחוק · עברית ואנגלית",
   headline: "ההחלטות הטכניות שקל",
   headlineQuiet: "לדחות.",
   points: [
     {
-      strong: "ייעוץ או שילוב בצוות.",
-      rest: "נוכחות קבועה בהחלטות הקשות, או CTO במשרה חלקית בתוך הצוות.",
+      strong: "מייעץ מבחוץ או עובד כחלק מהצוות.",
+      rest: "מלווה אתכם בקבלת ההחלטות הקשות, או נכנס לצוות כ־CTO במשרה חלקית.",
     },
     {
-      strong: "ארכיטקטורה, רף גיוס, קצב דילבור.",
-      rest: "הדברים שמתייקרים כשאין להם בעלים.",
+      strong: "ארכיטקטורה, על מי מתפשרים בגיוס, קצב דילבור.",
+      rest: "כשאף אחד לא אחראי על זה, משלמים על זה אחר כך.",
     },
     {
       strong: "עדיין כותב קוד.",
-      rest: "תשתיות, אינטגרציות ופיצ׳רים של AI — כשמה שחסר זה ידיים.",
+      rest: "תשתיות, אינטגרציות ופיצ׳רים של AI — כשצריך גם לבנות ולהוציא לפרודקשן.",
     },
     {
       strong: "גר בתל אביב, עובד מרחוק",
@@ -146,23 +146,23 @@ export const ABOUT_HE: AboutContent = {
     },
     {
       strong: "רקורד.",
-      rest: "מהנדס מייסד ב־Tonkean (נרכשה על ידי Coupa), אינטגרציות ו־Zero Trust ב־LayerX (נרכשה על ידי Akamai), הקמתי את Butler AI ואת Lumos AI.",
+      rest: "הייתי founding engineer ב־Tonkean, שנרכשה על ידי Coupa. ב־LayerX עבדתי על אינטגרציות ו־Zero Trust, והיא נרכשה על ידי Akamai. הקמתי את Butler AI ואת Lumos AI.",
     },
   ],
   bookLabel: "לקביעת שיחה",
-  writingLabel: "לקריאה",
+  writingLabel: "לבלוג",
   writingHref: "/blog",
-  routesLabel: "ארבע בעיות שקוראים לי בשבילן",
+  routesLabel: "ארבע בעיות שבגללן פונים אליי",
   routes: [
     {
       href: servicePath("fractional-vp-rnd"),
-      name: "ייעוץ פיתוח ו־CTO חלקי",
+      name: "ייעוץ לניהול הפיתוח ו־CTO במשרה חלקית",
       problem: "הצוות גדל, אבל הדילבור נהיה איטי יותר.",
     },
     {
       href: servicePath("architecture-review"),
       name: "ארכיטקטורה",
-      problem: "יש החלטה באופק שקשה לחזור ממנה.",
+      problem: "אתם עומדים לקבל החלטה שיהיה קשה לשנות אחר כך.",
     },
     {
       href: servicePath("ai-automation"),
@@ -172,14 +172,14 @@ export const ABOUT_HE: AboutContent = {
     {
       href: servicePath("technology-advisor"),
       name: "ייעוץ טכנולוגי לארגון",
-      problem: "אתם מוציאים על טכנולוגיה בלי אף אחד טכני בצד שלכם.",
+      problem: "אתם מוציאים כסף על טכנולוגיה בלי מישהו בצד שלכם שמבין בזה.",
     },
   ],
-  signalsLabel: "תזהו את הרגע",
+  signalsLabel: "נשמע מוכר?",
   signals: [
     "דילברנו ברבעון הזה פחות מברבעון הקודם, עם פי שניים מהנדסים.",
     "כל החלטה טכנית מחכה לי.",
-    "אנחנו עומדים להתחייב למשהו שאני לא יודע להעריך.",
+    "אנחנו עומדים להתחייב למשהו, ואין לי דרך לדעת אם זו החלטה טובה.",
   ],
   podcastLabel: "פודקאסט",
   podcastName: "בינה ושגרה",
