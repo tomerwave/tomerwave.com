@@ -1,0 +1,125 @@
+---
+import SiteHeader from "@/components/SiteHeader.astro";
+import TomerwaveSignature from "@/components/TomerwaveSignature.astro";
+import type { AboutContent } from "@/data/about";
+import "@/styles/about.css";
+
+export interface Props {
+  content: AboutContent;
+}
+
+const { content } = Astro.props;
+
+const navItems = [
+  ...content.nav,
+  { label: content.aboutLabel, href: content.path, active: true },
+  { label: content.switchLabel, href: content.switchHref, muted: true },
+];
+---
+
+<div class="about-site" dir={content.dir} lang={content.lang}>
+  <SiteHeader
+    homeHref="/"
+    homeLabel={content.name}
+    mainId="about-main"
+    navAriaLabel="About navigation"
+    navItems={navItems}
+    variant="business"
+  />
+
+  <main id="about-main" class="about-main">
+    <div class="about-top">
+      <section class="about-who">
+        <div class="about-id">
+          <img
+            class="about-portrait"
+            src="/avatar.jpg"
+            alt={content.name}
+            width="76"
+            height="76"
+            loading="eager"
+          />
+          <div>
+            <p class="about-id-name">{content.name}</p>
+            <p class="about-id-role">{content.role}</p>
+          </div>
+        </div>
+
+        <h1>{content.headline} <span class="about-quiet">{content.headlineQuiet}</span></h1>
+
+        <ul class="about-points">
+          {
+            content.points.map((point) => (
+              <li>
+                <b>{point.strong}</b> {point.rest}
+              </li>
+            ))
+          }
+        </ul>
+
+        <div class="about-actions">
+          <a class="about-button" href="/meet" data-placement="about">
+            {content.bookLabel} <span class="about-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="about-linkline" href={content.writingHref}>{content.writingLabel}</a>
+        </div>
+      </section>
+
+      <section class="about-routes" aria-label={content.routesLabel}>
+        <span class="about-label">{content.routesLabel}</span>
+        {
+          content.routes.map((route) => (
+            <a class="about-route" href={route.href}>
+              <span class="about-route-name">{route.name}</span>
+              <span class="about-route-cue" aria-hidden="true">
+                →
+              </span>
+              <span class="about-route-problem">{route.problem}</span>
+            </a>
+          ))
+        }
+      </section>
+    </div>
+
+    <section class="about-signals-block" aria-label={content.signalsLabel}>
+      <div class="about-signals-head">
+        <span class="about-label">{content.signalsLabel}</span>
+        <span class="about-note">{content.signalsNote}</span>
+      </div>
+      <div class="about-signals">
+        {content.signals.map((signal) => <p class="about-said">{signal}</p>)}
+      </div>
+    </section>
+  </main>
+
+  <footer class="about-foot">
+    <div class="about-foot-inner">
+      <TomerwaveSignature
+        class="about-foot-mark"
+        href="/"
+        ariaLabel={content.name}
+        primary="var(--text)"
+        accent="var(--sage)"
+        size="footer"
+        showHandle={false}
+      />
+      <p class="about-foot-podcast">
+        <span>{content.podcastLabel} ·</span>
+        <a href={content.podcastHref} rel="noopener" target="_blank" lang="he">{content.podcastName}</a>
+      </p>
+      <nav class="about-foot-links" aria-label="Footer">
+        <a href={content.switchHref} hreflang={content.switchLang} lang={content.switchLang}
+          >{content.switchLabel}</a
+        >
+        {
+          content.footerLinks.map((link) => (
+            <>
+              <span aria-hidden="true">·</span>
+              <a href={link.href}>{link.label}</a>
+            </>
+          ))
+        }
+      </nav>
+    </div>
+  </footer>
+</div>

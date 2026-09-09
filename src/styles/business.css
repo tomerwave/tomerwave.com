@@ -224,3 +224,4 @@ body:has(.business-site) { background: var(--business-paper); overflow-x: clip; 
 .business-mode-service { margin-top: 1.4rem; }
 .business-mode-service .business-arrow { display: inline-block; }
 .business-mode-service a:hover .business-arrow { transform: translateX(4px); }
+.business-about-more { display: inline-flex; align-items: center; gap: .55rem; margin-top: 1.4rem; }
