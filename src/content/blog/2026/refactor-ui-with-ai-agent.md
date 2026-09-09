@@ -82,7 +82,7 @@ And skip the whole thing for a one-off landing page or an internal tool three pe
 
 Running the sub-agents is cheap compared to an engineer's afternoon. The real cost is your calendar time reacting to what they find, which is exactly the part a better prompt can't buy you out of.
 
-Related: [when agents beat traditional automation and when they don't](/blog/2026/ai-agents-vs-traditional-automation), [which of your processes are actually worth automating](/blog/2026/processes-worth-automating-with-ai), and [rewrite vs. refactor](/blog/2026/rewrite-vs-refactor) if "existing product" is the fork you're actually stuck on.
+Related: [when agents beat traditional automation and when they don't](/posts/2026/ai-agents-vs-traditional-automation), [which of your processes are actually worth automating](/posts/2026/processes-worth-automating-with-ai), and [rewrite vs. refactor](/posts/2026/rewrite-vs-refactor) if "existing product" is the fork you're actually stuck on.
 
 ## Who actually benefits from this?
 

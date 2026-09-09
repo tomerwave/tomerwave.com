@@ -1,4 +1,5 @@
 ---
+seoTitle: "How to Evaluate a Software Development Proposal"
 title: "How to Evaluate a Software Development Proposal When You're Not Technical"
 pubDatetime: 2026-07-23T09:00:00+03:00
 description: "Three quotes for the same project, all different, and no way to compare them. What a proposal has to define, the questions to ask, and the warning signs."

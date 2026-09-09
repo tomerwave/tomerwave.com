@@ -8,8 +8,8 @@ tags:
   - developers
   - leadership
   - career-growth
+heroImageAlt: "Three people working together at a table with laptops"
 heroImage: /assets/img/2023/effective-mentoring-junior-developers/hero.jpg
-heroImageAlt: "Group of developers collaborating and mentoring"
 ---
 
 Mentoring junior developers is a critical task for experienced software engineers. It is a rewarding experience that not only benefits the mentee but also helps the mentor enhance their own skills. Mentoring is not just about giving advice; it is about sharing your experience, expertise, and knowledge to help junior developers grow in their careers. In this blog post, we will discuss some tips for effective mentoring junior developers.

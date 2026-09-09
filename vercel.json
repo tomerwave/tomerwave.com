@@ -17,6 +17,21 @@
   ],
   "redirects": [
     {
+      "source": "/blog/2026/ai-agents-vs-traditional-automation",
+      "destination": "/posts/2026/ai-agents-vs-traditional-automation",
+      "permanent": true
+    },
+    {
+      "source": "/blog/2026/processes-worth-automating-with-ai",
+      "destination": "/posts/2026/processes-worth-automating-with-ai",
+      "permanent": true
+    },
+    {
+      "source": "/blog/2026/rewrite-vs-refactor",
+      "destination": "/posts/2026/rewrite-vs-refactor",
+      "permanent": true
+    },
+    {
       "source": "/services/fractional-vp-rnd",
       "destination": "/services/fractional-cto",
       "permanent": true

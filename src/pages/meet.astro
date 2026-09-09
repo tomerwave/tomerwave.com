@@ -13,7 +13,7 @@ import { BOOKING_URL } from "@/consts";
     <title>Booking a call · Tomer Gal</title>
     <SiteIcons />
     <Analytics />
-    <noscript><meta http-equiv="refresh" content={`0; url=${BOOKING_URL}`} /></noscript>
+    <meta name="description" content="Book a conversation with Tomer Gal." />
     <style>
       body {
         align-items: center;
@@ -25,6 +25,8 @@ import { BOOKING_URL } from "@/consts";
         margin: 0;
         min-height: 100svh;
       }
+      body { flex-direction: column; }
+      h1 { font-size: 1.25rem; }
       p { font-size: 0.95rem; opacity: 0.7; }
       a { color: inherit; }
       @media (prefers-color-scheme: dark) {
@@ -33,6 +35,7 @@ import { BOOKING_URL } from "@/consts";
     </style>
   </head>
   <body data-booking-url={BOOKING_URL}>
+    <h1>Book a conversation</h1>
     <p>Taking you to my calendar… <a href={BOOKING_URL}>continue</a></p>
     <script>
       import { trackBookingIntent } from "@/scripts/booking-intent";

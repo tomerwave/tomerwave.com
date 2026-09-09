@@ -1,4 +1,5 @@
 ---
+seoTitle: "Making Time for Work, Hobbies, and Life"
 title: "The Art of Balancing Work, Hobbies, and Life: A Software Engineer's Journey"
 pubDatetime: 2024-11-24T12:00:00+03:00
 description: "The cold air bit my cheeks as I stood atop a rugged peak in Nepal, gazing out over a sea of mountains. It was here that a profound realization hit me: the only thing stopping me from living a fuller life was me."
@@ -8,8 +9,8 @@ tags:
   - hobbies
   - startup
   - balanced-life
+heroImageAlt: "Colorful prayer flags in front of snowy mountains"
 heroImage: /assets/img/2024/balancing-work-hobbies-life/hero.jpg
-heroImageAlt: "Mountain peak overlooking a vast landscape"
 ---
 
 The cold air bit my cheeks as I stood atop a rugged peak in Nepal, gazing out over a sea of mountains that stretched beyond the horizon. It was here, thousands of miles away from the glow of computer screens and the hum of office life, that a profound realization hit me: the only thing stopping me from living a fuller life was me.

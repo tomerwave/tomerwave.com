@@ -1,4 +1,5 @@
 ---
+seoTitle: "How AI and Automation Are Changing Work"
 title: "The Future of Work: How Automation and AI are Impacting Tech Work Culture"
 pubDatetime: 2023-05-12T12:00:00+03:00
 modDatetime: 2026-08-19T12:00:00+03:00
@@ -9,8 +10,8 @@ tags:
   - work-culture
   - ai
   - startup
+heroImageAlt: "A humanoid robot sitting on a bench"
 heroImage: /assets/img/2023/future-of-work-automation-ai/hero.jpg
-heroImageAlt: "The future of work with automation and AI"
 ---
 
 > **A note from 2026.** I wrote this in May 2023, a few months after everyone started paying attention, and I have left the text below exactly as it was.

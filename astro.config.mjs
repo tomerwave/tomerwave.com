@@ -38,6 +38,7 @@ const SITEMAP_RULES = [
 const HOME_URL = SITE.website.replace(/\/$/, "");
 const EXCLUDED_SITEMAP_PATHS = [
   "/reset-local-cache",
+  "/meet",
   "/one-pager",
   "/posts/2026/signature-strength-report-empathy",
 ];

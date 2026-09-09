@@ -8,8 +8,8 @@ tags:
   - hobbies
   - friendship
   - dreams
+heroImageAlt: "People dancing together on a warmly lit dance floor"
 heroImage: /assets/img/2024/why-should-you-start-dancing/hero.jpg
-heroImageAlt: "A dancer expressing themselves through movement"
 ---
 
 > **"We should consider every day lost on which we have not danced at least once."** — Friedrich Nietzsche

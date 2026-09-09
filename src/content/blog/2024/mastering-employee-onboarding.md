@@ -9,8 +9,8 @@ tags:
   - startup
   - onboarding
   - leadership
+heroImageAlt: "A hand holding a camera lens against a mountain backdrop"
 heroImage: /assets/img/2024/mastering-employee-onboarding/hero.jpg
-heroImageAlt: "Team member starting a new role"
 ---
 
 It took you weeks to hire a new team member, and weeks more to convince your manager you need one. She signed the contract and starts in a week. You are getting ready to onboard her to the team.
