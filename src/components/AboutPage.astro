@@ -1,7 +1,9 @@
 ---
 import SiteHeader from "@/components/SiteHeader.astro";
+import StructuredData from "@/components/StructuredData.astro";
 import TomerwaveSignature from "@/components/TomerwaveSignature.astro";
-import type { AboutContent } from "@/data/about";
+import { ABOUT_ALTERNATES, type AboutContent, aboutSibling } from "@/data/about";
+import Layout from "@/layouts/Layout.astro";
 import "@/styles/about.css";
 
 export interface Props {
@@ -9,116 +11,123 @@ export interface Props {
 }
 
 const { content } = Astro.props;
+const sibling = aboutSibling(content);
 
 const navItems = [
   ...content.nav,
   { label: content.aboutLabel, href: content.path, active: true },
-  { label: content.switchLabel, href: content.switchHref, muted: true },
+  { label: sibling.nativeName, href: sibling.path, muted: true },
 ];
 ---
 
-<div class="about-site" dir={content.dir} lang={content.lang}>
-  <SiteHeader
-    homeHref="/"
-    homeLabel={content.name}
-    mainId="about-main"
-    navAriaLabel="About navigation"
-    navItems={navItems}
-    variant="business"
-  />
+<Layout
+  title={content.title}
+  description={content.description}
+  lang={content.lang}
+  dir={content.dir}
+  alternates={ABOUT_ALTERNATES}
+>
+  <StructuredData type="Person" data={{}} />
 
-  <main id="about-main" class="about-main">
-    <div class="about-top">
-      <section class="about-who">
-        <div class="about-id">
-          <img
-            class="about-portrait"
-            src="/avatar.jpg"
-            alt={content.name}
-            width="76"
-            height="76"
-            loading="eager"
-          />
-          <div>
-            <p class="about-id-name">{content.name}</p>
-            <p class="about-id-role">{content.role}</p>
+  <div class="about-site" dir={content.dir} lang={content.lang}>
+    <SiteHeader
+      homeHref="/"
+      homeLabel={content.name}
+      mainId="about-main"
+      navAriaLabel="About navigation"
+      navItems={navItems}
+      variant="business"
+    />
+
+    <main id="about-main" class="about-main">
+      <div class="about-top">
+        <section class="about-who">
+          <div class="about-id">
+            <img
+              class="about-portrait"
+              src="/avatar.jpg"
+              alt={content.name}
+              width="76"
+              height="76"
+              loading="eager"
+            />
+            <div>
+              <p class="about-id-name">{content.name}</p>
+              <p class="about-id-role">{content.role}</p>
+            </div>
           </div>
-        </div>
 
-        <h1>{content.headline} <span class="about-quiet">{content.headlineQuiet}</span></h1>
+          <h1>{content.headline} <span class="about-quiet">{content.headlineQuiet}</span></h1>
 
-        <ul class="about-points">
+          <ul class="about-points">
+            {
+              content.points.map((point) => (
+                <li>
+                  <b>{point.strong}</b> {point.rest}
+                </li>
+              ))
+            }
+          </ul>
+
+          <div class="about-actions">
+            <a class="about-button" href="/meet" data-placement="about">
+              {content.bookLabel} <span class="about-arrow" aria-hidden="true">→</span>
+            </a>
+            <a class="about-linkline" href={content.writingHref}>{content.writingLabel}</a>
+          </div>
+        </section>
+
+        <section class="about-routes" aria-label={content.routesLabel}>
+          <span class="about-label">{content.routesLabel}</span>
           {
-            content.points.map((point) => (
-              <li>
-                <b>{point.strong}</b> {point.rest}
-              </li>
+            content.routes.map((route) => (
+              <a class="about-route" href={route.href}>
+                <span class="about-route-name">{route.name}</span>
+                <span class="about-route-cue" aria-hidden="true">
+                  →
+                </span>
+                <span class="about-route-problem">{route.problem}</span>
+              </a>
             ))
           }
-        </ul>
+        </section>
+      </div>
 
-        <div class="about-actions">
-          <a class="about-button" href="/meet" data-placement="about">
-            {content.bookLabel} <span class="about-arrow" aria-hidden="true">→</span>
-          </a>
-          <a class="about-linkline" href={content.writingHref}>{content.writingLabel}</a>
+      <section aria-label={content.signalsLabel}>
+        <span class="about-label">{content.signalsLabel}</span>
+        <div class="about-signals">
+          {content.signals.map((signal) => <p class="about-said">{signal}</p>)}
         </div>
       </section>
+    </main>
 
-      <section class="about-routes" aria-label={content.routesLabel}>
-        <span class="about-label">{content.routesLabel}</span>
-        {
-          content.routes.map((route) => (
-            <a class="about-route" href={route.href}>
-              <span class="about-route-name">{route.name}</span>
-              <span class="about-route-cue" aria-hidden="true">
-                →
-              </span>
-              <span class="about-route-problem">{route.problem}</span>
-            </a>
-          ))
-        }
-      </section>
-    </div>
-
-    <section class="about-signals-block" aria-label={content.signalsLabel}>
-      <div class="about-signals-head">
-        <span class="about-label">{content.signalsLabel}</span>
+    <footer class="about-foot">
+      <div class="about-foot-inner">
+        <TomerwaveSignature
+          class="about-foot-mark"
+          href="/"
+          ariaLabel={content.name}
+          primary="var(--text)"
+          accent="var(--sage)"
+          size="footer"
+          showHandle={false}
+        />
+        <p class="about-foot-podcast">
+          <span>{content.podcastLabel} ·</span>
+          <a href={content.podcastHref} rel="noopener" target="_blank" lang="he">{content.podcastName}</a>
+        </p>
+        <nav class="about-foot-links" aria-label="Footer">
+          <a href={sibling.path} hreflang={sibling.lang} lang={sibling.lang}>{sibling.nativeName}</a>
+          {
+            content.footerLinks.map((link) => (
+              <>
+                <span aria-hidden="true">·</span>
+                <a href={link.href}>{link.label}</a>
+              </>
+            ))
+          }
+        </nav>
       </div>
-      <div class="about-signals">
-        {content.signals.map((signal) => <p class="about-said">{signal}</p>)}
-      </div>
-    </section>
-  </main>
-
-  <footer class="about-foot">
-    <div class="about-foot-inner">
-      <TomerwaveSignature
-        class="about-foot-mark"
-        href="/"
-        ariaLabel={content.name}
-        primary="var(--text)"
-        accent="var(--sage)"
-        size="footer"
-        showHandle={false}
-      />
-      <p class="about-foot-podcast">
-        <span>{content.podcastLabel} ·</span>
-        <a href={content.podcastHref} rel="noopener" target="_blank" lang="he">{content.podcastName}</a>
-      </p>
-      <nav class="about-foot-links" aria-label="Footer">
-        <a href={content.switchHref} hreflang={content.switchLang} lang={content.switchLang}
-          >{content.switchLabel}</a
-        >
-        {
-          content.footerLinks.map((link) => (
-            <>
-              <span aria-hidden="true">·</span>
-              <a href={link.href}>{link.label}</a>
-            </>
-          ))
-        }
-      </nav>
-    </div>
-  </footer>
-</div>
+    </footer>
+  </div>
+</Layout>

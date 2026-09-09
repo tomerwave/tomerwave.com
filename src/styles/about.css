@@ -136,11 +136,11 @@
   font-style: italic;
   gap: .6rem;
 }
+.about-label { margin-bottom: .85rem; }
 .about-label::before { background: var(--sage); content: ""; flex: none; height: 1px; width: 22px; }
 .about-site[dir="rtl"] .about-label { font-size: .87rem; font-style: normal; letter-spacing: .02em; }
 
 .about-routes { display: grid; }
-.about-routes .about-label { margin-bottom: .85rem; }
 .about-route {
   align-items: baseline;
   border-top: 1px solid var(--hairline);
@@ -160,7 +160,6 @@
 .about-site[dir="rtl"] .about-route-cue { display: inline-block; transform: scaleX(-1); }
 @media (hover: none) { .about-route-cue { opacity: 1; } }
 
-.about-signals-head { align-items: baseline; display: flex; flex-wrap: wrap; gap: .4rem 1rem; margin-bottom: .9rem; }
 .about-signals { display: grid; gap: 1rem 2.25rem; }
 @media (min-width: 720px) { .about-signals { gap: 0 2.25rem; grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 /* The quote treatment the landing page already uses for .business-signal-said. */

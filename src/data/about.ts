@@ -1,3 +1,4 @@
+import { SITE } from "@/consts";
 import { SERVICES, servicePath } from "@/data/services";
 
 export interface AboutRoute {
@@ -15,13 +16,11 @@ export interface AboutContent {
   lang: "en" | "he";
   dir: "ltr" | "rtl";
   path: string;
+  nativeName: string;
   title: string;
   description: string;
   aboutLabel: string;
   nav: AboutLink[];
-  switchLabel: string;
-  switchHref: string;
-  switchLang: "en" | "he";
   name: string;
   role: string;
   headline: string;
@@ -46,6 +45,7 @@ export const ABOUT_EN: AboutContent = {
   lang: "en",
   dir: "ltr",
   path: "/about",
+  nativeName: "English",
   title: "About Tomer Gal · TomerWave",
   aboutLabel: "About",
   description:
@@ -54,9 +54,6 @@ export const ABOUT_EN: AboutContent = {
     { label: "Services", href: "/#services" },
     { label: "Writing", href: "/blog" },
   ],
-  switchLabel: "עברית",
-  switchHref: "/he/about",
-  switchLang: "he",
   name: "Tomer Gal",
   role: "TomerWave · Tel Aviv & remote · English & Hebrew",
   headline: "The technical calls that are easy to",
@@ -112,6 +109,7 @@ export const ABOUT_HE: AboutContent = {
   lang: "he",
   dir: "rtl",
   path: "/he/about",
+  nativeName: "עברית",
   title: "אודות תומר גל · TomerWave",
   aboutLabel: "אודות",
   description:
@@ -120,9 +118,6 @@ export const ABOUT_HE: AboutContent = {
     { label: "שירותים", href: "/#services" },
     { label: "כתיבה", href: "/blog" },
   ],
-  switchLabel: "English",
-  switchHref: "/about",
-  switchLang: "en",
   name: "תומר גל",
   role: "TomerWave · CTO במשרה חלקית · עברית ואנגלית",
   headline: "עוזר לכם לקבל החלטות טכנולוגיות",
@@ -190,3 +185,14 @@ export const ABOUT_HE: AboutContent = {
     { label: "פרטיות", href: "/privacy" },
   ],
 };
+
+export const aboutSibling = (content: AboutContent) =>
+  content.lang === "en" ? ABOUT_HE : ABOUT_EN;
+
+const absolute = (path: string) => new URL(path, SITE.website).href;
+
+export const ABOUT_ALTERNATES = [
+  { hreflang: ABOUT_EN.lang, href: absolute(ABOUT_EN.path) },
+  { hreflang: ABOUT_HE.lang, href: absolute(ABOUT_HE.path) },
+  { hreflang: "x-default", href: absolute(ABOUT_EN.path) },
+];

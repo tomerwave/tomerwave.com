@@ -1,7 +1,9 @@
-import type { AboutContent } from "@/data/about";
+import { type AboutContent, aboutSibling } from "@/data/about";
 
-export const aboutMarkdown = (content: AboutContent) =>
-  `# ${content.name}
+const aboutMarkdown = (content: AboutContent) => {
+  const sibling = aboutSibling(content);
+
+  return `# ${content.name}
 
 ${content.role}
 
@@ -20,9 +22,10 @@ ${content.signals.map((signal) => `> ${signal}`).join("\n\n")}
 ## Elsewhere
 
 - ${content.podcastLabel}: [${content.podcastName}](${content.podcastHref})
-- ${content.switchLabel}: [${content.switchHref}](${content.switchHref}.md)
+- ${sibling.nativeName}: [${sibling.path}](${sibling.path}.md)
 - Book a call: [/meet](/meet)
 `;
+};
 
 export const aboutMarkdownResponse = (content: AboutContent) =>
   new Response(aboutMarkdown(content), {
