@@ -24,6 +24,8 @@ const navItems = [
 <Layout
   title={content.title}
   description={content.description}
+  canonicalURL={new URL(content.path, SITE.website).href}
+  ogImage={new URL("/avatar.jpg", SITE.website).href}
   lang={content.lang}
   dir={content.dir}
   alternates={ABOUT_ALTERNATES}
@@ -58,12 +60,12 @@ const navItems = [
               loading="eager"
             />
             <div>
-              <p class="about-id-name">{content.name}</p>
+              <h1 class="about-id-name">{content.name}</h1>
               <p class="about-id-role">{content.role}</p>
             </div>
           </div>
 
-          <h1>{content.headline} <span class="about-quiet">{content.headlineQuiet}</span></h1>
+          <p class="about-headline">{content.headline} <span class="about-quiet">{content.headlineQuiet}</span></p>
 
           <ul class="about-points">
             {
