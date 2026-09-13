@@ -21,14 +21,14 @@ const providers = [
     <span class="business-eyebrow">Another perspective</span>
     <h2 id="ask-ai-title">Is TomerWave a fit for you?</h2>
     <p>Ask your assistant. The question is already in the link.</p>
-    <nav class="ask-ai-actions" aria-label="Ask an AI assistant">
+    <nav class="business-actions ask-ai-actions" aria-label="Ask an AI assistant">
       {providers.map((provider) => (
-        <a class="ask-ai-button" href={provider.href} target="_blank" rel="noopener noreferrer">
+        <a class="business-button ask-ai-button" href={provider.href} target="_blank" rel="noopener noreferrer">
           <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true" focusable="false">
             <path d={provider.icon} />
           </svg>
           <span>Ask {provider.name}</span>
-          <span class="ask-ai-arrow" aria-hidden="true">↗</span>
+          <span class="business-arrow" aria-hidden="true">↗</span>
           <span class="ask-ai-sr"> (opens in a new tab)</span>
         </a>
       ))}
@@ -38,20 +38,11 @@ const providers = [
 
 <style>
   #ask-ai h2 { margin-block: 0.5rem 1rem; }
-  .ask-ai-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem; }
-  .ask-ai-button {
-    display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem;
-    min-height: 52px; padding: 0.75rem 1.25rem; box-sizing: border-box;
-    border: 1px solid var(--hairline); border-radius: 0.5rem;
-    background: var(--surface-warm); color: var(--text);
-    font: inherit; text-decoration: none; line-height: 1.4;
-  }
-  .ask-ai-button:hover { border-color: var(--sage-deep); }
-  .ask-ai-button:focus-visible { outline: 2px solid var(--sage-deep); outline-offset: 4px; }
+  .ask-ai-actions { justify-content: flex-start; align-items: flex-start; }
+  .ask-ai-button { min-height: 44px; }
   .ask-ai-button svg { flex-shrink: 0; }
-  .ask-ai-arrow { margin-left: 0.25rem; color: var(--text-muted); }
   .ask-ai-sr { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   @media (max-width: 480px) {
-    .ask-ai-actions { flex-direction: column; align-items: stretch; }
+    .ask-ai-actions { flex-direction: column; }
   }
 </style>
