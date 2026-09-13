@@ -1,6 +1,6 @@
 ---
 const prompt =
-  "I’m considering working with TomerWave. Read https://tomerwave.com and the relevant service pages. Briefly explain what they do and which kinds of businesses and teams they help. Then ask me 3 short questions about my situation to help me assess whether they’re a good fit. Distinguish what the website states from your own interpretation. Include sources for factual claims. If you can’t access the pages or verify something, say so.";
+  "I’m considering working with TomerWave. Read https://tomerwave.com and the relevant service pages. Briefly explain what they do and which kinds of businesses and teams they help. Give a balanced assessment, including potential mismatches and missing information. Then ask me 3 short questions about my situation to help me assess whether they’re a good fit. Distinguish what the website states from your own interpretation. Include sources for factual claims. If you can’t access the pages or verify something, say so.";
 const encodedPrompt = encodeURIComponent(prompt);
 // Monochrome marks from Simple Icons (CC0).
 const providers = [
@@ -19,8 +19,8 @@ const providers = [
 <section class="business-section" id="ask-ai" aria-labelledby="ask-ai-title">
   <div class="business-wrap">
     <span class="business-eyebrow">Another perspective</span>
-    <h2 id="ask-ai-title">Is TomerWave a fit for you?</h2>
-    <p>Ask your assistant. The question is already in the link.</p>
+    <h2 id="ask-ai-title">Not convinced yet?</h2>
+    <p>Ask ChatGPT or Claude for a second opinion. What fits, what doesn't, and what to ask me before deciding.</p>
     <nav class="business-actions ask-ai-actions" aria-label="Ask an AI assistant">
       {providers.map((provider) => (
         <a class="business-button ask-ai-button" href={provider.href} target="_blank" rel="noopener noreferrer">
@@ -43,6 +43,12 @@ const providers = [
   .ask-ai-button svg { flex-shrink: 0; }
   .ask-ai-sr { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   @media (max-width: 480px) {
-    .ask-ai-actions { flex-direction: column; }
+    .ask-ai-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.65rem; align-items: stretch; }
+    .ask-ai-button { justify-content: center; padding-inline: 0.65rem; gap: 0.45rem; }
+    .ask-ai-button svg { width: 18px; height: 18px; }
+    .ask-ai-button .business-arrow { display: none; }
+  }
+  @media (max-width: 350px) {
+    .ask-ai-button { padding-inline: 0.4rem; gap: 0.35rem; font-size: 0.85rem; }
   }
 </style>
