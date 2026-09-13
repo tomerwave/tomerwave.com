@@ -1,5 +1,6 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
+import AskAI from "@/components/landing/AskAI.astro";
 import BusinessContact from "@/components/landing/BusinessContact.astro";
 import BusinessFooter from "@/components/landing/BusinessFooter.astro";
 import LetterSignup from "@/components/letters/LetterSignup.astro";
@@ -314,6 +315,7 @@ const navItems = siteNavItems(service.slug);
         </div>
       </section>
 
+      <AskAI />
       <div id="service-contact">
       <BusinessContact
         heading="Tell me what's going on."

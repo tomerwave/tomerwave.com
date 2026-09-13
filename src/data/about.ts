@@ -49,7 +49,7 @@ export const ABOUT_EN: AboutContent = {
   title: "About Tomer Gal · TomerWave",
   aboutLabel: "About",
   description:
-    "Tomer Gal is a fractional CTO for founder-led startups — architecture, team and delivery, from Tel Aviv and remote across Europe and the US.",
+    "Tomer Gal helps startups with engineering leadership and architecture, and businesses and organizations with AI, automation, and technology decisions. Advice, hands-on projects, and ongoing support.",
   nav: [
     { label: "Services", href: "/#services" },
     { label: "Writing", href: "/blog" },
@@ -61,7 +61,7 @@ export const ABOUT_EN: AboutContent = {
   points: [
     {
       strong: "Advisory or embedded.",
-      rest: "A standing seat in the hard calls, or a fractional CTO inside the team.",
+      rest: "Focused advice, a project I help build, or ongoing technical leadership for your team or organization.",
     },
     {
       strong: "Architecture, hiring bar, delivery rhythm.",
@@ -69,7 +69,7 @@ export const ABOUT_EN: AboutContent = {
     },
     {
       strong: "Still hands-on.",
-      rest: "Infrastructure, integrations and AI features, when shipping is the gap.",
+      rest: "Infrastructure, integrations, AI features, and workflows that save people manual work. I can build them or lead delivery with your team and vendors.",
     },
     {
       strong: "Based in Tel Aviv, working remotely",
@@ -77,7 +77,7 @@ export const ABOUT_EN: AboutContent = {
     },
     {
       strong: "Track record.",
-      rest: "Founding engineer at Tonkean (acquired by Coupa), integrations and Zero Trust at LayerX (acquired by Akamai), founded Butler AI and Lumos AI.",
+      rest: "Founding engineer at Tonkean (acquired by Coupa), integrations and Zero Trust at LayerX (acquired by Akamai), staking and swapping services at a major blockchain infrastructure company in Israel, led development at a stealth startup focused on AI agent reliability, founded Butler AI and Lumos AI.",
     },
   ],
   bookLabel: "Book a call",
@@ -113,7 +113,7 @@ export const ABOUT_HE: AboutContent = {
   title: "אודות תומר גל · TomerWave",
   aboutLabel: "אודות",
   description:
-    "תומר גל עובד כ־CTO במשרה חלקית עם סטארטאפים שהמייסדים מנהלים בעצמם — ארכיטקטורה, ניהול צוותי פיתוח והוצאה לפועל. גר בתל אביב ועובד מרחוק עם צוותים בישראל, באירופה ובארה״ב.",
+    "תומר גל עוזר לסטארטאפים להוביל פיתוח, ולעסקים וארגונים לשפר תהליכים עם AI ואוטומציה. ייעוץ טכנולוגי, פרויקטים עם ביצוע וליווי שוטף.",
   nav: [
     { label: "שירותים", href: "/#services" },
     { label: "כתיבה", href: "/blog" },
@@ -125,7 +125,7 @@ export const ABOUT_HE: AboutContent = {
   points: [
     {
       strong: "מלווה אתכם כיועץ",
-      rest: "או מצטרף לצוות כ־CTO במשרה חלקית.",
+      rest: "בונה ומוביל פרויקט, או מצטרף לליווי שוטף כ־CTO במשרה חלקית.",
     },
     {
       strong: "ארכיטקטורה, גיוס וקצב העבודה.",
@@ -133,7 +133,7 @@ export const ABOUT_HE: AboutContent = {
     },
     {
       strong: "עדיין כותב קוד.",
-      rest: "תשתיות, אינטגרציות ופיצ׳רים של AI — כשצריך גם לבנות ולהוציא לפרודקשן.",
+      rest: "תשתיות, אינטגרציות ו־AI שחוסכים עבודה ידנית. עובד גם עם עסקים וארגונים, ובונה בעצמי או מוביל את הביצוע עם הצוות והספקים שלכם.",
     },
     {
       strong: "גר בתל אביב, עובד מרחוק",
@@ -141,7 +141,7 @@ export const ABOUT_HE: AboutContent = {
     },
     {
       strong: "קצת על הרקע שלי.",
-      rest: "הייתי founding engineer ב־Tonkean, שנרכשה על ידי Coupa. ב־LayerX עבדתי על אינטגרציות ו־Zero Trust, והיא נרכשה על ידי Akamai. הקמתי את Butler AI ואת Lumos AI.",
+      rest: "הייתי founding engineer ב־Tonkean, שנרכשה על ידי Coupa. ב־LayerX עבדתי על אינטגרציות ו־Zero Trust, והיא נרכשה על ידי Akamai. עבדתי על שירותי staking ו־swapping בחברת תשתיות בלוקצ׳יין גדולה בישראל, והובלתי פיתוח בסטארטאפ ב־stealth שמתמקד באמינות של סוכני AI. הקמתי את Butler AI ואת Lumos AI.",
     },
   ],
   bookLabel: "לקביעת שיחה",
