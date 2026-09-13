@@ -40,4 +40,4 @@ for (const path of ["/about", "/he/about"]) assert.ok(sitemap.includes("<loc>" +
 const robots = await readFile("dist/robots.txt", "utf8");
 assert.ok(robots.includes("Allow: /"));
 assert.ok(robots.includes(origin + "/sitemap-index.xml"));
-console.log(JSON.stringify({ scope: "Built about pages, image, sitemap and robots", reports }, null, 2));
+process.stdout.write(JSON.stringify({ scope: "Built about pages, image, sitemap and robots", reports }, null, 2) + "\n");
