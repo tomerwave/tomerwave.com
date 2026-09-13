@@ -13,6 +13,8 @@ I help startups lead development, and businesses and organizations improve how w
 
 ## How we can work together
 
+I take ownership from the first decision through delivery and ongoing operation. That includes choosing the right tools, bringing in specialists, managing vendors, and building where needed. You work directly with me, without having to coordinate everyone yourself.
+
 Focused advice on a decision, a scoped project I help build and deliver, or ongoing technical leadership. I can work with your team or vendors and stay involved after launch. We agree on scope, availability, and ownership before starting.
 
 ## Four problems I get called about
