@@ -77,7 +77,7 @@ export const ABOUT_EN: AboutContent = {
     },
     {
       strong: "Track record.",
-      rest: "Founding engineer at Tonkean (acquired by Coupa), integrations and Zero Trust at LayerX (acquired by Akamai), staking and swapping services at Fireblocks, led AI agent development at Kytte, founded Butler AI and Lumos AI.",
+      rest: "Founding engineer at Tonkean (acquired by Coupa), integrations and Zero Trust at LayerX (acquired by Akamai), staking and swapping services at a major blockchain infrastructure company in Israel, led development at a stealth startup focused on AI agent reliability, founded Butler AI and Lumos AI.",
     },
   ],
   bookLabel: "Book a call",
@@ -141,7 +141,7 @@ export const ABOUT_HE: AboutContent = {
     },
     {
       strong: "קצת על הרקע שלי.",
-      rest: "הייתי founding engineer ב־Tonkean, שנרכשה על ידי Coupa. ב־LayerX עבדתי על אינטגרציות ו־Zero Trust, והיא נרכשה על ידי Akamai. ב־Fireblocks עבדתי על שירותי staking ו־swapping, וב־Kytte הובלתי פיתוח בתחום סוכני AI. הקמתי את Butler AI ואת Lumos AI.",
+      rest: "הייתי founding engineer ב־Tonkean, שנרכשה על ידי Coupa. ב־LayerX עבדתי על אינטגרציות ו־Zero Trust, והיא נרכשה על ידי Akamai. עבדתי על שירותי staking ו־swapping בחברת תשתיות בלוקצ׳יין גדולה בישראל, והובלתי פיתוח בסטארטאפ ב־stealth שמתמקד באמינות של סוכני AI. הקמתי את Butler AI ואת Lumos AI.",
     },
   ],
   bookLabel: "לקביעת שיחה",

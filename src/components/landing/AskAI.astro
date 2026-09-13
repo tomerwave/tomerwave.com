@@ -1,31 +1,34 @@
 ---
 const prompt =
   "I’m considering working with TomerWave. Read https://tomerwave.com and the relevant service pages. Briefly explain what they do and which kinds of businesses and teams they help. Then ask me 3 short questions about my situation to help me assess whether they’re a good fit. Distinguish what the website states from your own interpretation. Include sources for factual claims. If you can’t access the pages or verify something, say so.";
+const encodedPrompt = encodeURIComponent(prompt);
 const providers = [
-  { name: "ChatGPT", href: "https://chatgpt.com/" },
-  { name: "Gemini", href: "https://gemini.google.com/" },
-  { name: "Claude", href: "https://claude.ai/" },
+  { name: "ChatGPT", href: `https://chatgpt.com/?q=${encodedPrompt}` },
+  { name: "Gemini", href: "https://gemini.google.com/", paste: true },
+  { name: "Claude", href: `https://claude.ai/new?q=${encodedPrompt}` },
 ];
 ---
 <section class="business-section" id="ask-ai" aria-labelledby="ask-ai-title">
   <div class="business-wrap">
     <span class="business-eyebrow">Another perspective</span>
     <h2 id="ask-ai-title">Is TomerWave a fit for you?</h2>
-    <p>Ask your AI assistant, then tell it a little about what you need.</p>
-    <div class="ask-ai-question">
-      <label for="ask-ai-prompt">Copy this question, then choose your assistant and paste it into a new chat.</label>
-      <textarea id="ask-ai-prompt" readonly rows="5">{prompt}</textarea>
-      <button type="button" class="business-button" data-copy-ai-question hidden>Copy question</button>
-      <p data-copy-ai-status role="status" aria-live="polite"></p>
-    </div>
+    <p>ChatGPT and Claude open with the question in the link. For Gemini, use the copy option below.</p>
     <nav class="business-actions" aria-label="Ask an AI assistant">
       {providers.map((provider) => (
         <a class="business-linkline" href={provider.href} target="_blank" rel="noopener noreferrer">
-          Ask {provider.name}<span class="business-arrow" aria-hidden="true">↗</span>
+          Ask {provider.name}{provider.paste && " (paste question)"}<span class="business-arrow" aria-hidden="true">↗</span>
           <span class="ask-ai-sr"> (opens in a new tab)</span>
         </a>
       ))}
     </nav>
+    <details class="ask-ai-question">
+      <summary>Read the question or copy it for Gemini</summary>
+      <label for="ask-ai-prompt">For Gemini, copy the question and paste it into a new chat. You can also use this if another assistant loses the question during sign-in.</label>
+      <textarea id="ask-ai-prompt" readonly rows="5">{prompt}</textarea>
+      <button type="button" class="business-button" data-copy-ai-question hidden>Copy question</button>
+      <p data-copy-ai-status role="status" aria-live="polite"></p>
+    </details>
+
   </div>
 </section>
 
@@ -55,6 +58,7 @@ const providers = [
 <style>
   #ask-ai h2 { margin-block: 0.5rem 1rem; }
   .ask-ai-question { max-width: 48rem; margin-block: 1.5rem; }
+  .ask-ai-question summary { cursor: pointer; margin-bottom: 1rem; color: var(--text-muted); }
   .ask-ai-question label { display: block; margin-bottom: 0.75rem; color: var(--text-muted); }
   .ask-ai-question textarea {
     display: block; width: 100%; box-sizing: border-box; resize: vertical;

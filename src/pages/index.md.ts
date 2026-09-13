@@ -25,8 +25,10 @@ I started building at twelve, helping run Minecraft servers and writing the plug
 
 - [Tonkean](https://tonkean.com): founding engineer; helped grow from 0 ARR to several million and from six people to more than 300. Acquired by Coupa.
 - [LayerX](https://layerxsecurity.com): built the team and the system across integrations, Zero Trust, delivery, and observability. Acquired by Akamai.
-- Fireblocks: worked on staking and swapping services.
-- Kytte: led development around AI agents, monitoring, and evaluation.
+- A major blockchain infrastructure company in Israel: worked on staking and swapping services.
+- A stealth startup focused on AI agent reliability: led development around agents, monitoring, and evaluation.
+
+Selected work is described without client names in [Consulting work](/#consulting), with three further engagements under NDA.
 - Butler AI and Lumos AI: founder, product builder, and more than 1,000 customer conversations.
 
 ## Navigation
