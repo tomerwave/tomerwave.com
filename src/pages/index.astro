@@ -1,5 +1,6 @@
 ---
 import BusinessAbout from "@/components/landing/BusinessAbout.astro";
+import AskAI from "@/components/landing/AskAI.astro";
 import BusinessContact from "@/components/landing/BusinessContact.astro";
 import BusinessFooter from "@/components/landing/BusinessFooter.astro";
 import BusinessHero from "@/components/landing/BusinessHero.astro";
@@ -35,7 +36,7 @@ const navItems = [
 
 <Layout
   title="Tomer Gal · Technical strategy and hands-on execution"
-  description="I help teams and organizations make the technical calls that are easy to postpone and expensive to get wrong. Strategy when you need direction. Hands-on execution when you need things done."
+  description="I help startups lead development, and businesses and organizations improve how work gets done with AI and automation. Technical advice, hands-on projects, and ongoing leadership."
 >
   <div class="business-site">
     <StructuredData type="WebSite" data={{}} />
@@ -59,6 +60,7 @@ const navItems = [
       <BusinessAbout />
       <hr class="business-rule" />
       <WritingBridge />
+      <AskAI />
       <BusinessContact />
     </main>
     <BusinessFooter />
