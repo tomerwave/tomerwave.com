@@ -30,7 +30,7 @@ Setting clear expectations is key to managing remote development teams. This inc
 
 Trust is an essential element of managing remote development teams. Trust your team to work independently and take ownership of their work. Avoid micromanaging, and instead, focus on setting clear expectations and providing the necessary resources and support. Trusting your team helps to build a positive team culture, fosters creativity and innovation, and increases productivity.
 
-Trust is also the part that does not survive being announced. You can say it in an all-hands as often as you like; what people actually read is whether the person who raised a problem got helped or got managed. I wrote about what that looks like in practice in [people first, company second](/posts/2026/people-first-company-second).
+Trust is also the part that does not survive being announced. You can say it in an all-hands as often as you like; what people actually read is whether the person who raised a problem got helped or got managed. I wrote about what that looks like in practice in people first, company second.
 
 ## 4. Foster Collaboration
 

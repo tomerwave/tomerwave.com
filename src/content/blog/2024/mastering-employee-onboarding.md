@@ -113,7 +113,7 @@ As leaders we should be aware of most of the issues already, we need to strive t
 
 At the start of the onboarding create a retro board, share it with the new member and remind them to write everything that could have been better. **But do not forget**, this is not a replacement for you to be aware of those and solve them along the way.
 
-The retro is also the cheapest culture signal you will ever send. Someone in their second week finding out that the answer to "this was broken" is "thank you, we fixed it" learns more about the company than any onboarding deck will teach them. I wrote about what that actually means in [people first, company second](/posts/2026/people-first-company-second).
+The retro is also the cheapest culture signal you will ever send. Someone in their second week finding out that the answer to "this was broken" is "thank you, we fixed it" learns more about the company than any onboarding deck will teach them. I wrote about what that actually means in people first, company second.
 
 ## When Onboarding Is Not the Problem
 

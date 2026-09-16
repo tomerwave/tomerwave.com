@@ -7,7 +7,7 @@ tags:
   - entrepreneurship
   - personal-growth
 featured: false
-draft: false
+draft: true
 ---
 
 The silence was the worst part.

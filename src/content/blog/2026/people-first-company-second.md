@@ -7,7 +7,7 @@ tags:
   - culture
   - leadership
 featured: false
-draft: false
+draft: true
 ---
 
 I wrote something on LinkedIn today and almost nobody read it.

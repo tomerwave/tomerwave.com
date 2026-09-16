@@ -10,6 +10,7 @@ tags:
   - dreams
 heroImageAlt: "People dancing together on a warmly lit dance floor"
 heroImage: /assets/img/2024/why-should-you-start-dancing/hero.jpg
+draft: true
 ---
 
 > **"We should consider every day lost on which we have not danced at least once."** — Friedrich Nietzsche
