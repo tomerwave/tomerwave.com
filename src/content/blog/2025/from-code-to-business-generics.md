@@ -69,7 +69,7 @@ In one of my startups, we targeted every team across industries. From customer s
 
 Once we pivoted to focus on a single niche — legal teams — we saw exponential growth. By understanding one audience deeply and solving their problems completely, we became the go-to solution in that field.
 
-I have also been on the other side of that, spending a year building something broad enough that nobody recognised themselves in it. That one is written up in [the year we spent convincing ourselves](/posts/2026/the-year-we-spent-convincing-ourselves).
+I have also been on the other side of that, spending a year building something broad enough that nobody recognised themselves in it. That one is written up in the year we spent convincing ourselves.
 
 ### The Parallel with Generics in Code
 
