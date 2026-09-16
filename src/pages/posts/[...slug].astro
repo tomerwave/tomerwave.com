@@ -4,7 +4,7 @@ import BlogPostLayout from "../../layouts/BlogPostLayout.astro";
 import { calculateReadingTime } from "../../utils/reading-time";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog");
+  const posts = await getCollection("blog", ({ data }) => !data.draft);
 
   return posts
     .map((post) => {

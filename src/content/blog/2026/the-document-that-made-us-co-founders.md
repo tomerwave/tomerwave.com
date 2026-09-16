@@ -8,7 +8,7 @@ tags:
   - personal-growth
   - co-founder
 featured: false
-draft: false
+draft: true
 ---
 
 In my [last post](/posts/2026/the-day-i-stopped-looking-for-a-job), I wrote about the moment I decided I wanted to build something of my own. It was a quiet decision. No fanfare, no plan, just a feeling that solidified into a direction.

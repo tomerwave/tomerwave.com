@@ -14,7 +14,7 @@ import "@/styles/letter.css";
 
 export async function getStaticPaths() {
   const letters = await getLetters();
-  const posts = await getCollection("blog");
+  const posts = await getCollection("blog", ({ data }) => !data.draft);
 
   const featuredFor = (slug: string | undefined) =>
     slug ? posts.find((post) => post.id.split("/").pop() === slug) : undefined;

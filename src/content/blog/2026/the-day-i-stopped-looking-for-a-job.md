@@ -7,7 +7,7 @@ tags:
   - entrepreneurship
   - personal-growth
 featured: false
-draft: false
+draft: true
 ---
 
 I left my job because I was bored.

@@ -7,7 +7,7 @@ tags:
   - entrepreneurship
   - personal-growth
 featured: false
-draft: false
+draft: true
 ---
 
 I wasn't looking for anything when I found it.

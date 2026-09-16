@@ -7,7 +7,7 @@ tags:
   - career
   - burnout
 featured: false
-draft: false
+draft: true
 ---
 
 After the call with my friend, I sat there for a long time.

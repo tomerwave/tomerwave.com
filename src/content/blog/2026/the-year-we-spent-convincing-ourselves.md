@@ -7,7 +7,7 @@ tags:
   - entrepreneurship
   - personal-growth
 featured: false
-draft: false
+draft: true
 ---
 
 We had a handshake, a Notion doc full of honesty, and absolutely nothing to build.

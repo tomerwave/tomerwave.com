@@ -7,7 +7,7 @@ tags:
   - mental-health
   - reflection
 featured: false
-draft: false
+draft: true
 ---
 
 Yesterday I gave six hours.
