@@ -29,4 +29,4 @@ for (const path of files("dist").filter((path) => /\.(html|md|xml|txt|json|js)$/
 }
 
 assert.ok(existsSync("dist/posts/2026/who-maintains-this-after-you-leave/index.html"), "Professional writing remains available");
-console.log(`Verified ${drafts.length} drafts have no public routes or references; professional writing remains available.`);
+process.stdout.write(`Verified ${drafts.length} drafts have no public routes or references; professional writing remains available.\n`);

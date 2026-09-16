@@ -128,7 +128,7 @@ Most of what is written about this quietly assumes an employee. If you are readi
 
 **The downside is not hurt feelings.** A co-founder who feels managed out does not simply leave. They leave with institutional knowledge, some of the team, and a version of the story that your investors will eventually hear. That is the actual risk, it is much larger than the delivery problem you started with, and it is the reason to move slowly here even though everything about the situation feels urgent.
 
-Underneath all three is the same thing: two people who set an arrangement when the company was small and never went back to renegotiate it, and who now both have too much invested to raise it lightly. That part shows up on no org chart, and it is [the half of these situations that decides how they go](/posts/2026/people-first-company-second).
+Underneath all three is the same thing: two people who set an arrangement when the company was small and never went back to renegotiate it, and who now both have too much invested to raise it lightly. That part shows up on no org chart, and it is the half of these situations that decides how they go.
 
 And there is a real limit to what an outsider can do here, which I would rather say than sell around. Between founders there is no neutral party. If you bring somebody in to deliver the uncomfortable version, your co-founder may reasonably read it as you outsourcing a conversation you owed them yourself, and that is a worse injury than saying it badly in person. Say the first one yourself. Bring somebody in for what comes after.
 
