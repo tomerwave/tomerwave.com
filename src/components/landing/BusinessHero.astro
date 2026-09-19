@@ -1,15 +1,17 @@
 ---
 import HeroShoreline from "@/components/HeroShoreline";
+import { POSITIONING } from "@/data/positioning";
 ---
 <section class="business-hero" id="top">
   <div class="business-hero-shore" aria-hidden="true"><HeroShoreline client:load /></div>
   <div class="business-hero-copy">
-    <span class="business-eyebrow">Technical strategy &amp; hands-on execution</span>
-    <h1>The best work starts before the answers are <span class="business-quiet">obvious.</span></h1>
-    <p class="business-hero-sub">I help startups lead development, and businesses and organizations improve how work gets done with AI and automation. Technical advice, hands-on projects, and ongoing leadership.</p>
+    <span class="business-eyebrow">{POSITIONING.hero.eyebrow}</span>
+    <h1>{POSITIONING.hero.heading} <span class="business-quiet">{POSITIONING.hero.quiet}</span></h1>
+    <p class="business-hero-sub">{POSITIONING.hero.body}</p>
     <div class="business-actions">
-      <a class="business-button" href="#services">Find where you fit <span class="business-arrow" aria-hidden="true">→</span></a>
-      <a class="business-linkline" href="/meet" data-placement="hero">Or just book a call</a>
+      <a class="business-button" href="/services/technology-advisor">{POSITIONING.hero.cta} <span class="business-arrow" aria-hidden="true">→</span></a>
+      <a class="business-linkline" href="/meet" data-placement="hero">{POSITIONING.hero.secondary}</a>
+    <a class="business-linkline" href="/he/about" lang="he" dir="rtl">בעברית <span aria-hidden="true">←</span></a>
     </div>
   </div>
 </section>

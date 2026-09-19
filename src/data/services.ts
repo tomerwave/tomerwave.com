@@ -1,3 +1,5 @@
+import { NONPROFIT_SERVICE } from "./nonprofit-service";
+
 export interface ServiceWritingPick {
   postId: string;
   why: string;
@@ -47,6 +49,7 @@ export interface Service {
 }
 
 export const SERVICES: Service[] = [
+  NONPROFIT_SERVICE,
   {
     slug: "fractional-cto",
     shortName: "R&D Advisory",
@@ -298,88 +301,6 @@ export const SERVICES: Service[] = [
     siblings: ["fractional-cto", "technology-advisor"],
     sitemapPriority: 0.8,
     serviceType: "AI and workflow automation consulting",
-  },
-
-  {
-    slug: "technology-advisor",
-    shortName: "Technology Advisory",
-    letterDay: "Tuesday",
-    documentTitle: "Technology Advisor for Organizations Without a CTO",
-    pageHeading: "Technology Advisor",
-    eyebrow: "Technology Advisory",
-    description:
-      "You don't need a full-time CTO. You need someone technical you can trust when making expensive technology decisions. Reading the proposals, checking the quotes, and telling you plainly what's worth doing.",
-    lede: "You don't need a full-time CTO. You need someone technical you can trust when making expensive technology decisions.",
-    routerProblem: "You're spending on technology without anyone technical on your side.",
-    routerBody:
-      "Vendors, quotes, and projects nobody internally can fully evaluate. Staff time going into work a computer should be doing. You need someone technical in the room who works for you.",
-    who: "Nonprofits, associations, education organizations, professional services firms, and family-run businesses. Organizations that depend on software and outside vendors, but have nobody internal whose job it is to evaluate either.",
-    triggers: [
-      "A vendor has quoted you for a project and you can't tell whether the number is fair.",
-      "Someone is proposing software you don't fully understand.",
-      "Staff spend hours every week on work a computer should be doing.",
-      "Your systems don't talk to each other, and everyone has a workaround.",
-      "You're being told you should be using AI, and nobody can say where it would actually help.",
-      "A project is going badly and you can't tell whose fault it is.",
-      "You need someone technical in the room who is working for you.",
-    ],
-    onePager: {
-      triggerIndexes: [0, 1, 2],
-      deliverableIndexes: [0, 1, 2, 3],
-    },
-    help: {
-      heading: "How I help",
-      body: [
-        "I sit on your side of the table. I read the proposals, ask the vendor the questions you'd ask if you knew which ones to ask, and tell you plainly what I'd do.",
-        "Sometimes that's \"this is a fair price and they know what they're doing.\" Sometimes it's \"you don't need this at all.\" Both are useful, and the second one is usually worth more.",
-      ],
-      opinion:
-        "The cheapest technology project is the one you talk yourself out of. A good advisor saves you more by what they stop than by what they build.",
-    },
-    offer: {
-      anchor: "technology-assessment",
-      name: "Technology Assessment",
-      heading: "Start with a Technology Assessment",
-      intro:
-        "I spend time understanding how your organization actually works, rather than how the org chart says it works. Then I answer one question: what should you improve, replace, automate, buy, build, or simply leave alone?",
-      looksAtLabel: "What I look at",
-      looksAt: [
-        "How the work really gets done, day to day",
-        "The tools and systems you already pay for",
-        "What's still done by hand, and how long it takes",
-        "Where the friction is, according to the people in it",
-        "Projects coming up in the next year",
-        "Your vendors and what they're delivering",
-        "What you're currently spending, and on what",
-      ],
-      deliverable: [
-        "A short roadmap in plain language. What's worth doing, in what order, and roughly what each one involves.",
-        "Which tools to keep, which to drop, and which you're paying for twice.",
-        "Where automation would genuinely give staff time back, with the hours attached.",
-        "Where a vendor is worth the money, and where you'd be buying something you don't need.",
-        "What I'd leave exactly as it is.",
-      ],
-      duration: "Scoped per organization",
-      pricingNote:
-        "It depends on the size of the organization and how many systems are involved. A first conversation costs nothing and usually makes the shape clear.",
-    },
-    next: {
-      body: "Most organizations don't need a technical person full-time. They need one available. The usual continuation is a standing arrangement. You send me the vendor proposal, the quote, the contract, the question about whether AI would help with something. I answer within a day or two. No project, no minimum.",
-      note: "I can also oversee a project you've already committed to, and hold the vendor to what they promised.",
-    },
-    writing: [
-      {
-        postId: "2023/future-of-work-automation-ai",
-        why: "A practical look at what automation changes, and what it doesn't.",
-      },
-      {
-        postId: "2026/people-first-company-second",
-        why: "On the part of any technology decision that's really about people.",
-      },
-    ],
-    siblings: ["ai-automation", "fractional-cto"],
-    sitemapPriority: 0.8,
-    serviceType: "Independent technology advisory",
   },
 ];
 

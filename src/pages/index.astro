@@ -11,6 +11,7 @@ import WritingBridge from "@/components/landing/WritingBridge.astro";
 import SectionRoute from "@/components/SectionRoute.astro";
 import SiteHeader from "@/components/SiteHeader.astro";
 import StructuredData from "@/components/StructuredData.astro";
+import { POSITIONING } from "@/data/positioning";
 import "@/styles/business.css";
 import "@/styles/route.css";
 import Layout from "@/layouts/Layout.astro";
@@ -18,6 +19,7 @@ import Layout from "@/layouts/Layout.astro";
 const routeSections = [
   { id: "top", label: "Top" },
   { id: "services", label: "Services" },
+  { id: "about-work", label: "How I work" },
   { id: "track", label: "Track record" },
   { id: "consulting", label: "Work" },
   { id: "writing", label: "Writing" },
@@ -26,8 +28,7 @@ const routeSections = [
 
 const navItems = [
   { label: "Services", href: "#services" },
-  { label: "Track record", href: "#track" },
-  { label: "Work", href: "#consulting" },
+  { label: "How I work", href: "#about-work" },
   { label: "About", href: "/about" },
   { label: "Writing", href: "#writing" },
   { label: "Let’s talk", href: "/meet", cta: true },
@@ -35,8 +36,8 @@ const navItems = [
 ---
 
 <Layout
-  title="Tomer Gal · Technical strategy and hands-on execution"
-  description="I help startups lead development, and businesses and organizations improve how work gets done with AI and automation. Technical advice, hands-on projects, and ongoing leadership."
+  title={POSITIONING.metadata.title}
+  description={POSITIONING.metadata.description}
 >
   <div class="business-site">
     <StructuredData type="WebSite" data={{}} />
@@ -53,11 +54,11 @@ const navItems = [
     <main id="business-main">
       <BusinessHero />
       <ServiceRouter />
+      <BusinessAbout />
       <hr class="business-rule" />
       <TrackRecord />
       <hr class="business-rule" />
       <ConsultingWork />
-      <BusinessAbout />
       <hr class="business-rule" />
       <WritingBridge />
       <AskAI />

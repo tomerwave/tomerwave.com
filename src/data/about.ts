@@ -1,5 +1,6 @@
 import { SITE } from "@/consts";
 import { SERVICES, servicePath } from "@/data/services";
+import { POSITIONING } from "./positioning";
 
 export interface AboutRoute {
   href: string;
@@ -48,29 +49,17 @@ export const ABOUT_EN: AboutContent = {
   nativeName: "English",
   title: "About Tomer Gal · TomerWave",
   aboutLabel: "About",
-  description:
-    "Tomer Gal helps startups with engineering leadership and architecture, and businesses and organizations with AI, automation, and technology decisions. Advice, hands-on projects, and ongoing support.",
+  description: POSITIONING.metadata.description,
   nav: [
     { label: "Services", href: "/#services" },
     { label: "Writing", href: "/blog" },
   ],
   name: "Tomer Gal",
   role: "TomerWave · Tel Aviv & remote · English & Hebrew",
-  headline: "The technical calls that are easy to",
-  headlineQuiet: "postpone.",
+  headline: POSITIONING.aboutEn.headline,
+  headlineQuiet: POSITIONING.aboutEn.headlineQuiet,
   points: [
-    {
-      strong: "Advisory or embedded.",
-      rest: "Focused advice, a project I help build, or ongoing technical leadership for your team or organization.",
-    },
-    {
-      strong: "Architecture, hiring bar, delivery rhythm.",
-      rest: "The things that get expensive when nobody owns them.",
-    },
-    {
-      strong: "Still hands-on.",
-      rest: "Infrastructure, integrations, AI features, and workflows that save people manual work. I can build them or lead delivery with your team and vendors.",
-    },
+    ...POSITIONING.aboutEn.points,
     {
       strong: "Based in Tel Aviv, working remotely",
       rest: "with teams across Israel, Europe and the US.",
@@ -83,18 +72,14 @@ export const ABOUT_EN: AboutContent = {
   bookLabel: "Book a call",
   writingLabel: "Read the writing",
   writingHref: "/blog",
-  routesLabel: "Four problems I get called about",
+  routesLabel: POSITIONING.aboutEn.routesLabel,
   routes: SERVICES.map((service) => ({
     href: servicePath(service.slug),
     name: service.shortName,
     problem: service.routerProblem,
   })),
   signalsLabel: "You’ll recognize the moment",
-  signals: [
-    "We shipped less this quarter than last, with twice the engineers.",
-    "Every technical decision waits for me.",
-    "We’re about to commit to something I can’t evaluate.",
-  ],
+  signals: [...POSITIONING.aboutEn.signals],
   podcastLabel: "Podcast",
   podcastName: "בינה ושגרה",
   podcastHref: PODCAST_HREF,
@@ -110,35 +95,19 @@ export const ABOUT_HE: AboutContent = {
   dir: "rtl",
   path: "/he/about",
   nativeName: "עברית",
-  title: "תומר גל | ייעוץ טכנולוגי ו־CTO במשרה חלקית | TomerWave",
+  title: POSITIONING.aboutHe.title,
   aboutLabel: "אודות",
-  description:
-    "תומר גל עוזר לסטארטאפים להוביל פיתוח, ולעסקים וארגונים לשפר תהליכים עם AI ואוטומציה. ייעוץ טכנולוגי, פרויקטים עם ביצוע וליווי שוטף.",
+  description: POSITIONING.aboutHe.description,
   nav: [
     { label: "שירותים", href: "/#services" },
     { label: "כתיבה", href: "/blog" },
   ],
   name: "תומר גל",
-  role: "TomerWave · CTO במשרה חלקית · עברית ואנגלית",
-  headline: "עוזר לכם לקבל החלטות טכנולוגיות",
-  headlineQuiet: "ולהוציא אותן לפועל.",
+  role: POSITIONING.aboutHe.role,
+  headline: POSITIONING.aboutHe.headline,
+  headlineQuiet: POSITIONING.aboutHe.headlineQuiet,
   points: [
-    {
-      strong: "מלווה אתכם כיועץ",
-      rest: "בונה ומוביל פרויקט, או מצטרף לליווי שוטף כ־CTO במשרה חלקית.",
-    },
-    {
-      strong: "ארכיטקטורה, גיוס וקצב העבודה.",
-      rest: "עוזר להבין על מה אפשר להתפשר, מה צריך לשנות ומי אחראי להוציא את זה לפועל.",
-    },
-    {
-      strong: "עדיין כותב קוד.",
-      rest: "תשתיות, אינטגרציות ו־AI שחוסכים עבודה ידנית. עובד גם עם עסקים וארגונים, ובונה בעצמי או מוביל את הביצוע עם הצוות והספקים שלכם.",
-    },
-    {
-      strong: "גר בתל אביב, עובד מרחוק",
-      rest: "עם צוותים בישראל, באירופה ובארה״ב.",
-    },
+    ...POSITIONING.aboutHe.points,
     {
       strong: "קצת על הרקע שלי.",
       rest: "הייתי founding engineer ב־Tonkean, שנרכשה על ידי Coupa. ב־LayerX עבדתי על אינטגרציות ו־Zero Trust, והיא נרכשה על ידי Akamai. עבדתי על שירותי staking ו־swapping בחברת תשתיות בלוקצ׳יין גדולה בישראל, והובלתי פיתוח בסטארטאפ ב־stealth שמתמקד באמינות של סוכני AI. הקמתי את Butler AI ואת Lumos AI.",
@@ -147,8 +116,13 @@ export const ABOUT_HE: AboutContent = {
   bookLabel: "לקביעת שיחה",
   writingLabel: "לבלוג",
   writingHref: "/blog",
-  routesLabel: "ארבע בעיות שבגללן פונים אליי",
+  routesLabel: POSITIONING.aboutHe.routesLabel,
   routes: [
+    {
+      href: servicePath("technology-advisor"),
+      name: POSITIONING.aboutHe.nonprofitName,
+      problem: POSITIONING.aboutHe.nonprofitProblem,
+    },
     {
       href: servicePath("fractional-cto"),
       name: "ייעוץ לניהול הפיתוח ו־CTO במשרה חלקית",
@@ -164,18 +138,9 @@ export const ABOUT_HE: AboutContent = {
       name: "AI ואוטומציה",
       problem: "יותר מדי זמן הולך על עבודה ידנית.",
     },
-    {
-      href: servicePath("technology-advisor"),
-      name: "ייעוץ טכנולוגי לארגון",
-      problem: "אתם מוציאים כסף על טכנולוגיה בלי מישהו בצד שלכם שמבין בזה.",
-    },
   ],
   signalsLabel: "נשמע מוכר?",
-  signals: [
-    "הצוות גדל פי שניים, אבל הספקנו פחות מהרבעון הקודם.",
-    "כל החלטה טכנולוגית צריכה לעבור דרכי.",
-    "אנחנו עומדים להתחייב למשהו, ואין לי דרך לדעת אם זו החלטה טובה.",
-  ],
+  signals: [...POSITIONING.aboutHe.signals],
   podcastLabel: "פודקאסט",
   podcastName: "בינה ושגרה",
   podcastHref: PODCAST_HREF,

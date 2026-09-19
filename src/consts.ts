@@ -15,7 +15,7 @@ export const SITE: Site = {
   website: "https://tomerwave.com/",
   author: "Tomer Gal",
   profile: "https://tomerwave.com/about",
-  desc: "Tomer Gal works with founder-led startups and writes honestly about work, ambition, love, family, and everything underneath.",
+  desc: "Ongoing technology consulting for nonprofits. Tomer Gal maps everyday work, prioritizes improvements, builds solutions and manages vendors alongside your team.",
   title: "Tomer Gal",
   ogImage: "avatar.jpg",
   postPerIndex: 10,
@@ -25,6 +25,6 @@ export const SITE: Site = {
 };
 
 export const BOOKING_URL = "https://calendar.app.google/9F7SQbpLdY3VgTDKA";
-export const NOW = "Fractional CTO for founder-led startups, and writing at tomerwave.com/blog.";
-export const WHY =
-  "Because the technical calls that are easy to postpone are the ones that get expensive, and most teams have nobody whose job it is to make them.";
+export const NOW =
+  "Helping nonprofits improve everyday work through ongoing technology consulting, and writing at tomerwave.com/blog.";
+export const WHY = "So the people doing valuable work have more time for the parts that need them.";

@@ -5,11 +5,11 @@ export interface Props {
 }
 
 import { AUTHOR_SAME_AS } from "@/constants";
+import { POSITIONING } from "@/data/positioning";
 
 const { type, data } = Astro.props;
-const POSITION = "Technical Advisor and Fractional CTO";
-const POSITION_DESCRIPTION =
-  "Tomer Gal helps teams and organizations make high-stakes technical decisions and execute them across R&D leadership, architecture, AI automation, and technology advisory.";
+const POSITION = POSITIONING.metadata.position;
+const POSITION_DESCRIPTION = POSITIONING.metadata.description;
 
 let structuredData = {};
 
@@ -116,8 +116,7 @@ if (type === "BlogPosting") {
     "@type": "WebSite",
     name: "Tomer Gal",
     url: "https://tomerwave.com",
-    description:
-      "Technical strategy and hands-on execution for teams and organizations making expensive technical decisions.",
+    description: POSITIONING.metadata.description,
     author: {
       "@type": "Person",
       name: "Tomer Gal",
