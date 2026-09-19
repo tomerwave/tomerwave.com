@@ -1,4 +1,5 @@
 import type { APIRoute } from "astro";
+import { POSITIONING } from "@/data/positioning";
 import { SERVICES, servicePath } from "@/data/services";
 
 export const GET: APIRoute = async () => {
@@ -7,17 +8,15 @@ export const GET: APIRoute = async () => {
       `- **[${service.pageHeading}](${servicePath(service.slug)})** · ${service.lede} ${service.offer.heading}.`
   ).join("\n");
 
-  const markdownContent = `# Tomer Gal · Technical strategy & hands-on execution
+  const markdownContent = `# ${POSITIONING.metadata.title}
 
-I help startups lead development, and businesses and organizations improve how work gets done with AI and automation. Technical advice, hands-on projects, and ongoing leadership.
+${POSITIONING.hero.body}
 
-## How we can work together
+## How we work together
 
-I take ownership from the first decision through delivery and ongoing operation. That includes choosing the right tools, bringing in specialists, managing vendors, and building where needed. You work directly with me, without having to coordinate everyone yourself.
+${POSITIONING.about.paragraphs.join("\n\n")}
 
-Focused advice on a decision, a scoped project I help build and deliver, or ongoing technical leadership. I can work with your team or vendors and stay involved after launch. We agree on scope, availability, and ownership before starting.
-
-## Four problems I get called about
+## Services
 
 ${serviceLines}
 

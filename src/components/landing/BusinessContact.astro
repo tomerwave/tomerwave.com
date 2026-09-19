@@ -1,13 +1,12 @@
 ---
+import { POSITIONING } from "@/data/positioning";
+
 interface Props {
   heading?: string;
   note?: string;
 }
 
-const {
-  heading = "Tell me what's breaking.",
-  note = "A short note is enough: team size, what shipped last quarter, and the thing you'd fix first if you had the time.",
-} = Astro.props;
+const { heading = POSITIONING.contact.heading, note = POSITIONING.contact.body } = Astro.props;
 ---
 <section class="business-section business-contact" id="contact">
   <div class="business-wrap business-contact-grid">

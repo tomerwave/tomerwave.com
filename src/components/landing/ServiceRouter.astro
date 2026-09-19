@@ -1,4 +1,5 @@
 ---
+import { POSITIONING } from "@/data/positioning";
 import { SERVICES, servicePath } from "@/data/services";
 
 const [lead, ...rest] = SERVICES;
@@ -9,10 +10,10 @@ const [lead, ...rest] = SERVICES;
     <div class="business-section-head">
       <div>
         <span class="business-eyebrow">Where to start</span>
-        <h2>Four problems I get called about.</h2>
+        <h2>{POSITIONING.router.heading}</h2>
       </div>
       <p class="business-section-intro">
-        For founders and engineering teams, and for businesses, nonprofits, and organizations improving their everyday operations. Start with the problem you want to solve.
+        {POSITIONING.router.body}
       </p>
     </div>
 
