@@ -1,0 +1,87 @@
+{
+  "title": "People First",
+  "headline": "Bring one decision.",
+  "intro": "Choose a decision your team makes often. These three sheets will help you map what happens today, sketch what the person deciding needs to see, and plan a small test.",
+  "note": "Use them with the person who does the work. Paper and a pen are enough. Use fictional examples or remove identifying details.",
+  "sheets": [
+    {
+      "number": "01",
+      "title": "Map one decision",
+      "intro": "Start with a specific moment: approving an application, making a referral, or asking for more information.",
+      "prompts": [
+        [
+          "The decision",
+          "What needs to be decided? Where does this part of the process begin and end?"
+        ],
+        [
+          "People",
+          "Who does the work? Who is affected? Who can resolve an exception?"
+        ],
+        [
+          "Process",
+          "What happens today? Mark the handoffs, repeated work and moments of uncertainty."
+        ],
+        [
+          "Information",
+          "What facts are needed? Where do they come from? What is missing or sensitive?"
+        ],
+        [
+          "Decisions",
+          "What follows an approved rule? Where could AI help? What must a person decide?"
+        ]
+      ]
+    },
+    {
+      "number": "02",
+      "title": "Sketch the evidence view",
+      "intro": "Draw what the person needs to see before deciding. A rough sketch is useful. Nobody is grading the drawing.",
+      "prompts": [
+        [
+          "Before any suggestion",
+          "Which facts, sources, conflicts and gaps should be visible first?"
+        ],
+        [
+          "Make room for judgment",
+          "Where can the person record an initial view, ask for more information or disagree?"
+        ],
+        [
+          "Correct and continue",
+          "How can they open a source, correct a fact and choose the next action?"
+        ]
+      ]
+    },
+    {
+      "number": "03",
+      "title": "Plan a small test",
+      "intro": "Try your sketch with the person who does the work. Start with three fictional cases: ordinary, conflicting evidence, and missing information.",
+      "prompts": [
+        [
+          "The test",
+          "What will you try? Who will take part, and when?"
+        ],
+        [
+          "What to observe",
+          "Can the person find the relevant facts and spot a mistake? What takes effort?"
+        ],
+        [
+          "When to pause",
+          "What would make you stop? Who can pause the test? How will the work continue manually?"
+        ],
+        [
+          "What happened",
+          "What confused the reviewer? What did they change or ask for?"
+        ],
+        [
+          "The next step",
+          "What will you change? Who owns that change, and when will you review it?"
+        ]
+      ]
+    }
+  ],
+  "workshopTitle": "Work through it together",
+  "workshopText": "In the workshop, you bring a process from your own work. We use these sheets, compare ideas in small groups, and work through the tricky parts together. I move between the groups to help you make the next step concrete.",
+  "workshopLink": "Ask me about a workshop",
+  "slideTitle": "Start with one decision.",
+  "slideBody": "Three sheets to use with your team.",
+  "slideSteps": "Map it. Sketch it. Try it."
+}
