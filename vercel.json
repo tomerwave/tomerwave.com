@@ -17,6 +17,16 @@
   ],
   "redirects": [
     {
+      "source": "/people",
+      "destination": "/people-first",
+      "permanent": true
+    },
+    {
+      "source": "/people/workbook.pdf",
+      "destination": "/people-first/workbook.pdf",
+      "permanent": true
+    },
+    {
       "source": "/blog/2026/ai-agents-vs-traditional-automation",
       "destination": "/posts/2026/ai-agents-vs-traditional-automation",
       "permanent": true
