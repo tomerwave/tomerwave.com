@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 760" role="img" aria-labelledby="title desc">
+<title id="title">How the four People First frameworks connect</title>
+<desc id="desc">Agree what better work should make possible. Map the friction, question the task, set human boundaries, then test and check the benefit. Return to the map when the result needs changing.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10" fill="none" stroke="#536d65" stroke-width="1.5"/></marker></defs>
+<rect width="560" height="760" rx="12" fill="#faf6ef"/>
+<g font-family="Arial, sans-serif" fill="#30353c">
+<text x="32" y="43" font-size="16" letter-spacing="2" fill="#536d65">PEOPLE FIRST / THE WORKING LOOP</text>
+<text x="32" y="83" font-size="23">First, agree what better would mean.</text>
+<rect x="32" y="112" width="462" height="104" rx="5" fill="#fffdf9" stroke="#b8c5bc"/>
+<text x="49" y="146" font-size="18" fill="#536d65">01</text><text x="90" y="148" font-size="27" font-family="Georgia, serif">The Friction Map</text><text x="49" y="188" font-size="21">Find the difficulty. Check the evidence.</text>
+<path d="M263 220 v20" stroke="#536d65" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="32" y="248" width="462" height="104" rx="5" fill="#fffdf9" stroke="#b8c5bc"/>
+<text x="49" y="282" font-size="18" fill="#536d65">02</text><text x="90" y="284" font-size="27" font-family="Georgia, serif">Before the Bot</text><text x="49" y="324" font-size="21">Remove. Simplify. Use what you have.</text>
+<path d="M263 356 v20" stroke="#536d65" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="32" y="384" width="462" height="104" rx="5" fill="#fffdf9" stroke="#b8c5bc"/>
+<text x="49" y="418" font-size="18" fill="#536d65">03</text><text x="90" y="420" font-size="27" font-family="Georgia, serif">The Human Line</text><text x="49" y="460" font-size="21">Set permissions, stops, and ownership.</text>
+<path d="M263 492 v20" stroke="#536d65" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="32" y="520" width="462" height="104" rx="5" fill="#e8eee8" stroke="#b8c5bc"/>
+<text x="49" y="554" font-size="18" fill="#536d65">04</text><text x="90" y="556" font-size="27" font-family="Georgia, serif">Time for What?</text><text x="49" y="596" font-size="21">Test the change. Check who benefits.</text>
+<path d="M494 572 H526 V164 H502" fill="none" stroke="#536d65" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#arrow)"/>
+<text x="32" y="680" font-size="22">Keep it, change it, or stop it.</text>
+<text x="32" y="715" font-size="20" fill="#536d65">Revisit the map when the benefit isn't there.</text>
+</g></svg>
