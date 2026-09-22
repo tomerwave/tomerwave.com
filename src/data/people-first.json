@@ -9,26 +9,11 @@
       "title": "The Friction Map",
       "intro": "Where does the work get stuck, and who feels it?",
       "prompts": [
-        [
-          "What should this process make possible, and what matters to the people doing it?",
-          ""
-        ],
-        [
-          "Where do people wait, enter information twice or send work back for corrections?",
-          ""
-        ],
-        [
-          "How often does it happen, and who gets held up?",
-          ""
-        ],
-        [
-          "What have we observed or measured, and what is still an assumption?",
-          ""
-        ],
-        [
-          "Where should we start, considering impact, effort and the team's readiness?",
-          ""
-        ]
+        ["What should this process make possible, and what matters to the people doing it?", ""],
+        ["Where do people wait, enter information twice or send work back for corrections?", ""],
+        ["How often does it happen, and who gets held up?", ""],
+        ["What have we observed or measured, and what is still an assumption?", ""],
+        ["Where should we start, considering impact, effort and the team's readiness?", ""]
       ]
     },
     {
@@ -36,26 +21,11 @@
       "title": "Before the Bot",
       "intro": "Do we need this task at all?",
       "prompts": [
-        [
-          "Who uses the result, and what would happen if we stopped doing this task?",
-          ""
-        ],
-        [
-          "Which steps could we remove or simplify without losing what matters?",
-          ""
-        ],
-        [
-          "Could a tool or capability we already have be enough?",
-          ""
-        ],
-        [
-          "What needs human judgment, and where could clear rules or AI help?",
-          ""
-        ],
-        [
-          "What will it take to run and maintain, and what small test would help us choose?",
-          ""
-        ]
+        ["Who uses the result, and what would happen if we stopped doing this task?", ""],
+        ["Which steps could we remove or simplify without losing what matters?", ""],
+        ["Could a tool or capability we already have be enough?", ""],
+        ["What needs human judgment, and where could clear rules or AI help?", ""],
+        ["What will it take to run and maintain, and what small test would help us choose?", ""]
       ]
     },
     {
@@ -63,22 +33,10 @@
       "title": "The Human Line",
       "intro": "Where does a person need to stay involved?",
       "prompts": [
-        [
-          "What harm could an error cause, and how can someone correct or challenge it?",
-          ""
-        ],
-        [
-          "Where do empathy, context or human judgment matter?",
-          ""
-        ],
-        [
-          "What may the system do, and what needs review and approval before action?",
-          ""
-        ],
-        [
-          "When must it stop and hand over, and to whom?",
-          ""
-        ],
+        ["What harm could an error cause, and how can someone correct or challenge it?", ""],
+        ["Where do empathy, context or human judgment matter?", ""],
+        ["What may the system do, and what needs review and approval before action?", ""],
+        ["When must it stop and hand over, and to whom?", ""],
         [
           "What information and training does the reviewer need, and how will we check that review actually happens?",
           ""
@@ -90,26 +48,11 @@
       "title": "Time for What?",
       "intro": "What will the time we free up make possible?",
       "prompts": [
-        [
-          "How much time and effort does this task take today, and how do we know?",
-          ""
-        ],
-        [
-          "What would the team like to do with the time recovered?",
-          ""
-        ],
-        [
-          "How much time will review, corrections and maintenance still take?",
-          ""
-        ],
-        [
-          "Was time actually freed up, or did the work move to someone else?",
-          ""
-        ],
-        [
-          "What improved in service or workload, and what do the people affected say?",
-          ""
-        ]
+        ["How much time and effort does this task take today, and how do we know?", ""],
+        ["What would the team like to do with the time recovered?", ""],
+        ["How much time will review, corrections and maintenance still take?", ""],
+        ["Was time actually freed up, or did the work move to someone else?", ""],
+        ["What improved in service or workload, and what do the people affected say?", ""]
       ]
     }
   ],
@@ -117,6 +60,6 @@
   "workshopText": "In the workshop, you bring a process from your own work. We use these sheets, compare ideas in small groups, and work through the tricky parts together. I move between the groups to help you make the next step concrete.",
   "workshopLink": "Ask me about a workshop",
   "slideTitle": "Start with one decision.",
-  "slideBody": "Three sheets to use with your team.",
+  "slideBody": "Four sheets to use with your team.",
   "slideSteps": "Map it. Sketch it. Try it."
 }
