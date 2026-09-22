@@ -7,7 +7,7 @@ tags:
   - automation
   - leadership
   - decision-making
-draft: true
+draft: false
 ---
 
 Your team has a list of things they'd like to fix. Someone wants an AI assistant. Someone else wants the systems connected. The person doing the work mostly wants to stop spending Thursday afternoon copying information that already exists somewhere else.
