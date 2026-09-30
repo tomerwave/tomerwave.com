@@ -27,7 +27,7 @@ const emit = (name: string, extra: Record<string, string> = {}) => {
   track(name, { ...context(getAttribution()), ...extra });
 };
 
-const closestMatch = (event: MouseEvent, selector: string) =>
+const closestMatch = (event: Event, selector: string) =>
   (event.target as Element | null)?.closest<HTMLElement>(selector) ?? null;
 
 const bookCallPlacement = (node: HTMLElement) => {
@@ -47,9 +47,23 @@ const onePagerDetails = (node: HTMLElement) => {
   return { service, placement };
 };
 
+const trackOnePager = (event: Event) => {
+  const node = closestMatch(event, ONE_PAGER_SELECTOR);
+  if (node) emit("one_pager_opened", onePagerDetails(node));
+};
+
+const handleOnePagerPointer = (event: PointerEvent) => {
+  if (event.button !== 0 && event.button !== 1) return;
+  trackOnePager(event);
+};
+
+const handleOnePagerKeydown = (event: KeyboardEvent) => {
+  if (event.key !== "Enter" || event.repeat) return;
+  trackOnePager(event);
+};
+
 const CLICK_EVENTS: Array<[string, string, (node: HTMLElement) => Record<string, string>]> = [
   [BOOK_CALL_SELECTOR, "book_call_clicked", (node) => ({ placement: bookCallPlacement(node) })],
-  [ONE_PAGER_SELECTOR, "one_pager_opened", onePagerDetails],
   [EMAIL_SELECTOR, "email_clicked", () => ({})],
   [
     ARTICLE_SERVICE_SELECTOR,
@@ -115,6 +129,8 @@ export function initConversionEvents() {
 
   captureFirstTouchAttribution();
   document.addEventListener("click", handleClick, { signal: controller.signal });
+  document.addEventListener("pointerdown", handleOnePagerPointer, { signal: controller.signal });
+  document.addEventListener("keydown", handleOnePagerKeydown, { signal: controller.signal });
   trackServiceView();
   trackArticleEngagement();
 }
