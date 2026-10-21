@@ -31,7 +31,7 @@ I started building at twelve, helping run Minecraft servers and writing the plug
 
 Selected work is described without client names in [Consulting work](/#consulting), with three further engagements under NDA.
 
-- **AI-powered field-service operations platform:** Working with the team behind a platform that brings field-service operations into one place.
+- **AI-powered construction and field-service platform:** Working with the team building an AI-powered platform for construction and field-service operations. I’m developing agent workflows grounded in real project data, mapping operational processes, and translating domain knowledge into practical tools for contractors and service teams to plan and manage their work.
 - Butler AI and Lumos AI: founder, product builder, and more than 1,000 customer conversations.
 
 ## Navigation
