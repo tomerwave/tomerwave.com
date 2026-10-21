@@ -29,7 +29,9 @@ I started building at twelve, helping run Minecraft servers and writing the plug
 - A major blockchain infrastructure company in Israel: worked on staking and swapping services.
 - A stealth startup focused on AI agent reliability: led development around agents, monitoring, and evaluation.
 
-Selected work is described without client names in [Consulting work](/#consulting), with four further engagements under NDA. Current client: Confidential client.
+Selected work is described without client names in [Consulting work](/#consulting), with three further engagements under NDA.
+
+- **AI-powered field-service operations platform:** Working with the team behind a platform that brings field-service operations into one place.
 - Butler AI and Lumos AI: founder, product builder, and more than 1,000 customer conversations.
 
 ## Navigation
