@@ -17,6 +17,10 @@ const engagements = [
     service: "fractional-cto",
     text: "Refactored a vibe-coded system from scratch, architected and built it all by hand, then put processes and harness tests in place to keep it that way. Hired the engineering team. Trained the SLMs behind real-time remediation of agent failures, from classic errors like 429s to hallucination, drift, and wrong tool calls, resolved in under 80ms.",
   },
+  {
+    client: "AI-powered construction and field-service platform",
+    text: "Working with the team building an AI-powered platform for construction and field-service operations. I’m developing agent workflows grounded in real project data, mapping operational processes, and translating domain knowledge into practical tools for contractors and service teams to plan and manage their work.",
+  },
 ];
 ---
 
@@ -25,25 +29,25 @@ const engagements = [
     <div class="business-section-head">
       <div>
         <span class="business-eyebrow">Consulting work</span>
-        <h2>Six engagements. Three I can talk about.</h2>
+        <h2>Seven engagements. Four I can talk about.</h2>
       </div>
       <p class="business-section-intro">
-        Selected work, described without client names. Each example links to the relevant service.
+        Selected work, described without client names.
       </p>
     </div>
     <div class="business-modes">
       {
         engagements.map((engagement) => {
-          const service = getService(engagement.service)!;
+          const service = engagement.service ? getService(engagement.service) : undefined;
           return (
             <div class="business-mode business-reveal">
               <span class="business-mode-tag">{engagement.client}</span>
               <p>{engagement.text}</p>
-              <p class="business-mode-service">
+              {service && <p class="business-mode-service">
                 <a class="business-linkline" href={servicePath(service.slug)}>
                   {service.shortName} <span class="business-arrow" aria-hidden="true">→</span>
                 </a>
-              </p>
+              </p>}
             </div>
           );
         })
@@ -52,3 +56,11 @@ const engagements = [
     <p class="business-consulting-note">+ 3 more, under NDA.</p>
   </div>
 </section>
+
+<style>
+  @media (min-width: 880px) {
+    .business-modes { grid-template-columns: repeat(2, 1fr); }
+    .business-mode:nth-child(odd) { border-left: 0; padding-left: 0; }
+    .business-mode:nth-child(even) { padding-right: 0; }
+  }
+</style>
